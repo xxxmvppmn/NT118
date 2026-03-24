@@ -1,4 +1,4 @@
-# 📱 [WAVI: ỨNG DUNG HỌC TIẾNG ANH]
+# 📱 [WAVI: ỨNG DỤNG HỌC TIẾNG ANH]
 > 
 ---
 ### 🚀 3. Các tính năng chính (Main Features)
