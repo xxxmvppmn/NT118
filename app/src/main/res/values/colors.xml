@@ -2,4 +2,19 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="purple_light">#E0C3FC</color>
+    <color name="purple_dark">#A18CD1</color>
+    <color name="gray">#808080</color>
+    <color name="link_color">#551A8B</color>
+    <color name="bg_online_test">#E8EAF6</color>
+    <color name="bg_listen">#E1F5FE</color>
+    <color name="bg_read">#FFF3E0</color>
+    <color name="bg_speak">#FCE4EC</color>
+    <color name="bg_write">#E8F5E9</color>
+    <color name="bg_ets">#FFFDE7</color>
+    <color name="bg_theory">#E0F2F1</color>
+    <color name="purple_main">#9932CC</color>
+    <color name="orange_main">#E67E22</color>
+    <color name="bg_light_gray">#F5F5F5</color>
+    <color name="text_dark_gray">#333333</color>
 </resources>
