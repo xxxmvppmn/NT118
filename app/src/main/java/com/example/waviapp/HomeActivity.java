@@ -1,6 +1,7 @@
 package com.example.waviapp;
 
 import android.os.Bundle;
+import android.content.Intent;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.waviapp.databinding.ActivityHomeBinding;
@@ -33,9 +34,13 @@ public class HomeActivity extends AppCompatActivity {
             } else if (id == R.id.nav_pencil) {
                 Toast.makeText(this, "Luyện tập hàng ngày", Toast.LENGTH_SHORT).show();
             } else if (id == R.id.nav_profile) {
-                Toast.makeText(this, "Hồ sơ cá nhân", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(HomeActivity.this, UserInfoActivity.class);
+                startActivity(intent);
             } else if (id == R.id.nav_setting) {
-                Toast.makeText(this, "Cài đặt ứng dụng", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
             }
             return true;
         });

@@ -3,20 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".WaviApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-
         android:icon="@mipmap/app_icon"
         android:roundIcon="@mipmap/app_icon_round"
-
-        android:label="@string/app_name"
+        android:label="WAVI"
         android:supportsRtl="true"
         android:theme="@style/Theme.WaviApp">
 
-        <activity
-            android:name=".HomeActivity"
-            android:exported="false" />
 
         <activity
             android:name=".LoginActivity"
@@ -28,7 +24,19 @@
         </activity>
 
         <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".SignupActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".UserInfoActivity"
             android:exported="false" />
 
     </application>

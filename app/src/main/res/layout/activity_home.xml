@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarHome"
         android:layout_width="0dp"
@@ -33,7 +34,7 @@
                 android:src="@drawable/ic_notification"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                app:tint="#444444" />
+                app:tint="@color/text_dark_gray" />
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
     <View
@@ -46,10 +47,11 @@
         android:id="@+id/bottomNav"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        app:itemIconTint="@null"
+        amIconTint="@null"
         app:itemTextColor="#000000"
-        android:paddingBottom="15dp"
+        android:background="@color/white"
+        app:itemIconTint="@color/text_dark_gray"
+                android:paddingBottom="15dp"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -145,6 +147,7 @@
                 android:textSize="18sp"
                 android:layout_marginBottom="12dp"
                 android:textColor="#333333"/>
+
 
             <GridLayout
                 android:layout_width="match_parent"
