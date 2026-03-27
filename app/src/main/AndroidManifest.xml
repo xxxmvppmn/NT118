@@ -39,6 +39,22 @@
             android:name=".UserInfoActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".ExamActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".TestListActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".TestDetailActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SkillPracticeActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

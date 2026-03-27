@@ -37,7 +37,7 @@ public class SettingsActivity extends AppCompatActivity {
             Intent intent = new Intent(SettingsActivity.this, UserInfoActivity.class);
             startActivity(intent);
         });
-        binding.llLanguage.setOnClickListener(itemClickListener);
+        binding.llLanguage.setOnClickListener(v -> showLanguageDialog());
         binding.llDisplay.setOnClickListener(itemClickListener);
         binding.llCommunity.setOnClickListener(itemClickListener);
         binding.llShare.setOnClickListener(itemClickListener);
@@ -70,5 +70,51 @@ public class SettingsActivity extends AppCompatActivity {
             }
             return true;
         });
+    }
+
+    private String selectedLanguage = "Tiếng Việt";
+
+    private void showLanguageDialog() {
+        android.app.Dialog dialog = new android.app.Dialog(this);
+        dialog.setContentView(R.layout.dialog_language_selection);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        
+        android.widget.LinearLayout llContainer = dialog.findViewById(R.id.llLanguageContainer);
+        String[] languages = {"English", "Tiếng Việt", "繁體中文", "简体中文", "한국어", "日本語", "Français", "Español", "Indonesian", "ภาษาไทย", "Português", "Deutsche"};
+        
+        android.view.LayoutInflater inflater = android.view.LayoutInflater.from(this);
+        android.widget.TextView tvSelectedLanguage = findViewById(R.id.tvSelectedLanguage);
+
+        for (String lang : languages) {
+            android.view.View itemView = inflater.inflate(R.layout.item_language, llContainer, false);
+            android.widget.TextView tvLangName = itemView.findViewById(R.id.tvLangName);
+            android.widget.ImageView ivRadio = itemView.findViewById(R.id.ivRadio);
+            
+            tvLangName.setText(lang);
+            
+            if (lang.equals(selectedLanguage)) {
+                ivRadio.setImageResource(R.drawable.ic_radio_selected);
+            } else {
+                ivRadio.setImageResource(R.drawable.ic_radio_unselected);
+            }
+            
+            itemView.setOnClickListener(v -> {
+                selectedLanguage = lang;
+                if (tvSelectedLanguage != null) {
+                    tvSelectedLanguage.setText(lang);
+                }
+                dialog.dismiss();
+            });
+            
+            llContainer.addView(itemView);
+        }
+        
+        dialog.show();
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setLayout(
+                android.view.ViewGroup.LayoutParams.MATCH_PARENT, 
+                android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+            );
+        }
     }
 }

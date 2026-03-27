@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="3dp"
+    app:cardBackgroundColor="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tvListTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Test 1"
+            android:textColor="@color/text_dark_gray"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_toStartOf="@+id/ivListLock"
+            android:layout_marginEnd="8dp"/>
+
+        <!-- Details Row -->
+        <LinearLayout
+            android:id="@+id/llSubInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvListTitle"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:layout_toStartOf="@+id/ivListLock"
+            android:layout_marginEnd="8dp">
+
+            <TextView
+                android:id="@+id/tvTimeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thời gian: "
+                android:textColor="@color/purple_main"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvTimeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="60 phút  |  "
+                android:textColor="@color/gray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvQuestionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Câu hỏi: "
+                android:textColor="@color/purple_main"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvQuestionValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:textColor="@color/gray"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Start Button -->
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_below="@id/llSubInfo"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_test_btn"
+            android:text="Bắt đầu"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"/>
+
+        <!-- Lock Icon on Right End -->
+        <ImageView
+            android:id="@+id/ivListLock"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_lock"
+            app:tint="#BDBDBD"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

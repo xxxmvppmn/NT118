@@ -1,0 +1,22 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="@color/purple_main">
+    <path
+        android:fillColor="@android:color/white"
+        android:strokeColor="@color/purple_main"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+    <!-- Pencil -->
+    <path
+        android:fillColor="@color/purple_main"
+        android:strokeColor="@color/purple_main"
+        android:strokeWidth="1"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M21.5 5.5l-2-2c-.4-.4-1-.4-1.4 0l-1.5 1.5 3.4 3.4 1.5-1.5c.4-.4.4-1 0-1.4zM10.8 14.8l-1.3 4 4-1.3 6.5-6.5-2.7-2.7-6.5 6.5z"/>
+</vector>

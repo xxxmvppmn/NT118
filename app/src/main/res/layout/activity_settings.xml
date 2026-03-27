@@ -95,7 +95,7 @@
             <LinearLayout android:id="@+id/llLanguage" style="@style/SettingItemStyle">
                 <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_sort_by_size" />
                 <TextView style="@style/SettingTextStyle" android:text="Ngôn ngữ ứng dụng" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tiếng Việt" android:textColor="@color/orange_main" android:textSize="14sp"/>
+                <TextView android:id="@+id/tvSelectedLanguage" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tiếng Việt" android:textColor="@color/orange_main" android:textSize="14sp"/>
             </LinearLayout>
             <View style="@style/SettingDividerStyle"/>
 
