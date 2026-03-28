@@ -1,0 +1,39 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="1500"
+    android:viewportHeight="1500">
+
+    <group android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:translateX="150"
+        android:translateY="150">
+
+        <!-- Lớp nền trắng -->
+        <path
+            android:pathData="M-150,-150h1800v1800h-1800z"
+            android:fillColor="#ffffff"/>
+
+        <!-- Hình vẽ chi tiết (Path phức tạp) -->
+        <group>
+            <clip-path android:pathData="M175,259h1186v954h-1186z"/>
+            <group>
+                <clip-path android:pathData="M176,259.2L1360.6,259.2L1360.6,1213L176,1213ZM176,259.2"/>
+                <path
+                    android:pathData="M303.4,1139.1C280.6,1118.9 260.5,1093.4 244.2,1061.5C138.6,855.9 136.9,462.3 386.1,356.1C492.1,310.9 620.9,292.1 733.7,271.4C902.9,240.5 1041.7,266.4 1161.5,399.5C1256.4,505.1 1354.6,645.7 1360.2,792.8C1363.2,872.7 1333.1,956.8 1268.8,1004.2C1215.8,1043.3 1147.8,1053.4 1083.5,1067.7C864.3,1116.5 507.7,1319.4 303.4,1139.1"
+                    android:fillColor="#fffff2" />
+            </group>
+        </group>
+
+        <!-- Hình vuông màu tím (Đã điều chỉnh tọa độ theo tỷ lệ 1500) -->
+        <path
+            android:fillColor="#9932CC"
+            android:pathData="M300,300 L1200,300 L1200,1200 L300,1200 Z"/>
+
+        <!-- Hình vuông màu trắng bên trong -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M600,600 L900,600 L900,900 L600,900 Z"/>
+
+    </group>
+</vector>
