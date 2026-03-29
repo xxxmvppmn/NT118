@@ -9,9 +9,9 @@
         android:icon="@drawable/nav_exam"
         android:title="Thi" />
     <item
-        android:id="@+id/nav_pencil"
-        android:icon="@drawable/nav_pencil"
-        android:title="Luyện tập" />
+        android:id="@+id/nav_premium"
+        android:icon="@drawable/nav_premium"
+        android:title="Nâng cấp" />
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/nav_profile"

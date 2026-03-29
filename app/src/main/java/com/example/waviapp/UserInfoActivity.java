@@ -51,9 +51,11 @@ public class UserInfoActivity extends AppCompatActivity {
                 startActivity(new Intent(UserInfoActivity.this, HomeActivity.class));
                 finish();
             } else if (id == R.id.nav_exam) {
-                Toast.makeText(this, "Chuyển sang màn hình Thi", Toast.LENGTH_SHORT).show();
-            } else if (id == R.id.nav_pencil) {
-                Toast.makeText(this, "Luyện tập hàng ngày", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(UserInfoActivity.this, ExamActivity.class));
+                finish();
+            } else if (id == R.id.nav_premium) {
+                startActivity(new Intent(UserInfoActivity.this,PremiumActivity.class));
+                finish();
             } else if (id == R.id.nav_profile) {
                 // Currently in Profile
             } else if (id == R.id.nav_setting) {

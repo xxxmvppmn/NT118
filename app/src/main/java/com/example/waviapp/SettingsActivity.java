@@ -53,11 +53,14 @@ public class SettingsActivity extends AppCompatActivity {
                 Intent intent = new Intent(SettingsActivity.this, HomeActivity.class);
                 startActivity(intent);
             } else if (id == R.id.nav_exam) {
-                Toast.makeText(this, "Chuyển sang màn hình ", Toast.LENGTH_SHORT).show();
-            } else if (id == R.id.nav_pencil) {
-                Toast.makeText(this, "Luyện tập hàng ngày", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(SettingsActivity.this, ExamActivity.class);
+                startActivity(intent);
+
+            } else if (id == R.id.nav_premium) {
+                Intent intent = new Intent(SettingsActivity.this, PremiumActivity.class);
+                startActivity(intent);
+
             } else if (id == R.id.nav_profile) {
-                Toast.makeText(this, "Đang chuyển sang Profile...", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(SettingsActivity.this, UserInfoActivity.class);
                 startActivity(intent);
 

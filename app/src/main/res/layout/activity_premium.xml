@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F2F5">
+
+    <!-- 1. TOOLBAR XỊN -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        app:elevation="0.5dp">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nâng cấp Wavi Premium"
+                android:textColor="#333333"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="50dp">
+
+            <!-- 2. FEATURE SLIDER (Phần giới thiệu tính năng kèm ảnh) -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="16dp">
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/viewPagerFeatures"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp" />
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tabIndicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        app:tabBackground="@drawable/dot_selector"
+                        app:tabIndicatorHeight="0dp"
+                        app:tabMaxWidth="10dp"
+                        app:tabPaddingStart="4dp"
+                        app:tabPaddingEnd="4dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- 3. SUBSCRIPTION PACKAGES (Các gói cước Trọn đời, Năm, Tháng) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chọn gói ưu đãi"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginStart="20dp"
+                android:textColor="#333333"/>
+
+            <!-- RecyclerView này sẽ chứa các thẻ item_premium_package.xml -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPricePackages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:clipToPadding="false"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <!-- 4. BẢNG SO SÁNH (Đã tối ưu khoảng cách) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quyền lợi Premium"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:textColor="#333333"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Header Table -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingBottom="12dp">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.5" android:text="Tính năng" android:textStyle="bold" android:textColor="#9E9E9E" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.25" android:text="Free" android:gravity="center" android:textStyle="bold" android:textColor="#9E9E9E" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.25" android:text="Wavi+" android:gravity="center" android:textStyle="bold" android:textColor="#9370DB" />
+                    </LinearLayout>
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F0F0F0" />
+
+                    <!-- Các dòng so sánh (Dùng chung cấu trúc) -->
+                    <!-- Dòng 1 -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="50dp" android:gravity="center_vertical">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.5" android:text="Luyện tập Part 1, 2, 5" android:textColor="#424242"/>
+                        <ImageView android:layout_width="0dp" android:layout_height="22dp" android:layout_weight="0.25" android:src="@drawable/ic_check" app:tint="#4CAF50" />
+                        <ImageView android:layout_width="0dp" android:layout_height="22dp" android:layout_weight="0.25" android:src="@drawable/ic_check" app:tint="#9370DB" />
+                    </LinearLayout>
+                    <!-- Dòng 2 -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="50dp" android:gravity="center_vertical">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.5" android:text="Full 7 Part chuyên sâu" android:textColor="#424242"/>
+                        <ImageView android:layout_width="0dp" android:layout_height="22dp" android:layout_weight="0.25" android:src="@drawable/ic_premiumlock" app:tint="#BDBDBD" />
+                        <ImageView android:layout_width="0dp" android:layout_height="22dp" android:layout_weight="0.25" android:src="@drawable/ic_check" app:tint="#9370DB" />
+                    </LinearLayout>
+                    <!-- Dòng 3 -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="50dp" android:gravity="center_vertical">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.5" android:text="Mẹo &amp; Giải thích chi tiết" android:textColor="#424242"/>
+                        <ImageView android:layout_width="0dp" android:layout_height="22dp" android:layout_weight="0.25" android:src="@drawable/ic_premiumlock" app:tint="#BDBDBD" />
+                        <ImageView android:layout_width="0dp" android:layout_height="22dp" android:layout_weight="0.25" android:src="@drawable/ic_check" app:tint="#9370DB" />
+                    </LinearLayout>
+                    <!-- Dòng 4 -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="50dp" android:gravity="center_vertical">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.5" android:text="Tải đề học Offline" android:textColor="#424242"/>
+                        <ImageView android:layout_width="0dp" android:layout_height="22dp" android:layout_weight="0.25" android:src="@drawable/ic_premiumlock" app:tint="#BDBDBD" />
+                        <ImageView android:layout_width="0dp" android:layout_height="22dp" android:layout_weight="0.25" android:src="@drawable/ic_check" app:tint="#9370DB" />
+                    </LinearLayout>
+                    <!-- Dòng 5 -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="50dp" android:gravity="center_vertical">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.5" android:text="Số lượng đề thi thử" android:textColor="#424242"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.25" android:text="5" android:gravity="center" android:textStyle="bold" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.25" android:text="50+" android:gravity="center" android:textColor="#9370DB" android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- 5. USER REVIEWS SLIDER -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Học viên nói gì về Wavi"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:textColor="#333333"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvReviews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:clipToPadding="false"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <!-- 6. FOOTER -->
+            <TextView
+                android:id="@+id/tvRestore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:text="Khôi phục thanh toán"
+                android:textColor="#9370DB"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:text="Điều khoản dịch vụ &amp; Chính sách bảo mật"
+                android:textSize="12sp"
+                android:textColor="#9E9E9E"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

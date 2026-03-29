@@ -8,53 +8,49 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/app_icon"
-        android:roundIcon="@mipmap/app_icon_round"
         android:label="WAVI"
+        android:roundIcon="@mipmap/app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WaviApp">
-
-
+        <activity
+            android:name=".TheoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PremiumActivity"
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
-
         <activity
             android:name=".SignupActivity"
             android:exported="false" />
-
         <activity
             android:name=".SettingsActivity"
             android:exported="false" />
-
         <activity
             android:name=".UserInfoActivity"
             android:exported="false" />
-
         <activity
             android:name=".ExamActivity"
             android:exported="false" />
-
         <activity
             android:name=".TestListActivity"
             android:exported="false" />
-
         <activity
             android:name=".TestDetailActivity"
             android:exported="false" />
-
         <activity
             android:name=".SkillPracticeActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>

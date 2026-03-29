@@ -34,8 +34,11 @@ public class ExamActivity extends AppCompatActivity {
                 finish();
             } else if (id == R.id.nav_exam) {
                 // Đang ở màn hình Thi
-            } else if (id == R.id.nav_pencil) {
-                Toast.makeText(this, "Luyện tập hàng ngày", Toast.LENGTH_SHORT).show();
+            } else if (id == R.id.nav_premium) {
+                Intent intent = new Intent(ExamActivity.this, PremiumActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
             } else if (id == R.id.nav_profile) {
                 Intent intent = new Intent(ExamActivity.this, UserInfoActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
