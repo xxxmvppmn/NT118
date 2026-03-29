@@ -6,16 +6,18 @@
     android:layout_height="match_parent"
     android:background="#F0F2F5">
 
-    <!-- 1. TOOLBAR XỊN -->
+    <!-- 1. TOOLBAR -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
         app:elevation="0.5dp">
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -25,8 +27,10 @@
                 android:textStyle="bold"
                 android:layout_gravity="center"/>
         </androidx.appcompat.widget.Toolbar>
+
     </com.google.android.material.appbar.AppBarLayout>
 
+    <!-- 2. NESTED SCROLL -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -38,38 +42,8 @@
             android:orientation="vertical"
             android:paddingBottom="50dp">
 
-            <!-- 2. FEATURE SLIDER (Phần giới thiệu tính năng kèm ảnh) -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingBottom="16dp">
 
-                    <androidx.viewpager2.widget.ViewPager2
-                        android:id="@+id/viewPagerFeatures"
-                        android:layout_width="match_parent"
-                        android:layout_height="250dp" />
-
-                    <com.google.android.material.tabs.TabLayout
-                        android:id="@+id/tabIndicator"
-                        android:layout_width="wrap_content"
-                        android:layout_height="10dp"
-                        android:layout_gravity="center"
-                        app:tabBackground="@drawable/dot_selector"
-                        app:tabIndicatorHeight="0dp"
-                        app:tabMaxWidth="10dp"
-                        app:tabPaddingStart="4dp"
-                        app:tabPaddingEnd="4dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- 3. SUBSCRIPTION PACKAGES (Các gói cước Trọn đời, Năm, Tháng) -->
+            <!-- SUBSCRIPTION PACKAGES -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -79,7 +53,6 @@
                 android:layout_marginStart="20dp"
                 android:textColor="#333333"/>
 
-            <!-- RecyclerView này sẽ chứa các thẻ item_premium_package.xml -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPricePackages"
                 android:layout_width="match_parent"
@@ -91,7 +64,7 @@
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-            <!-- 4. BẢNG SO SÁNH (Đã tối ưu khoảng cách) -->
+            <!-- COMPARISON TABLE -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -115,48 +88,166 @@
                     android:padding="16dp">
 
                     <!-- Header Table -->
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingBottom="12dp">
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.5" android:text="Tính năng" android:textStyle="bold" android:textColor="#9E9E9E" />
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.25" android:text="Free" android:gravity="center" android:textStyle="bold" android:textColor="#9E9E9E" />
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.25" android:text="Wavi+" android:gravity="center" android:textStyle="bold" android:textColor="#9370DB" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="12dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="Tính năng"
+                            android:textStyle="bold"
+                            android:textColor="#9E9E9E" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.25"
+                            android:text="Free"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:textColor="#9E9E9E" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.25"
+                            android:text="Premium"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:textColor="#9370DB" />
                     </LinearLayout>
+
                     <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F0F0F0" />
 
-                    <!-- Các dòng so sánh (Dùng chung cấu trúc) -->
-                    <!-- Dòng 1 -->
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="50dp" android:gravity="center_vertical">
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.5" android:text="Luyện tập Part 1, 2, 5" android:textColor="#424242"/>
-                        <ImageView android:layout_width="0dp" android:layout_height="22dp" android:layout_weight="0.25" android:src="@drawable/ic_check" app:tint="#4CAF50" />
-                        <ImageView android:layout_width="0dp" android:layout_height="22dp" android:layout_weight="0.25" android:src="@drawable/ic_check" app:tint="#9370DB" />
+                    <!-- Ví dụ dòng 1 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="Luyện tập part 1, 2, 5"
+                            android:textColor="#424242"/>
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="22dp"
+                            android:layout_weight="0.25"
+                            android:src="@drawable/ic_check"
+                            app:tint="#4CAF50" />
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="22dp"
+                            android:layout_weight="0.25"
+                            android:src="@drawable/ic_check"
+                            app:tint="#9370DB" />
+
                     </LinearLayout>
-                    <!-- Dòng 2 -->
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="50dp" android:gravity="center_vertical">
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.5" android:text="Full 7 Part chuyên sâu" android:textColor="#424242"/>
-                        <ImageView android:layout_width="0dp" android:layout_height="22dp" android:layout_weight="0.25" android:src="@drawable/ic_premiumlock" app:tint="#BDBDBD" />
-                        <ImageView android:layout_width="0dp" android:layout_height="22dp" android:layout_weight="0.25" android:src="@drawable/ic_check" app:tint="#9370DB" />
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="Full 7 part chuyên sâu"
+                            android:textColor="#424242"/>
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="22dp"
+                            android:layout_weight="0.25"
+                            android:src="@drawable/ic_premiumlock"
+                            app:tint="#BDBDBD"/>
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="22dp"
+                            android:layout_weight="0.25"
+                            android:src="@drawable/ic_check"
+                            app:tint="#9370DB"/>
                     </LinearLayout>
                     <!-- Dòng 3 -->
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="50dp" android:gravity="center_vertical">
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.5" android:text="Mẹo &amp; Giải thích chi tiết" android:textColor="#424242"/>
-                        <ImageView android:layout_width="0dp" android:layout_height="22dp" android:layout_weight="0.25" android:src="@drawable/ic_premiumlock" app:tint="#BDBDBD" />
-                        <ImageView android:layout_width="0dp" android:layout_height="22dp" android:layout_weight="0.25" android:src="@drawable/ic_check" app:tint="#9370DB" />
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="Mẹo và giải thích chi tiết"
+                            android:textColor="#424242"/>
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="22dp"
+                            android:layout_weight="0.25"
+                            android:src="@drawable/ic_premiumlock"
+                            app:tint="#BDBDBD"/>
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="22dp"
+                            android:layout_weight="0.25"
+                            android:src="@drawable/ic_check"
+                            app:tint="#9370DB"/>
                     </LinearLayout>
+
                     <!-- Dòng 4 -->
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="50dp" android:gravity="center_vertical">
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.5" android:text="Tải đề học Offline" android:textColor="#424242"/>
-                        <ImageView android:layout_width="0dp" android:layout_height="22dp" android:layout_weight="0.25" android:src="@drawable/ic_premiumlock" app:tint="#BDBDBD" />
-                        <ImageView android:layout_width="0dp" android:layout_height="22dp" android:layout_weight="0.25" android:src="@drawable/ic_check" app:tint="#9370DB" />
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="Tải đề học offline"
+                            android:textColor="#424242"/>
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="22dp"
+                            android:layout_weight="0.25"
+                            android:src="@drawable/ic_premiumlock"
+                            app:tint="#BDBDBD"/>
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="22dp"
+                            android:layout_weight="0.25"
+                            android:src="@drawable/ic_check"
+                            app:tint="#9370DB"/>
                     </LinearLayout>
+
                     <!-- Dòng 5 -->
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="50dp" android:gravity="center_vertical">
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.5" android:text="Số lượng đề thi thử" android:textColor="#424242"/>
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.25" android:text="5" android:gravity="center" android:textStyle="bold" />
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.25" android:text="50+" android:gravity="center" android:textColor="#9370DB" android:textStyle="bold" />
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="Số lượng đề thi thử"
+                            android:textColor="#424242"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.25"
+                            android:text="5"
+                            android:gravity="center"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.25"
+                            android:text="50+"
+                            android:gravity="center"
+                            android:textColor="#9370DB"
+                            android:textStyle="bold"/>
                     </LinearLayout>
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- 5. USER REVIEWS SLIDER -->
+            <!-- USER REVIEWS SLIDER -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -178,7 +269,7 @@
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-            <!-- 6. FOOTER -->
+            <!-- FOOTER -->
             <TextView
                 android:id="@+id/tvRestore"
                 android:layout_width="wrap_content"
@@ -194,10 +285,33 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
-                android:text="Điều khoản dịch vụ &amp; Chính sách bảo mật"
+                android:text="Điều khoản dịch vụ và Chính sách bảo mật"
                 android:textSize="12sp"
                 android:textColor="#9E9E9E"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom Navigation -->
+    <View
+        android:id="@+id/navDivider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#808080"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        app:itemIconTint="@null"
+        app:itemTextColor="#000000"
+        android:paddingBottom="15dp"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,11 +1,26 @@
 package com.example.waviapp;
 
+import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Paint;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.InputType;
+import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.NumberPicker;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.waviapp.databinding.ActivityUserInfoBinding;
+import com.google.android.material.navigation.NavigationBarView;
+
+import java.util.Calendar;
 
 public class UserInfoActivity extends AppCompatActivity {
 
@@ -17,52 +32,170 @@ public class UserInfoActivity extends AppCompatActivity {
         binding = ActivityUserInfoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Back button
+        // CHỐNG HIỆN BÀN PHÍM: Ép 2 ô này không nhận focus bàn phím
+        binding.etDob.setInputType(InputType.TYPE_NULL);
+        binding.etGender.setInputType(InputType.TYPE_NULL);
+
+        // 1. Nút quay lại (Back)
         binding.ivBack.setOnClickListener(v -> finish());
 
-        // Avatar edit button
-        binding.ivEditAvatar.setOnClickListener(v -> {
-            Toast.makeText(this, "Thay đổi ảnh đại diện", Toast.LENGTH_SHORT).show();
-        });
+        // 2. Click vào Ngày sinh
+        binding.etDob.setOnClickListener(v -> showDateSelectionDialog());
 
-        // Underline change password text
-        binding.tvChangePassword.setPaintFlags(binding.tvChangePassword.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        // 3. Click vào Giới tính
+        binding.etGender.setOnClickListener(v -> showGenderSelectionDialog());
 
-        // Edit button
+        // 4. Nút Chỉnh sửa
         binding.btnEdit.setOnClickListener(v -> {
-            Toast.makeText(this, "Tính năng chỉnh sửa đang phát triển", Toast.LENGTH_SHORT).show();
+            String name = binding.etName.getText().toString();
+            Toast.makeText(this, "Đã lưu thông tin cho: " + name, Toast.LENGTH_SHORT).show();
         });
 
-        // Change password click
-        binding.tvChangePassword.setOnClickListener(v -> {
-            Toast.makeText(this, "Tính năng đổi mật khẩu đang phát triển", Toast.LENGTH_SHORT).show();
+        // 5. Bottom Navigation
+        setupBottomNavigation();
+    }
+
+    /**
+     * Hộp thoại chọn Ngày/Tháng/Năm định dạng dd/mm/yyyy và ràng buộc ngày nhuận
+     */
+    private void showDateSelectionDialog() {
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_date_picker);
+
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+            lp.copyFrom(dialog.getWindow().getAttributes());
+            lp.width = (int) (getResources().getDisplayMetrics().widthPixels * 0.9); // Rộng 90% màn hình
+            dialog.getWindow().setAttributes(lp);
+        }
+
+        NumberPicker npDay = dialog.findViewById(R.id.npDay);
+        NumberPicker npMonth = dialog.findViewById(R.id.npMonth);
+        NumberPicker npYear = dialog.findViewById(R.id.npYear);
+
+        // Cấu hình Năm
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        npYear.setMinValue(1950);
+        npYear.setMaxValue(currentYear);
+        npYear.setValue(2005);
+
+        // Cấu hình Tháng (Hiển thị 01, 02... 12)
+        String[] months = new String[12];
+        for (int i = 0; i < 12; i++) {
+            months[i] = String.format("%02d", i + 1);
+        }
+        npMonth.setMinValue(0);
+        npMonth.setMaxValue(11);
+        npMonth.setDisplayedValues(months);
+        npMonth.setValue(1); // Mặc định tháng 02
+
+        // Cấu hình Ngày ban đầu
+        npDay.setMinValue(1);
+        updateMaxDays(npDay, npMonth.getValue(), npYear.getValue());
+        npDay.setValue(28);
+
+        // LẮNG NGHE THAY ĐỔI ĐỂ RÀNG BUỘC NGÀY NHUẬN
+        NumberPicker.OnValueChangeListener dateChangeListener = (picker, oldVal, newVal) -> {
+            updateMaxDays(npDay, npMonth.getValue(), npYear.getValue());
+        };
+        npMonth.setOnValueChangedListener(dateChangeListener);
+        npYear.setOnValueChangedListener(dateChangeListener);
+
+        // Nút Close
+        dialog.findViewById(R.id.ivClose).setOnClickListener(v -> dialog.dismiss());
+
+        // Nút OK - Trả về định dạng dd/mm/yyyy
+        dialog.findViewById(R.id.btnOk).setOnClickListener(v -> {
+            String dayStr = String.format("%02d", npDay.getValue());
+            String monthStr = months[npMonth.getValue()];
+            String yearStr = String.valueOf(npYear.getValue());
+
+            binding.etDob.setText(dayStr + "/" + monthStr + "/" + yearStr);
+            dialog.dismiss();
         });
 
-        // Delete account click
-        binding.tvDeleteAccount.setOnClickListener(v -> {
-            Toast.makeText(this, "Chức năng xoá tài khoản", Toast.LENGTH_SHORT).show();
-        });
+        dialog.show();
+    }
 
-        // Bottom Navigation
-        binding.bottomNav.setSelectedItemId(R.id.nav_profile); // Assuming nav_profile is the one for profile/user info
-        binding.bottomNav.setOnItemSelectedListener(item -> {
-            int id = item.getItemId();
-            if (id == R.id.nav_home) {
-                startActivity(new Intent(UserInfoActivity.this, HomeActivity.class));
-                finish();
-            } else if (id == R.id.nav_exam) {
-                startActivity(new Intent(UserInfoActivity.this, ExamActivity.class));
-                finish();
-            } else if (id == R.id.nav_premium) {
-                startActivity(new Intent(UserInfoActivity.this,PremiumActivity.class));
-                finish();
-            } else if (id == R.id.nav_profile) {
-                // Currently in Profile
-            } else if (id == R.id.nav_setting) {
-                startActivity(new Intent(UserInfoActivity.this, SettingsActivity.class));
-                finish();
+    /**
+     * Hàm tính toán số ngày tối đa trong tháng (Xử lý tháng 30, 31 và năm nhuận)
+     */
+    private void updateMaxDays(NumberPicker npDay, int monthIndex, int year) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, monthIndex);
+
+        int maxDays = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        npDay.setMaxValue(maxDays);
+
+        // Nếu đang ở ngày 31 mà xoay sang tháng có 30 ngày thì tự nhảy về 30
+        if (npDay.getValue() > maxDays) {
+            npDay.setValue(maxDays);
+        }
+    }
+
+    /**
+     * Hộp thoại chọn Giới tính
+     */
+    private void showGenderSelectionDialog() {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_gender_selection);
+
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        }
+
+        RadioGroup rgGender = dialog.findViewById(R.id.rgGender);
+        RadioButton rbMale = dialog.findViewById(R.id.rbMale);
+        RadioButton rbFemale = dialog.findViewById(R.id.rbFemale);
+
+        String currentGender = binding.etGender.getText().toString();
+        if (currentGender.equals("Nam")) rbMale.setChecked(true);
+        else if (currentGender.equals("Nữ")) rbFemale.setChecked(true);
+
+        rgGender.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.rbMale) {
+                binding.etGender.setText("Nam");
+            } else if (checkedId == R.id.rbFemale) {
+                binding.etGender.setText("Nữ");
             }
-            return true;
+            // Delay một chút để người dùng thấy animation trước khi đóng
+            new android.os.Handler().postDelayed(dialog::dismiss, 300);
+        });
+
+        dialog.show();
+    }
+
+    /**
+     * Xử lý Bottom Navigation
+     */
+    private void setupBottomNavigation() {
+        binding.bottomNav.setSelectedItemId(R.id.nav_profile);
+
+        binding.bottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+
+                if (id == R.id.nav_home) {
+                    startActivity(new Intent(UserInfoActivity.this, HomeActivity.class));
+                } else if (id == R.id.nav_exam) {
+                    startActivity(new Intent(UserInfoActivity.this, ExamActivity.class));
+                } else if (id == R.id.nav_premium) {
+                    startActivity(new Intent(UserInfoActivity.this, PremiumActivity.class));
+                } else if (id == R.id.nav_setting) {
+                    startActivity(new Intent(UserInfoActivity.this, SettingsActivity.class));
+                } else if (id == R.id.nav_profile) {
+                    return true;
+                }
+
+                overridePendingTransition(0, 0);
+                finish();
+                return true;
+            }
         });
     }
 }
