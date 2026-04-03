@@ -14,9 +14,11 @@
         android:theme="@style/Theme.WaviApp">
         <activity
             android:name=".TheoryActivity"
+            android:launchMode="singleTask"
             android:exported="false" />
         <activity
             android:name=".PremiumActivity"
+            android:launchMode="singleTask"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
@@ -29,18 +31,22 @@
         </activity>
         <activity
             android:name=".HomeActivity"
+            android:launchMode="singleTask"
             android:exported="false" />
         <activity
             android:name=".SignupActivity"
             android:exported="false" />
         <activity
             android:name=".SettingsActivity"
+            android:launchMode="singleTask"
             android:exported="false" />
         <activity
             android:name=".UserInfoActivity"
+            android:launchMode="singleTask"
             android:exported="false" />
         <activity
             android:name=".ExamActivity"
+            android:launchMode="singleTask"
             android:exported="false" />
         <activity
             android:name=".TestListActivity"

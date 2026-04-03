@@ -4,17 +4,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_light_gray">
+    android:background="#F5F7FA">
 
-    <!-- 1. Toolbar cố định ở trên cùng -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarUserInfo"
-        android:layout_width="0dp"
-        android:layout_height="65dp"
-        android:background="@color/purple_main"
+    <!-- Gradient Curved Header -->
+    <View
+        android:id="@+id/headerBg"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@drawable/bg_curved_header"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <include layout="@layout/layout_header_decor" />
+
+    <RelativeLayout
+        android:id="@+id/toolbarUserInfo"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="45dp"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/ivBack"
@@ -22,8 +31,9 @@
             android:layout_height="30dp"
             android:src="@android:drawable/ic_menu_revert"
             app:tint="#FFFFFF"
-            android:layout_gravity="start|center_vertical"
-            android:layout_marginEnd="16dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:focusable="true"/>
@@ -35,52 +45,56 @@
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_gravity="center" />
-    </androidx.appcompat.widget.Toolbar>
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
 
-    <!-- 2. NestedScrollView chứa toàn bộ nội dung cuộn -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/toolbarUserInfo"
         app:layout_constraintBottom_toTopOf="@id/bottomSection"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:clipToPadding="false">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:paddingHorizontal="24dp"
+            android:paddingBottom="24dp">
 
-            <!-- Avatar Section -->
+            <!-- Avatar Section (Ovelaps Header) -->
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="24dp">
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="32dp">
 
                 <TextView
                     android:id="@+id/tvAvatar"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:background="@drawable/bg_circle_purple"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:background="@drawable/bg_circle_white"
                     android:text="M"
-                    android:textColor="#FFFFFF"
-                    android:textSize="40sp"
+                    android:textColor="@color/purple_main"
+                    android:textSize="45sp"
                     android:textStyle="bold"
                     android:gravity="center"
+                    android:elevation="6dp"
                     android:layout_margin="8dp"/>
 
                 <ImageView
                     android:id="@+id/ivEditAvatar"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="bottom|end"
                     android:src="@android:drawable/ic_menu_camera"
                     android:background="@drawable/bg_circle_white"
-                    android:padding="6dp"
+                    android:padding="8dp"
                     app:tint="@color/purple_main"
+                    android:elevation="8dp"
                     android:clickable="true"
                     android:focusable="true"/>
             </FrameLayout>
@@ -89,21 +103,22 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tên"
-                android:textColor="@color/text_dark_gray"
+                android:text="Họ và Tên"
+                android:textColor="#2D3142"
                 android:textSize="14sp"
                 android:textStyle="bold"
+                android:layout_marginStart="4dp"
                 android:layout_marginBottom="8dp"/>
 
             <EditText
                 android:id="@+id/etName"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="52dp"
                 android:background="@drawable/bg_edittext_outline_purple"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:text="Minh Ngân Phạm"
-                android:textColor="@color/text_dark_gray"
+                android:textColor="#2D3142"
                 android:textSize="16sp"
                 android:inputType="textPersonName"
                 android:layout_marginBottom="24dp"/>
@@ -113,21 +128,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Email"
-                android:textColor="@color/text_dark_gray"
+                android:textColor="#2D3142"
                 android:textSize="14sp"
                 android:textStyle="bold"
+                android:layout_marginStart="4dp"
                 android:layout_marginBottom="8dp"/>
 
             <EditText
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="@drawable/bg_edittext_outline_purple"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_edittext_disabled"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:text="minhnganpham2005@gmail.com"
-                android:textColor="@color/text_dark_gray"
+                android:textColor="#888888"
                 android:textSize="16sp"
+                android:enabled="false"
                 android:inputType="textEmailAddress"
                 android:layout_marginBottom="24dp"/>
 
@@ -136,76 +153,101 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Số điện thoại"
-                android:textColor="@color/text_dark_gray"
+                android:textColor="#2D3142"
                 android:textSize="14sp"
                 android:textStyle="bold"
+                android:layout_marginStart="4dp"
                 android:layout_marginBottom="8dp"/>
 
             <EditText
                 android:id="@+id/etPhone"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="52dp"
                 android:background="@drawable/bg_edittext_outline_purple"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:text="0347791808"
-                android:textColor="@color/text_dark_gray"
+                android:textColor="#2D3142"
                 android:textSize="16sp"
                 android:inputType="phone"
                 android:layout_marginBottom="24dp"/>
 
-            <!-- Ngày sinh -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ngày sinh"
-                android:textColor="@color/text_dark_gray"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp"/>
-
-            <EditText
-                android:id="@+id/etDob"
+            <!-- Ngày sinh & Giới tính in one row -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="@drawable/bg_edittext_outline_purple"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:hint="DD/MM/YYYY"
-                android:textColor="@color/text_dark_gray"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:clickable="true"
-                android:cursorVisible="false"
-                android:textSize="16sp"
-                android:inputType="date"
-                android:layout_marginBottom="24dp"/>
-
-            <!-- Giới tính -->
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Giới tính"
-                android:textColor="@color/text_dark_gray"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp"/>
+                android:orientation="horizontal"
+                android:baselineAligned="false"
+                android:layout_marginBottom="24dp">
+                
+                <!-- Ngày sinh -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ngày sinh"
+                        android:textColor="#2D3142"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginBottom="8dp"/>
+        
+                    <EditText
+                        android:id="@+id/etDob"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:background="@drawable/bg_edittext_outline_purple"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:hint="DD/MM/YYYY"
+                        android:textColor="#2D3142"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:clickable="true"
+                        android:cursorVisible="false"
+                        android:textSize="16sp"
+                        android:inputType="date"/>
+                </LinearLayout>
 
-            <EditText
-                android:id="@+id/etGender"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="@drawable/bg_edittext_outline_purple"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:hint="Nam/Nữ"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:clickable="true"
-                android:cursorVisible="false"
-                android:textColor="@color/text_dark_gray"
-                android:textSize="16sp"
-                android:layout_marginBottom="24dp"/>
+                <Space android:layout_width="16dp" android:layout_height="match_parent"/>
+
+                <!-- Giới tính -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Giới tính"
+                        android:textColor="#2D3142"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginBottom="8dp"/>
+        
+                    <EditText
+                        android:id="@+id/etGender"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:background="@drawable/bg_edittext_outline_purple"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:hint="Nam/Nữ"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:clickable="true"
+                        android:cursorVisible="false"
+                        android:textColor="#2D3142"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
@@ -217,47 +259,40 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="20dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:background="@color/bg_light_gray"
+        android:paddingTop="16dp"
+        android:paddingBottom="24dp"
+        android:paddingHorizontal="24dp"
+        android:background="#F5F7FA"
         app:layout_constraintBottom_toTopOf="@id/navDivider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E0E0E0"
-            android:layout_marginBottom="20dp"/>
 
         <!-- Chỉnh sửa Button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnEdit"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="52dp"
             android:background="@drawable/button_background"
             android:backgroundTint="@color/purple_main"
-            android:text="Chỉnh sửa"
+            android:text="Chỉnh sửa hồ sơ"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:textStyle="bold"
             android:textAllCaps="false"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="12dp"/>
 
         <!-- Đổi mật khẩu -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnChangePassword"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@drawable/bg_button_outline_black"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_button_outline_purple"
             android:text="Đổi mật khẩu"
-            android:textColor="#000000"
+            android:textColor="@color/purple_main"
             android:textSize="16sp"
             android:textStyle="bold"
             android:textAllCaps="false"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="12dp"/>
 
         <!-- Xóa tài khoản -->
         <TextView
@@ -265,7 +300,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Xóa tài khoản"
-            android:textColor="#333333"
+            android:textColor="#FF5252"
             android:textSize="14sp"
             android:layout_marginBottom="8dp"
             android:padding="8dp"
@@ -275,7 +310,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSave"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="52dp"
             android:background="@drawable/button_background"
             android:backgroundTint="@color/orange_main"
             android:text="Lưu thay đổi"
@@ -284,7 +319,7 @@
             android:textStyle="bold"
             android:textAllCaps="false"
             android:visibility="gone"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="12dp"/>
 
         <!-- Nút Huỷ bỏ (Ẩn mặc định) -->
         <TextView
@@ -292,21 +327,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Huỷ bỏ"
-            android:textColor="#333333"
-            android:textSize="14sp"
+            android:textColor="#888888"
+            android:textStyle="bold"
+            android:textSize="15sp"
             android:layout_marginBottom="8dp"
-            android:padding="8dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
             android:visibility="gone"
             android:background="?attr/selectableItemBackgroundBorderless"/>
 
     </LinearLayout>
 
-    <!-- 3. Bottom Navigation cố định dưới cùng -->
     <View
         android:id="@+id/navDivider"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#E0E0E0"
+        android:layout_height="1dp"
+        android:background="#EBEBEB"
         app:layout_constraintBottom_toTopOf="@id/bottomNav" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

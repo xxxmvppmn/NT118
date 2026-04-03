@@ -34,8 +34,11 @@ public class ExamActivity extends AppCompatActivity {
                 finish();
             } else if (id == R.id.nav_exam) {
                 // Đang ở màn hình Thi
-            } else if (id == R.id.nav_pencil) {
-                Toast.makeText(this, "Luyện tập hàng ngày", Toast.LENGTH_SHORT).show();
+            } else if (id == R.id.nav_premium) {
+                Intent intent = new Intent(ExamActivity.this, PremiumActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
             } else if (id == R.id.nav_profile) {
                 Intent intent = new Intent(ExamActivity.this, UserInfoActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
@@ -82,6 +85,11 @@ public class ExamActivity extends AppCompatActivity {
             TextView tvTestName = itemView.findViewById(R.id.tvTestName);
             TextView tvTestDesc = itemView.findViewById(R.id.tvTestDesc);
             ImageView ivLock = itemView.findViewById(R.id.ivLock);
+            
+            com.google.android.material.card.MaterialCardView cardContainer = itemView.findViewById(R.id.cardContainer);
+            ImageView ivIcon = itemView.findViewById(R.id.ivIcon);
+            ivIcon.setImageResource(R.drawable.ic_test);
+            cardContainer.setCardBackgroundColor(android.graphics.Color.parseColor("#FFFDE7"));
 
             tvTestName.setText("Test " + i);
             tvTestDesc.setText("ETS 2023");
@@ -101,6 +109,11 @@ public class ExamActivity extends AppCompatActivity {
             View itemView = inflater.inflate(R.layout.item_test_card, binding.llMinitest, false);
             TextView tvTestName = itemView.findViewById(R.id.tvTestName);
             TextView tvTestDesc = itemView.findViewById(R.id.tvTestDesc);
+            
+            com.google.android.material.card.MaterialCardView cardContainer = itemView.findViewById(R.id.cardContainer);
+            ImageView ivIcon = itemView.findViewById(R.id.ivIcon);
+            ivIcon.setImageResource(R.drawable.ic_listen);
+            cardContainer.setCardBackgroundColor(android.graphics.Color.parseColor("#E1F5FE"));
 
             tvTestName.setText("Test " + i);
             tvTestDesc.setVisibility(View.GONE); // Không hiển thị text dưới cùng
@@ -120,6 +133,11 @@ public class ExamActivity extends AppCompatActivity {
             View itemView = inflater.inflate(R.layout.item_test_card, binding.llSpeaking, false);
             TextView tvTestName = itemView.findViewById(R.id.tvTestName);
             TextView tvTestDesc = itemView.findViewById(R.id.tvTestDesc);
+            
+            com.google.android.material.card.MaterialCardView cardContainer = itemView.findViewById(R.id.cardContainer);
+            ImageView ivIcon = itemView.findViewById(R.id.ivIcon);
+            ivIcon.setImageResource(R.drawable.ic_speak);
+            cardContainer.setCardBackgroundColor(android.graphics.Color.parseColor("#FCE4EC"));
 
             tvTestName.setText("Test " + i);
             tvTestDesc.setVisibility(View.GONE);
