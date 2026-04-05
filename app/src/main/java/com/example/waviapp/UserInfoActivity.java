@@ -45,14 +45,87 @@ public class UserInfoActivity extends AppCompatActivity {
         // 3. Click vào Giới tính
         binding.etGender.setOnClickListener(v -> showGenderSelectionDialog());
 
+        // Khởi tạo trạng thái View mode
+        setEditMode(false);
+
         // 4. Nút Chỉnh sửa
-        binding.btnEdit.setOnClickListener(v -> {
+        binding.btnEdit.setOnClickListener(v -> setEditMode(true));
+
+        binding.btnChangePassword.setOnClickListener(v -> {
+            startActivity(new Intent(UserInfoActivity.this, ChangePasswordActivity.class));
+        });
+
+        binding.tvDeleteAccount.setPaintFlags(binding.tvDeleteAccount.getPaintFlags() | android.graphics.Paint.UNDERLINE_TEXT_FLAG);
+        binding.tvDeleteAccount.setOnClickListener(v -> showDeleteAccountDialog());
+
+        // Các nút trong Edit mode
+        binding.btnSave.setOnClickListener(v -> {
             String name = binding.etName.getText().toString();
             Toast.makeText(this, "Đã lưu thông tin cho: " + name, Toast.LENGTH_SHORT).show();
+            setEditMode(false);
         });
+
+        binding.tvCancel.setPaintFlags(binding.tvCancel.getPaintFlags() | android.graphics.Paint.UNDERLINE_TEXT_FLAG);
+        binding.tvCancel.setOnClickListener(v -> setEditMode(false));
 
         // 5. Bottom Navigation
         setupBottomNavigation();
+    }
+
+    private void setEditMode(boolean isEdit) {
+        int viewVisibility = isEdit ? android.view.View.GONE : android.view.View.VISIBLE;
+        int editVisibility = isEdit ? android.view.View.VISIBLE : android.view.View.GONE;
+
+        binding.btnEdit.setVisibility(viewVisibility);
+        binding.btnChangePassword.setVisibility(viewVisibility);
+        binding.tvDeleteAccount.setVisibility(viewVisibility);
+
+        binding.btnSave.setVisibility(editVisibility);
+        binding.tvCancel.setVisibility(editVisibility);
+
+        binding.etName.setFocusable(isEdit);
+        binding.etName.setFocusableInTouchMode(isEdit);
+        binding.etName.setCursorVisible(isEdit);
+
+        binding.etPhone.setFocusable(isEdit);
+        binding.etPhone.setFocusableInTouchMode(isEdit);
+        binding.etPhone.setCursorVisible(isEdit);
+
+        binding.etDob.setClickable(isEdit);
+        binding.etGender.setClickable(isEdit);
+
+        binding.etEmail.setFocusable(false);
+        binding.etEmail.setFocusableInTouchMode(false);
+        binding.etEmail.setCursorVisible(false);
+
+        if (isEdit) {
+            binding.etEmail.setBackgroundResource(R.drawable.bg_edittext_disabled);
+            binding.etName.requestFocus();
+        } else {
+            binding.etEmail.setBackgroundResource(R.drawable.bg_edittext_outline_purple);
+        }
+    }
+
+    private void showDeleteAccountDialog() {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_delete_account);
+
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        }
+
+        dialog.findViewById(R.id.btnCancelDelete).setOnClickListener(v -> dialog.dismiss());
+        dialog.findViewById(R.id.btnConfirmDelete).setOnClickListener(v -> {
+            dialog.dismiss();
+            Toast.makeText(this, "Tài khoản của bạn đã được xóa", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(UserInfoActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        });
+
+        dialog.show();
     }
 
     /**

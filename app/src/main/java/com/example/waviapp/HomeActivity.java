@@ -33,7 +33,7 @@ public class HomeActivity extends AppCompatActivity {
 
 // 1. Click Thi Online
         binding.llThiOnline.setOnClickListener(v -> {
-            Toast.makeText(this, "Chức năng Thi Online đang phát triển", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(HomeActivity.this, OnlineExamActivity.class));
         });
 
 // 2. Click Thi Thử

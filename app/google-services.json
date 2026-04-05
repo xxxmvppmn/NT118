@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "287923595418",
+    "project_id": "wavi-2a6a1",
+    "storage_bucket": "wavi-2a6a1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287923595418:android:1d1b89d74b910fe779d723",
+        "android_client_info": {
+          "package_name": "com.example.waviapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAskR_NfzEj-T7KurQfEsdTz-8vP0ZZ8MU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

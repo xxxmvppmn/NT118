@@ -51,6 +51,15 @@
         <activity
             android:name=".SkillPracticeActivity"
             android:exported="false" />
+        <activity
+            android:name=".ChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OnlineExamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EventInfoActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
