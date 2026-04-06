@@ -30,13 +30,10 @@ public class PremiumActivity extends AppCompatActivity {
         binding = ActivityPremiumBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Toolbar
-        setSupportActionBar(binding.toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        // Nút quay lại (Back)
+        if (binding.ivBack != null) {
+            binding.ivBack.setOnClickListener(v -> finish());
         }
-        binding.toolbar.setNavigationOnClickListener(v -> onBackPressed());
 
         // Setup
         setupPricePackages();

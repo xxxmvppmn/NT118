@@ -2,22 +2,33 @@ package com.example.waviapp;
 
 import android.os.Bundle;
 import android.content.Intent;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.waviapp.databinding.ActivityHomeBinding;
-import com.google.android.material.navigation.NavigationBarView;
-import android.view.MenuItem;
+import com.example.waviapp.firebase.DatabaseHelper;
+import com.example.waviapp.firebase.FirebaseAuthHelper;
+import com.example.waviapp.models.TaiKhoan;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class HomeActivity extends AppCompatActivity {
 
     private ActivityHomeBinding binding;
+    private FirebaseAuthHelper authHelper;
+    private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        authHelper = new FirebaseAuthHelper();
+        dbHelper = new DatabaseHelper();
+
+        // Load thông tin user từ Firebase
+        loadUserStats();
 
         // Xử lý icon thông báo
         binding.icNotification.setOnClickListener(v ->
@@ -29,26 +40,25 @@ public class HomeActivity extends AppCompatActivity {
         binding.llDoc.setOnClickListener(v -> openSkillPractice(SkillPracticeActivity.CAT_READ));
         binding.llNoi.setOnClickListener(v -> openSkillPractice(SkillPracticeActivity.CAT_SPEAK));
         binding.llViet.setOnClickListener(v -> openSkillPractice(SkillPracticeActivity.CAT_WRITE));
-// Trong hàm onCreate, dưới phần xử lý click các kỹ năng:
 
-// 1. Click Thi Online
+        // 1. Click Thi Online
         binding.llThiOnline.setOnClickListener(v -> {
             startActivity(new Intent(HomeActivity.this, OnlineExamActivity.class));
         });
 
-// 2. Click Thi Thử
+        // 2. Click Thi Thử
         binding.llThiThu.setOnClickListener(v -> {
-            // Nếu bạn có ExamActivity rồi thì mở nó ra
             Intent intent = new Intent(HomeActivity.this, ExamActivity.class);
             startActivity(intent);
         });
 
-// 3. Click Lý Thuyết (Màn hình tím mình vừa làm)
+        // 3. Click Lý Thuyết
         binding.llLyThuyet.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, TheoryActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(intent);
         });
+
         // Xử lý Bottom Navigation
         binding.bottomNav.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
@@ -74,6 +84,29 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
             return true;
+        });
+    }
+
+    /**
+     * Load thống kê user từ Firebase và hiển thị trên dashboard
+     */
+    private void loadUserStats() {
+        FirebaseUser firebaseUser = authHelper.getCurrentUser();
+        if (firebaseUser == null) return;
+
+        dbHelper.getUser(firebaseUser.getUid(), new DatabaseHelper.UserCallback() {
+            @Override
+            public void onSuccess(TaiKhoan user) {
+                // Cập nhật streak
+                if (binding.tvStreakCount != null) {
+                    binding.tvStreakCount.setText(String.valueOf(user.getChuoiNgayHoc()));
+                }
+            }
+
+            @Override
+            public void onFailure(String error) {
+                // Giữ giá trị mặc định
+            }
         });
     }
 

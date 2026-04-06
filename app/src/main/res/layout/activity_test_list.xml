@@ -10,8 +10,9 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarTestList"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:background="@color/purple_main"
+        android:layout_height="110dp"
+        android:paddingTop="45dp"
+        android:background="@drawable/bg_curved_header"
         app:contentInsetStart="0dp">
 
         <RelativeLayout
