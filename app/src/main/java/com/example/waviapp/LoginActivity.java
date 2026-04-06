@@ -234,15 +234,16 @@ public class LoginActivity extends AppCompatActivity {
         binding.txtRegisterLink.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
-    private void setupForgotPassword() {
-        binding.txtForgotPassword.setOnClickListener(v ->
-                Toast.makeText(LoginActivity.this, "Chức năng đang phát triển", Toast.LENGTH_SHORT).show());
-    }
-
     private void goToHome() {
         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
+    }
+    private void setupForgotPassword() {
+        binding.txtForgotPassword.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+            startActivity(intent);
+        });
     }
 }

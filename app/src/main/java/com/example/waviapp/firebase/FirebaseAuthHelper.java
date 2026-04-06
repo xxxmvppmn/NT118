@@ -50,6 +50,7 @@ public class FirebaseAuthHelper {
      */
     public Intent getGoogleSignInIntent() {
         if (mGoogleSignInClient != null) {
+            mGoogleSignInClient.signOut();
             return mGoogleSignInClient.getSignInIntent();
         }
         return null;
@@ -142,9 +143,15 @@ public class FirebaseAuthHelper {
      * Đăng xuất
      */
     public void logout() {
+        // 1. Đăng xuất khỏi Firebase
         mAuth.signOut();
+
+        // 2. Xử lý Google Sign-In Client
         if (mGoogleSignInClient != null) {
-            mGoogleSignInClient.signOut();
+            // signOut() chỉ là đăng xuất,
+            mGoogleSignInClient.signOut().addOnCompleteListener(task -> {
+                mGoogleSignInClient.revokeAccess();
+            });
         }
     }
 
@@ -210,4 +217,30 @@ public class FirebaseAuthHelper {
                     }
                 });
     }
+    /**
+     * Quên mật khẩu
+     */
+    public void sendPasswordResetEmail(String email, AuthCallback callback) {
+        mAuth.sendPasswordResetEmail(email)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        // Thành công: Firebase đã gửi mail
+                        callback.onSuccess(null);
+                    } else {
+                        // Thất bại: Thường là do Email không tồn tại
+                        String error = "Lỗi: ";
+                        if (task.getException() != null) {
+                            String msg = task.getException().getMessage();
+                            if (msg != null && msg.contains("no user record")) {
+                                error = "Email này chưa được đăng ký.";
+                            } else {
+                                error += msg;
+                            }
+                        }
+                        callback.onFailure(error);
+                    }
+                });
+    }
+
 }
+
