@@ -4,7 +4,9 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.InputType;
 import android.view.MenuItem;
 import android.view.Window;
@@ -14,15 +16,20 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.example.waviapp.databinding.ActivityUserInfoBinding;
 import com.example.waviapp.firebase.DatabaseHelper;
 import com.example.waviapp.firebase.FirebaseAuthHelper;
 import com.example.waviapp.models.TaiKhoan;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -34,6 +41,24 @@ public class UserInfoActivity extends AppCompatActivity {
     private FirebaseAuthHelper authHelper;
     private DatabaseHelper dbHelper;
 
+    private final ActivityResultLauncher<Intent> pickImageLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    Uri imageUri = result.getData().getData();
+
+                    // Hiện ảnh lên ivAvatar và ẩn tvAvatar đi
+                    binding.tvAvatar.setVisibility(android.view.View.GONE);
+                    binding.ivAvatar.setVisibility(android.view.View.VISIBLE);
+                    uploadImageToFirebase(imageUri);
+                    binding.ivAvatar.setImageURI(imageUri);
+                    Glide.with(this)
+                            .load(imageUri)
+                            .circleCrop()
+                            .into(binding.ivAvatar);
+                }
+            }
+    );
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +67,16 @@ public class UserInfoActivity extends AppCompatActivity {
 
         authHelper = new FirebaseAuthHelper();
         dbHelper = new DatabaseHelper();
+        binding.layoutAvatar.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            pickImageLauncher.launch(intent);
+        });
 
+        // Ngân cũng có thể cho click vào nút camera nhỏ (ivEditAvatar)
+        binding.ivEditAvatar.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            pickImageLauncher.launch(intent);
+        });
         binding.etDob.setInputType(InputType.TYPE_NULL);
         binding.etGender.setInputType(InputType.TYPE_NULL);
 
@@ -286,6 +320,40 @@ public class UserInfoActivity extends AppCompatActivity {
         });
 
         dialog.show();
+    }
+
+    private void uploadImageToFirebase(Uri uri) {
+        String uid = authHelper.getCurrentUser().getUid();
+        // Tạo đường dẫn lưu ảnh: avatars/uid.jpg
+        StorageReference fileRef = FirebaseStorage.getInstance().getReference()
+                .child("avatars/" + uid + ".jpg");
+
+        fileRef.putFile(uri).addOnSuccessListener(taskSnapshot -> {
+            // Lấy link ảnh sau khi upload thành công
+            fileRef.getDownloadUrl().addOnSuccessListener(downloadUri -> {
+                String imageUrl = downloadUri.toString();
+
+                // Bước 2: Lưu link này vào Firestore
+                saveImageUrlToFirestore(imageUrl);
+            });
+        }).addOnFailureListener(e -> {
+            Toast.makeText(this, "Lỗi tải ảnh: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        });
+    }
+
+    private void saveImageUrlToFirestore(String url) {
+        String uid = authHelper.getCurrentUser().getUid();
+        Map<String, Object> map = new HashMap<>();
+        map.put("avatarUrl", url);
+
+        dbHelper.updateUser(uid, map, new DatabaseHelper.SimpleCallback() {
+            @Override
+            public void onSuccess() {
+                Toast.makeText(UserInfoActivity.this, "Đã lưu ảnh đại diện!", Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onFailure(String error) {}
+        });
     }
 
     private void updateMaxDays(NumberPicker npDay, int monthIndex, int year) {

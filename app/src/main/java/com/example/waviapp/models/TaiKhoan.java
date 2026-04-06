@@ -19,7 +19,7 @@ public class TaiKhoan {
     private int mucTieuHangNgay;
     private Timestamp lastLogin;
     private boolean premium;
-
+    private String avatarUrl;
     // 1. Constructor rỗng
     public TaiKhoan() {
     }
@@ -91,5 +91,11 @@ public class TaiKhoan {
     public void setMucTieuHangNgay(int mucTieuHangNgay) { this.mucTieuHangNgay = mucTieuHangNgay; }
     public Timestamp getLastLogin() { return lastLogin; }
     public void setLastLogin(Timestamp lastLogin) { this.lastLogin = lastLogin; }
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
 }
 

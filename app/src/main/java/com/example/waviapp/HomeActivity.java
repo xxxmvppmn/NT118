@@ -1,16 +1,16 @@
 package com.example.waviapp;
 
-import android.os.Bundle;
+import android.view.View;
 import android.content.Intent;
-import android.widget.TextView;
+import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.waviapp.databinding.ActivityHomeBinding;
-import com.example.waviapp.firebase.DatabaseHelper;
-import com.example.waviapp.firebase.FirebaseAuthHelper;
-import com.example.waviapp.models.TaiKhoan;
 import com.google.firebase.auth.FirebaseUser;
-
+import com.example.waviapp.firebase.FirebaseAuthHelper;
+import com.example.waviapp.firebase.DatabaseHelper;
+import com.example.waviapp.models.TaiKhoan; // Ngân kiểm tra lại package của class TaiKhoan nhé
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -114,5 +114,22 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(HomeActivity.this, SkillPracticeActivity.class);
         intent.putExtra(SkillPracticeActivity.EXTRA_SKILL_CATEGORY, category);
         startActivity(intent);
+    }
+    private void updateNotificationBadge() {
+        String currentUserId = authHelper.getCurrentUser().getUid();
+
+        dbHelper.getUnreadNotificationCount(currentUserId, new DatabaseHelper.CountCallback() {
+            @Override
+            public void onSuccess(int count) {
+                if (count > 0) {
+                    binding.tvNotificationCount.setVisibility(View.VISIBLE);
+                    binding.tvNotificationCount.setText(String.valueOf(count));
+                } else {
+                    binding.tvNotificationCount.setVisibility(View.GONE);
+                }
+            }
+            @Override
+            public void onFailure(String error) { /* Xử lý lỗi */ }
+        });
     }
 }

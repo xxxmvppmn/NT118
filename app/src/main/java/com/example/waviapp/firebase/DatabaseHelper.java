@@ -33,6 +33,13 @@ public class DatabaseHelper {
         void onSuccess(List<BaiKiemTra> tests);
         void onFailure(String error);
     }
+    public interface CountCallback {
+        // Khi thành công, trả về con số (int)
+        void onSuccess(int count);
+
+        // Khi thất bại, trả về tin nhắn lỗi (String)
+        void onFailure(String error);
+    }
 
     public interface SimpleCallback {
         void onSuccess();
@@ -138,5 +145,24 @@ public class DatabaseHelper {
                     callback.onSuccess(tests);
                 })
                 .addOnFailureListener(e -> callback.onFailure(e.getMessage()));
+    }
+    /**
+     * Đếm số lượng thông báo chưa đọc của một User
+     */
+    public void getUnreadNotificationCount(String userId, CountCallback callback) {
+        db.collection("thongBao")
+                .whereEqualTo("userId", userId)
+                .whereEqualTo("isRead", false) // Chỉ lấy những cái chưa đọc
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful() && task.getResult() != null) {
+                        // Trả về số lượng tài liệu tìm thấy
+                        int count = task.getResult().size();
+                        callback.onSuccess(count);
+                    } else {
+                        callback.onFailure(task.getException() != null ?
+                                task.getException().getMessage() : "Lỗi đếm thông báo");
+                    }
+                });
     }
 }

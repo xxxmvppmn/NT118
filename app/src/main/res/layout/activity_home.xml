@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="#F5F7FA">
 
-    <!-- Gradient Curved Header -->
     <View
         android:id="@+id/headerBg"
         android:layout_width="match_parent"
@@ -32,16 +31,49 @@
             android:textColor="@color/white"
             android:textSize="26sp"
             android:textStyle="bold"
-            android:layout_centerVertical="true" />
-            
-        <!-- Daily Streak (Glassmorphism) -->
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true" />
+
+        <FrameLayout
+            android:id="@+id/layoutNotification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/icNotification"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_notification"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/tvNotificationCount"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="top|end"
+                android:layout_marginTop="-2dp"
+                android:layout_marginEnd="-2dp"
+                android:background="@drawable/bg_notification_badge"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#FFFFFF"
+                android:textSize="9sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </FrameLayout>
+
         <LinearLayout
             android:id="@+id/llStreak"
             android:layout_width="wrap_content"
             android:layout_height="32dp"
-            android:layout_toStartOf="@id/icNotification"
+            android:layout_toStartOf="@id/layoutNotification"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="8dp"
             android:paddingHorizontal="10dp"
             android:gravity="center"
             android:orientation="horizontal"
@@ -62,15 +94,6 @@
                 android:textColor="#FFFFFF"
                 android:textSize="14sp" />
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/icNotification"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:src="@drawable/ic_notification"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            app:tint="@color/white" />
     </RelativeLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -88,7 +111,6 @@
             android:orientation="vertical"
             android:paddingBottom="40dp">
 
-            <!-- Floating Welcome Banner -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
@@ -97,23 +119,23 @@
                 android:layout_marginBottom="8dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="2dp">
-                
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                    
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/wavi_background"
                         android:scaleType="centerCrop"
                         android:alpha="0.8"/>
-                        
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="#40000000"/>
-                        
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -127,7 +149,6 @@
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Gamified Dashboard Overview Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
@@ -145,7 +166,6 @@
                     android:padding="16dp"
                     android:baselineAligned="false">
 
-                    <!-- Vòng Tròn Tiến Độ Học Tập -->
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -181,7 +201,6 @@
                         android:layout_marginVertical="8dp"
                         android:background="#E0E0E0" />
 
-                    <!-- Bảng Thống Kê Điểm Số (Migii Style) -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -213,20 +232,17 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
-                            <!-- Từ vựng -->
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:orientation="vertical">
-
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Từ vựng"
                                     android:textColor="#888888"
                                     android:textSize="12sp" />
-
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -236,20 +252,17 @@
                                     android:textStyle="bold" />
                             </LinearLayout>
 
-                            <!-- Cần ôn lại -->
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:orientation="vertical">
-
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Cần ôn"
                                     android:textColor="#888888"
                                     android:textSize="12sp" />
-
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -273,7 +286,6 @@
                 android:layout_marginBottom="16dp"
                 android:textColor="#2D3142"/>
 
-            <!-- Skills Grid -->
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -281,7 +293,6 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginBottom="32dp">
 
-                <!-- Nghe -->
                 <LinearLayout
                     android:id="@+id/llNghe"
                     android:layout_width="0dp"
@@ -289,7 +300,6 @@
                     android:layout_columnWeight="1"
                     android:gravity="center"
                     android:orientation="vertical">
-                    
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="70dp"
                         android:layout_height="70dp"
@@ -297,13 +307,13 @@
                         app:cardBackgroundColor="@color/bg_listen"
                         app:cardElevation="3dp"
                         app:strokeWidth="0dp">
-                        <ImageView 
+                        <ImageView
                             android:layout_width="38dp"
                             android:layout_height="38dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_listen" />
                     </com.google.android.material.card.MaterialCardView>
-                    <TextView 
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Nghe"
@@ -313,7 +323,6 @@
                         android:textColor="#4F5E7B"/>
                 </LinearLayout>
 
-                <!-- Đọc -->
                 <LinearLayout
                     android:id="@+id/llDoc"
                     android:layout_width="0dp"
@@ -321,7 +330,6 @@
                     android:layout_columnWeight="1"
                     android:gravity="center"
                     android:orientation="vertical">
-                    
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="70dp"
                         android:layout_height="70dp"
@@ -345,15 +353,13 @@
                         android:textColor="#4F5E7B"/>
                 </LinearLayout>
 
-                <!-- Nói -->
-                <LinearLayout 
+                <LinearLayout
                     android:id="@+id/llNoi"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:gravity="center"
                     android:orientation="vertical">
-                    
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="70dp"
                         android:layout_height="70dp"
@@ -377,15 +383,13 @@
                         android:textColor="#4F5E7B"/>
                 </LinearLayout>
 
-                <!-- Viết -->
-                <LinearLayout 
+                <LinearLayout
                     android:id="@+id/llViet"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:gravity="center"
                     android:orientation="vertical">
-                    
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="70dp"
                         android:layout_height="70dp"
@@ -393,7 +397,7 @@
                         app:cardBackgroundColor="@color/bg_write"
                         app:cardElevation="3dp"
                         app:strokeWidth="0dp">
-                        <ImageView 
+                        <ImageView
                             android:layout_width="38dp"
                             android:layout_height="38dp"
                             android:layout_gravity="center"
@@ -420,14 +424,12 @@
                 android:layout_marginBottom="16dp"
                 android:textColor="#2D3142"/>
 
-            <!-- Testing Grid -->
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:columnCount="3"
                 android:layout_marginHorizontal="16dp">
-                
-                <!-- Thi Online -->
+
                 <LinearLayout
                     android:id="@+id/llThiOnline"
                     android:layout_width="0dp"
@@ -435,10 +437,7 @@
                     android:layout_columnWeight="1"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:clickable="true"
-                    android:focusable="true"
                     android:background="?attr/selectableItemBackgroundBorderless">
-                    
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="85dp"
                         android:layout_height="85dp"
@@ -462,7 +461,6 @@
                         android:textStyle="bold"/>
                 </LinearLayout>
 
-                <!-- Thi Thử -->
                 <LinearLayout
                     android:id="@+id/llThiThu"
                     android:layout_width="0dp"
@@ -470,10 +468,7 @@
                     android:layout_columnWeight="1"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:clickable="true"
-                    android:focusable="true"
                     android:background="?attr/selectableItemBackgroundBorderless">
-                    
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="85dp"
                         android:layout_height="85dp"
@@ -497,7 +492,6 @@
                         android:textStyle="bold"/>
                 </LinearLayout>
 
-                <!-- Lý Thuyết -->
                 <LinearLayout
                     android:id="@+id/llLyThuyet"
                     android:layout_width="0dp"
@@ -505,10 +499,7 @@
                     android:layout_columnWeight="1"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:clickable="true"
-                    android:focusable="true"
                     android:background="?attr/selectableItemBackgroundBorderless">
-                    
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="85dp"
                         android:layout_height="85dp"
@@ -531,7 +522,6 @@
                         android:textColor="#2D3142"
                         android:textStyle="bold"/>
                 </LinearLayout>
-
             </GridLayout>
 
         </LinearLayout>

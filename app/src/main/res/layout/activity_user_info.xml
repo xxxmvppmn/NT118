@@ -66,6 +66,7 @@
 
             <!-- Avatar Section (Ovelaps Header) -->
             <FrameLayout
+                android:id="@+id/layoutAvatar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -84,6 +85,15 @@
                     android:gravity="center"
                     android:elevation="6dp"
                     android:layout_margin="8dp"/>
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivAvatar"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_margin="8dp"
+                    android:elevation="7dp"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone"
+                    app:shapeAppearanceOverlay="@style/CircleImage"/>
 
                 <ImageView
                     android:id="@+id/ivEditAvatar"
@@ -97,6 +107,7 @@
                     android:elevation="8dp"
                     android:clickable="true"
                     android:focusable="true"/>
+
             </FrameLayout>
 
             <!-- Tên -->
@@ -179,7 +190,7 @@
                 android:orientation="horizontal"
                 android:baselineAligned="false"
                 android:layout_marginBottom="24dp">
-                
+
                 <!-- Ngày sinh -->
                 <LinearLayout
                     android:layout_width="0dp"
@@ -195,7 +206,7 @@
                         android:textStyle="bold"
                         android:layout_marginStart="4dp"
                         android:layout_marginBottom="8dp"/>
-        
+
                     <EditText
                         android:id="@+id/etDob"
                         android:layout_width="match_parent"
@@ -230,7 +241,7 @@
                         android:textStyle="bold"
                         android:layout_marginStart="4dp"
                         android:layout_marginBottom="8dp"/>
-        
+
                     <EditText
                         android:id="@+id/etGender"
                         android:layout_width="match_parent"
