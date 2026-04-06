@@ -9,10 +9,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import android.content.res.Configuration;
 import com.example.waviapp.databinding.ActivitySettingsBinding;
+import com.example.waviapp.firebase.DatabaseHelper;
+import com.example.waviapp.firebase.FirebaseAuthHelper;
+import com.example.waviapp.models.TaiKhoan;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SettingsActivity extends AppCompatActivity {
 
     private ActivitySettingsBinding binding;
+    private FirebaseAuthHelper authHelper;
+    private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +26,12 @@ public class SettingsActivity extends AppCompatActivity {
         binding = ActivitySettingsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Logout handler
+        authHelper = new FirebaseAuthHelper();
+        dbHelper = new DatabaseHelper();
+
+        // Logout handler - sử dụng Firebase Auth
         binding.tvLogout.setOnClickListener(v -> {
+            authHelper.logout();
             Toast.makeText(this, "Đăng xuất thành công", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(SettingsActivity.this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -73,6 +83,46 @@ public class SettingsActivity extends AppCompatActivity {
             }
             return true;
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadUserProfile();
+    }
+
+    private void loadUserProfile() {
+        FirebaseUser fUser = authHelper.getCurrentUser();
+        if (fUser != null) {
+            dbHelper.getUser(fUser.getUid(), new DatabaseHelper.UserCallback() {
+                @Override
+                public void onSuccess(TaiKhoan user) {
+                    if (user.getHoTen() != null && !user.getHoTen().isEmpty()) {
+                        binding.tvUserName.setText(user.getHoTen());
+                        binding.tvAvatarText.setText(user.getHoTen().substring(0, 1).toUpperCase());
+                    } else if (fUser.getDisplayName() != null) {
+                        binding.tvUserName.setText(fUser.getDisplayName());
+                        binding.tvAvatarText.setText(fUser.getDisplayName().substring(0, 1).toUpperCase());
+                    }
+
+                    if (user.isPremium()) {
+                        binding.tvPremiumStatus.setText("Thành viên Premium");
+                        binding.tvPremiumStatus.setTextColor(android.graphics.Color.parseColor("#FFD700"));
+                    } else {
+                        binding.tvPremiumStatus.setText("Thành viên miễn phí");
+                        binding.tvPremiumStatus.setTextColor(android.graphics.Color.parseColor("#888888"));
+                    }
+                }
+
+                @Override
+                public void onFailure(String error) {
+                    if (fUser.getDisplayName() != null) {
+                        binding.tvUserName.setText(fUser.getDisplayName());
+                        binding.tvAvatarText.setText(fUser.getDisplayName().substring(0, 1).toUpperCase());
+                    }
+                }
+            });
+        }
     }
 
     private String selectedLanguage = "Tiếng Việt";

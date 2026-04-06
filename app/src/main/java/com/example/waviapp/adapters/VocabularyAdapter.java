@@ -1,62 +1,65 @@
 package com.example.waviapp.adapters;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.waviapp.Word;
-import com.example.waviapp.databinding.ItemVocabularyBinding; // Tự động sinh ra từ file item_vocabulary.xml
+
+import com.example.waviapp.R;
+import com.example.waviapp.models.TuVung;
+
 import java.util.List;
 
-public class VocabularyAdapter extends RecyclerView.Adapter<VocabularyAdapter.ViewHolder> {
+public class VocabularyAdapter extends RecyclerView.Adapter<VocabularyAdapter.VocabularyViewHolder> {
 
-    private List<Word> wordList;
+    private List<TuVung> vocabularyList;
 
-    public VocabularyAdapter(List<Word> wordList) {
-        this.wordList = wordList;
+    public VocabularyAdapter(List<TuVung> vocabularyList) {
+        this.vocabularyList = vocabularyList;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Sử dụng Binding cho từng item để code sạch và nhanh hơn
-        ItemVocabularyBinding binding = ItemVocabularyBinding.inflate(
-                LayoutInflater.from(parent.getContext()), parent, false);
-        return new ViewHolder(binding);
+    public VocabularyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_vocabulary, parent, false);
+        return new VocabularyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Word word = wordList.get(position);
+    public void onBindViewHolder(@NonNull VocabularyViewHolder holder, int position) {
+        TuVung word = vocabularyList.get(position);
+        holder.tvWord.setText(word.getTuTiengAnh());
+        holder.tvPhonetic.setText(word.getPhienAm());
+        holder.tvMeaning.setText(word.getNghiaTiengViet());
 
-        // Đổ dữ liệu vào các ID bạn đã đặt trong item_vocabulary.xml
-        holder.binding.tvWord.setText(word.getText());
-        holder.binding.tvPhonetic.setText(word.getPhonetic());
-        holder.binding.tvMeaning.setText(word.getMeaning());
-        holder.binding.cbFavorite.setChecked(word.isFavorite());
+        holder.cbFavorite.setChecked(word.isFavorite());
 
-        // Xử lý khi bấm vào loa (Demo Toast hoặc Log)
-        holder.binding.ivSpeaker.setOnClickListener(v -> {
-            // Sau này bạn sẽ viết code phát âm thanh ở đây
-        });
-
-        // Xử lý khi bấm vào trái tim
-        holder.binding.cbFavorite.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        holder.cbFavorite.setOnCheckedChangeListener((buttonView, isChecked) -> {
             word.setFavorite(isChecked);
         });
     }
 
     @Override
     public int getItemCount() {
-        return wordList.size();
+        return vocabularyList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        ItemVocabularyBinding binding;
+    public static class VocabularyViewHolder extends RecyclerView.ViewHolder {
+        TextView tvWord, tvPhonetic, tvMeaning;
+        ImageView ivSpeaker;
+        CheckBox cbFavorite;
 
-        public ViewHolder(ItemVocabularyBinding binding) {
-            super(binding.getRoot());
-            this.binding = binding;
+        public VocabularyViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tvWord = itemView.findViewById(R.id.tvWord);
+            tvPhonetic = itemView.findViewById(R.id.tvPhonetic);
+            tvMeaning = itemView.findViewById(R.id.tvMeaning);
+            ivSpeaker = itemView.findViewById(R.id.ivSpeaker);
+            cbFavorite = itemView.findViewById(R.id.cbFavorite);
         }
     }
 }

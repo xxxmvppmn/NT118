@@ -4,10 +4,19 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
+import com.example.waviapp.firebase.SeedDataHelper;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class WaviApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // Bật Firebase offline persistence (cho phép dùng app khi không có mạng)
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+
+        // Đổ dữ liệu mẫu nếu chưa có
+        SeedDataHelper.seedAllIfNeeded();
 
         // Đăng ký bộ theo dõi toàn bộ Activity trong App
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
