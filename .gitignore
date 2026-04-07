@@ -13,3 +13,11 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Temp/Log files
+*.log
+errors.txt
+recent_crash.txt
+crash_fatal.txt
+.vscode/
+app/google-services.json.bak
