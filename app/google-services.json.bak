@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "132499631185",
+    "firebase_url": "https://wavi-app-bc761-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "wavi-app-bc761",
+    "storage_bucket": "wavi-app-bc761.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132499631185:android:70835da8082d556d6e1c70",
+        "android_client_info": {
+          "package_name": "com.example.waviapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132499631185-2tg0bdaor6iq28ge8f2pqolid2coka9v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.waviapp",
+            "certificate_hash": "69228d96027e1a244c92783323a6df00a034dccd"
+          }
+        },
+        {
+          "client_id": "132499631185-324u9ebru2laehh82j4e1f5e8qcclhau.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqlgKSl95FdVnNw5QvrEP1hsMWxOnrBuY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132499631185-324u9ebru2laehh82j4e1f5e8qcclhau.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
