@@ -20,7 +20,7 @@ import com.example.waviapp.databinding.ActivityPremiumBinding;
 import java.util.Arrays;
 import java.util.List;
 
-public class PremiumActivity extends AppCompatActivity {
+public class PremiumActivity extends BaseActivity {
 
     private ActivityPremiumBinding binding;
 

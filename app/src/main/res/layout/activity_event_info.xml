@@ -38,7 +38,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tìm hiểu thêm sự kiện"
+                android:text="@string/auto_t_m_hi_u_th_m_s_ki_n"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -91,7 +91,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Hướng dẫn sử dụng trước khi tham gia sự kiện:"
+                        android:text="@string/auto_h_ng_d_n_s_d_ng_tr_c_khi_tham"
                         android:textColor="#000000"
                         android:textSize="17sp"
                         android:textStyle="bold"
@@ -109,7 +109,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="2. Phần thưởng:"
+                        android:text="@string/auto_2_ph_n_th_ng"
                         android:textColor="#333333"
                         android:textSize="15sp"
                         android:layout_marginBottom="12dp"/>
@@ -117,7 +117,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="- Top 1: Gói Premium 3 tháng\n- Top 3: Gói Premium 1 tháng\n- Top 20: Gói Premium 5 ngày"
+                        android:text="@string/auto_top_1_g_i_premium_3_th_ng_n_t"
                         android:textColor="@color/purple_main"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -127,7 +127,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="* Nếu bạn đã làm thành viên Premium, phần thưởng sẽ được thêm vào gói Premium bạn đang có."
+                        android:text="@string/auto_n_u_b_n_l_m_th_nh_vi_n_premiu"
                         android:textColor="@color/orange_main"
                         android:textSize="14sp"
                         android:lineSpacingExtra="4dp"

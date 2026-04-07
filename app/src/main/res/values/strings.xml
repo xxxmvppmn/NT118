@@ -1,4 +1,217 @@
 <resources>
     <string name="app_name">Wavi App</string>
     <string name="default_web_client_id">132499631185-324u9ebru2laehh82j4e1f5e8qcclhau.apps.googleusercontent.com</string>
+    <string name="auto_i_m_t_kh_u">Đổi mật khẩu</string>
+    <string name="auto_m_t_kh_u_hi_n_t_i">Mật khẩu hiện tại</string>
+    <string name="auto_vui_l_ng_nh_p_m_t_kh_u_m_i_c_a">Vui lòng nhập mật khẩu mới của bạn vào phía\ndưới</string>
+    <string name="auto_m_t_kh_u_m_i">Mật khẩu mới</string>
+    <string name="auto_nh_p_l_i_m_t_kh_u_c_a_b_n">Nhập lại mật khẩu của bạn</string>
+    <string name="auto_t_m_hi_u_th_m_s_ki_n">Tìm hiểu thêm sự kiện</string>
+    <string name="auto_h_ng_d_n_s_d_ng_tr_c_khi_tham">Hướng dẫn sử dụng trước khi tham gia sự kiện:</string>
+    <string name="auto_2_ph_n_th_ng">2. Phần thưởng:</string>
+    <string name="auto_top_1_g_i_premium_3_th_ng_n_t">- Top 1: Gói Premium 3 tháng\n- Top 3: Gói Premium 1 tháng\n- Top 20: Gói Premium 5 ngày</string>
+    <string name="auto_n_u_b_n_l_m_th_nh_vi_n_premiu">* Nếu bạn đã làm thành viên Premium, phần thưởng sẽ được thêm vào gói Premium bạn đang có.</string>
+    <string name="auto_g_c_thi_th">Góc Thi Thử</string>
+    <string name="auto_toeic_listening_amp_reading">TOEIC Listening &amp; Reading</string>
+    <string name="auto_fulltest_50">Fulltest | 50</string>
+    <string name="auto_xem_th_m">XEM THÊM</string>
+    <string name="auto_minitest_55">Minitest | 55</string>
+    <string name="auto_ph_n_t_ch_amp_chi_n_l_c">Phân tích &amp; Chiến lược</string>
+    <string name="auto_speaking_amp_writing">Speaking &amp; Writing</string>
+    <string name="auto_qu_n_m_t_kh_u">Quên mật khẩu</string>
+    <string name="auto_nh_p_email_ng_k_t_i_kho_n_ch_n">Nhập Email đã đăng ký tài khoản. Chúng tôi sẽ gửi một đường link để bạn đặt lại mật khẩu mới.</string>
+    <string name="auto_a_ch_email">Địa chỉ Email</string>
+    <string name="auto_g_i_y_u_c_u">Gửi yêu cầu</string>
+    <string name="auto_quay_l_i_ng_nh_p">Quay lại Đăng nhập</string>
+    <string name="auto_wavi">WAVI</string>
+    <string name="auto_ch_o_b_n_h_m_nay_ch_ng_ta_h_c">Chào bạn, hôm nay chúng ta học gì nào?</string>
+    <string name="auto_m_c_ti_u_toeic">Mục tiêu TOEIC</string>
+    <string name="auto_t_800">Đạt 800đ</string>
+    <string name="auto_t_v_ng">Từ vựng</string>
+    <string name="auto_c_n_n">Cần ôn</string>
+    <string name="auto_14_l_i">14 lỗi</string>
+    <string name="auto_luy_n_t_p_k_n_ng">Luyện tập kỹ năng</string>
+    <string name="auto_nghe">Nghe</string>
+    <string name="auto_c">Đọc</string>
+    <string name="auto_n_i">Nói</string>
+    <string name="auto_vi_t">Viết</string>
+    <string name="auto_g_c_th_s_c">Góc thử sức</string>
+    <string name="auto_thi_online">Thi Online</string>
+    <string name="auto_thi_th">Thi thử</string>
+    <string name="auto_l_thuy_t">Lý thuyết</string>
+    <string name="auto_ch_o_m_ng_tr_l_i_wavi">Chào mừng trở lại WAVI</string>
+    <string name="auto_email">Email</string>
+    <string name="auto_m_t_kh_u">Mật khẩu</string>
+    <string name="auto_qu_n_m_t_kh_u_1">Quên mật khẩu?</string>
+    <string name="auto_ng_nh_p">Đăng nhập</string>
+    <string name="auto_ng_nh_p_v_i_google">Đăng nhập với Google</string>
+    <string name="auto_b_n_ch_a_c_t_i_kho_n_t_o_t_i_k">Bạn chưa có tài khoản? Tạo tài khoản</string>
+    <string name="auto_thi_th_online">Thi thử online</string>
+    <string name="auto_ch_a_c_s_ki_n">Chưa có sự kiện</string>
+    <string name="auto_n_ch_s_ki_n_ti_p_theo_nh">Đón chờ sự kiện tiếp theo nhé</string>
+    <string name="auto_l_ch_s">Lịch sử</string>
+    <string name="auto_n_ng_c_p_wavi_premium">Nâng cấp Wavi Premium</string>
+    <string name="auto_ch_n_g_i_u_i">Chọn gói ưu đãi</string>
+    <string name="auto_quy_n_l_i_premium">Quyền lợi Premium</string>
+    <string name="auto_t_nh_n_ng">Tính năng</string>
+    <string name="auto_free">Free</string>
+    <string name="auto_pro">Pro</string>
+    <string name="auto_luy_n_t_p_part_1_2_5">Luyện tập part 1, 2, 5</string>
+    <string name="auto_full_7_part_chuy_n_s_u">Full 7 part chuyên sâu</string>
+    <string name="auto_m_o_v_gi_i_th_ch">Mẹo và giải thích</string>
+    <string name="auto_t_i_h_c_offline">Tải đề học offline</string>
+    <string name="auto_thi_th_2">Đề thi thử</string>
+    <string name="auto_h_c_vi_n_n_i_g_v_wavi">Học viên nói gì về Wavi</string>
+    <string name="auto_kh_i_ph_c_thanh_to_n">Khôi phục thanh toán</string>
+    <string name="auto_i_u_kho_n_d_ch_v_v_ch_nh_s_ch">Điều khoản dịch vụ và Chính sách bảo mật</string>
+    <string name="auto_c_i_t">Cài đặt</string>
+    <string name="auto_m">M</string>
+    <string name="auto_t_n_c_a_b_n">Tên của bạn</string>
+    <string name="auto_th_nh_vi_n_mi_n_ph">Thành viên miễn phí</string>
+    <string name="auto_ng_xu_t">Đăng xuất</string>
+    <string name="auto_t_i_kho_n">Tài khoản</string>
+    <string name="auto_ch_nh_s_a_h_s">Chỉnh sửa hồ sơ</string>
+    <string name="auto_ng_d_ng">Ứng dụng</string>
+    <string name="auto_ng_n_ng_ng_d_ng">Ngôn ngữ ứng dụng</string>
+    <string name="auto_ti_ng_vi_t">Tiếng Việt</string>
+    <string name="auto_hi_n_th">Hiển thị</string>
+    <string name="auto_qu_n_l_t_i_xu_ng">Quản lý tải xuống</string>
+    <string name="auto_nh_c_nh_h_c_t_p">Nhắc nhở học tập</string>
+    <string name="auto_h_tr_amp_k_t_n_i">Hỗ trợ &amp; Kết nối</string>
+    <string name="auto_tham_gia_c_ng_ng_wavi">Tham gia cộng đồng WAVI</string>
+    <string name="auto_chia_s_ng_d_ng">Chia sẻ ứng dụng</string>
+    <string name="auto_ph_n_h_i_amp_h_tr">Phản hồi &amp; hỗ trợ</string>
+    <string name="auto_ch_o_m_ng_n_v_i_wavi">Chào mừng đến với WAVI</string>
+    <string name="auto_h_v_t_n">Họ và tên</string>
+    <string name="auto_x_c_nh_n_m_t_kh_u">Xác nhận mật khẩu</string>
+    <string name="auto_b_ng_vi_c_ng_k_b_n_ng_v_i_i_u">Bằng việc đăng ký, bạn đồng ý với Điều khoản và Chính sách bảo mật.</string>
+    <string name="auto_ng_k">Đăng ký</string>
+    <string name="auto_c_t_i_kho_n_ng_nh_p">Đã có tài khoản? Đăng nhập</string>
+    <string name="auto_k_n_ng">Kỹ năng</string>
+    <string name="auto_s_c_u_l_m_0">Số câu đã làm: 0</string>
+    <string name="auto_tr_l_i_ng_0">Trả lời đúng: 0</string>
+    <string name="auto_ho_n_th_nh">Hoàn thành </string>
+    <string name="auto_test_1">Test 1</string>
+    <string name="auto_th_i_gian_60_ph_t">Thời gian: 60 phút</string>
+    <string name="auto_c_u_h_i_100">Câu hỏi: 100</string>
+    <string name="auto_b_t_u_n_o">Bắt đầu nào</string>
+    <string name="auto_category_title">Category Title</string>
+    <string name="auto_ng_ph_p">Ngữ pháp</string>
+    <string name="auto_th_ng_tin_ng_i_d_ng">Thông tin người dùng</string>
+    <string name="auto_h_v_t_n_3">Họ và Tên</string>
+    <string name="auto_s_i_n_tho_i">Số điện thoại</string>
+    <string name="auto_ng_y_sinh">Ngày sinh</string>
+    <string name="auto_dd_mm_yyyy">DD/MM/YYYY</string>
+    <string name="auto_gi_i_t_nh">Giới tính</string>
+    <string name="auto_nam_n">Nam/Nữ</string>
+    <string name="auto_x_a_t_i_kho_n">Xóa tài khoản</string>
+    <string name="auto_l_u_thay_i">Lưu thay đổi</string>
+    <string name="auto_hu_b">Huỷ bỏ</string>
+    <string name="auto_l_u">Lưu</string>
+    <string name="auto_ok">OK</string>
+    <string name="auto_t_t_c_ti_n_tr_nh_v_k_t_qu_c_a">Tất cả tiến trình và kết quả của bạn sẽ bị xóa vĩnh viễn và bạn sẽ không thể hoàn tác hành động này.\nBạn có chắc chắn?</string>
+    <string name="auto_x_a">Xóa</string>
+    <string name="auto_h_y">Hủy</string>
+    <string name="auto_ch_n_gi_i_t_nh">Chọn giới tính</string>
+    <string name="auto_nam">Nam</string>
+    <string name="auto_n">Nữ</string>
+    <string name="auto_ch_n_ng_n_ng">Chọn ngôn ngữ</string>
+    <string name="auto_c_u_tr_c_chung_c_a_m_t_c_u_tro">Cấu trúc chung của một câu trong tiếng anh</string>
+    <string name="auto_english">English</string>
+    <string name="auto_dragon_quiz">Dragon Quiz</string>
+    <string name="auto_10_c_u_h_i_10_ph_t">10 câu hỏi  -  10 phút</string>
+    <string name="auto_ph_n_1_c_v_n_b_n">Phần 1 - Đọc văn bản</string>
+    <string name="auto_ho_n_th_nh_4">Hoàn thành</string>
+    <string name="auto_test_10">Test 10</string>
+    <string name="auto_ets_2023">ETS 2023</string>
+    <string name="auto_th_i_gian">Thời gian: </string>
+    <string name="auto_60_ph_t">60 phút  |  </string>
+    <string name="auto_c_u_h_i">Câu hỏi: </string>
+    <string name="auto_b_t_u">Bắt đầu</string>
+    <string name="auto_th_m_ghi_ch">Thêm ghi chú</string>
+
+    <!-- Reminder strings -->
+    <string name="reminder_title">Nhắc nhở học tập</string>
+    <string name="reminder_save">Lưu</string>
+    <string name="reminder_toast_saved">Đã lưu nhắc nhở: %s</string>
+    <string name="reminder_toast_disabled">Đã tắt nhắc nhở</string>
+    <string name="notification_title">WAVI - Đã đến giờ học!</string>
+    <string name="notification_content">Hãy dành một chút thời gian để học tập nào!</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_home">Trang chủ</string>
+    <string name="nav_exam">Thi</string>
+    <string name="nav_premium">Nâng cấp</string>
+    <string name="nav_profile">Cá nhân</string>
+    <string name="nav_setting">Cài đặt</string>
+
+    <!-- Skill Practice -->
+    <string name="skill_listening">Nghe Hiểu</string>
+    <string name="skill_reading">Đọc Hiểu</string>
+    <string name="skill_speaking">Luyện nói</string>
+    <string name="skill_writing">Viết</string>
+
+    <!-- Skill Practice Parts - Listening -->
+    <string name="listen_part1">Phần 1 - Mô Tả Hình Ảnh</string>
+    <string name="listen_part2">Phần 2 - Hỏi &amp; Đáp</string>
+    <string name="listen_part3">Phần 3 - Đoạn Hội Thoại</string>
+    <string name="listen_part4">Phần 4 - Bài Nói Chuyện Ngắn</string>
+
+    <!-- Skill Practice Parts - Reading -->
+    <string name="read_part1">Phần 5 - Điền Vào Câu</string>
+    <string name="read_part2">Phần 6 - Điền Vào Đoạn Văn</string>
+    <string name="read_part3">Phần 7 - Đọc Hiểu Đoạn Văn</string>
+
+    <!-- Skill Practice Parts - Speaking -->
+    <string name="speak_part1">Phần 1 - Đọc văn bản</string>
+    <string name="speak_part2">Phần 2 - Mô tả tranh</string>
+    <string name="speak_part3">Phần 3 - Trả lời câu hỏi (1)</string>
+    <string name="speak_part4">Phần 4 - Trả lời câu hỏi (2)</string>
+    <string name="speak_part5">Phần 5 - Đề xuất giải pháp</string>
+    <string name="speak_part6">Phần 6 - Thể hiện quan điểm</string>
+
+    <!-- Skill Practice Parts - Writing -->
+    <string name="write_part1">Phần 1 - Mô tả tranh</string>
+    <string name="write_part2">Phần 2 - Phản hồi yêu cầu</string>
+    <string name="write_part3">Phần 3 - Viết luận</string>
+
+    <!-- Skill Practice Stats -->
+    <string name="stat_correct">Trả lời đúng   0/0</string>
+    <string name="stat_done">Số câu đã làm   0</string>
+    <string name="stat_start_part">Bắt đầu làm </string>
+
+    <!-- Theory Activity -->
+    <string name="theory_lesson_1">Bài 1</string>
+    <string name="theory_lesson_2">Bài 2</string>
+    <string name="theory_lesson_3">Bài 3</string>
+    <string name="theory_lesson_4">Bài 4</string>
+    <string name="theory_lesson_5">Bài 5</string>
+    <string name="theory_level_basic">Cơ bản (0-250)</string>
+    <string name="theory_level_mid">Trung cấp (250-500)</string>
+    <string name="theory_level_advanced">Nâng cao (500+)</string>
+
+    <!-- Settings misc -->
+    <string name="logout_success">Đăng xuất thành công</string>
+    <string name="feature_dev">Tính năng đang phát triển</string>
+    <string name="premium_member">Thành viên Premium</string>
+    <string name="free_member">Thành viên miễn phí</string>
+    <string name="no_notification">Bạn chưa có thông báo mới</string>
+    <string name="auto_minute">" phút"</string>
+    <string name="auto_questions">" câu hỏi"</string>
+    <string name="test_detail_time">Thời gian: </string>
+    <string name="test_detail_questions">Câu hỏi: </string>
+    <string name="upgrade_required">Vui lòng nâng cấp Premium để làm bài này</string>
+
+    <!-- Theory Mock Data -->
+    <string name="vocab_new">Mới (Adj)</string>
+    <string name="vocab_company">Công ty (N)</string>
+    <string name="vocab_services">Dịch vụ (N)</string>
+    <string name="vocab_please">Vui lòng (V)</string>
+    
+    <string name="grammar_rule_1">Cấu trúc chung của một câu trong tiếng Anh</string>
+    <string name="grammar_rule_2">Subject (chủ ngữ)</string>
+    <string name="grammar_rule_3">Verb (động từ)</string>
+    <string name="grammar_rule_4">Complement (vị ngữ)</string>
+    <string name="grammar_rule_5">Modifier (trạng từ)</string>
+    <string name="grammar_rule_6">Danh từ đếm được và không đếm được</string>
 </resources>

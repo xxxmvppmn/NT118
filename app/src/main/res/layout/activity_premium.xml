@@ -43,7 +43,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nâng cấp Wavi Premium"
+            android:text="@string/auto_n_ng_c_p_wavi_premium"
             android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -71,7 +71,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chọn gói ưu đãi"
+                android:text="@string/auto_ch_n_g_i_u_i"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_marginStart="24dp"
@@ -92,7 +92,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Quyền lợi Premium"
+                android:text="@string/auto_quy_n_l_i_premium"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_marginStart="24dp"
@@ -126,7 +126,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.5"
-                            android:text="Tính năng"
+                            android:text="@string/auto_t_nh_n_ng"
                             android:textStyle="bold"
                             android:textSize="15sp"
                             android:textColor="#888888" />
@@ -135,7 +135,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.25"
-                            android:text="Free"
+                            android:text="@string/auto_free"
                             android:gravity="center"
                             android:textStyle="bold"
                             android:textSize="15sp"
@@ -145,7 +145,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.25"
-                            android:text="Pro"
+                            android:text="@string/auto_pro"
                             android:gravity="center"
                             android:textStyle="bold"
                             android:textSize="15sp"
@@ -164,7 +164,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.5"
-                            android:text="Luyện tập part 1, 2, 5"
+                            android:text="@string/auto_luy_n_t_p_part_1_2_5"
                             android:textColor="#424242"/>
                         <ImageView
                             android:layout_width="0dp"
@@ -190,7 +190,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.5"
-                            android:text="Full 7 part chuyên sâu"
+                            android:text="@string/auto_full_7_part_chuy_n_s_u"
                             android:textColor="#424242"/>
                         <ImageView
                             android:layout_width="0dp"
@@ -216,7 +216,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.5"
-                            android:text="Mẹo và giải thích"
+                            android:text="@string/auto_m_o_v_gi_i_th_ch"
                             android:textColor="#424242"/>
                         <ImageView
                             android:layout_width="0dp"
@@ -242,7 +242,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.5"
-                            android:text="Tải đề học offline"
+                            android:text="@string/auto_t_i_h_c_offline"
                             android:textColor="#424242"/>
                         <ImageView
                             android:layout_width="0dp"
@@ -268,7 +268,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.5"
-                            android:text="Đề thi thử"
+                            android:text="@string/auto_thi_th_2"
                             android:textColor="#424242"/>
                         <TextView
                             android:layout_width="0dp"
@@ -295,7 +295,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Học viên nói gì về Wavi"
+                android:text="@string/auto_h_c_vi_n_n_i_g_v_wavi"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_marginStart="24dp"
@@ -320,7 +320,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="40dp"
-                android:text="Khôi phục thanh toán"
+                android:text="@string/auto_kh_i_ph_c_thanh_to_n"
                 android:textColor="@color/purple_main"
                 android:textStyle="bold"
                 android:padding="8dp"/>
@@ -330,7 +330,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
-                android:text="Điều khoản dịch vụ và Chính sách bảo mật"
+                android:text="@string/auto_i_u_kho_n_d_ch_v_v_ch_nh_s_ch"
                 android:textSize="12sp"
                 android:textColor="#9E9E9E"/>
 

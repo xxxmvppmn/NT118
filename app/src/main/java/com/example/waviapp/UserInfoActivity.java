@@ -35,7 +35,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserInfoActivity extends AppCompatActivity {
+public class UserInfoActivity extends BaseActivity {
 
     private ActivityUserInfoBinding binding;
     private FirebaseAuthHelper authHelper;

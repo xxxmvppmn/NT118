@@ -18,7 +18,7 @@
             android:id="@+id/tvListTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Test 1"
+            android:text="@string/auto_test_1"
             android:textColor="@color/text_dark_gray"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -40,7 +40,7 @@
                 android:id="@+id/tvTimeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Thời gian: "
+                android:text="@string/auto_th_i_gian"
                 android:textColor="@color/purple_main"
                 android:textSize="14sp" />
 
@@ -48,7 +48,7 @@
                 android:id="@+id/tvTimeValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="60 phút  |  "
+                android:text="@string/auto_60_ph_t"
                 android:textColor="@color/gray"
                 android:textSize="14sp" />
 
@@ -56,7 +56,7 @@
                 android:id="@+id/tvQuestionLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Câu hỏi: "
+                android:text="@string/auto_c_u_h_i"
                 android:textColor="@color/purple_main"
                 android:textSize="14sp" />
 
@@ -77,7 +77,7 @@
             android:layout_below="@id/llSubInfo"
             android:layout_marginTop="16dp"
             android:background="@drawable/bg_test_btn"
-            android:text="Bắt đầu"
+            android:text="@string/auto_b_t_u"
             android:textColor="@color/white"
             android:textAllCaps="false"
             android:textSize="14sp"

@@ -21,7 +21,7 @@ import com.example.waviapp.models.TaiKhoan;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseUser;
 
-public class SignupActivity extends AppCompatActivity {
+public class SignupActivity extends BaseActivity {
 
     private ActivitySignupBinding binding;
     private FirebaseAuthHelper authHelper;

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auto_i_m_t_kh_u">Change Password</string>
+    <string name="auto_m_t_kh_u_hi_n_t_i">Current Password</string>
+    <string name="auto_vui_l_ng_nh_p_m_t_kh_u_m_i_c_a">Please enter your new password\nbelow</string>
+    <string name="auto_m_t_kh_u_m_i">New Password</string>
+    <string name="auto_nh_p_l_i_m_t_kh_u_c_a_b_n">Re-enter your password</string>
+    <string name="auto_t_m_hi_u_th_m_s_ki_n">Learn more about events</string>
+    <string name="auto_h_ng_d_n_s_d_ng_tr_c_khi_tham">Instructions before participating in the event:</string>
+    <string name="auto_2_ph_n_th_ng">2. Rewards:</string>
+    <string name="auto_top_1_g_i_premium_3_th_ng_n_t">- Top 1: 3-month Premium package\n- Top 3: 1-month Premium package\n- Top 20: 5-day Premium package</string>
+    <string name="auto_n_u_b_n_l_m_th_nh_vi_n_premiu">* If you are already a Premium member, the reward will be added to your existing Premium package.</string>
+    <string name="auto_g_c_thi_th">Practice Corner</string>
+    <string name="auto_toeic_listening_amp_reading">TOEIC Listening &amp; Reading</string>
+    <string name="auto_fulltest_50">Fulltest | 50</string>
+    <string name="auto_xem_th_m">SEE MORE</string>
+    <string name="auto_minitest_55">Minitest | 55</string>
+    <string name="auto_ph_n_t_ch_amp_chi_n_l_c">Analysis &amp; Strategy</string>
+    <string name="auto_speaking_amp_writing">Speaking &amp; Writing</string>
+    <string name="auto_qu_n_m_t_kh_u">Forgot Password</string>
+    <string name="auto_nh_p_email_ng_k_t_i_kho_n_ch_n">Enter the registered email address. We will send a link to reset your password.</string>
+    <string name="auto_a_ch_email">Email Address</string>
+    <string name="auto_g_i_y_u_c_u">Send Request</string>
+    <string name="auto_quay_l_i_ng_nh_p">Back to Login</string>
+    <string name="auto_wavi">WAVI</string>
+    <string name="auto_ch_o_b_n_h_m_nay_ch_ng_ta_h_c">Hello! What are we learning today?</string>
+    <string name="auto_m_c_ti_u_toeic">TOEIC Goal</string>
+    <string name="auto_t_800">Achieve 800+</string>
+    <string name="auto_t_v_ng">Vocabulary</string>
+    <string name="auto_c_n_n">To Review</string>
+    <string name="auto_14_l_i">14 errors</string>
+    <string name="auto_luy_n_t_p_k_n_ng">Skill Practice</string>
+    <string name="auto_nghe">Listening</string>
+    <string name="auto_c">Reading</string>
+    <string name="auto_n_i">Speaking</string>
+    <string name="auto_vi_t">Writing</string>
+    <string name="auto_g_c_th_s_c">Challenge Corner</string>
+    <string name="auto_thi_online">Online Testing</string>
+    <string name="auto_thi_th">Practice Test</string>
+    <string name="auto_l_thuy_t">Theory</string>
+    <string name="auto_ch_o_m_ng_tr_l_i_wavi">Welcome back to WAVI</string>
+    <string name="auto_email">Email</string>
+    <string name="auto_m_t_kh_u">Password</string>
+    <string name="auto_qu_n_m_t_kh_u_1">Forgot password?</string>
+    <string name="auto_ng_nh_p">Log In</string>
+    <string name="auto_ng_nh_p_v_i_google">Sign in with Google</string>
+    <string name="auto_b_n_ch_a_c_t_i_kho_n_t_o_t_i_k">Don\'t have an account? Create account</string>
+    <string name="auto_thi_th_online">Online Mock Test</string>
+    <string name="auto_ch_a_c_s_ki_n">No events found</string>
+    <string name="auto_n_ch_s_ki_n_ti_p_theo_nh">Stay tuned for the next event</string>
+    <string name="auto_l_ch_s">History</string>
+    <string name="auto_n_ng_c_p_wavi_premium">Upgrade to Wavi Premium</string>
+    <string name="auto_ch_n_g_i_u_i">Choose a package</string>
+    <string name="auto_quy_n_l_i_premium">Premium Benefits</string>
+    <string name="auto_t_nh_n_ng">Features</string>
+    <string name="auto_free">Free</string>
+    <string name="auto_pro">Pro</string>
+    <string name="auto_luy_n_t_p_part_1_2_5">Practice Parts 1, 2, 5</string>
+    <string name="auto_full_7_part_chuy_n_s_u">In-depth all 7 parts</string>
+    <string name="auto_m_o_v_gi_i_th_ch">Tips and Explanations</string>
+    <string name="auto_t_i_h_c_offline">Download for Offline study</string>
+    <string name="auto_thi_th_2">Mock Exams</string>
+    <string name="auto_h_c_vi_n_n_i_g_v_wavi">Student Reviews</string>
+    <string name="auto_kh_i_ph_c_thanh_to_n">Restore Purchase</string>
+    <string name="auto_i_u_kho_n_d_ch_v_v_ch_nh_s_ch">Terms of Service &amp; Privacy Policy</string>
+    <string name="auto_c_i_t">Settings</string>
+    <string name="auto_m">M</string>
+    <string name="auto_t_n_c_a_b_n">Your Name</string>
+    <string name="auto_th_nh_vi_n_mi_n_ph">Free Member</string>
+    <string name="auto_ng_xu_t">Log Out</string>
+    <string name="auto_t_i_kho_n">Account</string>
+    <string name="auto_ch_nh_s_a_h_s">Edit Profile</string>
+    <string name="auto_ng_d_ng">Application</string>
+    <string name="auto_ng_n_ng_ng_d_ng">App Language</string>
+    <string name="auto_ti_ng_vi_t">Vietnamese</string>
+    <string name="auto_hi_n_th">Display</string>
+    <string name="auto_qu_n_l_t_i_xu_ng">Downloads</string>
+    <string name="auto_nh_c_nh_h_c_t_p">Study Reminder</string>
+    <string name="auto_h_tr_amp_k_t_n_i">Support &amp; Connect</string>
+    <string name="auto_tham_gia_c_ng_ng_wavi">Join WAVI Community</string>
+    <string name="auto_chia_s_ng_d_ng">Share App</string>
+    <string name="auto_ph_n_h_i_amp_h_tr">Feedback &amp; Support</string>
+    <string name="auto_ch_o_m_ng_n_v_i_wavi">Welcome to WAVI</string>
+    <string name="auto_h_v_t_n">Full Name</string>
+    <string name="auto_x_c_nh_n_m_t_kh_u">Confirm Password</string>
+    <string name="auto_b_ng_vi_c_ng_k_b_n_ng_v_i_i_u">By registering, you agree to our Terms and Privacy Policy.</string>
+    <string name="auto_ng_k">Sign Up</string>
+    <string name="auto_c_t_i_kho_n_ng_nh_p">Already have an account? Log In</string>
+    <string name="auto_k_n_ng">Skill</string>
+    <string name="auto_s_c_u_l_m_0">Questions done: 0</string>
+    <string name="auto_tr_l_i_ng_0">Correct answers: 0</string>
+    <string name="auto_ho_n_th_nh">Complete</string>
+    <string name="auto_test_1">Test 1</string>
+    <string name="auto_th_i_gian_60_ph_t">Time: 60 min</string>
+    <string name="auto_c_u_h_i_100">Questions: 100</string>
+    <string name="auto_b_t_u_n_o">Let\'s Start</string>
+    <string name="auto_category_title">Category Title</string>
+    <string name="auto_ng_ph_p">Grammar</string>
+    <string name="auto_th_ng_tin_ng_i_d_ng">User Information</string>
+    <string name="auto_h_v_t_n_3">Full Name</string>
+    <string name="auto_s_i_n_tho_i">Phone Number</string>
+    <string name="auto_ng_y_sinh">Date of Birth</string>
+    <string name="auto_dd_mm_yyyy">DD/MM/YYYY</string>
+    <string name="auto_gi_i_t_nh">Gender</string>
+    <string name="auto_nam_n">Male/Female</string>
+    <string name="auto_x_a_t_i_kho_n">Delete Account</string>
+    <string name="auto_l_u_thay_i">Save Changes</string>
+    <string name="auto_hu_b">Cancel</string>
+    <string name="auto_l_u">Save</string>
+    <string name="auto_ok">OK</string>
+    <string name="auto_t_t_c_ti_n_tr_nh_v_k_t_qu_c_a">All your progress and results will be permanently deleted and this action cannot be undone.\nAre you sure?</string>
+    <string name="auto_x_a">Delete</string>
+    <string name="auto_h_y">Cancel</string>
+    <string name="auto_ch_n_gi_i_t_nh">Select Gender</string>
+    <string name="auto_nam">Male</string>
+    <string name="auto_n">Female</string>
+    <string name="auto_ch_n_ng_n_ng">Select Language</string>
+    <string name="auto_c_u_tr_c_chung_c_a_m_t_c_u_tro">Common Sentence Structures in English</string>
+    <string name="auto_english">English</string>
+    <string name="auto_dragon_quiz">Dragon Quiz</string>
+    <string name="auto_10_c_u_h_i_10_ph_t">10 Questions - 10 min</string>
+    <string name="auto_ph_n_1_c_v_n_b_n">Part 1 - Text Reading</string>
+    <string name="auto_ho_n_th_nh_4">Complete</string>
+    <string name="auto_test_10">Test 10</string>
+    <string name="auto_ets_2023">ETS 2023</string>
+    <string name="auto_th_i_gian">Time: </string>
+    <string name="auto_60_ph_t">60 min | </string>
+    <string name="auto_c_u_h_i">Questions: </string>
+    <string name="auto_b_t_u">Start</string>
+    <string name="auto_th_m_ghi_ch">Add Note</string>
+
+    <!-- Reminder strings -->
+    <string name="reminder_title">Study Reminder</string>
+    <string name="reminder_save">Save</string>
+    <string name="reminder_toast_saved">Reminder saved: %s</string>
+    <string name="reminder_toast_disabled">Reminder disabled</string>
+    <string name="notification_title">WAVI - Time to study!</string>
+    <string name="notification_content">Take some time to learn today!</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_exam">Exam</string>
+    <string name="nav_premium">Upgrade</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_setting">Settings</string>
+
+    <!-- Skill Practice -->
+    <string name="skill_listening">Listening</string>
+    <string name="skill_reading">Reading</string>
+    <string name="skill_speaking">Speaking</string>
+    <string name="skill_writing">Writing</string>
+
+    <!-- Skill Practice Parts - Listening -->
+    <string name="listen_part1">Part 1 - Photo Description</string>
+    <string name="listen_part2">Part 2 - Question &amp; Response</string>
+    <string name="listen_part3">Part 3 - Short Conversations</string>
+    <string name="listen_part4">Part 4 - Short Talks</string>
+
+    <!-- Skill Practice Parts - Reading -->
+    <string name="read_part1">Part 5 - Incomplete Sentences</string>
+    <string name="read_part2">Part 6 - Text Completion</string>
+    <string name="read_part3">Part 7 - Reading Comprehension</string>
+
+    <!-- Skill Practice Parts - Speaking -->
+    <string name="speak_part1">Part 1 - Read a Text Aloud</string>
+    <string name="speak_part2">Part 2 - Describe a Picture</string>
+    <string name="speak_part3">Part 3 - Respond to Questions (1)</string>
+    <string name="speak_part4">Part 4 - Respond to Questions (2)</string>
+    <string name="speak_part5">Part 5 - Propose a Solution</string>
+    <string name="speak_part6">Part 6 - Express an Opinion</string>
+
+    <!-- Skill Practice Parts - Writing -->
+    <string name="write_part1">Part 1 - Write a Sentence</string>
+    <string name="write_part2">Part 2 - Respond to a Written Request</string>
+    <string name="write_part3">Part 3 - Write an Essay</string>
+
+    <!-- Skill Practice Stats -->
+    <string name="stat_correct">Correct answers   0/0</string>
+    <string name="stat_done">Questions done   0</string>
+    <string name="stat_start_part">Start </string>
+
+    <!-- Theory Activity -->
+    <string name="theory_lesson_1">Lesson 1</string>
+    <string name="theory_lesson_2">Lesson 2</string>
+    <string name="theory_lesson_3">Lesson 3</string>
+    <string name="theory_lesson_4">Lesson 4</string>
+    <string name="theory_lesson_5">Lesson 5</string>
+    <string name="theory_level_basic">Beginner (0-250)</string>
+    <string name="theory_level_mid">Intermediate (250-500)</string>
+    <string name="theory_level_advanced">Advanced (500+)</string>
+
+    <!-- Settings misc -->
+    <string name="logout_success">Logged out successfully</string>
+    <string name="feature_dev">Feature coming soon</string>
+    <string name="premium_member">Premium Member</string>
+    <string name="free_member">Free Member</string>
+    <string name="no_notification">No new notifications</string>
+    <string name="auto_minute">" mins"</string>
+    <string name="auto_questions">" questions"</string>
+    <string name="test_detail_time">Time: </string>
+    <string name="test_detail_questions">Questions: </string>
+    <string name="upgrade_required">Please upgrade to Premium to access this content</string>
+
+    <!-- Theory Mock Data -->
+    <string name="vocab_new">New (Adj)</string>
+    <string name="vocab_company">Company (N)</string>
+    <string name="vocab_services">Services (N)</string>
+    <string name="vocab_please">Please (V)</string>
+    
+    <string name="grammar_rule_1">General English sentence structure</string>
+    <string name="grammar_rule_2">Subject (S)</string>
+    <string name="grammar_rule_3">Verb (V)</string>
+    <string name="grammar_rule_4">Complement (C)</string>
+    <string name="grammar_rule_5">Modifier (M)</string>
+    <string name="grammar_rule_6">Countable and uncountable nouns</string>
+</resources>

@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
-public class ExamActivity extends AppCompatActivity {
+public class ExamActivity extends BaseActivity {
 
     private ActivityExamBinding binding;
     private DatabaseHelper dbHelper;
@@ -191,7 +191,7 @@ public class ExamActivity extends AppCompatActivity {
 
         if (test.isLocked() && !isUserPremium) {
             ivLock.setVisibility(View.VISIBLE);
-            itemView.setOnClickListener(v -> Toast.makeText(this, "Vui lòng nâng cấp Premium để làm bài này", Toast.LENGTH_SHORT).show());
+            itemView.setOnClickListener(v -> Toast.makeText(this, getString(R.string.upgrade_required), Toast.LENGTH_SHORT).show());
         } else {
             ivLock.setVisibility(View.GONE);
             itemView.setOnClickListener(v -> openTestDetail(test.getTenBKT(), test.getThoiGianLamBai(), test.getTongSoCau()));

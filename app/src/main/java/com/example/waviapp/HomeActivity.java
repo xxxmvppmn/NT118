@@ -1,6 +1,5 @@
 package com.example.waviapp;
 
-import android.view.View;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,9 +9,9 @@ import com.example.waviapp.databinding.ActivityHomeBinding;
 import com.google.firebase.auth.FirebaseUser;
 import com.example.waviapp.firebase.FirebaseAuthHelper;
 import com.example.waviapp.firebase.DatabaseHelper;
-import com.example.waviapp.models.TaiKhoan; // Ngân kiểm tra lại package của class TaiKhoan nhé
+import com.example.waviapp.models.TaiKhoan;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends BaseActivity {
 
     private ActivityHomeBinding binding;
     private FirebaseAuthHelper authHelper;
@@ -32,7 +31,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // Xử lý icon thông báo
         binding.icNotification.setOnClickListener(v ->
-                Toast.makeText(this, "Bạn chưa có thông báo mới", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.no_notification), Toast.LENGTH_SHORT).show()
         );
 
         // Xử lý click các kỹ năng

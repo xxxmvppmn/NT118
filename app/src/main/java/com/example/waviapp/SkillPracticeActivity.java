@@ -7,15 +7,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
 
-public class SkillPracticeActivity extends AppCompatActivity {
+public class SkillPracticeActivity extends BaseActivity {
 
     public static final String EXTRA_SKILL_CATEGORY = "extra_skill_category";
-    public static final String CAT_LISTEN = "Nghe";
-    public static final String CAT_READ = "Đọc";
-    public static final String CAT_SPEAK = "Nói";
-    public static final String CAT_WRITE = "Viết";
+    public static final String CAT_LISTEN = "LISTEN";
+    public static final String CAT_READ = "READ";
+    public static final String CAT_SPEAK = "SPEAK";
+    public static final String CAT_WRITE = "WRITE";
 
     private LinearLayout llPartsContainer;
     private TextView tvToolbarTitle;
@@ -48,30 +47,45 @@ public class SkillPracticeActivity extends AppCompatActivity {
 
     private void setupUI(String category) {
         String[] parts;
-        int activeParts = 1;
         boolean hasDoubleStats = false;
 
         if (CAT_SPEAK.equals(category)) {
-            tvToolbarTitle.setText("Luyện nói");
+            tvToolbarTitle.setText(getString(R.string.skill_speaking));
             ivHeaderIcon.setImageResource(R.drawable.ic_speak);
-            parts = new String[]{"Phần 1 - Đọc văn bản", "Phần 2 - Mô tả tranh", "Phần 3 - Trả lời câu hỏi (1)", "Phần 4 - Trả lời câu hỏi (2)", "Phần 5 - Đề xuất giải pháp", "Phần 6 - Thể hiện quan điểm"};
-            activeParts = 1;
+            parts = new String[]{
+                getString(R.string.speak_part1),
+                getString(R.string.speak_part2),
+                getString(R.string.speak_part3),
+                getString(R.string.speak_part4),
+                getString(R.string.speak_part5),
+                getString(R.string.speak_part6)
+            };
         } else if (CAT_WRITE.equals(category)) {
-            tvToolbarTitle.setText("Viết");
+            tvToolbarTitle.setText(getString(R.string.skill_writing));
             ivHeaderIcon.setImageResource(R.drawable.ic_write);
-            parts = new String[]{"Phần 1 - Mô tả tranh", "Phần 2 - Phản hồi yêu cầu", "Phần 3 - Viết luận"};
-            activeParts = 1;
+            parts = new String[]{
+                getString(R.string.write_part1),
+                getString(R.string.write_part2),
+                getString(R.string.write_part3)
+            };
         } else if (CAT_LISTEN.equals(category)) {
-            tvToolbarTitle.setText("Nghe Hiểu");
+            tvToolbarTitle.setText(getString(R.string.skill_listening));
             ivHeaderIcon.setImageResource(R.drawable.ic_listen);
-            parts = new String[]{"Phần 1 - Mô Tả Hình Ảnh", "Phần 2 - Hỏi & Đáp", "Phần 3 - Đoạn Hội Thoại", "Phần 4 - Bài Nói Chuyện Ngắn"};
-            activeParts = 2;
+            parts = new String[]{
+                getString(R.string.listen_part1),
+                getString(R.string.listen_part2),
+                getString(R.string.listen_part3),
+                getString(R.string.listen_part4)
+            };
             hasDoubleStats = true;
         } else { // CAT_READ
-            tvToolbarTitle.setText("Đọc Hiểu");
+            tvToolbarTitle.setText(getString(R.string.skill_reading));
             ivHeaderIcon.setImageResource(R.drawable.ic_read);
-            parts = new String[]{"Phần 5 - Điền Vào Câu", "Phần 6 - Điền Vào Đoạn Văn", "Phần 7 - Đọc Hiểu Đoạn Văn"};
-            activeParts = 1;
+            parts = new String[]{
+                getString(R.string.read_part1),
+                getString(R.string.read_part2),
+                getString(R.string.read_part3)
+            };
             hasDoubleStats = true;
         }
 
@@ -84,7 +98,7 @@ public class SkillPracticeActivity extends AppCompatActivity {
         LayoutInflater inflater = LayoutInflater.from(this);
         for (int i = 0; i < parts.length; i++) {
             View itemView = inflater.inflate(R.layout.item_skill_part, llPartsContainer, false);
-            
+
             TextView tvPartTitle = itemView.findViewById(R.id.tvPartTitle);
             TextView tvPartStat = itemView.findViewById(R.id.tvPartStat);
             ImageView ivPartLock = itemView.findViewById(R.id.ivPartLock);
@@ -92,15 +106,15 @@ public class SkillPracticeActivity extends AppCompatActivity {
             tvPartTitle.setText(parts[i]);
 
             if (hasDoubleStats) {
-                tvPartStat.setText("Trả lời đúng   0/0");
+                tvPartStat.setText(getString(R.string.stat_correct));
             } else {
-                tvPartStat.setText("Số câu đã làm   0");
+                tvPartStat.setText(getString(R.string.stat_done));
             }
 
-            // Đã mở khóa tất cả các phần
             ivPartLock.setVisibility(View.GONE);
-            int finalI = i;
-            itemView.setOnClickListener(v -> Toast.makeText(this, "Bắt đầu làm " + parts[finalI], Toast.LENGTH_SHORT).show());
+            String partName = parts[i];
+            itemView.setOnClickListener(v -> Toast.makeText(this,
+                    getString(R.string.stat_start_part) + partName, Toast.LENGTH_SHORT).show());
 
             llPartsContainer.addView(itemView);
         }

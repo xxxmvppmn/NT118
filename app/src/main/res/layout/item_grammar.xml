@@ -28,7 +28,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_weight="1"
-        android:text="Cấu trúc chung của một câu trong tiếng anh"
+        android:text="@string/auto_c_u_tr_c_chung_c_a_m_t_c_u_tro"
         android:textColor="#333333"
         android:textSize="16sp"
         android:textStyle="bold" />

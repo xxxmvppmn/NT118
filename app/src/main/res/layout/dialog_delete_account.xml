@@ -30,7 +30,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Xóa tài khoản"
+                android:text="@string/auto_x_a_t_i_kho_n"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
@@ -39,7 +39,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tất cả tiến trình và kết quả của bạn sẽ bị xóa vĩnh viễn và bạn sẽ không thể hoàn tác hành động này.\nBạn có chắc chắn?"
+            android:text="@string/auto_t_t_c_ti_n_tr_nh_v_k_t_qu_c_a"
             android:textColor="#333333"
             android:textSize="15sp"
             android:lineSpacingExtra="4dp"
@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:background="@drawable/bg_button_red"
-                android:text="Xóa"
+                android:text="@string/auto_x_a"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:background="@drawable/bg_button_outline_gray"
-                android:text="Hủy"
+                android:text="@string/auto_h_y"
                 android:textColor="#000000"
                 android:textSize="14sp"
                 android:textStyle="bold"

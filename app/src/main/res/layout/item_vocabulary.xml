@@ -75,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Thêm ghi chú"
+                android:text="@string/auto_th_m_ghi_ch"
                 android:textColor="#9370DB"
                 android:textSize="13sp" />
         </LinearLayout>

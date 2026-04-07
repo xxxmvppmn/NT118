@@ -3,18 +3,14 @@ package com.example.waviapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import android.content.res.Configuration;
 import com.example.waviapp.databinding.ActivitySettingsBinding;
 import com.example.waviapp.firebase.DatabaseHelper;
 import com.example.waviapp.firebase.FirebaseAuthHelper;
 import com.example.waviapp.models.TaiKhoan;
 import com.google.firebase.auth.FirebaseUser;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends BaseActivity {
 
     private ActivitySettingsBinding binding;
     private FirebaseAuthHelper authHelper;
@@ -29,10 +25,19 @@ public class SettingsActivity extends AppCompatActivity {
         authHelper = new FirebaseAuthHelper();
         dbHelper = new DatabaseHelper();
 
+        // 1. Đồng bộ lại ngôn ngữ hiện tại của máy vào UI Settings
+        String currentLangCode = com.example.waviapp.utils.LanguageManager.getLanguage(this);
+        selectedLanguage = "en".equals(currentLangCode) ? "English" : "Tiếng Việt";
+        // Cập nhật nhãn ngôn ngữ ngay khi mở Cài đặt nếu TextView này tồn tại
+        android.widget.TextView tvSelectedLanguage = findViewById(R.id.tvSelectedLanguage);
+        if (tvSelectedLanguage != null) {
+            tvSelectedLanguage.setText(selectedLanguage);
+        }
+
         // Logout handler - sử dụng Firebase Auth
         binding.tvLogout.setOnClickListener(v -> {
             authHelper.logout();
-            Toast.makeText(this, "Đăng xuất thành công", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.logout_success), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(SettingsActivity.this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
@@ -41,7 +46,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         // Click handlers for setting items
         View.OnClickListener itemClickListener = v -> {
-            Toast.makeText(this, "Tính năng đang phát triển", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.feature_dev), Toast.LENGTH_SHORT).show();
         };
         binding.llEditProfile.setOnClickListener(v -> {
             Intent intent = new Intent(SettingsActivity.this, UserInfoActivity.class);
@@ -52,7 +57,10 @@ public class SettingsActivity extends AppCompatActivity {
         binding.llCommunity.setOnClickListener(itemClickListener);
         binding.llShare.setOnClickListener(itemClickListener);
         binding.llDownloads.setOnClickListener(itemClickListener);
-        binding.llReminder.setOnClickListener(itemClickListener);
+        binding.llReminder.setOnClickListener(v -> {
+            StudyReminderBottomSheet bottomSheet = new StudyReminderBottomSheet();
+            bottomSheet.show(getSupportFragmentManager(), "StudyReminderBottomSheet");
+        });
         binding.llFeedback.setOnClickListener(itemClickListener);
 
         // Bottom Navigation
@@ -63,14 +71,14 @@ public class SettingsActivity extends AppCompatActivity {
                 Intent intent = new Intent(SettingsActivity.this, HomeActivity.class);
                 startActivity(intent);
             } else if (id == R.id.nav_exam) {
-                Toast.makeText(this, "Chuyển sang màn hình ", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(SettingsActivity.this, ExamActivity.class);
+                startActivity(intent);
             } else if (id == R.id.nav_premium) {
                 Intent intent = new Intent(SettingsActivity.this, PremiumActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             } else if (id == R.id.nav_profile) {
-                Toast.makeText(this, "Đang chuyển sang Profile...", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(SettingsActivity.this, UserInfoActivity.class);
                 startActivity(intent);
 
@@ -106,10 +114,10 @@ public class SettingsActivity extends AppCompatActivity {
                     }
 
                     if (user.isPremium()) {
-                        binding.tvPremiumStatus.setText("Thành viên Premium");
+                        binding.tvPremiumStatus.setText(getString(R.string.premium_member));
                         binding.tvPremiumStatus.setTextColor(android.graphics.Color.parseColor("#FFD700"));
                     } else {
-                        binding.tvPremiumStatus.setText("Thành viên miễn phí");
+                        binding.tvPremiumStatus.setText(getString(R.string.free_member));
                         binding.tvPremiumStatus.setTextColor(android.graphics.Color.parseColor("#888888"));
                     }
                 }
@@ -133,7 +141,7 @@ public class SettingsActivity extends AppCompatActivity {
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         
         android.widget.LinearLayout llContainer = dialog.findViewById(R.id.llLanguageContainer);
-        String[] languages = {"English", "Tiếng Việt", "繁體中文", "简体中文", "한국어", "日本語", "Français", "Español", "Indonesian", "ภาษาไทย", "Português", "Deutsche"};
+        String[] languages = {"Tiếng Việt", "English"};
         
         android.view.LayoutInflater inflater = android.view.LayoutInflater.from(this);
         android.widget.TextView tvSelectedLanguage = findViewById(R.id.tvSelectedLanguage);
@@ -156,7 +164,17 @@ public class SettingsActivity extends AppCompatActivity {
                 if (tvSelectedLanguage != null) {
                     tvSelectedLanguage.setText(lang);
                 }
+                
+                String langCode = lang.equals("English") ? "en" : "vi";
+                com.example.waviapp.utils.LanguageManager.setLanguage(SettingsActivity.this, langCode);
+                
                 dialog.dismiss();
+
+                // Restart toàn bộ app về HomeActivity để tất cả màn hình đều cập nhật ngôn ngữ mới
+                Intent restartIntent = new Intent(SettingsActivity.this, HomeActivity.class);
+                restartIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(restartIntent);
+                finish();
             });
             
             llContainer.addView(itemView);

@@ -16,7 +16,7 @@
         android:background="#FFFFFF"> <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Chọn giới tính"
+        android:text="@string/auto_ch_n_gi_i_t_nh"
         android:textColor="#333333"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -31,14 +31,14 @@
                 android:id="@+id/rbMale"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Nam"
+                android:text="@string/auto_nam"
                 android:textSize="16sp" />
 
             <RadioButton
                 android:id="@+id/rbFemale"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Nữ"
+                android:text="@string/auto_n"
                 android:textSize="16sp" />
         </RadioGroup>
     </LinearLayout>

@@ -21,7 +21,7 @@
         android:id="@+id/tvLangName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="English"
+        android:text="@string/auto_english"
         android:textSize="16sp"
         android:textColor="#333333" />
 

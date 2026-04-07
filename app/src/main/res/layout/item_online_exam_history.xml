@@ -48,7 +48,7 @@
                 android:id="@+id/tvHistoryTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dragon Quiz"
+                android:text="@string/auto_dragon_quiz"
                 android:textColor="@color/purple_main"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -60,7 +60,7 @@
                 android:id="@+id/tvHistoryMeta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10 câu hỏi  -  10 phút"
+                android:text="@string/auto_10_c_u_h_i_10_ph_t"
                 android:textColor="#333333"
                 android:textStyle="bold"
                 android:textSize="13sp"/>

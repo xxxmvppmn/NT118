@@ -38,7 +38,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Thi thử online"
+                android:text="@string/auto_thi_th_online"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -106,7 +106,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Chưa có sự kiện"
+                        android:text="@string/auto_ch_a_c_s_ki_n"
                         android:textColor="#000000"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -116,7 +116,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Đón chờ sự kiện tiếp theo nhé"
+                        android:text="@string/auto_n_ch_s_ki_n_ti_p_theo_nh"
                         android:textColor="#666666"
                         android:textSize="14sp"
                         android:layout_marginTop="4dp"
@@ -128,7 +128,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lịch sử"
+                android:text="@string/auto_l_ch_s"
                 android:textColor="#000000"
                 android:textSize="18sp"
                 android:textStyle="bold"

@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.text.HtmlCompat;
 import com.example.waviapp.databinding.ActivityEventInfoBinding;
 
-public class EventInfoActivity extends AppCompatActivity {
+public class EventInfoActivity extends BaseActivity {
     private ActivityEventInfoBinding binding;
 
     @Override

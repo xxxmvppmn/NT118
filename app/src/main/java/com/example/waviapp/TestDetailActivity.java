@@ -11,7 +11,7 @@ import android.text.style.StyleSpan;
 import android.graphics.Typeface;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class TestDetailActivity extends AppCompatActivity {
+public class TestDetailActivity extends BaseActivity {
 
     public static final String EXTRA_TITLE = "extra_title";
     public static final String EXTRA_TIME = "extra_time";
@@ -38,15 +38,17 @@ public class TestDetailActivity extends AppCompatActivity {
             tvTitle.setText(title);
         }
 
-        // Apply partial bold text like the mockup "Thời gian: 60 phút"
-        String timeStr = "Thời gian: " + time + " phút";
+        // Apply localized labels
+        String timeLabel = getString(R.string.test_detail_time);
+        String timeStr = timeLabel + time + getString(R.string.auto_minute);
         SpannableString timeSpannable = new SpannableString(timeStr);
-        timeSpannable.setSpan(new StyleSpan(Typeface.BOLD), 0, 10, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        timeSpannable.setSpan(new StyleSpan(Typeface.BOLD), 0, timeLabel.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         tvTime.setText(timeSpannable);
 
-        String questionStr = "Câu hỏi: " + questions;
+        String qLabel = getString(R.string.test_detail_questions);
+        String questionStr = qLabel + questions;
         SpannableString qSpannable = new SpannableString(questionStr);
-        qSpannable.setSpan(new StyleSpan(Typeface.BOLD), 0, 8, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        qSpannable.setSpan(new StyleSpan(Typeface.BOLD), 0, qLabel.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         tvQuestions.setText(qSpannable);
 
         btnStart.setOnClickListener(v -> {

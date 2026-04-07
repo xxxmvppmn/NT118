@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ngày sinh"
+                android:text="@string/auto_ng_y_sinh"
                 android:textColor="#9370DB"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -92,7 +92,7 @@
             android:id="@+id/btnOk"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:text="OK"
+            android:text="@string/auto_ok"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:textStyle="bold"

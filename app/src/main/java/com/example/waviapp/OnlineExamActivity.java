@@ -10,7 +10,7 @@ import com.example.waviapp.databinding.ActivityOnlineExamBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OnlineExamActivity extends AppCompatActivity {
+public class OnlineExamActivity extends BaseActivity {
     private ActivityOnlineExamBinding binding;
 
     @Override

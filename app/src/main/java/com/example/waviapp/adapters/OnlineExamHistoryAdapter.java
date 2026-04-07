@@ -31,7 +31,7 @@ public class OnlineExamHistoryAdapter extends RecyclerView.Adapter<OnlineExamHis
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         OnlineExamHistory exam = historyList.get(position);
         holder.tvTitle.setText(exam.getTitle());
-        holder.tvMeta.setText(exam.getQuestions() + " câu hỏi  -  " + exam.getMinutes() + " phút");
+        holder.tvMeta.setText(exam.getQuestions() + holder.itemView.getContext().getString(R.string.auto_questions) + "  -  " + exam.getMinutes() + holder.itemView.getContext().getString(R.string.auto_minute));
         holder.vThumbnailBg.setBackgroundResource(exam.getColorResId());
     }
 

@@ -30,7 +30,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     private ActivityLoginBinding binding;
     private FirebaseAuthHelper authHelper;

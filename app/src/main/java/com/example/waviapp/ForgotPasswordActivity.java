@@ -7,7 +7,7 @@ import com.example.waviapp.databinding.ActivityForgotPasswordBinding;
 import com.example.waviapp.firebase.FirebaseAuthHelper;
 import com.google.firebase.auth.FirebaseUser;
 
-public class ForgotPasswordActivity extends AppCompatActivity {
+public class ForgotPasswordActivity extends BaseActivity {
 
     private ActivityForgotPasswordBinding binding;
     private FirebaseAuthHelper authHelper;

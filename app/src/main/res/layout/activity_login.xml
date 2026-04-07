@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chào mừng trở lại WAVI"
+                android:text="@string/auto_ch_o_m_ng_tr_l_i_wavi"
                 android:textColor="#9932CC"
                 android:textSize="26sp"
                 android:textStyle="bold"
@@ -43,7 +43,7 @@
                     android:background="@android:color/transparent"
                     android:drawableStart="@drawable/ic_email"
                     android:drawablePadding="10dp"
-                    android:hint="Email"
+                    android:hint="@string/auto_email"
                     android:textColor="#000000"
                     android:textColorHint="#80000000" />
 
@@ -60,7 +60,7 @@
                     android:background="@android:color/transparent"
                     android:drawableStart="@drawable/ic_lock"
                     android:drawablePadding="10dp"
-                    android:hint="Mật khẩu"
+                    android:hint="@string/auto_m_t_kh_u"
                     android:inputType="textPassword"
                     android:textColor="#000000"
                     android:textColorHint="#80000000" />
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginBottom="25dp"
-            android:text="Quên mật khẩu?"
+            android:text="@string/auto_qu_n_m_t_kh_u_1"
             android:textColor="#1A73E8"
             android:textSize="14sp"
             android:fontFamily="sans-serif-medium"
@@ -91,7 +91,7 @@
                 android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:text="Đăng nhập"
+                android:text="@string/auto_ng_nh_p"
                 android:textSize="18sp"
                 android:backgroundTint="#9370DB"
                 android:textColor="#FFFFFF"
@@ -116,7 +116,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Đăng nhập với Google"
+                    android:text="@string/auto_ng_nh_p_v_i_google"
                     android:textColor="#1f1f1f"
                     android:textSize="16sp"
                     android:fontFamily="sans-serif-medium" />
@@ -127,7 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="Bạn chưa có tài khoản? Tạo tài khoản"
+                android:text="@string/auto_b_n_ch_a_c_t_i_kho_n_t_o_t_i_k"
                 android:textColor="#000000"
                 android:textSize="14sp"
                 android:fontFamily="sans-serif" />

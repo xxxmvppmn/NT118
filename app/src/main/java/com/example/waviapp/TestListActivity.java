@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
-public class TestListActivity extends AppCompatActivity {
+public class TestListActivity extends BaseActivity {
 
     public static final String EXTRA_CATEGORY = "extra_category";
     public static final String CAT_FULLTEST = "TOEIC Listening & Reading Fulltest";
@@ -129,7 +129,7 @@ public class TestListActivity extends AppCompatActivity {
                         displayName += " " + test.getLoaiKiemTra();
                     }
                     tvListTitle.setText(displayName);
-                    tvTimeValue.setText(test.getThoiGianLamBai() + " phút  |  ");
+                    tvTimeValue.setText(test.getThoiGianLamBai() + getString(R.string.auto_minute) + "  |  ");
                     tvQuestionValue.setText(String.valueOf(test.getTongSoCau()));
 
                     if (test.isLocked() && !isUserPremium) {
@@ -137,8 +137,8 @@ public class TestListActivity extends AppCompatActivity {
                         btnStart.setBackgroundResource(R.drawable.bg_test_btn_disabled);
                         int grayColor = Color.parseColor("#9E9E9E");
                         tvListTitle.setTextColor(grayColor);
-                        itemView.setOnClickListener(v -> Toast.makeText(TestListActivity.this, "Vui lòng nâng cấp Premium", Toast.LENGTH_SHORT).show());
-                        btnStart.setOnClickListener(v -> Toast.makeText(TestListActivity.this, "Vui lòng nâng cấp Premium", Toast.LENGTH_SHORT).show());
+                        itemView.setOnClickListener(v -> Toast.makeText(TestListActivity.this, getString(R.string.upgrade_required), Toast.LENGTH_SHORT).show());
+                        btnStart.setOnClickListener(v -> Toast.makeText(TestListActivity.this, getString(R.string.upgrade_required), Toast.LENGTH_SHORT).show());
                     } else {
                         ivListLock.setVisibility(View.GONE);
                         String finalTitle = test.getTenBKT();
@@ -190,7 +190,7 @@ public class TestListActivity extends AppCompatActivity {
             ImageView ivListLock = itemView.findViewById(R.id.ivListLock);
 
             tvListTitle.setText("Test " + currentId + nameSuffix);
-            tvTimeValue.setText(time + " phút  |  ");
+            tvTimeValue.setText(time + getString(R.string.auto_minute) + "  |  ");
             tvQuestionValue.setText(String.valueOf(questions));
 
             if (isLocked && !isUserPremium) {
@@ -207,8 +207,8 @@ public class TestListActivity extends AppCompatActivity {
             final int fQuestions = questions;
             
             if (isLocked && !isUserPremium) {
-                itemView.setOnClickListener(v -> Toast.makeText(TestListActivity.this, "Vui lòng nâng cấp Premium", Toast.LENGTH_SHORT).show());
-                btnStart.setOnClickListener(v -> Toast.makeText(TestListActivity.this, "Vui lòng nâng cấp Premium", Toast.LENGTH_SHORT).show());
+                itemView.setOnClickListener(v -> Toast.makeText(TestListActivity.this, getString(R.string.upgrade_required), Toast.LENGTH_SHORT).show());
+                btnStart.setOnClickListener(v -> Toast.makeText(TestListActivity.this, getString(R.string.upgrade_required), Toast.LENGTH_SHORT).show());
             } else {
                 itemView.setOnClickListener(v -> openTestDetail(title, fTime, fQuestions));
                 btnStart.setOnClickListener(v -> openTestDetail(title, fTime, fQuestions));

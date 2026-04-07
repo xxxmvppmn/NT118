@@ -28,7 +28,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cài đặt"
+            android:text="@string/auto_c_i_t"
             android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -75,7 +75,7 @@
                         android:layout_width="56dp"
                         android:layout_height="56dp"
                         android:background="@drawable/bg_circle_purple"
-                        android:text="M"
+                        android:text="@string/auto_m"
                         android:textColor="@color/white"
                         android:textSize="28sp"
                         android:textStyle="bold"
@@ -91,7 +91,7 @@
                             android:id="@+id/tvUserName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Tên của bạn"
+                            android:text="@string/auto_t_n_c_a_b_n"
                             android:textColor="#2D3142"
                             android:textSize="18sp"
                             android:textStyle="bold"/>
@@ -99,7 +99,7 @@
                             android:id="@+id/tvPremiumStatus"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Thành viên miễn phí"
+                            android:text="@string/auto_th_nh_vi_n_mi_n_ph"
                             android:textColor="#888888"
                             android:textSize="13sp"
                             android:layout_marginTop="2dp"/>
@@ -109,7 +109,7 @@
                         android:id="@+id/tvLogout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Đăng xuất"
+                        android:text="@string/auto_ng_xu_t"
                         android:textColor="@color/orange_main"
                         android:textSize="14sp"
                         android:textStyle="bold"
@@ -122,7 +122,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tài khoản"
+                android:text="@string/auto_t_i_kho_n"
                 android:textColor="#2D3142"
                 android:textStyle="bold"
                 android:textSize="16sp"
@@ -146,7 +146,7 @@
                     <!-- Chỉnh sửa hồ sơ -->
                     <LinearLayout android:id="@+id/llEditProfile" style="@style/SettingItemStyle">
                         <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_edit" app:tint="@color/purple_main"/>
-                        <TextView style="@style/SettingTextStyle" android:text="Chỉnh sửa hồ sơ" layout_weight="1" />
+                        <TextView style="@style/SettingTextStyle" android:text="@string/auto_ch_nh_s_a_h_s" layout_weight="1" />
                         <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron" android:rotation="180" app:tint="#CCCCCC" android:layout_gravity="center_vertical"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -157,7 +157,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ứng dụng"
+                android:text="@string/auto_ng_d_ng"
                 android:textColor="#2D3142"
                 android:textStyle="bold"
                 android:textSize="16sp"
@@ -181,8 +181,8 @@
                     <!-- Ngôn ngữ -->
                     <LinearLayout android:id="@+id/llLanguage" style="@style/SettingItemStyle">
                         <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_sort_by_size" app:tint="@color/orange_main"/>
-                        <TextView style="@style/SettingTextStyle" android:text="Ngôn ngữ ứng dụng" android:layout_weight="1" />
-                        <TextView android:id="@+id/tvSelectedLanguage" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tiếng Việt" android:textColor="@color/orange_main" android:textSize="14sp" android:layout_marginEnd="8dp" android:layout_gravity="center_vertical"/>
+                        <TextView style="@style/SettingTextStyle" android:text="@string/auto_ng_n_ng_ng_d_ng" android:layout_weight="1" />
+                        <TextView android:id="@+id/tvSelectedLanguage" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/auto_ti_ng_vi_t" android:textColor="@color/orange_main" android:textSize="14sp" android:layout_marginEnd="8dp" android:layout_gravity="center_vertical"/>
                         <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron" android:rotation="180" app:tint="#CCCCCC" android:layout_gravity="center_vertical"/>
                     </LinearLayout>
                     <View style="@style/SettingDividerStyle"/>
@@ -190,7 +190,7 @@
                     <!-- Hiển thị -->
                     <LinearLayout android:id="@+id/llDisplay" style="@style/SettingItemStyle">
                         <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_view" app:tint="#2196F3"/>
-                        <TextView style="@style/SettingTextStyle" android:text="Hiển thị" android:layout_weight="1"/>
+                        <TextView style="@style/SettingTextStyle" android:text="@string/auto_hi_n_th" android:layout_weight="1"/>
                         <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron" android:rotation="180" app:tint="#CCCCCC" android:layout_gravity="center_vertical"/>
                     </LinearLayout>
                     <View style="@style/SettingDividerStyle"/>
@@ -198,7 +198,7 @@
                     <!-- Quản lý tải xuống -->
                     <LinearLayout android:id="@+id/llDownloads" style="@style/SettingItemStyle">
                         <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_save" app:tint="#4CAF50"/>
-                        <TextView style="@style/SettingTextStyle" android:text="Quản lý tải xuống" android:layout_weight="1"/>
+                        <TextView style="@style/SettingTextStyle" android:text="@string/auto_qu_n_l_t_i_xu_ng" android:layout_weight="1"/>
                         <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron" android:rotation="180" app:tint="#CCCCCC" android:layout_gravity="center_vertical"/>
                     </LinearLayout>
                     <View style="@style/SettingDividerStyle"/>
@@ -206,7 +206,7 @@
                     <!-- Nhắc nhở -->
                     <LinearLayout android:id="@+id/llReminder" style="@style/SettingItemStyle">
                         <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_recent_history" app:tint="#FF9800"/>
-                        <TextView style="@style/SettingTextStyle" android:text="Nhắc nhở học tập" android:layout_weight="1"/>
+                        <TextView style="@style/SettingTextStyle" android:text="@string/auto_nh_c_nh_h_c_t_p" android:layout_weight="1"/>
                         <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron" android:rotation="180" app:tint="#CCCCCC" android:layout_gravity="center_vertical"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -217,7 +217,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hỗ trợ &amp; Kết nối"
+                android:text="@string/auto_h_tr_amp_k_t_n_i"
                 android:textColor="#2D3142"
                 android:textStyle="bold"
                 android:textSize="16sp"
@@ -240,7 +240,7 @@
                     <!-- Cộng đồng -->
                     <LinearLayout android:id="@+id/llCommunity" style="@style/SettingItemStyle">
                         <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_share" app:tint="#00BCD4"/>
-                        <TextView style="@style/SettingTextStyle" android:text="Tham gia cộng đồng WAVI" android:layout_weight="1"/>
+                        <TextView style="@style/SettingTextStyle" android:text="@string/auto_tham_gia_c_ng_ng_wavi" android:layout_weight="1"/>
                         <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron" android:rotation="180" app:tint="#CCCCCC" android:layout_gravity="center_vertical"/>
                     </LinearLayout>
                     <View style="@style/SettingDividerStyle"/>
@@ -248,7 +248,7 @@
                     <!-- Chia sẻ -->
                     <LinearLayout android:id="@+id/llShare" style="@style/SettingItemStyle">
                         <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_share" app:tint="#3F51B5"/>
-                        <TextView style="@style/SettingTextStyle" android:text="Chia sẻ ứng dụng" android:layout_weight="1"/>
+                        <TextView style="@style/SettingTextStyle" android:text="@string/auto_chia_s_ng_d_ng" android:layout_weight="1"/>
                         <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron" android:rotation="180" app:tint="#CCCCCC" android:layout_gravity="center_vertical"/>
                     </LinearLayout>
                     <View style="@style/SettingDividerStyle"/>
@@ -256,7 +256,7 @@
                     <!-- Phản hồi -->
                     <LinearLayout android:id="@+id/llFeedback" style="@style/SettingItemStyle">
                         <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_send" app:tint="#E91E63"/>
-                        <TextView style="@style/SettingTextStyle" android:text="Phản hồi &amp; hỗ trợ" android:layout_weight="1"/>
+                        <TextView style="@style/SettingTextStyle" android:text="@string/auto_ph_n_h_i_amp_h_tr" android:layout_weight="1"/>
                         <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron" android:rotation="180" app:tint="#CCCCCC" android:layout_gravity="center_vertical"/>
                     </LinearLayout>
                 </LinearLayout>

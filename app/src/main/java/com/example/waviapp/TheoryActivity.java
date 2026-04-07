@@ -19,7 +19,7 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TheoryActivity extends AppCompatActivity {
+public class TheoryActivity extends BaseActivity {
 
     private ActivityTheoryBinding binding;
     private DatabaseHelper dbHelper;
@@ -71,7 +71,13 @@ public class TheoryActivity extends AppCompatActivity {
 
     private void setupSpinners() {
         // --- DROPDOWN CHỌN BÀI (spLesson) ---
-        String[] listLessons = {"Bài 1", "Bài 2", "Bài 3", "Bài 4", "Bài 5"};
+        String[] listLessons = {
+            getString(R.string.theory_lesson_1),
+            getString(R.string.theory_lesson_2),
+            getString(R.string.theory_lesson_3),
+            getString(R.string.theory_lesson_4),
+            getString(R.string.theory_lesson_5)
+        };
         ArrayAdapter<String> adapterLesson = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, listLessons);
         adapterLesson.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -94,7 +100,11 @@ public class TheoryActivity extends AppCompatActivity {
         });
 
         // --- DROPDOWN CHỌN TRÌNH ĐỘ (spLevel) ---
-        String[] listLevels = {"Cơ bản (0-250)", "Trung cấp (250-500)", "Nâng cao (500+)"};
+        String[] listLevels = {
+            getString(R.string.theory_level_basic),
+            getString(R.string.theory_level_mid),
+            getString(R.string.theory_level_advanced)
+        };
         ArrayAdapter<String> adapterLevel = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, listLevels);
         adapterLevel.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -152,10 +162,10 @@ public class TheoryActivity extends AppCompatActivity {
     // Fallback data khi Firebase chưa có dữ liệu
     private void setupDefaultVocabulary() {
         List<TuVung> demoList = new ArrayList<>();
-        demoList.add(new TuVung("tv1", "bai1", "New", "Mới (Adj)", "Adj", "/njuː/"));
-        demoList.add(new TuVung("tv1", "bai1", "Company", "Công ty (N)", "N", "/ˈkʌmpəni/"));
-        demoList.add(new TuVung("tv1", "bai1", "Services", "Dịch vụ (N)", "N", "/ˈsɜːrvɪsɪz/"));
-        demoList.add(new TuVung("tv1", "bai1", "Please", "Vui lòng (V)", "V", "/pliːz/"));
+        demoList.add(new TuVung("tv1", "bai1", "New", getString(R.string.vocab_new), "Adj", "/njuː/"));
+        demoList.add(new TuVung("tv1", "bai1", "Company", getString(R.string.vocab_company), "N", "/ˈkʌmpəni/"));
+        demoList.add(new TuVung("tv1", "bai1", "Services", getString(R.string.vocab_services), "N", "/ˈsɜːrvɪsɪz/"));
+        demoList.add(new TuVung("tv1", "bai1", "Please", getString(R.string.vocab_please), "V", "/pliːz/"));
 
         VocabularyAdapter adapter = new VocabularyAdapter(demoList);
         binding.rvVocabulary.setLayoutManager(new LinearLayoutManager(this));
@@ -164,12 +174,12 @@ public class TheoryActivity extends AppCompatActivity {
 
     private void setupDefaultGrammar() {
         List<NguPhap> grammarList = new ArrayList<>();
-        grammarList.add(new NguPhap("np1", "bai1", "Cấu trúc chung của một câu trong tiếng anh", "", "", 1));
-        grammarList.add(new NguPhap("np1", "bai1", "Subject (chủ ngữ)", "", "", 2));
-        grammarList.add(new NguPhap("np1", "bai1", "Verb (động từ)", "", "", 3));
-        grammarList.add(new NguPhap("np1", "bai1", "Complement (vị ngữ)", "", "", 4));
-        grammarList.add(new NguPhap("np1", "bai1", "Modifier (trạng từ)", "", "", 5));
-        grammarList.add(new NguPhap("np1", "bai1", "Danh từ đếm được và không đếm được", "", "", 6));
+        grammarList.add(new NguPhap("np1", "bai1", getString(R.string.grammar_rule_1), "", "", 1));
+        grammarList.add(new NguPhap("np1", "bai1", getString(R.string.grammar_rule_2), "", "", 2));
+        grammarList.add(new NguPhap("np1", "bai1", getString(R.string.grammar_rule_3), "", "", 3));
+        grammarList.add(new NguPhap("np1", "bai1", getString(R.string.grammar_rule_4), "", "", 4));
+        grammarList.add(new NguPhap("np1", "bai1", getString(R.string.grammar_rule_5), "", "", 5));
+        grammarList.add(new NguPhap("np1", "bai1", getString(R.string.grammar_rule_6), "", "", 6));
 
         GrammarAdapter adapter = new GrammarAdapter(grammarList);
         binding.rvVocabulary.setLayoutManager(new LinearLayoutManager(this));

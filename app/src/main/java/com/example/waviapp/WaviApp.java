@@ -5,15 +5,15 @@ import android.app.Application;
 import android.os.Bundle;
 
 import com.example.waviapp.firebase.SeedDataHelper;
-import com.google.firebase.database.FirebaseDatabase;
+import com.example.waviapp.utils.LanguageManager;
 
 public class WaviApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
 
-        // Bật Firebase offline persistence (cho phép dùng app khi không có mạng)
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        // Apply saved language preference before anything else
+        LanguageManager.applyToApp(this);
 
         // Đổ dữ liệu mẫu nếu chưa có
         SeedDataHelper.seedAllIfNeeded();

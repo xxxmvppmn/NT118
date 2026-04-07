@@ -17,7 +17,7 @@
             android:id="@+id/tvPartTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Phần 1 - Đọc văn bản"
+            android:text="@string/auto_ph_n_1_c_v_n_b_n"
             android:textColor="@color/text_dark_gray"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -27,7 +27,7 @@
             android:id="@+id/tvPartStat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Số câu đã làm: 0"
+            android:text="@string/auto_s_c_u_l_m_0"
             android:textColor="#555555"
             android:textSize="14sp"
             android:layout_below="@id/tvPartTitle"
@@ -45,7 +45,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hoàn thành"
+                android:text="@string/auto_ho_n_th_nh_4"
                 android:textColor="#555555"
                 android:textSize="14sp"
                 android:layout_marginEnd="12dp"/>
