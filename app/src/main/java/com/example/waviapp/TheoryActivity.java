@@ -1,11 +1,12 @@
 package com.example.waviapp;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.waviapp.adapters.VocabularyAdapter;
@@ -15,6 +16,8 @@ import com.example.waviapp.firebase.DatabaseHelper;
 import com.example.waviapp.models.NguPhap;
 import com.example.waviapp.models.TuVung;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,43 +27,58 @@ public class TheoryActivity extends BaseActivity {
     private ActivityTheoryBinding binding;
     private DatabaseHelper dbHelper;
 
-    // Map spinner index → lesson key trên Firebase
-    private final String[] lessonKeys = {"bai_1", "bai_2", "bai_3", "bai_4", "bai_5"};
+    // Danh sách mã bài (maCD) dùng chung cho các Level
+    private final String[] lessonKeys = {
+            "bai_1", "bai_2", "bai_3", "bai_4", "bai_5",
+            "bai_6", "bai_7", "bai_8", "bai_9", "bai_10",
+            "bai_11", "bai_12", "bai_13", "bai_14", "bai_15",
+            "bai_16", "bai_17", "bai_18", "bai_19", "bai_20"
+    };
+
     private int currentLessonIndex = 0;
     private boolean isVocabularyTab = true;
+    private List<TuVung> wordList = new ArrayList<>();
+    private VocabularyAdapter vocabularyAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Sử dụng ViewBinding khớp với activity_theory.xml
         binding = ActivityTheoryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         dbHelper = new DatabaseHelper();
 
-        // 1. Xử lý nút quay lại
+        // 1. Nút quay lại
         if (binding.ivBack != null) {
             binding.ivBack.setOnClickListener(v -> finish());
         }
 
-        // 2. Thiết lập Spinner (Dropdown)
+        // 2. Thiết lập RecyclerView hiển thị từ vựng
+        vocabularyAdapter = new VocabularyAdapter(wordList);
+        binding.rvVocabulary.setLayoutManager(new LinearLayoutManager(this));
+        binding.rvVocabulary.setAdapter(vocabularyAdapter);
+
+        // 3. Khởi tạo các Spinner (Level & Lesson)
         setupSpinners();
 
-        // 3. Mặc định khi vào màn hình sẽ hiện Từ vựng từ Firebase
-        loadVocabularyFromFirebase(lessonKeys[0]);
+        // 4. Mặc định load Bài 1 - Basic khi vừa vào
+        loadVocabularyFromFirebase("bai_1", "Basic");
 
-        // 4. Xử lý sự kiện khi chọn Tab (Từ vựng / Ngữ pháp)
+        // 5. Xử lý Tab chuyển đổi Từ vựng / Ngữ pháp
         binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                String selectedLevel = binding.spLevel.getSelectedItem().toString();
                 if (tab.getPosition() == 0) {
                     isVocabularyTab = true;
-                    loadVocabularyFromFirebase(lessonKeys[currentLessonIndex]);
                     binding.spLevel.setVisibility(View.VISIBLE);
+                    loadVocabularyFromFirebase(lessonKeys[currentLessonIndex], selectedLevel);
                 } else {
                     isVocabularyTab = false;
-                    loadGrammarFromFirebase(lessonKeys[currentLessonIndex]);
                     binding.spLevel.setVisibility(View.GONE);
+                    loadGrammarFromFirebase(lessonKeys[currentLessonIndex]);
                 }
             }
 
@@ -70,75 +88,83 @@ public class TheoryActivity extends BaseActivity {
     }
 
     private void setupSpinners() {
-        // --- DROPDOWN CHỌN BÀI (spLesson) ---
-        String[] listLessons = {
-            getString(R.string.theory_lesson_1),
-            getString(R.string.theory_lesson_2),
-            getString(R.string.theory_lesson_3),
-            getString(R.string.theory_lesson_4),
-            getString(R.string.theory_lesson_5)
-        };
+        // --- SPINNER CHỌN LEVEL ---
+        String[] levels = {"Basic", "Intermediate", "Advanced"};
+        ArrayAdapter<String> adapterLevel = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, levels);
+        adapterLevel.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.spLevel.setAdapter(adapterLevel);
+
+        binding.spLevel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // Khi đổi Level -> Cập nhật lại số lượng Bài trong Spinner còn lại
+                updateLessonSpinner(levels[position]);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+    }
+
+    private void updateLessonSpinner(String level) {
+        List<String> listLessons = new ArrayList<>();
+        // Quy định số bài cho từng Level: Basic (20), Các level khác (15)
+        int maxLessons = level.equals("Basic") ? 20 : 15;
+
+        for (int i = 1; i <= maxLessons; i++) {
+            listLessons.add("Bài " + i);
+        }
+
         ArrayAdapter<String> adapterLesson = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, listLessons);
         adapterLesson.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.spLesson.setAdapter(adapterLesson);
 
-        // Lắng nghe khi thay đổi bài
-        binding.spLesson.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener() {
+        binding.spLesson.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(android.widget.AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 currentLessonIndex = position;
+                String selectedLevel = binding.spLevel.getSelectedItem().toString();
+                String maCD = lessonKeys[position];
+
                 if (isVocabularyTab) {
-                    loadVocabularyFromFirebase(lessonKeys[position]);
+                    loadVocabularyFromFirebase(maCD, selectedLevel);
                 } else {
-                    loadGrammarFromFirebase(lessonKeys[position]);
+                    loadGrammarFromFirebase(maCD);
                 }
             }
-
             @Override
-            public void onNothingSelected(android.widget.AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
-
-        // --- DROPDOWN CHỌN TRÌNH ĐỘ (spLevel) ---
-        String[] listLevels = {
-            getString(R.string.theory_level_basic),
-            getString(R.string.theory_level_mid),
-            getString(R.string.theory_level_advanced)
-        };
-        ArrayAdapter<String> adapterLevel = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, listLevels);
-        adapterLevel.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.spLevel.setAdapter(adapterLevel);
     }
 
-    /**
-     * Load từ vựng từ Firebase
-     */
-    private void loadVocabularyFromFirebase(String lessonKey) {
-        dbHelper.getVocabulary(lessonKey, new DatabaseHelper.VocabularyCallback() {
-            @Override
-            public void onSuccess(List<TuVung> words) {
-                if (words.isEmpty()) {
-                    // Nếu Firebase chưa có dữ liệu, dùng dữ liệu mặc định
+    private void loadVocabularyFromFirebase(String lessonKey, String level) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        // Lọc theo cả mã bài (maCD) và trình độ (level)
+        db.collection("TuVung")
+                .whereEqualTo("maCD", lessonKey)
+                .whereEqualTo("level", level)
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    wordList.clear();
+                    for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
+                        TuVung word = document.toObject(TuVung.class);
+                        wordList.add(word);
+                    }
+
+                    if (wordList.isEmpty()) {
+                        setupDefaultVocabulary();
+                    } else {
+                        vocabularyAdapter.notifyDataSetChanged();
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("THEORY_ERROR", "Lỗi: " + e.getMessage());
                     setupDefaultVocabulary();
-                    return;
-                }
-                VocabularyAdapter adapter = new VocabularyAdapter(words);
-                binding.rvVocabulary.setLayoutManager(new LinearLayoutManager(TheoryActivity.this));
-                binding.rvVocabulary.setAdapter(adapter);
-            }
-
-            @Override
-            public void onFailure(String error) {
-                // Fallback: hiện dữ liệu mặc định
-                setupDefaultVocabulary();
-            }
-        });
+                });
     }
 
-    /**
-     * Load ngữ pháp từ Firebase
-     */
     private void loadGrammarFromFirebase(String lessonKey) {
         dbHelper.getGrammar(lessonKey, new DatabaseHelper.GrammarCallback() {
             @Override
@@ -147,9 +173,9 @@ public class TheoryActivity extends BaseActivity {
                     setupDefaultGrammar();
                     return;
                 }
-                GrammarAdapter adapter = new GrammarAdapter(grammarList);
+                GrammarAdapter gAdapter = new GrammarAdapter(grammarList);
                 binding.rvVocabulary.setLayoutManager(new LinearLayoutManager(TheoryActivity.this));
-                binding.rvVocabulary.setAdapter(adapter);
+                binding.rvVocabulary.setAdapter(gAdapter);
             }
 
             @Override
@@ -159,30 +185,16 @@ public class TheoryActivity extends BaseActivity {
         });
     }
 
-    // Fallback data khi Firebase chưa có dữ liệu
     private void setupDefaultVocabulary() {
-        List<TuVung> demoList = new ArrayList<>();
-        demoList.add(new TuVung("tv1", "bai1", "New", getString(R.string.vocab_new), "Adj", "/njuː/"));
-        demoList.add(new TuVung("tv1", "bai1", "Company", getString(R.string.vocab_company), "N", "/ˈkʌmpəni/"));
-        demoList.add(new TuVung("tv1", "bai1", "Services", getString(R.string.vocab_services), "N", "/ˈsɜːrvɪsɪz/"));
-        demoList.add(new TuVung("tv1", "bai1", "Please", getString(R.string.vocab_please), "V", "/pliːz/"));
-
-        VocabularyAdapter adapter = new VocabularyAdapter(demoList);
-        binding.rvVocabulary.setLayoutManager(new LinearLayoutManager(this));
-        binding.rvVocabulary.setAdapter(adapter);
+        wordList.clear();
+        wordList.add(new TuVung("tv_default", "bai_1", "Example", "Ví dụ", "Noun", "/ɪɡˈzæmpl/"));
+        vocabularyAdapter.notifyDataSetChanged();
     }
 
     private void setupDefaultGrammar() {
         List<NguPhap> grammarList = new ArrayList<>();
-        grammarList.add(new NguPhap("np1", "bai1", getString(R.string.grammar_rule_1), "", "", 1));
-        grammarList.add(new NguPhap("np1", "bai1", getString(R.string.grammar_rule_2), "", "", 2));
-        grammarList.add(new NguPhap("np1", "bai1", getString(R.string.grammar_rule_3), "", "", 3));
-        grammarList.add(new NguPhap("np1", "bai1", getString(R.string.grammar_rule_4), "", "", 4));
-        grammarList.add(new NguPhap("np1", "bai1", getString(R.string.grammar_rule_5), "", "", 5));
-        grammarList.add(new NguPhap("np1", "bai1", getString(R.string.grammar_rule_6), "", "", 6));
-
-        GrammarAdapter adapter = new GrammarAdapter(grammarList);
-        binding.rvVocabulary.setLayoutManager(new LinearLayoutManager(this));
-        binding.rvVocabulary.setAdapter(adapter);
+        grammarList.add(new NguPhap("np_default", "bai_1", "Đang cập nhật nội dung ngữ pháp...", "", "", 1));
+        GrammarAdapter gAdapter = new GrammarAdapter(grammarList);
+        binding.rvVocabulary.setAdapter(gAdapter);
     }
 }

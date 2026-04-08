@@ -118,7 +118,6 @@
             android:popupBackground="@color/white"
             android:spinnerMode="dropdown"/>
     </LinearLayout>
-
     <!-- List -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvVocabulary"
