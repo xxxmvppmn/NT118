@@ -76,11 +76,11 @@ public class TheoryActivity extends BaseActivity {
                     binding.spLevel.setVisibility(View.VISIBLE);
                     binding.rvVocabulary.setLayoutManager(new LinearLayoutManager(TheoryActivity.this));
                     binding.rvVocabulary.setAdapter(vocabularyAdapter);
-                    loadVocabularyFromFirebase(lessonKeys[currentLessonIndex], selectedLevel);
+                    updateLessonSpinner(selectedLevel);
                 } else {
                     isVocabularyTab = false;
                     binding.spLevel.setVisibility(View.GONE);
-                    loadGrammarFromFirebase(lessonKeys[currentLessonIndex]);
+                    updateLessonSpinner(selectedLevel);
                 }
             }
 
@@ -110,8 +110,11 @@ public class TheoryActivity extends BaseActivity {
 
     private void updateLessonSpinner(String level) {
         List<String> listLessons = new ArrayList<>();
-        // Quy định số bài cho từng Level: Basic (20), Các level khác (15)
-        int maxLessons = level.equals("Basic") ? 20 : 15;
+        int maxLessons = 10; // Ngữ pháp chỉ có 10 bài
+
+        if (isVocabularyTab) {
+            maxLessons = level.equals("Basic") ? 20 : 15;
+        }
 
         for (int i = 1; i <= maxLessons; i++) {
             listLessons.add("Bài " + i);
@@ -195,7 +198,6 @@ public class TheoryActivity extends BaseActivity {
 
     private void setupDefaultGrammar() {
         List<NguPhap> grammarList = new ArrayList<>();
-        grammarList.add(new NguPhap("np_default", "bai_1", "Đang cập nhật nội dung ngữ pháp...", "", "", 1));
         GrammarAdapter gAdapter = new GrammarAdapter(grammarList);
         binding.rvVocabulary.setAdapter(gAdapter);
     }

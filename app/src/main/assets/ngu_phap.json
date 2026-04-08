@@ -1,0 +1,170 @@
+[
+  {
+    "maNP": "np01",
+    "maCD": "bai_1",
+    "tenBai": "Cấu trúc chung của một câu trong tiếng Anh",
+    "noiDungLyThuyet": "Một câu tiếng Anh cơ bản thường bao gồm các thành phần: Chủ ngữ (Subject), Động từ (Verb), và Tân ngữ (Object).\n\nS + V + O\nTrong đó:\n- S (Chủ ngữ): Đại từ (I, you, we...), danh từ (dog, cat...) hay cụm danh từ làm chủ thể của hành động.\n- V (Động từ): Từ chỉ hành động hoặc trạng thái.\n- O (Tân ngữ): Đối tượng chịu tác động của hành động.",
+    "viDu": "- I (S) love (V) you (O). (Anh yêu em)\n- The cat (S) eats (V) fish (O). (Con mèo ăn cá)",
+    "order": 1
+  },
+  {
+    "maNP": "np02",
+    "maCD": "bai_1",
+    "tenBai": "Đại Từ Nhân Xưng (Personal Pronouns)",
+    "noiDungLyThuyet": "Đại từ nhân xưng là những từ dùng để thay thế cho danh từ chỉ người hoặc sự vật, sự việc, tránh lặp lại danh từ đó trong câu.\n\nChia theo ngôi:\n- Ngôi thứ 1 (người nói): I (Tôi), We (Chúng ta)\n- Ngôi thứ 2 (người nghe): You (Bạn/Các bạn)\n- Ngôi thứ 3 (người được nhắc đến): He, She, It (Anh ấy, Cô ấy, Nó) / They (Họ)\n\nChức năng:\n- Chủ ngữ (Subject): Đứng đầu câu làm chủ ngữ.\n- Tân ngữ (Object): me, you, us, them, him, her, it. Đứng sau động từ hoặc giới từ.",
+    "viDu": "- He gave me a book. (Anh ấy đã đưa cho tôi một cuốn sách)\n- We love them. (Chúng tôi yêu quý họ)",
+    "order": 2
+  },
+  {
+    "maNP": "np03",
+    "maCD": "bai_1",
+    "tenBai": "Thì Hiện Tại Đơn (Present Simple)",
+    "noiDungLyThuyet": "Thì hiện tại đơn diễn tả một thói quen, một hành động lặp đi lặp lại ở hiện tại hoặc một chân lý, sự thật hiển nhiên.\n\nCấu trúc:\nKhẳng định (+): S + V(s/es) + O\nPhủ định (-): S + do/does + not + V(nguyên mẫu) + O\nNghi vấn (?): Do/Does + S + V(nguyên mẫu) + O?\n\nDấu hiệu nhận biết:\nalways, usually, often, sometimes, never, every day/week/month...",
+    "viDu": "- I go to school every day. (Tôi đi học mỗi ngày)\n- The sun rises in the East. (Mặt trời mọc ở hướng Đông)\n- She does not like apples. (Cô ấy không thích táo)",
+    "order": 3
+  },
+  {
+    "maNP": "np04",
+    "maCD": "bai_2",
+    "tenBai": "Tính Từ Sở Hữu (Possessive Adjectives)",
+    "noiDungLyThuyet": "Tính từ sở hữu đứng trước danh từ để chỉ chủ sở hữu của danh từ đó. Tính từ sở hữu không bao giờ đứng độc lập.\n\nCác tính từ sở hữu tương ứng với đại từ nhân xưng:\nI -> my (của tôi)\nYou -> your (của bạn)\nWe -> our (của chúng ta)\nThey -> their (của họ)\nHe -> his (của anh ấy)\nShe -> her (của cô ấy)\nIt -> its (của nó)\n\nCấu trúc: Tính từ sở hữu + Danh từ",
+    "viDu": "- This is my car. (Đây là xe ô tô của tôi)\n- Their house is very big. (Nhà của họ rất to)\n- Her cat is sleeping. (Con mèo của cô ấy đang ngủ)",
+    "order": 1
+  },
+  {
+    "maNP": "np05",
+    "maCD": "bai_2",
+    "tenBai": "Thì Hiện Tại Tiếp Diễn (Present Continuous)",
+    "noiDungLyThuyet": "Thì hiện tại tiếp diễn tả hành động đang xảy ra tại thời điểm nói hoặc lặp đi lặp lại gây bực mình (dùng với always).\n\nCấu trúc:\n(+) S + am/is/are + V-ing\n(-) S + am/is/are + not + V-ing\n(?) Am/Is/Are + S + V-ing?\n\nDấu hiệu nhận biết:\nnow, right now, at the moment, at present, Look!, Listen!...",
+    "viDu": "- They are playing soccer now. (Họ đang chơi bóng đá bây giờ)\n- Is she studying English at the moment? (Cô ấy hiện đang học tiếng Anh phải không?)\n- Look! The train is coming. (Nhìn kìa! Tàu đang tới)",
+    "order": 2
+  },
+  {
+    "maNP": "np06",
+    "maCD": "bai_3",
+    "tenBai": "Thì Quá Khứ Đơn (Past Simple)",
+    "noiDungLyThuyet": "Thì quá khứ đơn diễn tả hành động, sự kiện đã xảy ra và chấm dứt hoàn toàn trong quá khứ.\n\nCấu trúc với động từ thường:\n(+) S + V2/V-ed\n(-) S + did not (didn't) + V(nguyên mẫu)\n(?) Did + S + V(nguyên mẫu)?\n\nCấu trúc với động từ to be:\n(+) S + was/were\n(-) S + was/were + not\n(?) Was/Were + S?\n\nDấu hiệu nhận biết:\nyesterday, last (week, month, year...), in + năm trong quá khứ, ago.",
+    "viDu": "- I went to the cinema yesterday. (Tôi đã đi xem phim hôm qua)\n- They didn't watch TV last night. (Họ đã không xem TV tối qua)\n- She was very happy yesterday. (Hôm qua cô ấy đã rất vui)",
+    "order": 1
+  },
+  {
+    "maNP": "np07",
+    "maCD": "bai_3",
+    "tenBai": "Đại Từ Sở Hữu (Possessive Pronouns)",
+    "noiDungLyThuyet": "Đại từ sở hữu được dùng để thay thế cho một cụm 'Tính từ sở hữu + Danh từ' đã được nhắc đến trước đó để tránh lặp từ.\n\nCác đại từ sở hữu:\nmine (của tôi)\nyours (của bạn)\nours (của chúng ta)\ntheirs (của họ)\nhis (của anh ấy)\nhers (của cô ấy)\n\nCấu trúc: Đại từ sở hữu có thể đóng vai trò làm Chủ ngữ, Tân ngữ hoặc đứng sau giới từ.",
+    "viDu": "- This book is my book. -> This book is mine. (Cuốn sách này là của tôi)\n- Your phone is new, but hers is old. (Điện thoại của bạn thì mới, nhưng của cô ấy thì cũ)",
+    "order": 2
+  },
+  {
+    "maNP": "np08",
+    "maCD": "bai_4",
+    "tenBai": "Thì Tương Lai Đơn (Future Simple)",
+    "noiDungLyThuyet": "Thì tương lai đơn diễn tả một quyết định nảy sinh ngay tại thời điểm nói hoặc một dự đoán không có căn cứ chắc chắn.\n\nCấu trúc:\n(+) S + will + V(nguyên mẫu)\n(-) S + will not (won't) + V(nguyên mẫu)\n(?) Will + S + V(nguyên mẫu)?\n\nDấu hiệu nhận biết:\ntomorrow, next (week, month...), soon, think, hope, believe...",
+    "viDu": "- I think it will rain tomorrow. (Tôi nghĩ ngày mai trời sẽ mưa)\n- I will help you with your homework. (Tôi sẽ giúp bạn làm bài tập)\n- Will you marry me? (Em sẽ lấy anh chứ?)",
+    "order": 1
+  },
+  {
+    "maNP": "np09",
+    "maCD": "bai_4",
+    "tenBai": "Tương Lai Gần (Be Going To)",
+    "noiDungLyThuyet": "Thì tương lai gần diễn tả một kế hoạch, dự định đã được lên từ trước thời điểm nói, hoặc một dự đoán có căn cứ rõ ràng ở hiện tại.\n\nCấu trúc:\n(+) S + am/is/are + going to + V(nguyên mẫu)\n(-) S + am/is/are + not + going to + V(nguyên mẫu)\n(?) Am/Is/Are + S + going to + V(nguyên mẫu)?",
+    "viDu": "- Look at those dark clouds! It is going to rain. (Nhìn những đám mây đen kia kìa! Trời sắp mưa rồi - dự đoán có căn cứ)\n- I am going to buy a new house next year. (Tôi dự định sẽ mua nhà mới vào năm tới - kế hoạch đã định sẵn)",
+    "order": 2
+  },
+  {
+    "maNP": "np10",
+    "maCD": "bai_5",
+    "tenBai": "Câu Điều Kiện Loại 1 (First Conditional)",
+    "noiDungLyThuyet": "Câu điều kiện loại 1 dùng để diễn tả một điều kiện hoặc một sự việc có khả năng xảy ra ở hiện tại hoặc tương lai.\n\nCấu trúc:\nIf + S + V (hiện tại đơn), S + will + V (nguyên mẫu)\n\nLưu ý: Mệnh đề If có thể đứng đầu hoặc cuối câu. Nếu đứng đầu câu thì phải có dấu phẩy ngăn cách 2 mệnh đề.",
+    "viDu": "- If it rains, I will stay at home. (Nếu trời mưa, tôi sẽ ở nhà)\n- If you study hard, you will pass the exam. (Nếu bạn học hành chăm chỉ, bạn sẽ thi đỗ)\n- We will cancel the trip if the weather is bad. (Chúng tôi sẽ hủy chuyến đi nếu thời tiết xấu)",
+    "order": 1
+  },
+  {
+    "maNP": "np11",
+    "maCD": "bai_5",
+    "tenBai": "Tính từ đuôi -ED và -ING",
+    "noiDungLyThuyet": "Trong tiếng Anh, nhiều tính từ được tạo ra từ động từ bằng cách thêm đuôi -ED hoặc -ING, nhưng mang sắc thái ý nghĩa khác nhau.\n\n1. Tính từ đuôi -ED:\nDiễn tả CẢM XÚC, cảm nhận của một người về một sự vật/sự việc nào đó (Bị tác động).\nVí dụ: interested (cảm thấy thích thú), bored (cảm thấy chán nản).\n\n2. Tính từ đuôi -ING:\nDiễn tả BẢN CHẤT, tính chất của một sự vật/sự việc (Gây ra tác động).\nVí dụ: interesting (thú vị), boring (nhàm chán).",
+    "viDu": "- This film is very boring. I am bored with it. (Bộ phim này rất nhàm chán. Tôi cảm thấy chán nó.)\n- She is an interesting person. (Cô ấy là một người thú vị.)\n- I was surprised to see him. (Tôi đã ngạc nhiên khi gặp anh ấy.)",
+    "order": 2
+  },
+  {
+    "maNP": "np12",
+    "maCD": "bai_6",
+    "tenBai": "Thì Hiện Tại Hoàn Thành (Present Perfect)",
+    "noiDungLyThuyet": "Thì hiện tại hoàn thành dùng để diễn tả hành động bắt đầu ở quá khứ, kéo dài đến hiện tại và có thể tiếp tục trong tương lai, hoặc hành động vừa mới xảy ra, hoặc hành động xảy ra trong quá khứ nhưng kết quả ảnh hưởng đến hiện tại.\n\nCấu trúc:\n(+) S + have/has + V3/V-ed\n(-) S + haven't/hasn't + V3/V-ed\n(?) Have/Has + S + V3/V-ed?\n\nDấu hiệu:\nalready, yet, just, ever, never, since, for, recently...",
+    "viDu": "- I have lived here for 10 years. (Tôi đã sống ở đây được 10 năm)\n- She has just finished her homework. (Cô ấy vừa mới làm xong bài tập)\n- Have you ever been to Paris? (Bạn đã từng đến Paris chưa?)",
+    "order": 1
+  },
+  {
+    "maNP": "np13",
+    "maCD": "bai_6",
+    "tenBai": "Cấu trúc Used To / Be Used To / Get Used To",
+    "noiDungLyThuyet": "Đây là những cấu trúc thường gây nhầm lẫn.\n\n1. Used to + V(nguyên bản): Diễn tả thói quen trong quá khứ, không còn ở hiện tại.\n\n2. Be used to + V-ing / Noun: Quen làm việc gì (ở hiện tại việc này đã trở nên bình thường).\n\n3. Get used to + V-ing / Noun: Dần quen với việc gì (đang trong quá trình thích nghi).",
+    "viDu": "- I used to smoke an hour a day. (Tôi từng hút thuốc một tiếng mỗi ngày - nay đã bỏ)\n- I am used to waking up early. (Tôi quen với việc thức dậy sớm rồi)\n- She is getting used to the new working environment. (Cô ấy đang dần quen với môi trường làm việc mới)",
+    "order": 2
+  },
+  {
+    "maNP": "np14",
+    "maCD": "bai_7",
+    "tenBai": "Câu Bị Động (Passive Voice)",
+    "noiDungLyThuyet": "Câu bị động được dùng khi muốn nhấn mạnh đối tượng chịu tác động của hành động, thay vì người thực hiện hành động.\n\nCấu trúc chung: S + Be + V3/V-ed + (by O)\n\nCách chuyển Chủ động -> Bị động:\n1. Đưa tân ngữ của câu chủ động làm chủ ngữ câu bị động.\n2. Chia động từ To Be cùng thì với động từ chính.\n3. Đổi động từ chính sang dạng Phân từ 2 (V3/V-ed).\n4. Thêm 'by' + chủ ngữ của câu chủ động (làm tân ngữ mới).",
+    "viDu": "Chủ động: They built this house in 1990.\n-> Bị động: This house was built in 1990.\n\nChủ động: She is reading a book.\n-> Bị động: A book is being read (by her).",
+    "order": 1
+  },
+  {
+    "maNP": "np15",
+    "maCD": "bai_7",
+    "tenBai": "Đại Từ Quan Hệ (Relative Pronouns)",
+    "noiDungLyThuyet": "Đại từ quan hệ dùng để kết nối mệnh đề quan hệ với danh từ đứng trước nó, làm rõ nghĩa cho danh từ đó.\n\n- Who: Chỉ người, làm chủ ngữ hoặc tân ngữ.\n- Whom: Chỉ người, làm tân ngữ.\n- Which: Chỉ vật, làm chủ ngữ hoặc tân ngữ.\n- That: Chỉ cả người lẫn vật, có thể thay thế cho who, whom, which trong mệnh đề quan hệ xác định.\n- Whose: Chỉ sự sở hữu (người/vật).",
+    "viDu": "- The man who is standing there is my father. (Người đàn ông người mà đang đứng ở kia là bố tôi)\n- The book which you lent me is very interesting. (Cuốn sách tớ mượn cậu rất thú vị)\n- This is the boy whose car was stolen. (Đây là chàng trai mà ô tô của cậu ấy bị trộm)",
+    "order": 2
+  },
+  {
+    "maNP": "np16",
+    "maCD": "bai_8",
+    "tenBai": "Câu Điều Kiện Loại 2 (Second Conditional)",
+    "noiDungLyThuyet": "Câu điều kiện loại 2 dùng để diễn tả một điều kiện không có thật ở hiện tại, một giả định trái ngược với thực tế ở hiện tại.\n\nCấu trúc:\nIf + S + V2/V-ed, S + would/could + V(nguyên mẫu)\n\nLưu ý: Đối với động từ To Be trong câu điều kiện loại 2, ta dùng 'were' cho TRƯỚC MẤT CẢ các ngôi (I, he, she, it...).",
+    "viDu": "- If I were you, I would study harder. (Nếu tôi là bạn, tôi sẽ học hành chăm chỉ hơn - thực tế tôi không phải là bạn)\n- If I had a million dollars, I would buy a yacht. (Nếu tôi có 1 triệu đô, tôi sẽ mua một chiếc du thuyền - thực tế hiện tại tôi không có tiền)",
+    "order": 1
+  },
+  {
+    "maNP": "np17",
+    "maCD": "bai_8",
+    "tenBai": "Câu Gián Tiếp (Reported Speech)",
+    "noiDungLyThuyet": "Câu gián tiếp là thuật lại lời nói của người khác mà không trích dẫn trực tiếp.\n\nQuy tắc chuyển đổi:\n1. Lùi thì (Present -> Past, Past -> Past Perfect...)\n2. Đổi đại từ nhân xưng, tân ngữ, sở hữu cho phù hợp.\n3. Đổi trạng từ chỉ thời gian và nơi chốn (here -> there, now -> then, today -> that day...)\n\nVí dụ lùi thì:\nAm/is/are -> was/were\nWill -> would\nCan -> could",
+    "viDu": "Direct: She said, \"I like this song.\"\n-> Indirect: She said (that) she liked that song.\n\nDirect: \"I will go to Paris tomorrow,\" John said.\n-> Indirect: John said he would go to Paris the next day.",
+    "order": 2
+  },
+  {
+    "maNP": "np18",
+    "maCD": "bai_9",
+    "tenBai": "Thì Quá Khứ Tiếp Diễn (Past Continuous)",
+    "noiDungLyThuyet": "Thì quá khứ tiếp diễn diễn tả hành động đang xảy ra tại một thời điểm xác định trong quá khứ.\nHoặc hai hành động xảy ra đồng thời trong quá khứ.\nHoặc một hành động đang xảy ra thì có hành động khác xen vào.\n\nCấu trúc:\n(+) S + was/were + V-ing\n(-) S + wasn't/weren't + V-ing\n(?) Was/Were + S + V-ing?",
+    "viDu": "- I was watching TV at 8 PM yesterday. (Tôi đang xem TV lúc 8 giờ tối hôm qua)\n- While I was doing my homework, my brother was playing games. (Khi tôi đang làm bài tập thì em trai tôi đang chơi game)\n- When I came home, she was cooking dinner. (Khi tôi về nhà, cô ấy đang nấu bữa tối)",
+    "order": 1
+  },
+  {
+    "maNP": "np19",
+    "maCD": "bai_9",
+    "tenBai": "Giới Từ Thời Gian và Nơi Chốn (In, On, At)",
+    "noiDungLyThuyet": "Sự khác biệt giữa IN, ON, AT:\n\n1. AT (Chỉ điểm/Giờ giấc):\n- Nơi chốn: một địa điểm cụ thể (at school, at the station...)\n- Thời gian: giờ cụ thể (at 7 o'clock, at noon, at night...)\n\n2. ON (Chỉ bề mặt/Ngày):\n- Nơi chốn: trên bề mặt (on the table, on the wall...)\n- Thời gian: ngày trong tuần, ngày tháng (on Monday, on May 1st...)\n\n3. IN (Chỉ bên trong/Tháng, năm, mùa):\n- Nơi chốn: bên trong không gian lớn (in a room, in Vietnam...)\n- Thời gian: tháng, năm, mùa, thế kỷ (in 2023, in Summer, in May...)",
+    "viDu": "- I wake up at 6 AM. (Tôi thức dậy lúc 6 giờ sáng)\n- We don't go to school on Sunday. (Chúng tôi không đi học vào ngày Chủ nhật)\n- My birthday is in October. (Sinh nhật của tôi vào tháng 10)",
+    "order": 2
+  },
+  {
+    "maNP": "np20",
+    "maCD": "bai_10",
+    "tenBai": "Thì Quá Khứ Hoàn Thành (Past Perfect)",
+    "noiDungLyThuyet": "Thì quá khứ hoàn thành dùng để diễn tả một hành động xảy ra trước một hành động khác trong quá khứ. Hành động xảy ra trước dùng Quá khứ hoàn thành, hành động sau dùng Quá khứ đơn.\n\nCấu trúc:\n(+) S + had + V3/V-ed\n(-) S + hadn't + V3/V-ed\n(?) Had + S + V3/V-ed?\n\nDấu hiệu:\nbefore, after, by the time, as soon as...",
+    "viDu": "- By the time I arrived at the station, the train had already left. (Vào lúc tôi đến ga, chuyến tàu đã rời đi rồi)\n- After they had eaten dinner, they went out for a walk. (Sau khi họ ăn tối xong, họ đi dạo)",
+    "order": 1
+  },
+  {
+    "maNP": "np21",
+    "maCD": "bai_10",
+    "tenBai": "Câu Điều Kiện Loại 3 (Third Conditional)",
+    "noiDungLyThuyet": "Câu điều kiện loại 3 diễn tả một điều kiện không có thật trong quá khứ, dẫn đến kết quả cũng trái ngược với quá khứ. Thường dùng để thể hiện sự nuối tiếc.\n\nCấu trúc:\nIf + S + had + V3/ed, S + would/could + have + V3/ed",
+    "viDu": "- If I had studied harder, I would have passed the exam. (Nếu tôi đã học hành chăm chỉ hơn thì tôi đã thi đỗ rồi - thực tế trong quá khứ tôi đã không học và thi rớt)\n- If it hadn't rained, we would have gone to the beach. (Nếu trời không mưa thì chúng tôi đã đi biển)",
+    "order": 2
+  }
+]

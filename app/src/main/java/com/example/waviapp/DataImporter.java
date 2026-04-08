@@ -6,6 +6,7 @@ import android.widget.Toast;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.example.waviapp.models.NguPhap;
 import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.List;
@@ -43,5 +44,35 @@ public class DataImporter {
             Log.e("IMPORT_ERROR", e.getMessage());
         }
 
+    }
+
+    public static void importGrammar(Context context) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        try {
+            // 1. Đọc file ngu_phap.json từ assets
+            InputStream is = context.getAssets().open("ngu_phap.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            String json = new String(buffer, "UTF-8");
+
+            // 2. Dùng GSON để chuyển JSON thành List<NguPhap>
+            Gson gson = new Gson();
+            Type listType = new TypeToken<List<NguPhap>>(){}.getType();
+            List<NguPhap> grammarList = gson.fromJson(json, listType);
+            Log.d("IMPORT_GRAMMAR", "Số lượng bài học đọc được từ JSON: " + (grammarList != null ? grammarList.size() : "0"));
+            
+            // 3. Đẩy lên Firestore (thuộc collection nguPhap)
+            // Trong Firestore hiện DB đang lưu là nguPhap
+            for (NguPhap np : grammarList) {
+                db.collection("nguPhap").document(np.getMaNP().trim()).set(np)
+                        .addOnSuccessListener(aVoid -> Log.d("IMPORT", "Thành công ngữ pháp: " + np.getTenBai()))
+                        .addOnFailureListener(e -> Log.e("IMPORT_ERROR", "Lỗi ngữ pháp " + np.getTenBai() + ": " + e.getMessage()));
+            }
+            Toast.makeText(context, "Đã đẩy xong " + grammarList.size() + " ngữ pháp!", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Log.e("IMPORT_ERROR", e.getMessage());
+        }
     }
 }

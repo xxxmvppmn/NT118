@@ -30,6 +30,7 @@ public class HomeActivity extends BaseActivity {
 
         // Import data (triggering once or as needed)
         DataImporter.importVocab(this);
+        DataImporter.importGrammar(this);
 
         // Xử lý icon thông báo
         binding.icNotification.setOnClickListener(v ->

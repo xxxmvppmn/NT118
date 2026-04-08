@@ -34,7 +34,7 @@ public class GrammarAdapter extends RecyclerView.Adapter<GrammarAdapter.GrammarV
         NguPhap item = grammarList.get(position);
 
         // Hiển thị số thứ tự (ví dụ: 1, 2, 3...)
-        holder.tvOrder.setText(String.valueOf(item.getOrder()));
+        holder.tvOrder.setText(String.valueOf(position + 1));
         // Hiển thị tiêu đề bài học (ví dụ: Present Simple)
         holder.tvGrammarTitle.setText(item.getTenBai());
 
@@ -44,6 +44,7 @@ public class GrammarAdapter extends RecyclerView.Adapter<GrammarAdapter.GrammarV
 
             intent.putExtra("grammar_title", item.getTenBai());
             intent.putExtra("grammar_content", item.getNoiDungLyThuyet());
+            intent.putExtra("grammar_example", item.getViDu());
 
             v.getContext().startActivity(intent);
         });
