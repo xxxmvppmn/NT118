@@ -2,12 +2,16 @@ package com.example.waviapp;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.InputType;
+import android.util.Base64;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
@@ -28,15 +32,17 @@ import com.example.waviapp.firebase.FirebaseAuthHelper;
 import com.example.waviapp.models.TaiKhoan;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 public class UserInfoActivity extends BaseActivity {
 
+    private static final String TAG = "UserInfoActivity";
     private ActivityUserInfoBinding binding;
     private FirebaseAuthHelper authHelper;
     private DatabaseHelper dbHelper;
@@ -46,19 +52,14 @@ public class UserInfoActivity extends BaseActivity {
             result -> {
                 if (result.getResultCode() == RESULT_OK && result.getData() != null) {
                     Uri imageUri = result.getData().getData();
-
-                    // Hiện ảnh lên ivAvatar và ẩn tvAvatar đi
-                    binding.tvAvatar.setVisibility(android.view.View.GONE);
-                    binding.ivAvatar.setVisibility(android.view.View.VISIBLE);
-                    uploadImageToFirebase(imageUri);
-                    binding.ivAvatar.setImageURI(imageUri);
-                    Glide.with(this)
-                            .load(imageUri)
-                            .circleCrop()
-                            .into(binding.ivAvatar);
+                    if (imageUri != null) {
+                        // Convert to Base64 and save
+                        convertImageToBase64AndSave(imageUri);
+                    }
                 }
             }
     );
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,7 +120,7 @@ public class UserInfoActivity extends BaseActivity {
     }
 
     /**
-     * Load thông tin user từ Firebase
+     * Load thông tin user từ Firebase và hiển thị avatar nếu có
      */
     private void loadUserInfo() {
         FirebaseUser firebaseUser = authHelper.getCurrentUser();
@@ -145,15 +146,43 @@ public class UserInfoActivity extends BaseActivity {
                 if (user.getGender() != null && !user.getGender().isEmpty()) {
                     binding.etGender.setText(user.getGender());
                 }
+
+                // Load avatar Base64 if available
+                if (user.getAvatarUrl() != null && !user.getAvatarUrl().isEmpty()) {
+                    Log.d(TAG, "Loading avatar Base64");
+                    binding.tvAvatar.setVisibility(android.view.View.GONE);
+                    binding.ivAvatar.setVisibility(android.view.View.VISIBLE);
+                    // Decode Base64 to Bitmap and display
+                    try {
+                        byte[] decodedBytes = Base64.decode(user.getAvatarUrl(), Base64.DEFAULT);
+                        Bitmap bitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+                        Glide.with(UserInfoActivity.this)
+                                .load(bitmap)
+                                .circleCrop()
+                                .into(binding.ivAvatar);
+                    } catch (Exception e) {
+                        Log.e(TAG, "Failed to decode Base64 avatar", e);
+                        // Fallback to initials
+                        binding.tvAvatar.setVisibility(android.view.View.VISIBLE);
+                        binding.ivAvatar.setVisibility(android.view.View.GONE);
+                    }
+                } else {
+                    // Show default initials
+                    binding.tvAvatar.setVisibility(android.view.View.VISIBLE);
+                    binding.ivAvatar.setVisibility(android.view.View.GONE);
+                }
             }
 
             @Override
             public void onFailure(String error) {
+                Log.e(TAG, "Failed to load user info: " + error);
                 // Nếu không load được, hiển thị tên từ Firebase Auth
                 if (firebaseUser.getDisplayName() != null && !firebaseUser.getDisplayName().isEmpty()) {
                     binding.etName.setText(firebaseUser.getDisplayName());
                     binding.tvAvatar.setText(firebaseUser.getDisplayName().substring(0, 1).toUpperCase());
                 }
+                binding.tvAvatar.setVisibility(android.view.View.VISIBLE);
+                binding.ivAvatar.setVisibility(android.view.View.GONE);
             }
         });
     }
@@ -322,37 +351,98 @@ public class UserInfoActivity extends BaseActivity {
         dialog.show();
     }
 
-    private void uploadImageToFirebase(Uri uri) {
-        String uid = authHelper.getCurrentUser().getUid();
-        // Tạo đường dẫn lưu ảnh: avatars/uid.jpg
-        StorageReference fileRef = FirebaseStorage.getInstance().getReference()
-                .child("avatars/" + uid + ".jpg");
+    /**
+     * Convert image to Base64 and save to Firestore
+     */
+    private void convertImageToBase64AndSave(Uri uri) {
+        FirebaseUser currentUser = authHelper.getCurrentUser();
+        if (currentUser == null) {
+            Log.e(TAG, "Current user is null, cannot save image");
+            Toast.makeText(this, "Lỗi: Người dùng không xác định", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        fileRef.putFile(uri).addOnSuccessListener(taskSnapshot -> {
-            // Lấy link ảnh sau khi upload thành công
-            fileRef.getDownloadUrl().addOnSuccessListener(downloadUri -> {
-                String imageUrl = downloadUri.toString();
+        if (uri == null) {
+            Log.e(TAG, "Image URI is null");
+            Toast.makeText(this, "Lỗi: Không thể tìm thấy ảnh", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-                // Bước 2: Lưu link này vào Firestore
-                saveImageUrlToFirestore(imageUrl);
-            });
-        }).addOnFailureListener(e -> {
-            Toast.makeText(this, "Lỗi tải ảnh: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-        });
+        Log.d(TAG, "Converting image to Base64 for user: " + currentUser.getUid());
+
+        // Show progress toast
+        Toast.makeText(this, "Đang xử lý ảnh đại diện...", Toast.LENGTH_SHORT).show();
+
+        try {
+            InputStream inputStream = getContentResolver().openInputStream(uri);
+            if (inputStream == null) {
+                Toast.makeText(this, "Lỗi: Không thể đọc ảnh", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                byteArrayOutputStream.write(buffer, 0, bytesRead);
+            }
+            inputStream.close();
+
+            byte[] imageBytes = byteArrayOutputStream.toByteArray();
+            String base64String = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+
+            Log.d(TAG, "Image converted to Base64, length: " + base64String.length());
+
+            // Save Base64 to Firestore
+            saveBase64ToFirestore(base64String);
+
+        } catch (IOException e) {
+            Log.e(TAG, "Failed to convert image to Base64", e);
+            Toast.makeText(this, "Lỗi xử lý ảnh: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
-    private void saveImageUrlToFirestore(String url) {
-        String uid = authHelper.getCurrentUser().getUid();
+    /**
+     * Save Base64 string to Firestore/Realtime Database
+     */
+    private void saveBase64ToFirestore(String base64) {
+        FirebaseUser currentUser = authHelper.getCurrentUser();
+        if (currentUser == null) {
+            Log.e(TAG, "Cannot save Base64: Current user is null");
+            return;
+        }
+
+        String uid = currentUser.getUid();
         Map<String, Object> map = new HashMap<>();
-        map.put("avatarUrl", url);
+        map.put("avatarUrl", base64);
+
+        Log.d(TAG, "Saving Base64 avatar to database for user: " + uid);
 
         dbHelper.updateUser(uid, map, new DatabaseHelper.SimpleCallback() {
             @Override
             public void onSuccess() {
-                Toast.makeText(UserInfoActivity.this, "Đã lưu ảnh đại diện!", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "Base64 avatar saved successfully");
+                Toast.makeText(UserInfoActivity.this, "Đã cập nhật ảnh đại diện!", Toast.LENGTH_SHORT).show();
+                // Decode and display immediately
+                try {
+                    byte[] decodedBytes = Base64.decode(base64, Base64.DEFAULT);
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+                    binding.tvAvatar.setVisibility(android.view.View.GONE);
+                    binding.ivAvatar.setVisibility(android.view.View.VISIBLE);
+                    Glide.with(UserInfoActivity.this)
+                            .load(bitmap)
+                            .circleCrop()
+                            .into(binding.ivAvatar);
+                } catch (Exception e) {
+                    Log.e(TAG, "Failed to decode Base64 after save", e);
+                }
             }
+
             @Override
-            public void onFailure(String error) {}
+            public void onFailure(String error) {
+                Log.e(TAG, "Failed to save Base64 avatar: " + error);
+                Toast.makeText(UserInfoActivity.this, "Lỗi lưu ảnh: " + error, Toast.LENGTH_SHORT).show();
+            }
         });
     }
 

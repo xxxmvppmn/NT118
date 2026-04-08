@@ -1,5 +1,6 @@
 package com.example.waviapp.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.waviapp.GrammarDetailActivity;
 import com.example.waviapp.R;
 import com.example.waviapp.models.NguPhap;
 
@@ -30,13 +32,26 @@ public class GrammarAdapter extends RecyclerView.Adapter<GrammarAdapter.GrammarV
     @Override
     public void onBindViewHolder(@NonNull GrammarViewHolder holder, int position) {
         NguPhap item = grammarList.get(position);
-        holder.tvOrder.setText(String.valueOf(position + 1));
+
+        // Hiển thị số thứ tự (ví dụ: 1, 2, 3...)
+        holder.tvOrder.setText(String.valueOf(item.getOrder()));
+        // Hiển thị tiêu đề bài học (ví dụ: Present Simple)
         holder.tvGrammarTitle.setText(item.getTenBai());
+
+        // Bắt sự kiện click để mở trang chi tiết
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), GrammarDetailActivity.class);
+
+            intent.putExtra("grammar_title", item.getTenBai());
+            intent.putExtra("grammar_content", item.getNoiDungLyThuyet());
+
+            v.getContext().startActivity(intent);
+        });
     }
 
     @Override
     public int getItemCount() {
-        return grammarList.size();
+        return (grammarList != null) ? grammarList.size() : 0;
     }
 
     public static class GrammarViewHolder extends RecyclerView.ViewHolder {

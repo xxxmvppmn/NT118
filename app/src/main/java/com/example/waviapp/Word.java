@@ -1,25 +1,52 @@
 package com.example.waviapp;
 
 public class Word {
-    private String text;      // Ví dụ: "New"
-    private String phonetic;  // Ví dụ: "/njuː/"
-    private String meaning;   // Ví dụ: "Mới"
-    private boolean isFavorite;
+    private String level;
+    private String maCD;
+    private String maTV;
+    private String tuTiengAnh;
+    private String phienAm;
+    private String nghiaTiengViet;
+    private String loaiTu;
+    private String cauViDu;
+    private String hinhAnh;
+    private String audio;
+    private boolean favorite;
 
-    // Hàm khởi tạo (Constructor)
-    public Word(String text, String phonetic, String meaning) {
-        this.text = text;
-        this.phonetic = phonetic;
-        this.meaning = meaning;
-        this.isFavorite = false;
-    }
+    // Constructor không đối số
+    public Word() {}
 
-    // Các hàm để lấy dữ liệu (Getters)
-    public String getText() { return text; }
-    public String getPhonetic() { return phonetic; }
-    public String getMeaning() { return meaning; }
-    public boolean isFavorite() { return isFavorite; }
+    // Getters và Setters (Để GSON có thể ghi dữ liệu vào các biến)
+    public String getLevel() { return level; }
+    public void setLevel(String level) { this.level = level; }
 
-    // Hàm để thay đổi trạng thái trái tim
-    public void setFavorite(boolean favorite) { isFavorite = favorite; }
+    public String getMaCD() { return maCD; }
+    public void setMaCD(String maCD) { this.maCD = maCD; }
+
+    public String getMaTV() { return maTV; }
+    public void setMaTV(String maTV) { this.maTV = maTV; }
+
+    public String getTuTiengAnh() { return tuTiengAnh; }
+    public void setTuTiengAnh(String tuTiengAnh) { this.tuTiengAnh = tuTiengAnh; }
+
+    public String getPhienAm() { return phienAm; }
+    public void setPhienAm(String phienAm) { this.phienAm = phienAm; }
+
+    public String getNghiaTiengViet() { return nghiaTiengViet; }
+    public void setNghiaTiengViet(String nghiaTiengViet) { this.nghiaTiengViet = nghiaTiengViet; }
+
+    public String getLoaiTu() { return loaiTu; }
+    public void setLoaiTu(String loaiTu) { this.loaiTu = loaiTu; }
+
+    public String getCauViDu() { return cauViDu; }
+    public void setCauViDu(String cauViDu) { this.cauViDu = cauViDu; }
+
+    public String getHinhAnh() { return hinhAnh; }
+    public void setHinhAnh(String hinhAnh) { this.hinhAnh = hinhAnh; }
+
+    public String getAudio() { return audio; }
+    public void setAudio(String audio) { this.audio = audio; }
+
+    public boolean isFavorite() { return favorite; }
+    public void setFavorite(boolean favorite) { this.favorite = favorite; }
 }

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
 import com.example.waviapp.databinding.ActivityHomeBinding;
 import com.google.firebase.auth.FirebaseUser;
 import com.example.waviapp.firebase.FirebaseAuthHelper;
@@ -28,6 +27,9 @@ public class HomeActivity extends BaseActivity {
 
         // Load thông tin user từ Firebase
         loadUserStats();
+
+        // Import data (triggering once or as needed)
+        DataImporter.importVocab(this);
 
         // Xử lý icon thông báo
         binding.icNotification.setOnClickListener(v ->
@@ -114,6 +116,7 @@ public class HomeActivity extends BaseActivity {
         intent.putExtra(SkillPracticeActivity.EXTRA_SKILL_CATEGORY, category);
         startActivity(intent);
     }
+
     private void updateNotificationBadge() {
         String currentUserId = authHelper.getCurrentUser().getUid();
 

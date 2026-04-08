@@ -21,6 +21,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WaviApp">
         <activity
+            android:name=".WordListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GrammarDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".ForgotPasswordActivity"
             android:exported="false" />
         <activity
@@ -78,7 +84,9 @@
             android:name=".EventInfoActivity"
             android:exported="false" />
 
-        <receiver android:name=".utils.AlarmReceiver" android:exported="false" />
+        <receiver
+            android:name=".utils.AlarmReceiver"
+            android:exported="false" />
     </application>
 
 </manifest>
