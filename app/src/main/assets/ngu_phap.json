@@ -166,5 +166,165 @@
     "noiDungLyThuyet": "Câu điều kiện loại 3 diễn tả một điều kiện không có thật trong quá khứ, dẫn đến kết quả cũng trái ngược với quá khứ. Thường dùng để thể hiện sự nuối tiếc.\n\nCấu trúc:\nIf + S + had + V3/ed, S + would/could + have + V3/ed",
     "viDu": "- If I had studied harder, I would have passed the exam. (Nếu tôi đã học hành chăm chỉ hơn thì tôi đã thi đỗ rồi - thực tế trong quá khứ tôi đã không học và thi rớt)\n- If it hadn't rained, we would have gone to the beach. (Nếu trời không mưa thì chúng tôi đã đi biển)",
     "order": 2
+  },
+  {
+    "maNP": "np22",
+    "maCD": "bai_11",
+    "tenBai": "Động từ khuyết thiếu (Modal Verbs)",
+    "noiDungLyThuyet": "Động từ khuyết thiếu là loại động từ dùng để chỉ khả năng, sự cho phép, nghĩa vụ, hay dự đoán. Chúng không bao giờ đứng một mình mà luôn đi kèm với động từ chính ở dạng nguyên mẫu.\n\nCác động từ phổ biến:\n- Can/Could: Khả năng, xin phép.\n- May/Might: Sự cho phép, xác suất.\n- Must/Have to: Nghĩa vụ, bắt buộc.\n- Should/Ought to: Lời khuyên.",
+    "viDu": "- I can speak three languages. (Tôi có thể nói 3 ngôn ngữ)\n- You should go to bed early. (Bạn nên đi ngủ sớm)\n- It might rain later. (Trời có thể sẽ mưa muộn hơn)",
+    "order": 1
+  },
+  {
+    "maNP": "np23",
+    "maCD": "bai_12",
+    "tenBai": "Câu bị động với Động từ khuyết thiếu",
+    "noiDungLyThuyet": "Khi chuyển một câu có chứa động từ khuyết thiếu từ chủ động sang bị động, ta sử dụng công thức:\n\nS + Modal Verb + be + V3/ed\n\nQuy tắc tương tự câu bị động thông thường: Tân ngữ câu chủ động làm chủ ngữ câu bị động.",
+    "viDu": "Active: You must finish this report today.\n-> Passive: This report must be finished today.\n\nActive: They can solve this problem.\n-> Passive: This problem can be solved.",
+    "order": 1
+  },
+  {
+    "maNP": "np24",
+    "maCD": "bai_13",
+    "tenBai": "Danh động từ (Gerunds - V-ing)",
+    "noiDungLyThuyet": "Danh động từ là dạng động từ thêm đuôi -ing và được sử dụng như một danh từ.\n\nCách dùng:\n- Làm chủ ngữ: Smoking is bad for health.\n- Sau một số động từ: enjoy, avoid, finish, mind, suggest, keep, practice...\n- Sau giới từ: tired of, interested in, about, before, after...",
+    "viDu": "- I enjoy swimming in the morning. (Tôi thích bơi vào buổi sáng)\n- He is interested in learning English. (Anh ấy thích học tiếng Anh)\n- Reading books is my hobby. (Đọc sách là sở thích của tôi)",
+    "order": 1
+  },
+  {
+    "maNP": "np25",
+    "maCD": "bai_14",
+    "tenBai": "Động từ nguyên mẫu (Infinitives - To V)",
+    "noiDungLyThuyet": "Động từ nguyên mẫu có 'to' (to-infinitive) được dùng sau một số động từ hoặc để chỉ mục đích.\n\nCách dùng:\n- Chỉ mục đích: I go to school to learn.\n- Sau một số động từ: want, hope, decide, plan, promise, agree, refuse...\n- Sau tính từ: It's difficult to learn Chinese.",
+    "viDu": "- I want to travel around the world. (Tôi muốn đi du lịch vòng quanh thế giới)\n- She decided to buy a new car. (Cô ấy đã quyết định mua một chiếc xe mới)\n- They promised to help me. (Họ đã hứa sẽ giúp tôi)",
+    "order": 1
+  },
+  {
+    "maNP": "np26",
+    "maCD": "bai_15",
+    "tenBai": "So sánh hơn và So sánh nhất của Tính từ",
+    "noiDungLyThuyet": "1. So sánh hơn:\n- Tính từ ngắn: Adj-er + than\n- Tính từ dài: more + Adj + than\n\n2. So sánh nhất:\n- Tính từ ngắn: the + Adj-est\n- Tính từ dài: the + most + Adj\n\nNgoại lệ: good -> better -> the best, bad -> worse -> the worst.",
+    "viDu": "- This house is bigger than that one. (Ngôi nhà này to hơn ngôi nhà kia)\n- She is the most beautiful girl in my class. (Cô ấy là cô gái đẹp nhất trong lớp tôi)",
+    "order": 1
+  },
+  {
+    "maNP": "np27",
+    "maCD": "bai_16",
+    "tenBai": "So sánh hơn và So sánh nhất của Trạng từ",
+    "noiDungLyThuyet": "Quy tắc so sánh trạng từ tương tự tính từ nhưng hầu hết trạng từ là từ dài (có đuôi -ly).\n\n1. So sánh hơn:\n- Trạng từ ngắn: Adv-er + than (fast -> faster)\n- Trạng từ dài: more + Adv + than (quickly -> more quickly)\n\n2. So sánh nhất:\n- Trạng từ ngắn: the + Adv-est\n- Trạng từ dài: the + most + Adv",
+    "viDu": "- He runs faster than me. (Anh ấy chạy nhanh hơn tôi)\n- She speaks English more fluently than her sister. (Cô ấy nói tiếng Anh trôi chảy hơn em gái mình)",
+    "order": 1
+  },
+  {
+    "maNP": "np28",
+    "maCD": "bai_17",
+    "tenBai": "Cấu trúc câu ước (Wish)",
+    "noiDungLyThuyet": "Dùng để diễn tả một mong muốn không có thật ở hiện tại, quá khứ hoặc tương lai.\n\n1. Hiện tại: S + wish + S + V2/ed (trường hợp To Be dùng were cho mọi ngôi).\n2. Quá khứ: S + wish + S + had + V3/ed.\n3. Tương lai: S + wish + S + would/could + V(nguyên mẫu).",
+    "viDu": "- I wish I were tall. (Tôi ước gì mình cao - hiện tại tôi thấp)\n- I wish I had studied harder for the test. (Tôi ước gì tôi đã học hành chăm chỉ cho bài kiểm tra - thực tế là không học)",
+    "order": 1
+  },
+  {
+    "maNP": "np29",
+    "maCD": "bai_18",
+    "tenBai": "Câu hỏi đuôi (Tag Questions)",
+    "noiDungLyThuyet": "Câu hỏi đuôi là câu hỏi ngắn ở cuối câu trần thuật.\n\nQuy tắc:\n- Mệnh đề chính khẳng định -> đuôi phủ định.\n- Mệnh đề chính phủ định -> đuôi khẳng định.\n- Thì của đuôi giống thì của mệnh đề chính.\n- Chủ ngữ của đuôi là đại từ nhân xưng tương ứng.",
+    "viDu": "- You are a student, aren't you? (Bạn là sinh viên phải không?)\n- He doesn't like coffee, does he? (Anh ấy không thích cafe phải không?)\n- She will come, won't she? (Cô ấy sẽ đến chứ?)",
+    "order": 1
+  },
+  {
+    "maNP": "np30",
+    "maCD": "bai_19",
+    "tenBai": "Câu bị động nâng cao",
+    "noiDungLyThuyet": "1. Bị động với 2 tân ngữ: Đưa một trong hai tân ngữ lên làm chủ ngữ.\n2. Bị động khách quan: Dùng với các động từ say, think, believe, report...\n   Cấu trúc: It + be + V3 + that + S + V... HOẶC S + be + V3 + to V.",
+    "viDu": "- He was given a present. (Anh ấy đã được tặng một món quà)\n- It is said that he is very rich. (Người ta nói rằng anh ấy rất giàu)\n- He is said to be very rich.",
+    "order": 1
+  },
+  {
+    "maNP": "np31",
+    "maCD": "bai_20",
+    "tenBai": "Giới từ chỉ vị trí và chuyển động (Advanced)",
+    "noiDungLyThuyet": "Ngoài In/On/At, còn nhiều giới từ quan trọng khác:\n- Under (Dưới), Above (Trên), Between (Giữa 2), Among (Giữa nhiều).\n- Through (Xuyên qua), Across (Băng qua), Into (Vào trong), Out of (Ra ngoài).",
+    "viDu": "- The cat is under the table. (Con mèo ở dưới gầm bàn)\n- We walked through the forest. (Chúng tôi đi bộ xuyên qua rừng)\n- Go across the street. (Đi qua đường)",
+    "order": 1
+  },
+  {
+    "maNP": "np32",
+    "maCD": "bai_21",
+    "tenBai": "Mạo từ (Articles - A, An, The)",
+    "noiDungLyThuyet": "1. A/An: Dùng cho danh từ đếm được số ít khi nhắc đến lần đầu (không xác định).\n2. The: Dùng cho danh từ khi cả người nói và người nghe đều biết là ai/cái gì (xác định).\n3. Không dùng mạo từ (Zero article): Với danh từ số nhiều, danh từ không đếm được mang nghĩa chung chung.",
+    "viDu": "- I have an apple. The apple is red. (Tôi có một quả táo. Quả táo đó màu đỏ)\n- The sun is shining. (Mặt trời đang tỏa sáng - vật duy nhất)\n- Cats like milk. (Mèo thích sữa - nói chung)",
+    "order": 1
+  },
+  {
+    "maNP": "np33",
+    "maCD": "bai_22",
+    "tenBai": "Từ chỉ số lượng (Quantifiers)",
+    "noiDungLyThuyet": "- Some/Any: Một vài (Some dùng trong khẳng định, Any dùng trong phủ định/nghi vấn).\n- Much/Many/A lot of: Nhiều (Much + Uncountable, Many + Countable plurality).\n- Little/Few: Rất ít, không đủ (Little + Uncountable, Few + Countable).",
+    "viDu": "- Do you have any money? (Bạn có tiền không?)\n- There are many books on the shelf. (Có nhiều sách trên giá)\n- I have a little time. (Tôi có một chút thời gian)",
+    "order": 1
+  },
+  {
+    "maNP": "np34",
+    "maCD": "bai_23",
+    "tenBai": "Cấu trúc So/Such... that và Too/Enough",
+    "noiDungLyThuyet": "1. So + Adj/Adv + that: Quá... đến nỗi mà.\n2. Such + a/an + Adj + N + that: Quá... đến nỗi mà.\n3. Too + Adj/Adv + for somebody + to V: Quá... cho ai để làm gì.\n4. Adj/Adv + enough + for somebody + to V: Đủ... cho ai để làm gì.",
+    "viDu": "- He is so tired that he can't walk. (Anh ấy mệt đến nỗi không đi nổi)\n- It's too hot to go out. (Trời quá nóng để ra ngoài)\n- He is old enough to drive. (Anh ấy đủ tuổi để lái xe)",
+    "order": 1
+  },
+  {
+    "maNP": "np35",
+    "maCD": "bai_24",
+    "tenBai": "Liên từ nối câu (Connectors)",
+    "noiDungLyThuyet": "Dùng để nối các ý tưởng trong câu.\n- Although/Even though/Though + Mệnh đề: Mặc dù.\n- In spite of/Despite + Noun/V-ing: Mặc dù.\n- Because + Mệnh đề / Because of + Noun/V-ing: Bởi vì.\n- However, Therefore, Moreover...",
+    "viDu": "- Although it rained, we still went out. (Mặc dù trời mưa, chúng tôi vẫn ra ngoài)\n- Because of the rain, we stayed at home. (Vì trời mưa, chúng tôi ở nhà)",
+    "order": 1
+  },
+  {
+    "maNP": "np36",
+    "maCD": "bai_25",
+    "tenBai": "Mệnh đề quan hệ xác định & không xác định",
+    "noiDungLyThuyet": "1. Mệnh đề xác định: Cần thiết để xác định danh từ đứng trước, không dùng dấu phẩy.\n2. Mệnh đề không xác định: Cung cấp thêm thông tin, dùng dấu phẩy để ngăn cách, không dùng 'that'.",
+    "viDu": "- The man who lives next door is a doctor. (xác định)\n- My brother, who lives in Hanoi, is a doctor. (không xác định)",
+    "order": 1
+  },
+  {
+    "maNP": "np37",
+    "maCD": "bai_26",
+    "tenBai": "Thể sai khiến (Causative Form)",
+    "noiDungLyThuyet": "Dùng khi ta không tự làm mà nhờ vả, thuê ai đó làm gì.\n1. Chủ động: \n   S + have + someone + V(nguyên mẫu)\n   S + get + someone + to V\n2. Bị động:\n   S + have/get + something + V3/ed",
+    "viDu": "- I had the barber cut my hair. (Tôi nhờ thợ cắt tóc cho mình)\n- I had my hair cut. (Tôi đã đi cắt tóc)",
+    "order": 1
+  },
+  {
+    "maNP": "np38",
+    "maCD": "bai_27",
+    "tenBai": "Cụm động từ thông dụng (Phrasal Verbs)",
+    "noiDungLyThuyet": "Cụm động từ gồm một động từ và một giới từ/trạng từ, mang nghĩa khác hoàn toàn động từ gốc.\n- Take off: Cất cánh/Cởi đồ.\n- Give up: Từ bỏ.\n- Look for: Tìm kiếm.\n- Put on: Mặc vào.",
+    "viDu": "- The plane took off on time. (Máy bay đã cất cánh đúng giờ)\n- Don't give up your dream. (Đừng từ bỏ giấc mơ của mình)",
+    "order": 1
+  },
+  {
+    "maNP": "np39",
+    "maCD": "bai_28",
+    "tenBai": "Câu nhấn mạnh (Cleft Sentences)",
+    "noiDungLyThuyet": "Dùng để nhấn mạnh một thành phần của câu (Chủ ngữ, Tân ngữ hoặc Trạng ngữ).\n\nCấu trúc: It + is/was + Thành phần nhấn mạnh + that/who + ...",
+    "viDu": "- It is my mother that loves me most. (Chính là mẹ tớ là người yêu tớ nhất - nhấn mạnh chủ ngữ)\n- It was yesterday that I met him. (Chính là hôm qua tớ đã gặp anh ấy - nhấn mạnh thời gian)",
+    "order": 1
+  },
+  {
+    "maNP": "np40",
+    "maCD": "bai_29",
+    "tenBai": "Đảo ngữ (Inversion)",
+    "noiDungLyThuyet": "Đảo ngữ là đưa trợ động từ lên trước chủ ngữ nhằm mục đích nhấn mạnh. Thường gặp với các trạng từ phủ định đứng đầu câu.\n- Never, Rarely, Seldom, Little, Hardly...\n- Not only... but also...",
+    "viDu": "- Never have I seen such a beautiful girl. (Chưa bao giờ tôi thấy cô gái nào đẹp như vậy)\n- Hardly had I arrived home when it rained. (Tôi vừa mới về đến nhà thì trời mưa)",
+    "order": 1
+  },
+  {
+    "maNP": "np41",
+    "maCD": "bai_30",
+    "tenBai": "Tổng hợp các thì và Ôn tập",
+    "noiDungLyThuyet": "Hệ thống lại 12 thì cơ bản trong tiếng Anh chia thành các nhóm:\n- Nhóm Hiện tại (Đơn, Tiếp diễn, Hoàn thành, Hoàn thành tiếp diễn).\n- Nhóm Quá khứ (Đơn, Tiếp diễn, Hoàn thành, Hoàn thành tiếp diễn).\n- Nhóm Tương lai (Đơn, Tiếp diễn, Hoàn thành, Hoàn thành tiếp diễn).",
+    "viDu": "- Practice makes perfect! (Có công mài sắt có ngày nên kim)\n- Review all rules carefully before the exam.",
+    "order": 1
   }
 ]

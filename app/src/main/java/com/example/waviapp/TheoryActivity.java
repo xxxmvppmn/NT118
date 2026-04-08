@@ -32,7 +32,9 @@ public class TheoryActivity extends BaseActivity {
             "bai_1", "bai_2", "bai_3", "bai_4", "bai_5",
             "bai_6", "bai_7", "bai_8", "bai_9", "bai_10",
             "bai_11", "bai_12", "bai_13", "bai_14", "bai_15",
-            "bai_16", "bai_17", "bai_18", "bai_19", "bai_20"
+            "bai_16", "bai_17", "bai_18", "bai_19", "bai_20",
+            "bai_21", "bai_22", "bai_23", "bai_24", "bai_25",
+            "bai_26", "bai_27", "bai_28", "bai_29", "bai_30"
     };
 
     private int currentLessonIndex = 0;
@@ -110,7 +112,7 @@ public class TheoryActivity extends BaseActivity {
 
     private void updateLessonSpinner(String level) {
         List<String> listLessons = new ArrayList<>();
-        int maxLessons = 10; // Ngữ pháp chỉ có 10 bài
+        int maxLessons = 30; // Ngữ pháp hỗ trợ đến 30 bài
 
         if (isVocabularyTab) {
             maxLessons = level.equals("Basic") ? 20 : 15;
