@@ -74,6 +74,8 @@ public class TheoryActivity extends BaseActivity {
                 if (tab.getPosition() == 0) {
                     isVocabularyTab = true;
                     binding.spLevel.setVisibility(View.VISIBLE);
+                    binding.rvVocabulary.setLayoutManager(new LinearLayoutManager(TheoryActivity.this));
+                    binding.rvVocabulary.setAdapter(vocabularyAdapter);
                     loadVocabularyFromFirebase(lessonKeys[currentLessonIndex], selectedLevel);
                 } else {
                     isVocabularyTab = false;
