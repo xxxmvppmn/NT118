@@ -9,13 +9,15 @@ import com.example.waviapp.firebase.DatabaseHelper;
 import com.example.waviapp.firebase.FirebaseAuthHelper;
 import com.example.waviapp.models.TaiKhoan;
 import com.google.firebase.auth.FirebaseUser;
+import android.net.Uri;
 
 public class SettingsActivity extends BaseActivity {
 
     private ActivitySettingsBinding binding;
     private FirebaseAuthHelper authHelper;
     private DatabaseHelper dbHelper;
-
+    private final String FB_ID = "61575852834048";
+    private final String MESSENGER_URL = "https://m.me/" + FB_ID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +45,7 @@ public class SettingsActivity extends BaseActivity {
             startActivity(intent);
             finish();
         });
-
-        // Click handlers for setting items
+        final String FB_GROUP_ID = "1672027700753499";        // Click handlers for setting items
         View.OnClickListener itemClickListener = v -> {
             Toast.makeText(this, getString(R.string.feature_dev), Toast.LENGTH_SHORT).show();
         };
@@ -54,14 +55,38 @@ public class SettingsActivity extends BaseActivity {
         });
         binding.llLanguage.setOnClickListener(v -> showLanguageDialog());
         binding.llDisplay.setOnClickListener(itemClickListener);
-        binding.llCommunity.setOnClickListener(itemClickListener);
-        binding.llShare.setOnClickListener(itemClickListener);
+        binding.llCommunity.setOnClickListener(v -> {
+            Intent intent;
+            try {
+                // Mở bằng App Facebook
+                intent = new Intent(Intent.ACTION_VIEW, android.net.Uri.parse("fb://group/" + FB_GROUP_ID));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            } catch (Exception e) {
+                // Nếu không có app Facebook, mở bằng trình duyệt
+                String webUrl = "https://www.facebook.com/groups/" + FB_GROUP_ID;
+                intent = new Intent(Intent.ACTION_VIEW, android.net.Uri.parse(webUrl));
+                startActivity(intent);
+            }
+        });
+        binding.llShare.setOnClickListener(v -> shareApp());
         binding.llDownloads.setOnClickListener(itemClickListener);
         binding.llReminder.setOnClickListener(v -> {
             StudyReminderBottomSheet bottomSheet = new StudyReminderBottomSheet();
             bottomSheet.show(getSupportFragmentManager(), "StudyReminderBottomSheet");
         });
-        binding.llFeedback.setOnClickListener(itemClickListener);
+        binding.llFeedback.setOnClickListener(v -> {
+            try {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("fb-messenger://user/" + FB_ID));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+
+            } catch (Exception e) {
+                // 2. Nếu máy không có app Messenger, mở bằng trình duyệt web
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(MESSENGER_URL));
+                startActivity(intent);
+            }
+        });
 
         // Bottom Navigation
         binding.bottomNav.setSelectedItemId(R.id.nav_setting);
@@ -97,6 +122,31 @@ public class SettingsActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         loadUserProfile();
+    }
+    private void shareApp() {
+        try {
+            // Đây là nội dung văn bản sẽ được gửi đi
+            String shareMessage = "Học tiếng Anh cực dễ cùng WaviApp! 🚀\n" +
+                    "Tải ngay bản thử nghiệm tại đây: \n" + "https://github.com/xxxmvppmn/NT118";
+
+            // 1. Tạo một Intent với hành động là SEND (Gửi)
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+
+            // 2. Định nghĩa kiểu dữ liệu là văn bản thuần túy
+            shareIntent.setType("text/plain");
+
+            // 3. Đưa nội dung tin nhắn vào Intent
+            shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+
+            // 4. QUAN TRỌNG: Tạo một "Chooser" (Bảng chọn)
+            // Dòng này sẽ bắt Android hiện lên danh sách Zalo, Messenger, Gmail...
+            Intent chooser = Intent.createChooser(shareIntent, "Chia sẻ WaviApp qua:");
+
+            startActivity(chooser);
+
+        } catch (Exception e) {
+            Toast.makeText(this, "Không tìm thấy ứng dụng để chia sẻ", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void loadUserProfile() {

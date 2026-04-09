@@ -28,13 +28,11 @@ public class DataImporter {
             Gson gson = new Gson();
             Type listType = new TypeToken<List<Word>>(){}.getType();
             List<Word> vocabList = gson.fromJson(json, listType);
-            Log.d("NGAN_CHECK", "Số lượng từ đọc được từ JSON: " + (vocabList != null ? vocabList.size() : "0"));
             // 3. Đẩy lên Firestore
             for (Word w : vocabList) {
                 db.collection("TuVung").document(w.getMaTV().trim()).set(w)
                         .addOnSuccessListener(aVoid -> Log.d("IMPORT", "Xong: " + w.getTuTiengAnh()));
             }
-            Toast.makeText(context, "Đã đẩy xong " + vocabList.size() + " từ!", Toast.LENGTH_SHORT).show();
             for (Word w : vocabList) {
                 db.collection("TuVung").document(w.getMaTV().trim()).set(w)
                         .addOnSuccessListener(aVoid -> Log.d("IMPORT", "Thành công: " + w.getTuTiengAnh()))
@@ -61,16 +59,13 @@ public class DataImporter {
             Gson gson = new Gson();
             Type listType = new TypeToken<List<NguPhap>>(){}.getType();
             List<NguPhap> grammarList = gson.fromJson(json, listType);
-            Log.d("IMPORT_GRAMMAR", "Số lượng bài học đọc được từ JSON: " + (grammarList != null ? grammarList.size() : "0"));
-            
-            // 3. Đẩy lên Firestore (thuộc collection nguPhap)
+            // 3. Đẩy lên Firestore
             // Trong Firestore hiện DB đang lưu là nguPhap
             for (NguPhap np : grammarList) {
                 db.collection("nguPhap").document(np.getMaNP().trim()).set(np)
                         .addOnSuccessListener(aVoid -> Log.d("IMPORT", "Thành công ngữ pháp: " + np.getTenBai()))
                         .addOnFailureListener(e -> Log.e("IMPORT_ERROR", "Lỗi ngữ pháp " + np.getTenBai() + ": " + e.getMessage()));
             }
-            Toast.makeText(context, "Đã đẩy xong " + grammarList.size() + " ngữ pháp!", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             Log.e("IMPORT_ERROR", e.getMessage());
         }

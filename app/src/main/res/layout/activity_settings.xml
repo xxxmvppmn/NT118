@@ -238,18 +238,40 @@
                     android:orientation="vertical">
                     
                     <!-- Cộng đồng -->
-                    <LinearLayout android:id="@+id/llCommunity" style="@style/SettingItemStyle">
-                        <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_share" app:tint="#00BCD4"/>
-                        <TextView style="@style/SettingTextStyle" android:text="@string/auto_tham_gia_c_ng_ng_wavi" android:layout_weight="1"/>
-                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron" android:rotation="180" app:tint="#CCCCCC" android:layout_gravity="center_vertical"/>
+                    <LinearLayout
+                        android:id="@+id/llCommunity"
+                        style="@style/SettingItemStyle">
+                        <ImageView style="@style/SettingIconStyle"
+                            android:src="@android:drawable/ic_menu_share"
+                            app:tint="#00BCD4"/>
+                        <TextView style="@style/SettingTextStyle"
+                            android:text="@string/auto_tham_gia_c_ng_ng_wavi"
+                            android:layout_weight="1"/>
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_chevron"
+                            android:rotation="180"
+                            app:tint="#CCCCCC"
+                            android:layout_gravity="center_vertical"/>
                     </LinearLayout>
                     <View style="@style/SettingDividerStyle"/>
 
                     <!-- Chia sẻ -->
-                    <LinearLayout android:id="@+id/llShare" style="@style/SettingItemStyle">
-                        <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_share" app:tint="#3F51B5"/>
-                        <TextView style="@style/SettingTextStyle" android:text="@string/auto_chia_s_ng_d_ng" android:layout_weight="1"/>
-                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron" android:rotation="180" app:tint="#CCCCCC" android:layout_gravity="center_vertical"/>
+                    <LinearLayout
+                        android:id="@+id/llShare" style="@style/SettingItemStyle">
+                        <ImageView style="@style/SettingIconStyle"
+                            android:src="@android:drawable/ic_menu_share" app:tint="#3F51B5"/>
+                        <TextView style="@style/SettingTextStyle"
+                            android:text="@string/auto_chia_s_ng_d_ng"
+                            android:layout_weight="1"/>
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_chevron"
+                            android:rotation="180"
+                            app:tint="#CCCCCC"
+                            android:layout_gravity="center_vertical"/>
                     </LinearLayout>
                     <View style="@style/SettingDividerStyle"/>
 

@@ -112,10 +112,6 @@ public class SkillPracticeActivity extends BaseActivity {
             }
 
             ivPartLock.setVisibility(View.GONE);
-            String partName = parts[i];
-            itemView.setOnClickListener(v -> Toast.makeText(this,
-                    getString(R.string.stat_start_part) + partName, Toast.LENGTH_SHORT).show());
-
             llPartsContainer.addView(itemView);
         }
     }
