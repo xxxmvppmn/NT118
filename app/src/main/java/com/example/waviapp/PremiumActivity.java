@@ -1,17 +1,15 @@
 package com.example.waviapp;
 
 import android.content.Intent;
-import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,18 +22,31 @@ public class PremiumActivity extends BaseActivity {
 
     private ActivityPremiumBinding binding;
 
+    // Model để quản lý dữ liệu
+    static class PricePackage {
+        String name;
+        String oldPrice;
+        String newPrice;
+        String promo;
+
+        PricePackage(String name, String oldPrice, String newPrice, String promo) {
+            this.name = name;
+            this.oldPrice = oldPrice;
+            this.newPrice = newPrice;
+            this.promo = promo;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityPremiumBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Nút quay lại (Back)
         if (binding.ivBack != null) {
             binding.ivBack.setOnClickListener(v -> finish());
         }
 
-        // Setup
         setupPricePackages();
         setupUserReviews();
 
@@ -43,45 +54,22 @@ public class PremiumActivity extends BaseActivity {
                 Toast.makeText(this, "Đang kiểm tra lịch sử thanh toán...", Toast.LENGTH_SHORT).show()
         );
 
-        // Xử lý Bottom Navigation
-        binding.bottomNav.setOnItemSelectedListener(item -> {
-            int id = item.getItemId();
-            if (id == R.id.nav_home) {
-                Intent intent = new Intent(PremiumActivity.this, HomeActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
-            } else if (id == R.id.nav_exam) {
-                Intent intent = new Intent(PremiumActivity.this, ExamActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
-            } else if (id == R.id.nav_premium) {
-                // Already on Premium, không làm gì
-            } else if (id == R.id.nav_profile) {
-                Intent intent = new Intent(PremiumActivity.this, UserInfoActivity.class);
-                startActivity(intent);
-            } else if (id == R.id.nav_setting) {
-                Intent intent = new Intent(PremiumActivity.this, SettingsActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
-            }
-            return true;
-        });
+        setupBottomNavigation();
     }
 
-    // ================= PACKAGE =================
     private void setupPricePackages() {
         binding.rvPricePackages.setLayoutManager(
                 new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         );
 
-        List<String> packages = Arrays.asList("1 Tháng", "1 Năm", "Trọn đời");
+        List<PricePackage> packages = Arrays.asList(
+                new PricePackage("1 Tháng", "150.000đ", "99.000đ", "TIẾT KIỆM"),
+                new PricePackage("1 Năm", "600.000đ", "399.000đ", "50% OFF"),
+                new PricePackage("Trọn đời", "1.500.000đ", "999.000đ", "HOT")
+        );
         binding.rvPricePackages.setAdapter(new PackageAdapter(packages));
     }
 
-    // ================= REVIEW =================
     private void setupUserReviews() {
         binding.rvReviews.setLayoutManager(
                 new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
@@ -89,47 +77,56 @@ public class PremiumActivity extends BaseActivity {
 
         List<String> reviews = Arrays.asList(
                 "App dùng rất mượt, đề thi sát thực tế!",
-                "Nhờ gói Premium mà mình hiểu rõ các bẫy Part 5.",
-                "Tiện lợi khi học trên xe bus không cần mạng."
+                "Ấn tượng đầu tiên về WaviApp là giao diện cực kỳ 'clean' và hiện đại.",
+                "Lộ trình học tập cá nhân hóa rõ ràng. Rất đáng tiền!"
         );
-
         binding.rvReviews.setAdapter(new ReviewAdapter(reviews));
     }
 
-    // ===== Package Adapter =====
+    private void setupBottomNavigation() {
+        binding.bottomNav.setSelectedItemId(R.id.nav_premium);
+        binding.bottomNav.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_home) {
+                startActivity(new Intent(this, HomeActivity.class));
+            } else if (id == R.id.nav_exam) {
+                startActivity(new Intent(this, ExamActivity.class));
+            } else if (id == R.id.nav_profile) {
+                startActivity(new Intent(this, UserInfoActivity.class));
+            } else if (id == R.id.nav_setting) {
+                startActivity(new Intent(this, SettingsActivity.class));
+            }
+            return true;
+        });
+    }
+
+    // ===== Package Adapter (ĐÃ SỬA ĐỂ KHỚP XML) =====
     class PackageAdapter extends RecyclerView.Adapter<PackageAdapter.ViewHolder> {
+        List<PricePackage> data;
 
-        List<String> data;
-
-        PackageAdapter(List<String> data) { this.data = data; }
+        PackageAdapter(List<PricePackage> data) { this.data = data; }
 
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            CardView cardView = new CardView(parent.getContext());
-            cardView.setRadius(24f);
-            cardView.setCardElevation(6f);
-
-            RecyclerView.LayoutParams params =
-                    new RecyclerView.LayoutParams(400, 500);
-            params.setMargins(20, 20, 20, 20);
-            cardView.setLayoutParams(params);
-
-            TextView tv = new TextView(parent.getContext());
-            tv.setGravity(Gravity.CENTER);
-            tv.setTextSize(18);
-            cardView.addView(tv);
-
-            return new ViewHolder(cardView, tv);
+            // QUAN TRỌNG: Nạp file XML item_price_package vào đây
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_price_package, parent, false);
+            return new ViewHolder(view);
         }
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            holder.textView.setText(data.get(position));
+            PricePackage item = data.get(position);
+            holder.tvName.setText(item.name);
+            holder.tvCurrent.setText(item.newPrice);
+            holder.tvPromo.setText(item.promo);
+
+            // Hiển thị giá gốc và gạch ngang
+            holder.tvOld.setText(item.oldPrice);
+            holder.tvOld.setPaintFlags(holder.tvOld.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
             holder.itemView.setOnClickListener(v ->
-                    Toast.makeText(PremiumActivity.this,
-                            "Bạn chọn gói: " + data.get(position),
-                            Toast.LENGTH_SHORT).show()
+                    Toast.makeText(PremiumActivity.this, "Bạn chọn gói: " + item.name, Toast.LENGTH_SHORT).show()
             );
         }
 
@@ -137,38 +134,39 @@ public class PremiumActivity extends BaseActivity {
         public int getItemCount() { return data.size(); }
 
         class ViewHolder extends RecyclerView.ViewHolder {
-            TextView textView;
-            ViewHolder(View itemView, TextView tv) {
+            TextView tvName, tvOld, tvCurrent, tvPromo;
+
+            ViewHolder(View itemView) {
                 super(itemView);
-                textView = tv;
+                // Ánh xạ đúng ID từ file XML của Ngân
+                tvName = itemView.findViewById(R.id.tvPackageName);
+                tvOld = itemView.findViewById(R.id.tvOriginalPrice);
+                tvCurrent = itemView.findViewById(R.id.tvCurrentPrice);
+                tvPromo = itemView.findViewById(R.id.tvPromoTag);
             }
         }
     }
 
-    // ===== Review Adapter =====
+    // ===== Review Adapter (ĐÃ SỬA ĐỂ GIAO DIỆN ĐẸP HƠN) =====
     class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder> {
-
         List<String> data;
-
         ReviewAdapter(List<String> data) { this.data = data; }
 
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            CardView cardView = new CardView(parent.getContext());
-            cardView.setRadius(20f);
-
-            RecyclerView.LayoutParams params =
-                    new RecyclerView.LayoutParams(600, ViewGroup.LayoutParams.WRAP_CONTENT);
-            params.setMargins(20, 20, 20, 20);
-            cardView.setLayoutParams(params);
+            // Nếu Ngân có file xml cho review thì nạp vào, nếu chưa thì tạm dùng code này
+            androidx.cardview.widget.CardView card = new androidx.cardview.widget.CardView(parent.getContext());
+            card.setRadius(20f);
+            card.setCardElevation(4f);
+            RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(600, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.setMargins(16, 16, 16, 16);
+            card.setLayoutParams(params);
 
             TextView tv = new TextView(parent.getContext());
-            tv.setPadding(32, 32, 32, 32);
-            tv.setTextSize(16);
-            cardView.addView(tv);
-
-            return new ViewHolder(cardView, tv);
+            tv.setPadding(30, 30, 30, 30);
+            card.addView(tv);
+            return new ViewHolder(card, tv);
         }
 
         @Override
@@ -181,10 +179,7 @@ public class PremiumActivity extends BaseActivity {
 
         class ViewHolder extends RecyclerView.ViewHolder {
             TextView textView;
-            ViewHolder(View itemView, TextView tv) {
-                super(itemView);
-                textView = tv;
-            }
+            ViewHolder(View v, TextView tv) { super(v); textView = tv; }
         }
     }
 }
