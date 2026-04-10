@@ -1,5 +1,6 @@
-package com.example.waviapp;
+package com.example.waviapp.activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -10,10 +11,10 @@ import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.Toast;
-import android.content.Intent;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.annotation.NonNull;
+
+import com.example.waviapp.R;
 import com.example.waviapp.databinding.ActivitySignupBinding;
 import com.example.waviapp.firebase.DatabaseHelper;
 import com.example.waviapp.firebase.FirebaseAuthHelper;
@@ -181,3 +182,4 @@ public class SignupActivity extends BaseActivity {
         });
     }
 }
+

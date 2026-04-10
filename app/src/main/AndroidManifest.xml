@@ -21,24 +21,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WaviApp">
         <activity
-            android:name=".WordListActivity"
+            android:name=".activities.VocabularyListActivity"
             android:exported="false" />
         <activity
-            android:name=".GrammarDetailActivity"
+            android:name=".activities.GrammarDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".ForgotPasswordActivity"
+            android:name=".activities.ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".TheoryActivity"
+            android:name=".activities.TheoryActivity"
             android:exported="false"
             android:launchMode="singleTask" />
         <activity
-            android:name=".PremiumActivity"
+            android:name=".activities.PremiumActivity"
             android:exported="false"
             android:launchMode="singleTask" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activities.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,41 +47,41 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeActivity"
+            android:name=".activities.HomeActivity"
             android:exported="false"
             android:launchMode="singleTask" />
         <activity
-            android:name=".SignupActivity"
+            android:name=".activities.SignupActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".activities.SettingsActivity"
             android:exported="false"
             android:launchMode="singleTask" />
         <activity
-            android:name=".UserInfoActivity"
+            android:name=".activities.UserInfoActivity"
             android:exported="false"
             android:launchMode="singleTask" />
         <activity
-            android:name=".ExamActivity"
+            android:name=".activities.ExamActivity"
             android:exported="false"
             android:launchMode="singleTask" />
         <activity
-            android:name=".TestListActivity"
+            android:name=".activities.TestListActivity"
             android:exported="false" />
         <activity
-            android:name=".TestDetailActivity"
+            android:name=".activities.TestDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".SkillPracticeActivity"
+            android:name=".activities.SkillPracticeActivity"
             android:exported="false" />
         <activity
-            android:name=".ChangePasswordActivity"
+            android:name=".activities.ChangePasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".OnlineExamActivity"
+            android:name=".activities.OnlineExamActivity"
             android:exported="false" />
         <activity
-            android:name=".EventInfoActivity"
+            android:name=".activities.EventInfoActivity"
             android:exported="false" />
 
         <receiver

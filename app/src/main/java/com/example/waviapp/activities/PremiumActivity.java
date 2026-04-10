@@ -1,4 +1,4 @@
-package com.example.waviapp;
+package com.example.waviapp.activities;
 
 import android.content.Intent;
 import android.graphics.Paint;
@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.waviapp.R;
 import com.example.waviapp.databinding.ActivityPremiumBinding;
 
 import java.util.Arrays;
@@ -183,3 +184,4 @@ public class PremiumActivity extends BaseActivity {
         }
     }
 }
+

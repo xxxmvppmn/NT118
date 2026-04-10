@@ -43,11 +43,8 @@ public class SeedDataHelper {
     private static void seedVocabulary(FirebaseFirestore db, WriteBatch batch) {
         // Bài 1
         TuVung[] words1 = {
-                new TuVung("tv_01", "bai_1", "New", "Mới", "Adj", "/njuː/"),
-                new TuVung("tv_02", "bai_1", "Company", "Công ty", "N", "/ˈkʌmpəni/"),
-                new TuVung("tv_03", "bai_1", "Services", "Dịch vụ", "N", "/ˈsɜːrvɪsɪz/"),
-                new TuVung("tv_04", "bai_1", "Please", "Vui lòng", "V", "/pliːz/"),
-                new TuVung("tv_05", "bai_1", "Information", "Thông tin", "N", "/ˌɪnfərˈmeɪʃn/")
+                new TuVung("tv_01", "bai_1", "New", "Mới", "Adj", "/njuː/", "Basic"),
+
         };
         for (TuVung t : words1) {
             batch.set(db.collection("tuVung").document(t.getMaTV()), t);
@@ -55,11 +52,8 @@ public class SeedDataHelper {
 
         // Bài 2
         TuVung[] words2 = {
-                new TuVung("tv_06", "bai_2", "Meeting", "Cuộc họp", "N", "/ˈmiːtɪŋ/"),
-                new TuVung("tv_07", "bai_2", "Schedule", "Lịch trình", "N", "/ˈskedʒuːl/"),
-                new TuVung("tv_08", "bai_2", "Department", "Phòng ban", "N", "/dɪˈpɑːrtmənt/"),
-                new TuVung("tv_09", "bai_2", "Employee", "Nhân viên", "N", "/ɪmˈplɔɪiː/"),
-                new TuVung("tv_10", "bai_2", "Manager", "Quản lý", "N", "/ˈmænɪdʒər/")
+                new TuVung("tv_06", "bai_2", "Meeting", "Cuộc họp", "N", "/ˈmiːtɪŋ/", "Basic"),
+
         };
         for (TuVung t : words2) {
             batch.set(db.collection("tuVung").document(t.getMaTV()), t);

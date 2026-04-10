@@ -1,13 +1,15 @@
-package com.example.waviapp;
+package com.example.waviapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+import com.example.waviapp.R;
 import com.example.waviapp.databinding.ActivitySettingsBinding;
 import com.example.waviapp.firebase.DatabaseHelper;
 import com.example.waviapp.firebase.FirebaseAuthHelper;
 import com.example.waviapp.models.TaiKhoan;
+import com.example.waviapp.utils.LanguageManager;
 import com.google.firebase.auth.FirebaseUser;
 import android.net.Uri;
 
@@ -28,7 +30,7 @@ public class SettingsActivity extends BaseActivity {
         dbHelper = new DatabaseHelper();
 
         // 1. Đồng bộ lại ngôn ngữ hiện tại của máy vào UI Settings
-        String currentLangCode = com.example.waviapp.utils.LanguageManager.getLanguage(this);
+        String currentLangCode = LanguageManager.getLanguage(this);
         selectedLanguage = "en".equals(currentLangCode) ? "English" : "Tiếng Việt";
         // Cập nhật nhãn ngôn ngữ ngay khi mở Cài đặt nếu TextView này tồn tại
         android.widget.TextView tvSelectedLanguage = findViewById(R.id.tvSelectedLanguage);
@@ -216,7 +218,7 @@ public class SettingsActivity extends BaseActivity {
                 }
                 
                 String langCode = lang.equals("English") ? "en" : "vi";
-                com.example.waviapp.utils.LanguageManager.setLanguage(SettingsActivity.this, langCode);
+                LanguageManager.setLanguage(SettingsActivity.this, langCode);
                 
                 dialog.dismiss();
 

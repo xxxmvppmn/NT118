@@ -1,9 +1,11 @@
-package com.example.waviapp;
+package com.example.waviapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+import com.example.waviapp.R;
+import com.example.waviapp.utils.DataImporter;
 import com.example.waviapp.databinding.ActivityHomeBinding;
 import com.google.firebase.auth.FirebaseUser;
 import com.example.waviapp.firebase.FirebaseAuthHelper;
@@ -136,3 +138,4 @@ public class HomeActivity extends BaseActivity {
         });
     }
 }
+

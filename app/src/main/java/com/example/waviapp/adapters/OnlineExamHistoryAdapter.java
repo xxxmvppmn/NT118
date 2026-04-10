@@ -7,8 +7,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.waviapp.OnlineExamHistory;
 import com.example.waviapp.R;
+import com.example.waviapp.models.OnlineExamHistory;
 
 import java.util.List;
 

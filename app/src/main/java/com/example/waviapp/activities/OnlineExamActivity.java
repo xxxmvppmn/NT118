@@ -1,14 +1,17 @@
-package com.example.waviapp;
+package com.example.waviapp.activities;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.waviapp.R;
 import com.example.waviapp.adapters.OnlineExamHistoryAdapter;
 import com.example.waviapp.databinding.ActivityOnlineExamBinding;
+import com.example.waviapp.models.OnlineExamHistory;
+
 import java.util.ArrayList;
 import java.util.List;
+import android.content.Intent;
 
 public class OnlineExamActivity extends BaseActivity {
     private ActivityOnlineExamBinding binding;
@@ -20,8 +23,8 @@ public class OnlineExamActivity extends BaseActivity {
         setContentView(binding.getRoot());
 
         binding.ivBack.setOnClickListener(v -> finish());
-        binding.ivInfo.setOnClickListener(v -> 
-            startActivity(new android.content.Intent(OnlineExamActivity.this, EventInfoActivity.class))
+        binding.ivInfo.setOnClickListener(v ->
+            startActivity(new Intent(OnlineExamActivity.this, EventInfoActivity.class))
         );
 
         setupRecyclerView();

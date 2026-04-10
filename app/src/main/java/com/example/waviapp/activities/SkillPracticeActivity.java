@@ -1,4 +1,4 @@
-package com.example.waviapp;
+package com.example.waviapp.activities;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,7 +6,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.waviapp.R;
 
 public class SkillPracticeActivity extends BaseActivity {
 
@@ -116,3 +117,4 @@ public class SkillPracticeActivity extends BaseActivity {
         }
     }
 }
+

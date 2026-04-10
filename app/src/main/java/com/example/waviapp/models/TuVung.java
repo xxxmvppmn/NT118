@@ -11,10 +11,11 @@ public class TuVung {
     private String hinhAnh;
     private String cauViDu;
     private boolean isFavorite; // Cho tính năng đánh dấu
+    private String level;
 
     public TuVung() {}
 
-    public TuVung(String maTV, String maCD, String tuTiengAnh, String nghiaTiengViet, String loaiTu, String phienAm) {
+    public TuVung(String maTV, String maCD, String tuTiengAnh, String nghiaTiengViet, String loaiTu, String phienAm, String level) {
         this.maTV = maTV;
         this.maCD = maCD;
         this.tuTiengAnh = tuTiengAnh;
@@ -25,6 +26,7 @@ public class TuVung {
         this.audio = "";
         this.hinhAnh = "";
         this.cauViDu = "";
+        this.level = level;
     }
 
     public String getMaTV() { return maTV; }
@@ -47,4 +49,6 @@ public class TuVung {
     public void setCauViDu(String cauViDu) { this.cauViDu = cauViDu; }
     public boolean isFavorite() { return isFavorite; }
     public void setFavorite(boolean favorite) { isFavorite = favorite; }
+    public String getLevel() { return level; }
+    public void setLevel(String level) { this.level = level; }
 }

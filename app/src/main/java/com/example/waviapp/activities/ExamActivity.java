@@ -1,4 +1,4 @@
-package com.example.waviapp;
+package com.example.waviapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.waviapp.R;
 import com.example.waviapp.databinding.ActivityExamBinding;
 import com.example.waviapp.firebase.DatabaseHelper;
 import com.example.waviapp.models.BaiKiemTra;
@@ -223,3 +222,4 @@ public class ExamActivity extends BaseActivity {
         }
     }
 }
+

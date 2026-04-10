@@ -1,11 +1,10 @@
-package com.example.waviapp;
+package com.example.waviapp.activities;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -194,7 +193,7 @@ public class TheoryActivity extends BaseActivity {
 
     private void setupDefaultVocabulary() {
         wordList.clear();
-        wordList.add(new TuVung("tv_default", "bai_1", "Example", "Ví dụ", "Noun", "/ɪɡˈzæmpl/"));
+        wordList.add(new TuVung("tv_default", "bai_1", "Example", "Ví dụ", "Noun", "/ɪɡˈzæmpl/","Basic"));
         vocabularyAdapter.notifyDataSetChanged();
     }
 
@@ -204,3 +203,4 @@ public class TheoryActivity extends BaseActivity {
         binding.rvVocabulary.setAdapter(gAdapter);
     }
 }
+

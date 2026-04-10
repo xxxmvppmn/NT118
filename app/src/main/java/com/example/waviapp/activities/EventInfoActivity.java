@@ -1,7 +1,6 @@
-package com.example.waviapp;
+package com.example.waviapp.activities;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.text.HtmlCompat;
 import com.example.waviapp.databinding.ActivityEventInfoBinding;
 
@@ -23,3 +22,4 @@ public class EventInfoActivity extends BaseActivity {
         binding.tvPara3.setText(HtmlCompat.fromHtml(p3, HtmlCompat.FROM_HTML_MODE_LEGACY));
     }
 }
+

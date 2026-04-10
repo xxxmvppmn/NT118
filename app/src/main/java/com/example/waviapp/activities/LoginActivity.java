@@ -1,4 +1,4 @@
-package com.example.waviapp;
+package com.example.waviapp.activities;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -14,8 +14,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.waviapp.R;
 import com.example.waviapp.databinding.ActivityLoginBinding;
 import com.example.waviapp.firebase.DatabaseHelper;
 import com.example.waviapp.firebase.FirebaseAuthHelper;
@@ -247,3 +247,4 @@ public class LoginActivity extends BaseActivity {
         });
     }
 }
+

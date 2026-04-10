@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.waviapp.GrammarDetailActivity;
+import com.example.waviapp.activities.GrammarDetailActivity;
 import com.example.waviapp.R;
 import com.example.waviapp.models.NguPhap;
 

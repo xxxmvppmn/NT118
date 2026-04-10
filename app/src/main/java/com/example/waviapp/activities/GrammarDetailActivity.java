@@ -1,13 +1,14 @@
-package com.example.waviapp;
+package com.example.waviapp.activities;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-public class GrammarDetailActivity extends AppCompatActivity {
+import com.example.waviapp.R;
+
+public class GrammarDetailActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,3 +53,4 @@ public class GrammarDetailActivity extends AppCompatActivity {
         }
     }
 }
+

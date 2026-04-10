@@ -1,4 +1,4 @@
-package com.example.waviapp;
+package com.example.waviapp.activities;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -9,7 +9,8 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.graphics.Typeface;
-import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.waviapp.R;
 
 public class TestDetailActivity extends BaseActivity {
 
@@ -57,3 +58,4 @@ public class TestDetailActivity extends BaseActivity {
         });
     }
 }
+

@@ -8,7 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import androidx.core.app.NotificationCompat;
-import com.example.waviapp.HomeActivity;
+import com.example.waviapp.activities.HomeActivity;
 import com.example.waviapp.R;
 
 public class AlarmReceiver extends BroadcastReceiver {

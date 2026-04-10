@@ -1,8 +1,7 @@
-package com.example.waviapp;
+package com.example.waviapp.activities;
 
 import android.os.Bundle;
 import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
 import com.example.waviapp.databinding.ActivityForgotPasswordBinding;
 import com.example.waviapp.firebase.FirebaseAuthHelper;
 import com.google.firebase.auth.FirebaseUser;
@@ -57,3 +56,4 @@ public class ForgotPasswordActivity extends BaseActivity {
         });
     }
 }
+

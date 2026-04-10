@@ -1,4 +1,4 @@
-package com.example.waviapp;
+package com.example.waviapp.activities;
 
 import android.content.Context;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,3 +10,4 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.attachBaseContext(LanguageManager.setLocale(newBase));
     }
 }
+
