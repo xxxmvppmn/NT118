@@ -1,10 +1,12 @@
 package com.example.waviapp.activities;
 
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech; // Thêm import này
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -17,16 +19,18 @@ import com.example.waviapp.models.TuVung;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.Source;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale; // Thêm import này
 
 public class TheoryActivity extends BaseActivity {
 
     private ActivityTheoryBinding binding;
     private DatabaseHelper dbHelper;
+    private TextToSpeech tts; // 1. Khai báo biến tts ở đây
 
-    // Danh sách mã bài (maCD) dùng chung cho các Level
     private final String[] lessonKeys = {
             "bai_1", "bai_2", "bai_3", "bai_4", "bai_5",
             "bai_6", "bai_7", "bai_8", "bai_9", "bai_10",
@@ -45,29 +49,39 @@ public class TheoryActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Sử dụng ViewBinding khớp với activity_theory.xml
         binding = ActivityTheoryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         dbHelper = new DatabaseHelper();
 
-        // 1. Nút quay lại
+        // 2. Khởi tạo TextToSpeech
+        tts = new TextToSpeech(this, status -> {
+            if (status != TextToSpeech.ERROR) {
+                tts.setLanguage(Locale.ENGLISH);
+            }
+        });
+
         if (binding.ivBack != null) {
             binding.ivBack.setOnClickListener(v -> finish());
         }
 
-        // 2. Thiết lập RecyclerView hiển thị từ vựng
-        vocabularyAdapter = new VocabularyAdapter(wordList);
+        // 3. Thiết lập Adapter với xử lý OnVocabularyClickListener
+        vocabularyAdapter = new VocabularyAdapter(wordList, new VocabularyAdapter.OnVocabularyClickListener() {
+            @Override
+            public void onSpeakClick(String text) {
+                // Sử dụng biến tts đã khởi tạo
+                if (text != null && !text.isEmpty() && tts != null) {
+                    tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+                }
+            }
+        });
+
         binding.rvVocabulary.setLayoutManager(new LinearLayoutManager(this));
         binding.rvVocabulary.setAdapter(vocabularyAdapter);
 
-        // 3. Khởi tạo các Spinner (Level & Lesson)
         setupSpinners();
-
-        // 4. Mặc định load Bài 1 - Basic khi vừa vào
         loadVocabularyFromFirebase("bai_1", "Basic");
 
-        // 5. Xử lý Tab chuyển đổi Từ vựng / Ngữ pháp
         binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -91,7 +105,6 @@ public class TheoryActivity extends BaseActivity {
     }
 
     private void setupSpinners() {
-        // --- SPINNER CHỌN LEVEL ---
         String[] levels = {"Basic", "Intermediate", "Advanced"};
         ArrayAdapter<String> adapterLevel = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, levels);
@@ -101,7 +114,6 @@ public class TheoryActivity extends BaseActivity {
         binding.spLevel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // Khi đổi Level -> Cập nhật lại số lượng Bài trong Spinner còn lại
                 updateLessonSpinner(levels[position]);
             }
             @Override
@@ -111,7 +123,7 @@ public class TheoryActivity extends BaseActivity {
 
     private void updateLessonSpinner(String level) {
         List<String> listLessons = new ArrayList<>();
-        int maxLessons = 30; // Ngữ pháp hỗ trợ đến 30 bài
+        int maxLessons = 30;
 
         if (isVocabularyTab) {
             maxLessons = level.equals("Basic") ? 20 : 15;
@@ -147,15 +159,45 @@ public class TheoryActivity extends BaseActivity {
     private void loadVocabularyFromFirebase(String lessonKey, String level) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        // Lọc theo cả mã bài (maCD) và trình độ (level)
+        // Try to load from cache first
         db.collection("TuVung")
                 .whereEqualTo("maCD", lessonKey)
                 .whereEqualTo("level", level)
-                .get()
+                .limit(30)
+                .get(Source.CACHE)
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (!queryDocumentSnapshots.isEmpty()) {
+                        // Cache has data
+                        wordList.clear();
+                        for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
+                            TuVung word = document.toObject(TuVung.class);
+                            word.setMaTV(document.getId());
+                            wordList.add(word);
+                        }
+                        vocabularyAdapter.notifyDataSetChanged();
+                    } else {
+                        // Cache is empty, fetch from server
+                        loadFromServer(lessonKey, level);
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    // Cache failed, fetch from server
+                    loadFromServer(lessonKey, level);
+                });
+    }
+
+    private void loadFromServer(String lessonKey, String level) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("TuVung")
+                .whereEqualTo("maCD", lessonKey)
+                .whereEqualTo("level", level)
+                .limit(30)
+                .get(Source.SERVER)
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     wordList.clear();
                     for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
                         TuVung word = document.toObject(TuVung.class);
+                        word.setMaTV(document.getId());
                         wordList.add(word);
                     }
 
@@ -202,5 +244,14 @@ public class TheoryActivity extends BaseActivity {
         GrammarAdapter gAdapter = new GrammarAdapter(grammarList);
         binding.rvVocabulary.setAdapter(gAdapter);
     }
-}
 
+    // 4. Giải phóng bộ nhớ TTS khi thoát Activity
+    @Override
+    protected void onDestroy() {
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
+        }
+        super.onDestroy();
+    }
+}

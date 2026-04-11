@@ -20,6 +20,7 @@ public class TaiKhoan {
     private Timestamp lastLogin;
     private boolean premium;
     private String avatarUrl;
+    private String phone;
     // 1. Constructor rỗng
     public TaiKhoan() {
     }
@@ -97,5 +98,11 @@ public class TaiKhoan {
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
     }
-}
 
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+}

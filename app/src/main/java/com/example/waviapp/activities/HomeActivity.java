@@ -21,6 +21,7 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Sử dụng ViewBinding
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -60,6 +61,12 @@ public class HomeActivity extends BaseActivity {
         binding.llLyThuyet.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, TheoryActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivity(intent);
+        });
+
+        // 4. Xử lý nút Ôn tập (Mở Sổ tay từ vựng)
+        binding.btnReviewVocab.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, FavoriteWordsActivity.class);
             startActivity(intent);
         });
 
@@ -121,8 +128,10 @@ public class HomeActivity extends BaseActivity {
     }
 
     private void updateNotificationBadge() {
-        String currentUserId = authHelper.getCurrentUser().getUid();
+        FirebaseUser user = authHelper.getCurrentUser();
+        if (user == null) return;
 
+        String currentUserId = user.getUid();
         dbHelper.getUnreadNotificationCount(currentUserId, new DatabaseHelper.CountCallback() {
             @Override
             public void onSuccess(int count) {
@@ -138,4 +147,3 @@ public class HomeActivity extends BaseActivity {
         });
     }
 }
-
