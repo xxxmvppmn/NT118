@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="#F5F7FA">
 
-    <!-- Gradient Curved Header -->
     <View
         android:id="@+id/headerBg"
         android:layout_width="match_parent"
@@ -49,7 +48,6 @@
             android:layout_centerInParent="true" />
     </RelativeLayout>
 
-    <!-- Tab Layout floating -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardTabs"
         android:layout_width="match_parent"
@@ -84,10 +82,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/auto_ng_ph_p" />
         </com.google.android.material.tabs.TabLayout>
-
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Filter/Options -->
     <LinearLayout
         android:id="@+id/llFilters"
         android:layout_width="match_parent"
@@ -118,14 +114,70 @@
             android:popupBackground="@color/white"
             android:spinnerMode="dropdown"/>
     </LinearLayout>
-    <!-- List -->
+
+    <LinearLayout
+        android:id="@+id/llActions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="24dp"
+        android:paddingBottom="12dp"
+        android:weightSum="2"
+        app:layout_constraintTop_toBottomOf="@id/llFilters"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFlashcard"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="Flashcard"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp"
+            app:icon="@android:drawable/ic_menu_gallery"
+            app:backgroundTint="#9370db"
+            app:elevation="4dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnQuiz"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Quiz"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp"
+            app:icon="@android:drawable/ic_menu_edit"
+            app:backgroundTint="#9370DB"
+            app:elevation="4dp"/>
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvVocabulary"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/llFilters"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:paddingHorizontal="16dp"
-        android:clipToPadding="false"/>
+        android:clipToPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/llActions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:indeterminateTint="#9370DB"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

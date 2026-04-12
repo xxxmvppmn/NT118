@@ -1,6 +1,8 @@
 package com.example.waviapp.models;
 
-public class TuVung {
+import java.io.Serializable;
+
+public class TuVung implements Serializable {
     private String maTV;
     private String maCD;
     private String tuTiengAnh;

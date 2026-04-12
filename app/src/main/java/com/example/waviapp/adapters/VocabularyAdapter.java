@@ -47,12 +47,10 @@ public class VocabularyAdapter extends RecyclerView.Adapter<VocabularyAdapter.Vo
         holder.cbFavorite.setChecked(word.isFavorite());
 
         holder.cbFavorite.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            // Only update if the value has changed
-            if (word.isFavorite() != isChecked) {
-                word.setFavorite(isChecked);
+            if (buttonView.isPressed()) { // Only on real user touch
+                word.setFavorite(isChecked); // Update local model first
                 // Update Firestore
                 if (word.getMaTV() != null) {
-                    Log.d("FIREBASE_DEBUG", "Updating " + word.getMaTV() + " to " + isChecked);
                     db.collection("TuVung").document(word.getMaTV())
                             .update("favorite", isChecked)
                             .addOnFailureListener(e -> Log.e("FIREBASE_ERROR", "Failed to update favorite: " + e.getMessage()));

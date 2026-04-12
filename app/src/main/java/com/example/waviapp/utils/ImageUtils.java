@@ -29,7 +29,7 @@ public class ImageUtils {
 
         Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, width, height, true);
 
-        // 2. Nén chất lượng xuống còn 60% để giảm dung lượng cực sâu
+        // 2. Nén chất lượng xuống còn 85%
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         resizedBitmap.compress(Bitmap.CompressFormat.JPEG, 85, outputStream);
 

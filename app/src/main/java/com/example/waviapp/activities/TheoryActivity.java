@@ -1,5 +1,6 @@
 package com.example.waviapp.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech; // Thêm import này
 import android.util.Log;
@@ -45,6 +46,9 @@ public class TheoryActivity extends BaseActivity {
     private List<TuVung> wordList = new ArrayList<>();
     private VocabularyAdapter vocabularyAdapter;
 
+    private String lastLoadedKey = ""; // Field to track the last loaded key
+    private boolean isLoading = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +85,11 @@ public class TheoryActivity extends BaseActivity {
 
         setupSpinners();
         loadVocabularyFromFirebase("bai_1", "Basic");
+
+        // Assume there's a button with id btnFlashcard in activity_theory.xml
+        if (binding.btnFlashcard != null) {
+            binding.btnFlashcard.setOnClickListener(v -> startFlashcardActivity());
+        }
 
         binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -157,63 +166,57 @@ public class TheoryActivity extends BaseActivity {
     }
 
     private void loadVocabularyFromFirebase(String lessonKey, String level) {
+        String key = lessonKey + "_" + level + "_vocab";
+        if (key.equals(lastLoadedKey) || isLoading) return;
+        lastLoadedKey = key;
+        isLoading = true;
+
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        // Try to load from cache first
+        if (binding.progressBar != null) {
+            binding.progressBar.setVisibility(View.VISIBLE);
+        }
+
         db.collection("TuVung")
                 .whereEqualTo("maCD", lessonKey)
                 .whereEqualTo("level", level)
                 .limit(30)
-                .get(Source.CACHE)
+                .get() // Source.DEFAULT
                 .addOnSuccessListener(queryDocumentSnapshots -> {
-                    if (!queryDocumentSnapshots.isEmpty()) {
-                        // Cache has data
+                    if (!isDestroyed()) {
                         wordList.clear();
                         for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
                             TuVung word = document.toObject(TuVung.class);
                             word.setMaTV(document.getId());
                             wordList.add(word);
                         }
-                        vocabularyAdapter.notifyDataSetChanged();
-                    } else {
-                        // Cache is empty, fetch from server
-                        loadFromServer(lessonKey, level);
+
+                        if (wordList.isEmpty()) {
+                            setupDefaultVocabulary();
+                        } else {
+                            vocabularyAdapter.notifyDataSetChanged();
+                        }
                     }
                 })
                 .addOnFailureListener(e -> {
-                    // Cache failed, fetch from server
-                    loadFromServer(lessonKey, level);
-                });
-    }
-
-    private void loadFromServer(String lessonKey, String level) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("TuVung")
-                .whereEqualTo("maCD", lessonKey)
-                .whereEqualTo("level", level)
-                .limit(30)
-                .get(Source.SERVER)
-                .addOnSuccessListener(queryDocumentSnapshots -> {
-                    wordList.clear();
-                    for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
-                        TuVung word = document.toObject(TuVung.class);
-                        word.setMaTV(document.getId());
-                        wordList.add(word);
-                    }
-
-                    if (wordList.isEmpty()) {
+                    if (!isDestroyed()) {
+                        Log.e("THEORY_ERROR", "Lỗi: " + e.getMessage());
                         setupDefaultVocabulary();
-                    } else {
-                        vocabularyAdapter.notifyDataSetChanged();
                     }
                 })
-                .addOnFailureListener(e -> {
-                    Log.e("THEORY_ERROR", "Lỗi: " + e.getMessage());
-                    setupDefaultVocabulary();
+                .addOnCompleteListener(task -> {
+                    isLoading = false;
+                    if (binding.progressBar != null) {
+                        binding.progressBar.setVisibility(View.GONE);
+                    }
                 });
     }
 
     private void loadGrammarFromFirebase(String lessonKey) {
+        String key = lessonKey + "_grammar";
+        if (key.equals(lastLoadedKey)) return;
+        lastLoadedKey = key;
+
         dbHelper.getGrammar(lessonKey, new DatabaseHelper.GrammarCallback() {
             @Override
             public void onSuccess(List<NguPhap> grammarList) {
@@ -243,6 +246,15 @@ public class TheoryActivity extends BaseActivity {
         List<NguPhap> grammarList = new ArrayList<>();
         GrammarAdapter gAdapter = new GrammarAdapter(grammarList);
         binding.rvVocabulary.setAdapter(gAdapter);
+    }
+
+    private void startFlashcardActivity() {
+        String selectedLevel = binding.spLevel.getSelectedItem().toString();
+        String maCD = lessonKeys[currentLessonIndex];
+        Intent intent = new Intent(this, FlashcardActivity.class);
+        intent.putExtra("maCD", maCD);
+        intent.putExtra("level", selectedLevel);
+        startActivity(intent);
     }
 
     // 4. Giải phóng bộ nhớ TTS khi thoát Activity

@@ -21,6 +21,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WaviApp">
         <activity
+            android:name=".activities.FlashcardActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activities.FavoriteWordsActivity"
             android:exported="false" />
         <activity
