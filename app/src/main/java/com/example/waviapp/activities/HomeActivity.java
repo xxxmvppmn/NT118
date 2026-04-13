@@ -31,9 +31,9 @@ public class HomeActivity extends BaseActivity {
         // Load thông tin user từ Firebase
         loadUserStats();
 
-        // Import data (triggering once or as needed)
-        DataImporter.importVocab(this);
-        DataImporter.importGrammar(this);
+        // Xóa logic DataImporter để tránh Firebase Block (Quota Exceeded)
+        // DataImporter.importVocab(this);
+        // DataImporter.importGrammar(this);
 
         // Xử lý icon thông báo
         binding.icNotification.setOnClickListener(v ->

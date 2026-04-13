@@ -60,14 +60,33 @@ public class FirebaseAuthHelper {
      * Xử lý kết quả từ Google Sign-In
      */
     public void handleGoogleSignInResult(Task<GoogleSignInAccount> task, AuthCallback callback) {
+        Log.d(TAG, "handleGoogleSignInResult called, task.isSuccessful=" + task.isSuccessful());
         try {
             GoogleSignInAccount account = task.getResult(ApiException.class);
             if (account != null) {
+                Log.d(TAG, "account OK, idToken=" + (account.getIdToken() != null ? "có" : "NULL"));
+                if (account.getIdToken() == null) {
+                    callback.onFailure("Lỗi: idToken = null\n\nKiểm tra:\n• Web Client ID trong strings.xml\n• SHA-1 trong Firebase Console\n• Google Sign-In đã bật trong Firebase Auth chưa?");
+                    return;
+                }
                 firebaseAuthWithGoogle(account.getIdToken(), callback);
+            } else {
+                Log.w(TAG, "account == null");
+                callback.onFailure("Lỗi: account = null");
             }
         } catch (ApiException e) {
-            Log.w(TAG, "Google sign in failed", e);
-            callback.onFailure("Đăng nhập Google thất bại: " + e.getMessage());
+            Log.e(TAG, "ApiException statusCode=" + e.getStatusCode() + " msg=" + e.getMessage(), e);
+            String hint = "";
+            switch (e.getStatusCode()) {
+                case 10: hint = "\n\n(Code 10 = SHA-1 chưa đăng ký trong Firebase Console)"; break;
+                case 12501: hint = "\n\n(Code 12501 = Người dùng huỷ)"; break;
+                case 12500: hint = "\n\n(Code 12500 = Lỗi cấu hình Google Sign-In)"; break;
+                case 7: hint = "\n\n(Code 7 = Network error)"; break;
+            }
+            callback.onFailure("Đăng nhập Google thất bại\nCode: " + e.getStatusCode() + hint);
+        } catch (Exception e) {
+            Log.e(TAG, "Lỗi không xác định: ", e);
+            callback.onFailure("Lỗi không xác định: " + e.getMessage());
         }
     }
 
@@ -76,9 +95,19 @@ public class FirebaseAuthHelper {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        callback.onSuccess(mAuth.getCurrentUser());
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        if (user != null) {
+                            callback.onSuccess(user);
+                        } else {
+                            callback.onFailure("Xác thực thành công nhưng không lấy được thông tin user");
+                        }
                     } else {
-                        callback.onFailure("Xác thực Google thất bại");
+                        String errorDetail = "Xác thực Google thất bại";
+                        if (task.getException() != null) {
+                            errorDetail += ": " + task.getException().getMessage();
+                            Log.e(TAG, "firebaseAuthWithGoogle thất bại", task.getException());
+                        }
+                        callback.onFailure(errorDetail);
                     }
                 });
     }

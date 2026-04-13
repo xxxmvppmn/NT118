@@ -67,11 +67,19 @@ public class DatabaseHelper {
     public void getUser(String userId, UserCallback callback) {
         db.collection("taiKhoan").document(userId).get()
                 .addOnSuccessListener(documentSnapshot -> {
-                    TaiKhoan user = documentSnapshot.toObject(TaiKhoan.class);
-                    if (user != null) {
-                        callback.onSuccess(user);
-                    } else {
-                        callback.onFailure("Không tìm thấy thông tin người dùng");
+                    try {
+                        if (documentSnapshot.exists()) {
+                            TaiKhoan user = documentSnapshot.toObject(TaiKhoan.class);
+                            if (user != null) {
+                                callback.onSuccess(user);
+                            } else {
+                                callback.onFailure("Không tìm thấy thông tin người dùng");
+                            }
+                        } else {
+                            callback.onFailure("Không tìm thấy thông tin người dùng (Không tồn tại)");
+                        }
+                    } catch (Exception ex) {
+                        callback.onFailure("Lỗi map dữ liệu: " + ex.getMessage());
                     }
                 })
                 .addOnFailureListener(e -> callback.onFailure(e.getMessage()));

@@ -12,8 +12,13 @@ import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
+import android.app.Activity;
+import android.util.Log;
 
 import com.example.waviapp.R;
 import com.example.waviapp.databinding.ActivityLoginBinding;
@@ -32,9 +37,16 @@ import java.util.Map;
 
 public class LoginActivity extends BaseActivity {
 
+    private static final String TAG = "LoginActivity";
+
     private ActivityLoginBinding binding;
     private FirebaseAuthHelper authHelper;
     private DatabaseHelper dbHelper;
+    private ActivityResultLauncher<Intent> googleSignInLauncher;
+
+    // Dùng AuthStateListener thay vì check isLoggedIn() trong onCreate
+    private com.google.firebase.auth.FirebaseAuth.AuthStateListener authStateListener;
+    private boolean isHandlingGoogleSignIn = false; // tránh auto-redirect khi đang xử lý result
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,18 +55,23 @@ public class LoginActivity extends BaseActivity {
         authHelper = new FirebaseAuthHelper();
         dbHelper = new DatabaseHelper();
 
-        // AUTO-LOGIN: Nếu đã đăng nhập rồi thì nhảy thẳng vào Home
-        if (authHelper.isLoggedIn()) {
-            goToHome();
-            return;
-        }
+        // QUAN TRỌNG: Đăng ký launcher BẮT BUỘC phải ở đây, TRƯỚC setContentView
+        googleSignInLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    isHandlingGoogleSignIn = false;
+                    handleGoogleSignInActivityResult(result);
+                }
+        );
 
+        // Luôn inflate layout (không return sớm nữa)
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         setupRegisterHyperlink();
         setupForgotPassword();
 
+        // Init Google Sign-In TRƯỚC KHI launcher có thể callback
         authHelper.initGoogleSignIn(this, getString(R.string.default_web_client_id));
 
         binding.btnLogin.setOnClickListener(v -> performLogin());
@@ -62,9 +79,30 @@ public class LoginActivity extends BaseActivity {
         binding.btnGoogleLogin.setOnClickListener(v -> {
             Intent signInIntent = authHelper.getGoogleSignInIntent();
             if (signInIntent != null) {
-                startActivityForResult(signInIntent, FirebaseAuthHelper.RC_GOOGLE_SIGN_IN);
+                isHandlingGoogleSignIn = true;
+                googleSignInLauncher.launch(signInIntent);
             }
         });
+
+        // AuthStateListener: tự động chuyển sang Home khi Firebase xác nhận đăng nhập
+        authStateListener = firebaseAuth -> {
+            if (!isHandlingGoogleSignIn && firebaseAuth.getCurrentUser() != null) {
+                Log.d(TAG, "AuthStateListener: user đã đăng nhập, chuyển Home");
+                goToHome();
+            }
+        };
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        com.google.firebase.auth.FirebaseAuth.getInstance().addAuthStateListener(authStateListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        com.google.firebase.auth.FirebaseAuth.getInstance().removeAuthStateListener(authStateListener);
     }
 
     private void performLogin() {
@@ -90,7 +128,11 @@ public class LoginActivity extends BaseActivity {
             public void onFailure(String errorMessage) {
                 binding.btnLogin.setEnabled(true);
                 binding.btnLogin.setText("Đăng nhập");
-                Toast.makeText(LoginActivity.this, errorMessage, Toast.LENGTH_LONG).show();
+                new android.app.AlertDialog.Builder(LoginActivity.this)
+                        .setTitle("Lỗi Đăng Nhập")
+                        .setMessage(errorMessage)
+                        .setPositiveButton("OK", null)
+                        .show();
             }
         });
     }
@@ -191,20 +233,26 @@ public class LoginActivity extends BaseActivity {
         });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == FirebaseAuthHelper.RC_GOOGLE_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            authHelper.handleGoogleSignInResult(task, new FirebaseAuthHelper.AuthCallback() {
-                @Override
-                public void onSuccess(FirebaseUser user) { saveGoogleUserIfNew(user); }
-                @Override
-                public void onFailure(String errorMessage) {
-                    Toast.makeText(LoginActivity.this, errorMessage, Toast.LENGTH_LONG).show();
-                }
-            });
+    private void handleGoogleSignInActivityResult(ActivityResult result) {
+        Log.d("GoogleSignIn", "onResult: resultCode=" + result.getResultCode() + ", data=" + result.getData());
+        if (result.getData() == null) {
+            Log.w("GoogleSignIn", "result.getData() == null — không có dữ liệu trả về");
+            return;
         }
+        Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(result.getData());
+        authHelper.handleGoogleSignInResult(task, new FirebaseAuthHelper.AuthCallback() {
+            @Override
+            public void onSuccess(FirebaseUser user) { saveGoogleUserIfNew(user); }
+            @Override
+            public void onFailure(String errorMessage) {
+                Log.e("GoogleSignIn", "Lỗi: " + errorMessage);
+                new android.app.AlertDialog.Builder(LoginActivity.this)
+                        .setTitle("Lỗi Google Sign-In")
+                        .setMessage(errorMessage)
+                        .setPositiveButton("OK", null)
+                        .show();
+            }
+        });
     }
 
     private void setupRegisterHyperlink() {
