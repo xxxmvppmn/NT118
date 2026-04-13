@@ -36,8 +36,8 @@ public class FlashcardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_flashcard);
 
         // Get data from Intent
-        String maCD = getIntent().getStringExtra("maCD");
-        String level = getIntent().getStringExtra("level");
+        String maCD = getIntent().getStringExtra("MA_CD");
+        String level = getIntent().getStringExtra("LEVEL");
 
         if (maCD == null || level == null) {
             finish(); // No data, close

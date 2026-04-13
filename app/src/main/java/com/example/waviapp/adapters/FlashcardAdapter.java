@@ -1,7 +1,5 @@
 package com.example.waviapp.adapters;
 
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
 import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +17,6 @@ public class FlashcardAdapter extends RecyclerView.Adapter<FlashcardAdapter.Flas
 
     private List<TuVung> wordList;
     private TextToSpeech tts;
-    private boolean isFront = true;
 
     public FlashcardAdapter(List<TuVung> wordList, TextToSpeech tts) {
         this.wordList = wordList;
@@ -39,17 +36,20 @@ public class FlashcardAdapter extends RecyclerView.Adapter<FlashcardAdapter.Flas
         holder.tvWord.setText(word.getTuTiengAnh());
         holder.tvPhonetic.setText(word.getPhienAm());
         holder.tvMeaning.setText(word.getNghiaTiengViet());
-        holder.tvExample.setText(word.getCauViDu());
+        holder.tvExample.setText(word.getCauViDu() != null ? word.getCauViDu() : "");
 
-        // Reset to front
+        // --- QUAN TRỌNG: Reset trạng thái khi scroll ---
+        // Đảm bảo card mới luôn hiện mặt trước và chữ XUÔI CHIỀU (0 độ)
         holder.frontCard.setVisibility(View.VISIBLE);
         holder.backCard.setVisibility(View.GONE);
-        isFront = true;
+        holder.frontCard.setRotationY(0f);
+        holder.backCard.setRotationY(0f);
+        holder.itemView.setCameraDistance(8000 * holder.itemView.getContext().getResources().getDisplayMetrics().density);
 
-        // Flip on card click
+        // Sự kiện lật thẻ
         holder.itemView.setOnClickListener(v -> flipCard(holder));
 
-        // Speaker click
+        // Sự kiện loa phát âm
         holder.ivSpeaker.setOnClickListener(v -> {
             if (tts != null && word.getTuTiengAnh() != null) {
                 tts.speak(word.getTuTiengAnh(), TextToSpeech.QUEUE_FLUSH, null, null);
@@ -58,25 +58,30 @@ public class FlashcardAdapter extends RecyclerView.Adapter<FlashcardAdapter.Flas
     }
 
     private void flipCard(FlashcardViewHolder holder) {
-        AnimatorSet outAnimator = (AnimatorSet) AnimatorInflater.loadAnimator(holder.itemView.getContext(),
-                isFront ? R.animator.card_flip_left_out : R.animator.card_flip_left_in);
-        AnimatorSet inAnimator = (AnimatorSet) AnimatorInflater.loadAnimator(holder.itemView.getContext(),
-                isFront ? R.animator.card_flip_left_in : R.animator.card_flip_left_out);
+        View front = holder.frontCard;
+        View back = holder.backCard;
 
-        outAnimator.setTarget(isFront ? holder.frontCard : holder.backCard);
-        inAnimator.setTarget(isFront ? holder.backCard : holder.frontCard);
-
-        outAnimator.start();
-        inAnimator.start();
-
-        outAnimator.addListener(new android.animation.AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(android.animation.Animator animation) {
-                holder.frontCard.setVisibility(isFront ? View.GONE : View.VISIBLE);
-                holder.backCard.setVisibility(isFront ? View.VISIBLE : View.GONE);
-                isFront = !isFront;
-            }
-        });
+        if (front.getVisibility() == View.VISIBLE) {
+            // LẬT TRƯỚC -> SAU
+            // Bước 1: Xoay mặt trước đi 90 độ (đứng lại)
+            front.animate().rotationY(90).setDuration(200).withEndAction(() -> {
+                front.setVisibility(View.GONE);
+                back.setVisibility(View.VISIBLE);
+                // Bước 2: Ép mặt sau chờ ở góc -90 độ rồi xoay về 0 (để chữ xuôi)
+                back.setRotationY(-90);
+                back.animate().rotationY(0).setDuration(200).start();
+            }).start();
+        } else {
+            // LẬT SAU -> TRƯỚC (Fix lỗi soi gương)
+            // Bước 1: Xoay mặt sau đi 90 độ
+            back.animate().rotationY(90).setDuration(200).withEndAction(() -> {
+                back.setVisibility(View.GONE);
+                front.setVisibility(View.VISIBLE);
+                // Bước 2: Ép mặt trước chờ ở góc -90 rồi xoay về 0 => CHỮ LUÔN XUÔI
+                front.setRotationY(-90);
+                front.animate().rotationY(0).setDuration(200).start();
+            }).start();
+        }
     }
 
     @Override
