@@ -44,19 +44,25 @@ public class SeedDataHelper {
         // Bài 1
         TuVung[] words1 = {
                 new TuVung("tv_01", "bai_1", "New", "Mới", "Adj", "/njuː/", "Basic"),
-
+                new TuVung("tv_02", "bai_1", "Old", "Cũ", "Adj", "/oʊld/", "Basic"),
+                new TuVung("tv_03", "bai_1", "Big", "To", "Adj", "/bɪɡ/", "Basic"),
+                new TuVung("tv_04", "bai_1", "Small", "Nhỏ", "Adj", "/smɔːl/", "Basic"),
+                new TuVung("tv_05", "bai_1", "Good", "Tốt", "Adj", "/ɡʊd/", "Basic")
         };
         for (TuVung t : words1) {
-            batch.set(db.collection("tuVung").document(t.getMaTV()), t);
+            batch.set(db.collection("TuVung").document(t.getMaTV()), t);
         }
 
         // Bài 2
         TuVung[] words2 = {
                 new TuVung("tv_06", "bai_2", "Meeting", "Cuộc họp", "N", "/ˈmiːtɪŋ/", "Basic"),
-
+                new TuVung("tv_07", "bai_2", "Office", "Văn phòng", "N", "/ˈɒfɪs/", "Basic"),
+                new TuVung("tv_08", "bai_2", "Staff", "Nhân viên", "N", "/stɑːf/", "Basic"),
+                new TuVung("tv_09", "bai_2", "Manager", "Quản lý", "N", "/ˈmænɪdʒə/", "Basic"),
+                new TuVung("tv_10", "bai_2", "Project", "Dự án", "N", "/ˈprɒdʒekt/", "Basic")
         };
         for (TuVung t : words2) {
-            batch.set(db.collection("tuVung").document(t.getMaTV()), t);
+            batch.set(db.collection("TuVung").document(t.getMaTV()), t);
         }
     }
 

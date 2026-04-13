@@ -90,6 +90,9 @@
         <activity
             android:name=".activities.EventInfoActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.QuizActivity"
+            android:exported="false" />
 
         <receiver
             android:name=".utils.AlarmReceiver"

@@ -2,7 +2,7 @@ package com.example.waviapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech; // Thêm import này
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,17 +20,16 @@ import com.example.waviapp.models.TuVung;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.Source;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale; // Thêm import này
+import java.util.Locale;
 
 public class TheoryActivity extends BaseActivity {
 
     private ActivityTheoryBinding binding;
     private DatabaseHelper dbHelper;
-    private TextToSpeech tts; // 1. Khai báo biến tts ở đây
+    private TextToSpeech tts;
 
     private final String[] lessonKeys = {
             "bai_1", "bai_2", "bai_3", "bai_4", "bai_5",
@@ -46,7 +45,7 @@ public class TheoryActivity extends BaseActivity {
     private List<TuVung> wordList = new ArrayList<>();
     private VocabularyAdapter vocabularyAdapter;
 
-    private String lastLoadedKey = ""; // Field to track the last loaded key
+    private String lastLoadedKey = "";
     private boolean isLoading = false;
 
     @Override
@@ -58,7 +57,6 @@ public class TheoryActivity extends BaseActivity {
 
         dbHelper = new DatabaseHelper();
 
-        // 2. Khởi tạo TextToSpeech
         tts = new TextToSpeech(this, status -> {
             if (status != TextToSpeech.ERROR) {
                 tts.setLanguage(Locale.ENGLISH);
@@ -69,11 +67,9 @@ public class TheoryActivity extends BaseActivity {
             binding.ivBack.setOnClickListener(v -> finish());
         }
 
-        // 3. Thiết lập Adapter với xử lý OnVocabularyClickListener
         vocabularyAdapter = new VocabularyAdapter(wordList, new VocabularyAdapter.OnVocabularyClickListener() {
             @Override
             public void onSpeakClick(String text) {
-                // Sử dụng biến tts đã khởi tạo
                 if (text != null && !text.isEmpty() && tts != null) {
                     tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
                 }
@@ -86,9 +82,12 @@ public class TheoryActivity extends BaseActivity {
         setupSpinners();
         loadVocabularyFromFirebase("bai_1", "Basic");
 
-        // Assume there's a button with id btnFlashcard in activity_theory.xml
         if (binding.btnFlashcard != null) {
             binding.btnFlashcard.setOnClickListener(v -> startFlashcardActivity());
+        }
+
+        if (binding.btnQuiz != null) {
+            binding.btnQuiz.setOnClickListener(v -> startQuizActivity());
         }
 
         binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -181,7 +180,7 @@ public class TheoryActivity extends BaseActivity {
                 .whereEqualTo("maCD", lessonKey)
                 .whereEqualTo("level", level)
                 .limit(30)
-                .get() // Source.DEFAULT
+                .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     if (!isDestroyed()) {
                         wordList.clear();
@@ -252,12 +251,20 @@ public class TheoryActivity extends BaseActivity {
         String selectedLevel = binding.spLevel.getSelectedItem().toString();
         String maCD = lessonKeys[currentLessonIndex];
         Intent intent = new Intent(this, FlashcardActivity.class);
-        intent.putExtra("maCD", maCD);
-        intent.putExtra("level", selectedLevel);
+        intent.putExtra("MA_CD", maCD);
+        intent.putExtra("LEVEL", selectedLevel);
         startActivity(intent);
     }
 
-    // 4. Giải phóng bộ nhớ TTS khi thoát Activity
+    private void startQuizActivity() {
+        String selectedLevel = binding.spLevel.getSelectedItem().toString();
+        String maCD = lessonKeys[currentLessonIndex];
+        Intent intent = new Intent(this, QuizActivity.class);
+        intent.putExtra("MA_CD", maCD);
+        intent.putExtra("LEVEL", selectedLevel);
+        startActivity(intent);
+    }
+
     @Override
     protected void onDestroy() {
         if (tts != null) {
