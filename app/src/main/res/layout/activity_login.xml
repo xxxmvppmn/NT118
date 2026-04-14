@@ -15,13 +15,13 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
+            android:gravity="center"
             android:paddingStart="32dp"
             android:paddingEnd="32dp"
-            android:paddingTop="80dp"
-            android:paddingBottom="60dp"
-            android:gravity="center_horizontal">
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
 
             <!-- Tiêu đề -->
             <TextView
@@ -33,9 +33,9 @@
                 android:textStyle="bold"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:layout_marginBottom="52dp" />
+                android:layout_marginBottom="48dp" />
 
-            <!-- Email -->
+            <!-- Email Input -->
             <EditText
                 android:id="@+id/edtLoginEmail"
                 android:layout_width="match_parent"
@@ -51,12 +51,12 @@
                 android:paddingEnd="20dp"
                 android:inputType="textEmailAddress" />
 
-            <!-- Password -->
+            <!-- Password Input -->
             <EditText
                 android:id="@+id/edtLoginPassword"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/rounded_input_background"
                 android:drawableStart="@drawable/ic_lock"
                 android:drawablePadding="16dp"
@@ -74,8 +74,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="36dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="32dp"
                 android:text="@string/auto_qu_n_m_t_kh_u_1"
                 android:textColor="#9370DB"
                 android:textSize="14.5sp"
@@ -87,7 +87,7 @@
             <Button
                 android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
-                android:layout_height="58dp"
+                android:layout_height="60dp"
                 android:text="@string/auto_ng_nh_p"
                 android:textSize="17sp"
                 android:textColor="#FFFFFF"
@@ -105,7 +105,7 @@
                 android:id="@+id/btnGoogleLogin"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="18dp"
                 android:background="@drawable/google_button_background"
                 android:gravity="center"
                 android:clickable="true"
@@ -132,7 +132,7 @@
                 android:id="@+id/txtRegisterLink"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="52dp"
+                android:layout_marginTop="42dp"
                 android:text="@string/auto_b_n_ch_a_c_t_i_kho_n_t_o_t_i_k"
                 android:textColor="#555555"
                 android:textSize="15sp"
