@@ -23,18 +23,10 @@ public class PremiumActivity extends BaseActivity {
 
     private ActivityPremiumBinding binding;
 
-    // Model để quản lý dữ liệu
     static class PricePackage {
-        String name;
-        String oldPrice;
-        String newPrice;
-        String promo;
-
+        String name, oldPrice, newPrice, promo;
         PricePackage(String name, String oldPrice, String newPrice, String promo) {
-            this.name = name;
-            this.oldPrice = oldPrice;
-            this.newPrice = newPrice;
-            this.promo = promo;
+            this.name = name; this.oldPrice = oldPrice; this.newPrice = newPrice; this.promo = promo;
         }
     }
 
@@ -44,25 +36,37 @@ public class PremiumActivity extends BaseActivity {
         binding = ActivityPremiumBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        if (binding.ivBack != null) {
-            binding.ivBack.setOnClickListener(v -> finish());
-        }
-
+        if (binding.ivBack != null) binding.ivBack.setOnClickListener(v -> finish());
         setupPricePackages();
         setupUserReviews();
-
-        binding.tvRestore.setOnClickListener(v ->
-                Toast.makeText(this, "Đang kiểm tra lịch sử thanh toán...", Toast.LENGTH_SHORT).show()
-        );
+        binding.tvRestore.setOnClickListener(v -> Toast.makeText(this, "Đang kiểm tra...", Toast.LENGTH_SHORT).show());
 
         setupBottomNavigation();
     }
 
-    private void setupPricePackages() {
-        binding.rvPricePackages.setLayoutManager(
-                new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        );
+    private void setupBottomNavigation() {
+        binding.bottomNav.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_premium) return false;
+            
+            Intent intent = null;
+            if (id == R.id.nav_home) intent = new Intent(this, HomeActivity.class);
+            else if (id == R.id.nav_exam) intent = new Intent(this, ExamActivity.class);
+            else if (id == R.id.nav_profile) intent = new Intent(this, UserInfoActivity.class);
+            else if (id == R.id.nav_setting) intent = new Intent(this, SettingsActivity.class);
 
+            if (intent != null) {
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                return true;
+            }
+            return false;
+        });
+    }
+
+    private void setupPricePackages() {
+        binding.rvPricePackages.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         List<PricePackage> packages = Arrays.asList(
                 new PricePackage("1 Tháng", "150.000đ", "99.000đ", "TIẾT KIỆM"),
                 new PricePackage("1 Năm", "600.000đ", "399.000đ", "50% OFF"),
@@ -72,10 +76,7 @@ public class PremiumActivity extends BaseActivity {
     }
 
     private void setupUserReviews() {
-        binding.rvReviews.setLayoutManager(
-                new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        );
-
+        binding.rvReviews.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         List<String> reviews = Arrays.asList(
                 "App dùng rất mượt, đề thi sát thực tế!",
                 "Ấn tượng đầu tiên về WaviApp là giao diện cực kỳ 'clean' và hiện đại.",
@@ -84,33 +85,13 @@ public class PremiumActivity extends BaseActivity {
         binding.rvReviews.setAdapter(new ReviewAdapter(reviews));
     }
 
-    private void setupBottomNavigation() {
-        binding.bottomNav.setSelectedItemId(R.id.nav_premium);
-        binding.bottomNav.setOnItemSelectedListener(item -> {
-            int id = item.getItemId();
-            if (id == R.id.nav_home) {
-                startActivity(new Intent(this, HomeActivity.class));
-            } else if (id == R.id.nav_exam) {
-                startActivity(new Intent(this, ExamActivity.class));
-            } else if (id == R.id.nav_profile) {
-                startActivity(new Intent(this, UserInfoActivity.class));
-            } else if (id == R.id.nav_setting) {
-                startActivity(new Intent(this, SettingsActivity.class));
-            }
-            return true;
-        });
-    }
-
-    // ===== Package Adapter (ĐÃ SỬA ĐỂ KHỚP XML) =====
     class PackageAdapter extends RecyclerView.Adapter<PackageAdapter.ViewHolder> {
         List<PricePackage> data;
-
         PackageAdapter(List<PricePackage> data) { this.data = data; }
 
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            // QUAN TRỌNG: Nạp file XML item_price_package vào đây
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_price_package, parent, false);
             return new ViewHolder(view);
         }
@@ -121,14 +102,8 @@ public class PremiumActivity extends BaseActivity {
             holder.tvName.setText(item.name);
             holder.tvCurrent.setText(item.newPrice);
             holder.tvPromo.setText(item.promo);
-
-            // Hiển thị giá gốc và gạch ngang
             holder.tvOld.setText(item.oldPrice);
             holder.tvOld.setPaintFlags(holder.tvOld.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-
-            holder.itemView.setOnClickListener(v ->
-                    Toast.makeText(PremiumActivity.this, "Bạn chọn gói: " + item.name, Toast.LENGTH_SHORT).show()
-            );
         }
 
         @Override
@@ -136,10 +111,8 @@ public class PremiumActivity extends BaseActivity {
 
         class ViewHolder extends RecyclerView.ViewHolder {
             TextView tvName, tvOld, tvCurrent, tvPromo;
-
             ViewHolder(View itemView) {
                 super(itemView);
-                // Ánh xạ đúng ID từ file XML của Ngân
                 tvName = itemView.findViewById(R.id.tvPackageName);
                 tvOld = itemView.findViewById(R.id.tvOriginalPrice);
                 tvCurrent = itemView.findViewById(R.id.tvCurrentPrice);
@@ -148,7 +121,6 @@ public class PremiumActivity extends BaseActivity {
         }
     }
 
-    // ===== Review Adapter (ĐÃ SỬA ĐỂ GIAO DIỆN ĐẸP HƠN) =====
     class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder> {
         List<String> data;
         ReviewAdapter(List<String> data) { this.data = data; }
@@ -156,17 +128,12 @@ public class PremiumActivity extends BaseActivity {
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            // Nếu Ngân có file xml cho review thì nạp vào, nếu chưa thì tạm dùng code này
             androidx.cardview.widget.CardView card = new androidx.cardview.widget.CardView(parent.getContext());
-            card.setRadius(20f);
-            card.setCardElevation(4f);
+            card.setRadius(20f); card.setCardElevation(4f);
             RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(600, ViewGroup.LayoutParams.WRAP_CONTENT);
-            params.setMargins(16, 16, 16, 16);
-            card.setLayoutParams(params);
-
+            params.setMargins(16, 16, 16, 16); card.setLayoutParams(params);
             TextView tv = new TextView(parent.getContext());
-            tv.setPadding(30, 30, 30, 30);
-            card.addView(tv);
+            tv.setPadding(30, 30, 30, 30); card.addView(tv);
             return new ViewHolder(card, tv);
         }
 
@@ -184,4 +151,3 @@ public class PremiumActivity extends BaseActivity {
         }
     }
 }
-

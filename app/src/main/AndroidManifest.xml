@@ -24,6 +24,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WaviApp">
         <activity
+            android:name=".activities.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".activities.FlashcardActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
@@ -49,13 +57,7 @@
             android:launchMode="singleTask" />
         <activity
             android:name=".activities.LoginActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".activities.HomeActivity"
             android:exported="false"

@@ -14,7 +14,6 @@ import com.example.waviapp.databinding.ActivityExamBinding;
 import com.example.waviapp.firebase.DatabaseHelper;
 import com.example.waviapp.models.BaiKiemTra;
 import com.example.waviapp.models.TaiKhoan;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -34,36 +33,32 @@ public class ExamActivity extends BaseActivity {
 
         dbHelper = new DatabaseHelper();
 
-        // Xử lý sự kiện "Xem Tất cả" (tvSeeMore1, 2, 3)
         binding.tvSeeMore1.setOnClickListener(v -> openTestList(TestListActivity.CAT_FULLTEST));
         binding.tvSeeMore2.setOnClickListener(v -> openTestList(TestListActivity.CAT_MINITEST));
         binding.tvSeeMore3.setOnClickListener(v -> openTestList(TestListActivity.CAT_SPEAKING));
 
-        // Tải dữ liệu Firebase (hoặc hiển thị mẫu)
         loadTestsFromFirebase();
-
-        // Cấu hình thanh điều hướng bên dưới
         setupBottomNavigation();
     }
 
     private void setupBottomNavigation() {
-        binding.bottomNav.setSelectedItemId(R.id.nav_exam);
         binding.bottomNav.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
-            if (id == R.id.nav_home) {
-                startActivity(new Intent(ExamActivity.this, HomeActivity.class));
-            } else if (id == R.id.nav_exam) {
+            if (id == R.id.nav_exam) return false;
+            
+            Intent intent = null;
+            if (id == R.id.nav_home) intent = new Intent(this, HomeActivity.class);
+            else if (id == R.id.nav_premium) intent = new Intent(this, PremiumActivity.class);
+            else if (id == R.id.nav_profile) intent = new Intent(this, UserInfoActivity.class);
+            else if (id == R.id.nav_setting) intent = new Intent(this, SettingsActivity.class);
+
+            if (intent != null) {
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
                 return true;
-            } else if (id == R.id.nav_premium) {
-                startActivity(new Intent(ExamActivity.this, PremiumActivity.class));
-            } else if (id == R.id.nav_setting) {
-                startActivity(new Intent(ExamActivity.this, SettingsActivity.class));
-            } else if (id == R.id.nav_profile) {
-                startActivity(new Intent(ExamActivity.this, UserInfoActivity.class));
             }
-            overridePendingTransition(0, 0);
-            finish();
-            return true;
+            return false;
         });
     }
 
@@ -104,28 +99,23 @@ public class ExamActivity extends BaseActivity {
     }
 
     private void fetchTestData() {
-        java.util.Comparator<BaiKiemTra> testSorter = new java.util.Comparator<BaiKiemTra>() {
-            @Override
-            public int compare(BaiKiemTra t1, BaiKiemTra t2) {
-                try {
-                    String num1 = t1.getMaBKT().replaceAll("\\D+", "");
-                    String num2 = t2.getMaBKT().replaceAll("\\D+", "");
-                    int n1 = num1.isEmpty() ? 0 : Integer.parseInt(num1);
-                    int n2 = num2.isEmpty() ? 0 : Integer.parseInt(num2);
-                    return Integer.compare(n1, n2);
-                } catch (Exception e) {
-                    return t1.getMaBKT().compareTo(t2.getMaBKT());
-                }
+        java.util.Comparator<BaiKiemTra> testSorter = (t1, t2) -> {
+            try {
+                String num1 = t1.getMaBKT().replaceAll("\\D+", "");
+                String num2 = t2.getMaBKT().replaceAll("\\D+", "");
+                int n1 = num1.isEmpty() ? 0 : Integer.parseInt(num1);
+                int n2 = num2.isEmpty() ? 0 : Integer.parseInt(num2);
+                return Integer.compare(n1, n2);
+            } catch (Exception e) {
+                return t1.getMaBKT().compareTo(t2.getMaBKT());
             }
         };
 
-        // Full Tests
         dbHelper.getTests("fulltest", new DatabaseHelper.TestCallback() {
             @Override
             public void onSuccess(List<BaiKiemTra> tests) {
-                if (tests.isEmpty()) {
-                    setupFulltestDefault();
-                } else {
+                if (tests.isEmpty()) setupFulltestDefault();
+                else {
                     binding.llFulltest.removeAllViews();
                     java.util.Collections.sort(tests, testSorter);
                     for (int i = 0; i < Math.min(5, tests.size()); i++) {
@@ -137,13 +127,11 @@ public class ExamActivity extends BaseActivity {
             public void onFailure(String error) { setupFulltestDefault(); }
         });
 
-        // Mini Tests
         dbHelper.getTests("minitest", new DatabaseHelper.TestCallback() {
             @Override
             public void onSuccess(List<BaiKiemTra> tests) {
-                if (tests.isEmpty()) {
-                    setupMinitestDefault();
-                } else {
+                if (tests.isEmpty()) setupMinitestDefault();
+                else {
                     binding.llMinitest.removeAllViews();
                     java.util.Collections.sort(tests, testSorter);
                     for (int i = 0; i < Math.min(5, tests.size()); i++) {
@@ -155,13 +143,11 @@ public class ExamActivity extends BaseActivity {
             public void onFailure(String error) { setupMinitestDefault(); }
         });
 
-        // Speaking Tests
         dbHelper.getTests("speaking", new DatabaseHelper.TestCallback() {
             @Override
             public void onSuccess(List<BaiKiemTra> tests) {
-                if (tests.isEmpty()) {
-                    setupSpeakingDefault();
-                } else {
+                if (tests.isEmpty()) setupSpeakingDefault();
+                else {
                     binding.llSpeaking.removeAllViews();
                     java.util.Collections.sort(tests, testSorter);
                     for (int i = 0; i < Math.min(5, tests.size()); i++) {
@@ -174,7 +160,7 @@ public class ExamActivity extends BaseActivity {
         });
     }
 
-    private void addTestToLayout(android.widget.LinearLayout container, BaiKiemTra test, int iconRes, String bgColor) {
+    private void addTestToLayout(LinearLayout container, BaiKiemTra test, int iconRes, String bgColor) {
         View itemView = LayoutInflater.from(this).inflate(R.layout.item_test_card, container, false);
         TextView tvTestName = itemView.findViewById(R.id.tvTestName);
         TextView tvTestDesc = itemView.findViewById(R.id.tvTestDesc);
@@ -184,7 +170,6 @@ public class ExamActivity extends BaseActivity {
 
         ivIcon.setImageResource(iconRes);
         cardContainer.setCardBackgroundColor(android.graphics.Color.parseColor(bgColor));
-
         tvTestName.setText(test.getTenBKT());
         tvTestDesc.setText(test.getLoaiKiemTra());
 
@@ -195,11 +180,8 @@ public class ExamActivity extends BaseActivity {
             ivLock.setVisibility(View.GONE);
             itemView.setOnClickListener(v -> openTestDetail(test.getTenBKT(), test.getThoiGianLamBai(), test.getTongSoCau()));
         }
-
         container.addView(itemView);
     }
-
-    // ===== Fallback defaults =====
 
     private void setupFulltestDefault() {
         for (int i = 1; i <= 5; i++) {
@@ -222,4 +204,3 @@ public class ExamActivity extends BaseActivity {
         }
     }
 }
-

@@ -2,86 +2,87 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA">
-
-    <!-- Gradient Header Area -->
-    <View
-        android:id="@+id/headerBg"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/bg_curved_header"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    android:background="@drawable/wavi_pastel_purple_gradient">
 
     <include layout="@layout/layout_header_decor" />
 
     <RelativeLayout
         android:id="@+id/toolbarSettings"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_marginTop="45dp"
+        android:layout_height="72dp"
+        android:paddingHorizontal="24dp"
         app:layout_constraintTop_toTopOf="parent">
-        
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/auto_c_i_t"
-            android:textColor="@color/white"
+            android:text="Cài đặt"
+            android:textColor="#9370DB"
             android:textSize="22sp"
             android:textStyle="bold"
             android:layout_centerInParent="true" />
     </RelativeLayout>
 
-    <!-- Content ScrollView -->
     <androidx.core.widget.NestedScrollView
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/toolbarSettings"
         app:layout_constraintBottom_toTopOf="@id/bottomNav"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:clipToPadding="false">
+        android:clipToPadding="false"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="16dp"
+            android:paddingHorizontal="20dp"
             android:paddingBottom="40dp">
 
-            <!-- Profile Floating Section -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="24dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="6dp"
+                app:cardBackgroundColor="#CCFFFFFF"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
                 app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="20dp"
+                    android:padding="16dp"
                     android:gravity="center_vertical">
-                    
-                    <TextView
-                        android:id="@+id/tvAvatarText"
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
-                        android:background="@drawable/bg_circle_purple"
-                        android:text="@string/auto_m"
-                        android:textColor="@color/white"
-                        android:textSize="28sp"
-                        android:textStyle="bold"
-                        android:gravity="center"
-                        android:layout_marginEnd="16dp"/>
-                    
+
+                    <FrameLayout
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:layout_marginEnd="16dp">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/ivAvatarSettings"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="2dp"
+                            app:strokeColor="#FFFFFF"
+                            app:strokeWidth="2dp"
+                            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+                            android:background="#E0E0E0"/>
+
+                        <TextView
+                            android:id="@+id/tvAvatarText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textColor="#9370DB"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+                    </FrameLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -91,7 +92,7 @@
                             android:id="@+id/tvUserName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/auto_t_n_c_a_b_n"
+                            android:text="Phạm Minh Ngân"
                             android:textColor="#2D3142"
                             android:textSize="18sp"
                             android:textStyle="bold"/>
@@ -99,18 +100,19 @@
                             android:id="@+id/tvPremiumStatus"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/auto_th_nh_vi_n_mi_n_ph"
-                            android:textColor="#888888"
+                            android:text="Thành viên miễn phí"
+                            android:textColor="#9370DB"
                             android:textSize="13sp"
-                            android:layout_marginTop="2dp"/>
+                            android:layout_marginTop="2dp"
+                            android:textStyle="bold"/>
                     </LinearLayout>
-                    
+
                     <TextView
                         android:id="@+id/tvLogout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/auto_ng_xu_t"
-                        android:textColor="@color/orange_main"
+                        android:text="Đăng xuất"
+                        android:textColor="#FF5252"
                         android:textSize="14sp"
                         android:textStyle="bold"
                         android:background="?attr/selectableItemBackground"
@@ -118,168 +120,173 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Group 1: Tài khoản -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/auto_t_i_kho_n"
-                android:textColor="#2D3142"
+                android:text="Tài khoản"
+                android:textColor="#9370DB"
                 android:textStyle="bold"
                 android:textSize="16sp"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginBottom="8dp"/>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
-                app:cardCornerRadius="16dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardElevation="2dp"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="#CCFFFFFF"
+                app:cardElevation="0dp"
                 app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    
-                    <!-- Chỉnh sửa hồ sơ -->
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
                     <LinearLayout android:id="@+id/llEditProfile" style="@style/SettingItemStyle">
-                        <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_edit" app:tint="@color/purple_main"/>
-                        <TextView style="@style/SettingTextStyle" android:text="@string/auto_ch_nh_s_a_h_s" layout_weight="1" />
-                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron" android:rotation="180" app:tint="#CCCCCC" android:layout_gravity="center_vertical"/>
+                        <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_edit" app:tint="#9370DB"/>
+                        <TextView style="@style/SettingTextStyle" android:text="Chỉnh sửa hồ sơ" android:layout_weight="1" android:textColor="#2D3142"/>
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron" android:rotation="180" app:tint="#9370DB"/>
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-
-            <!-- Group 2: Ứng dụng -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/auto_ng_d_ng"
-                android:textColor="#2D3142"
+                android:text="Ứng dụng"
+                android:textColor="#9370DB"
                 android:textStyle="bold"
                 android:textSize="16sp"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginBottom="8dp"/>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
-                app:cardCornerRadius="16dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardElevation="2dp"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="#CCFFFFFF"
+                app:cardElevation="0dp"
                 app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    
-                    <!-- Ngôn ngữ -->
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
                     <LinearLayout android:id="@+id/llLanguage" style="@style/SettingItemStyle">
-                        <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_sort_by_size" app:tint="@color/orange_main"/>
-                        <TextView style="@style/SettingTextStyle" android:text="@string/auto_ng_n_ng_ng_d_ng" android:layout_weight="1" />
-                        <TextView android:id="@+id/tvSelectedLanguage" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/auto_ti_ng_vi_t" android:textColor="@color/orange_main" android:textSize="14sp" android:layout_marginEnd="8dp" android:layout_gravity="center_vertical"/>
-                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron" android:rotation="180" app:tint="#CCCCCC" android:layout_gravity="center_vertical"/>
+                        <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_sort_by_size" app:tint="#9370DB"/>
+                        <TextView style="@style/SettingTextStyle" android:text="Ngôn ngữ ứng dụng" android:layout_weight="1" android:textColor="#2D3142"/>
+                        <TextView android:id="@+id/tvSelectedLanguage" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tiếng Việt" android:textColor="#9370DB" android:textSize="14sp" android:layout_marginEnd="8dp" android:textStyle="bold"/>
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron" android:rotation="180" app:tint="#9370DB"/>
                     </LinearLayout>
-                    <View style="@style/SettingDividerStyle"/>
 
-                    <!-- Hiển thị -->
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F0E6FF" android:layout_marginHorizontal="16dp"/>
+
                     <LinearLayout android:id="@+id/llDisplay" style="@style/SettingItemStyle">
-                        <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_view" app:tint="#2196F3"/>
-                        <TextView style="@style/SettingTextStyle" android:text="@string/auto_hi_n_th" android:layout_weight="1"/>
-                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron" android:rotation="180" app:tint="#CCCCCC" android:layout_gravity="center_vertical"/>
+                        <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_view" app:tint="#9370DB"/>
+                        <TextView style="@style/SettingTextStyle" android:text="Hiển thị" android:layout_weight="1" android:textColor="#2D3142"/>
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron" android:rotation="180" app:tint="#9370DB"/>
                     </LinearLayout>
-                    <View style="@style/SettingDividerStyle"/>
 
-                    <!-- Quản lý tải xuống -->
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F0E6FF" android:layout_marginHorizontal="16dp"/>
+
                     <LinearLayout android:id="@+id/llDownloads" style="@style/SettingItemStyle">
-                        <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_save" app:tint="#4CAF50"/>
-                        <TextView style="@style/SettingTextStyle" android:text="@string/auto_qu_n_l_t_i_xu_ng" android:layout_weight="1"/>
-                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron" android:rotation="180" app:tint="#CCCCCC" android:layout_gravity="center_vertical"/>
+                        <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_save" app:tint="#9370DB"/>
+                        <TextView style="@style/SettingTextStyle" android:text="Quản lý tải xuống" android:layout_weight="1" android:textColor="#2D3142"/>
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron" android:rotation="180" app:tint="#9370DB"/>
                     </LinearLayout>
-                    <View style="@style/SettingDividerStyle"/>
 
-                    <!-- Nhắc nhở -->
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F0E6FF" android:layout_marginHorizontal="16dp"/>
+
                     <LinearLayout android:id="@+id/llReminder" style="@style/SettingItemStyle">
-                        <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_recent_history" app:tint="#FF9800"/>
-                        <TextView style="@style/SettingTextStyle" android:text="@string/auto_nh_c_nh_h_c_t_p" android:layout_weight="1"/>
-                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron" android:rotation="180" app:tint="#CCCCCC" android:layout_gravity="center_vertical"/>
+                        <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_recent_history" app:tint="#9370DB"/>
+                        <TextView style="@style/SettingTextStyle" android:text="Nhắc nhở học tập" android:layout_weight="1" android:textColor="#2D3142"/>
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron" android:rotation="180" app:tint="#9370DB"/>
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-
-            <!-- Group 3: Hỗ trợ -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/auto_h_tr_amp_k_t_n_i"
-                android:textColor="#2D3142"
+                android:text="Hỗ trợ &amp; Kết nối"
+                android:textColor="#9370DB"
                 android:textStyle="bold"
                 android:textSize="16sp"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginBottom="8dp"/>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardElevation="2dp"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="#CCFFFFFF"
+                app:cardElevation="0dp"
                 app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    
-                    <!-- Cộng đồng -->
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <LinearLayout android:id="@+id/llCommunity" style="@style/SettingItemStyle">
+                        <ImageView style="@style/SettingIconStyle"
+                            android:src="@android:drawable/ic_menu_share"
+                            app:tint="#9370DB"/>
+                        <TextView style="@style/SettingTextStyle"
+                            android:text="Tham gia cộng đồng Wavi"
+                            android:layout_weight="1"
+                            android:textColor="#2D3142"/>
+                        <ImageView android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_chevron"
+                            android:rotation="180" app:tint="#9370DB"/>
+                    </LinearLayout>
+
+                    <View android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#F0E6FF"
+                        android:layout_marginHorizontal="16dp"/>
+
                     <LinearLayout
-                        android:id="@+id/llCommunity"
+                        android:id="@+id/llShare"
                         style="@style/SettingItemStyle">
                         <ImageView style="@style/SettingIconStyle"
                             android:src="@android:drawable/ic_menu_share"
-                            app:tint="#00BCD4"/>
+                            app:tint="#9370DB"/>
                         <TextView style="@style/SettingTextStyle"
-                            android:text="@string/auto_tham_gia_c_ng_ng_wavi"
-                            android:layout_weight="1"/>
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/ic_chevron"
-                            android:rotation="180"
-                            app:tint="#CCCCCC"
-                            android:layout_gravity="center_vertical"/>
+                            android:text="Chia sẻ ứng dụng"
+                            android:layout_weight="1"
+                            android:textColor="#2D3142"/>
+                        <ImageView android:layout_width="20dp"
+                            android:layout_height="20dp" android:src="@drawable/ic_chevron"
+                            android:rotation="180" app:tint="#9370DB"/>
                     </LinearLayout>
-                    <View style="@style/SettingDividerStyle"/>
 
-                    <!-- Chia sẻ -->
-                    <LinearLayout
-                        android:id="@+id/llShare" style="@style/SettingItemStyle">
+                    <View android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#F0E6FF" android:layout_marginHorizontal="16dp"/>
+
+                    <LinearLayout android:id="@+id/llFeedback"
+                        style="@style/SettingItemStyle">
                         <ImageView style="@style/SettingIconStyle"
-                            android:src="@android:drawable/ic_menu_share" app:tint="#3F51B5"/>
+                            android:src="@android:drawable/ic_menu_send"
+                            app:tint="#9370DB"/>
                         <TextView style="@style/SettingTextStyle"
-                            android:text="@string/auto_chia_s_ng_d_ng"
-                            android:layout_weight="1"/>
-                        <ImageView
-                            android:layout_width="20dp"
+                            android:text="Phản hồi &amp; Hỗ trợ"
+                            android:layout_weight="1"
+                            android:textColor="#2D3142"/>
+                        <ImageView android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:src="@drawable/ic_chevron"
                             android:rotation="180"
-                            app:tint="#CCCCCC"
-                            android:layout_gravity="center_vertical"/>
-                    </LinearLayout>
-                    <View style="@style/SettingDividerStyle"/>
-
-                    <!-- Phản hồi -->
-                    <LinearLayout android:id="@+id/llFeedback" style="@style/SettingItemStyle">
-                        <ImageView style="@style/SettingIconStyle" android:src="@android:drawable/ic_menu_send" app:tint="#E91E63"/>
-                        <TextView style="@style/SettingTextStyle" android:text="@string/auto_ph_n_h_i_amp_h_tr" android:layout_weight="1"/>
-                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron" android:rotation="180" app:tint="#CCCCCC" android:layout_gravity="center_vertical"/>
+                            app:tint="#9370DB"/>
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -287,26 +294,16 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Bottom Navigation -->
-    <View
-        android:id="@+id/navDivider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#EBEBEB"
-        app:layout_constraintBottom_toTopOf="@id/bottomNav" />
-        
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
-        app:itemIconTint="@null"
-        app:itemTextColor="#000000"
-        android:paddingBottom="15dp"
+        android:paddingBottom="12dp"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
         app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_nav_menu"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

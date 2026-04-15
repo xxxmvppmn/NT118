@@ -17,13 +17,13 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 
-import android.app.Activity;
 import android.util.Log;
 
 import com.example.waviapp.R;
 import com.example.waviapp.databinding.ActivityLoginBinding;
 import com.example.waviapp.firebase.DatabaseHelper;
 import com.example.waviapp.firebase.FirebaseAuthHelper;
+import com.example.waviapp.managers.UserSessionManager;
 import com.example.waviapp.models.TaiKhoan;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -44,9 +44,8 @@ public class LoginActivity extends BaseActivity {
     private DatabaseHelper dbHelper;
     private ActivityResultLauncher<Intent> googleSignInLauncher;
 
-    // Dùng AuthStateListener thay vì check isLoggedIn() trong onCreate
     private com.google.firebase.auth.FirebaseAuth.AuthStateListener authStateListener;
-    private boolean isHandlingGoogleSignIn = false; // tránh auto-redirect khi đang xử lý result
+    private boolean isHandlingGoogleSignIn = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +54,6 @@ public class LoginActivity extends BaseActivity {
         authHelper = new FirebaseAuthHelper();
         dbHelper = new DatabaseHelper();
 
-        // QUAN TRỌNG: Đăng ký launcher BẮT BUỘC phải ở đây, TRƯỚC setContentView
         googleSignInLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -64,14 +62,12 @@ public class LoginActivity extends BaseActivity {
                 }
         );
 
-        // Luôn inflate layout (không return sớm nữa)
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         setupRegisterHyperlink();
         setupForgotPassword();
 
-        // Init Google Sign-In TRƯỚC KHI launcher có thể callback
         authHelper.initGoogleSignIn(this, getString(R.string.default_web_client_id));
 
         binding.btnLogin.setOnClickListener(v -> performLogin());
@@ -84,11 +80,11 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
-        // AuthStateListener: tự động chuyển sang Home khi Firebase xác nhận đăng nhập
         authStateListener = firebaseAuth -> {
             if (!isHandlingGoogleSignIn && firebaseAuth.getCurrentUser() != null) {
                 Log.d(TAG, "AuthStateListener: user đã đăng nhập, chuyển Home");
-                goToHome();
+                // Fetch data before going to Home
+                UserSessionManager.getInstance().fetchUserData(firebaseAuth.getCurrentUser().getUid(), success -> goToHome());
             }
         };
     }
@@ -120,7 +116,6 @@ public class LoginActivity extends BaseActivity {
         authHelper.login(email, password, new FirebaseAuthHelper.AuthCallback() {
             @Override
             public void onSuccess(FirebaseUser user) {
-                // Đăng nhập thành công -> Cập nhật Streak và lastLogin
                 handleUserSession(user.getUid());
             }
 
@@ -137,9 +132,6 @@ public class LoginActivity extends BaseActivity {
         });
     }
 
-    /**
-     * Logic xử lý Streak và lastLogin khi đăng nhập thành công
-     */
     private void handleUserSession(String uid) {
         dbHelper.getUser(uid, new DatabaseHelper.UserCallback() {
             @Override
@@ -151,7 +143,6 @@ public class LoginActivity extends BaseActivity {
                 int newStreak = currentStreak;
 
                 if (lastLoginTs != null) {
-                    // Tính toán khoảng cách ngày
                     Calendar calLast = Calendar.getInstance();
                     calLast.setTime(lastLoginTs.toDate());
                     setAtStartOfDay(calLast);
@@ -164,30 +155,34 @@ public class LoginActivity extends BaseActivity {
                     long diffDays = diffMillis / (24 * 60 * 60 * 1000);
 
                     if (diffDays == 1) {
-                        newStreak++; // Đăng nhập ngày kế tiếp -> Tăng streak
+                        newStreak++;
                     } else if (diffDays > 1) {
-                        newStreak = 1; // Bỏ lỡ ngày -> Reset về 1
+                        newStreak = 1;
                     }
-                    // Nếu diffDays == 0 (cùng ngày) -> Giữ nguyên streak
                 } else {
-                    newStreak = 1; // Lần đầu đăng nhập
+                    newStreak = 1;
                 }
 
-                // Cập nhật lên Firestore
                 Map<String, Object> updates = new HashMap<>();
                 updates.put("lastLogin", now);
                 updates.put("chuoiNgayHoc", newStreak);
 
+                final int streakToSave = newStreak;
                 dbHelper.updateUser(uid, updates, new DatabaseHelper.SimpleCallback() {
                     @Override
                     public void onSuccess() {
                         Toast.makeText(LoginActivity.this, "Chào mừng trở lại!", Toast.LENGTH_SHORT).show();
+                        // Update local cache
+                        user.setLastLogin(now);
+                        user.setChuoiNgayHoc(streakToSave);
+                        UserSessionManager.getInstance().updateUserDataLocally(user);
                         goToHome();
                     }
 
                     @Override
                     public void onFailure(String error) {
-                        goToHome(); // Vẫn vào Home dù update streak lỗi
+                        UserSessionManager.getInstance().updateUserDataLocally(user);
+                        goToHome();
                     }
                 });
             }
@@ -219,13 +214,15 @@ public class LoginActivity extends BaseActivity {
                 String email = firebaseUser.getEmail() != null ? firebaseUser.getEmail() : "";
                 TaiKhoan newUser = new TaiKhoan(firebaseUser.getUid(), name, email);
 
-                // Khởi tạo streak cho user mới
                 newUser.setLastLogin(Timestamp.now());
                 newUser.setChuoiNgayHoc(1);
 
                 dbHelper.saveUser(firebaseUser.getUid(), newUser, new DatabaseHelper.SimpleCallback() {
                     @Override
-                    public void onSuccess() { goToHome(); }
+                    public void onSuccess() {
+                        UserSessionManager.getInstance().updateUserDataLocally(newUser);
+                        goToHome();
+                    }
                     @Override
                     public void onFailure(String error) { goToHome(); }
                 });
@@ -234,18 +231,13 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void handleGoogleSignInActivityResult(ActivityResult result) {
-        Log.d("GoogleSignIn", "onResult: resultCode=" + result.getResultCode() + ", data=" + result.getData());
-        if (result.getData() == null) {
-            Log.w("GoogleSignIn", "result.getData() == null — không có dữ liệu trả về");
-            return;
-        }
+        if (result.getData() == null) return;
         Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(result.getData());
         authHelper.handleGoogleSignInResult(task, new FirebaseAuthHelper.AuthCallback() {
             @Override
             public void onSuccess(FirebaseUser user) { saveGoogleUserIfNew(user); }
             @Override
             public void onFailure(String errorMessage) {
-                Log.e("GoogleSignIn", "Lỗi: " + errorMessage);
                 new android.app.AlertDialog.Builder(LoginActivity.this)
                         .setTitle("Lỗi Google Sign-In")
                         .setMessage(errorMessage)
@@ -295,4 +287,3 @@ public class LoginActivity extends BaseActivity {
         });
     }
 }
-

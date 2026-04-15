@@ -2,85 +2,65 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_light_gray">
+    android:background="@drawable/wavi_pastel_purple_gradient"
+    tools:context="com.example.waviapp.activities.EventInfoActivity">
 
-    <!-- Toolbar -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarEventInfo"
+    <include layout="@layout/layout_header_decor" />
+
+    <RelativeLayout
+        android:id="@+id/customTopBar"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:paddingTop="45dp"
-        android:background="@drawable/bg_curved_header"
-        app:contentInsetStart="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_height="72dp"
+        android:layout_marginTop="45dp"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="16dp">
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:src="@drawable/ic_back"
+            app:tint="#9370DB" />
 
-            <ImageView
-                android:id="@+id/ivBack"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@android:drawable/ic_menu_revert"
-                app:tint="#FFFFFF"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
-                android:focusable="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/auto_t_m_hi_u_th_m_s_ki_n"
+            android:textColor="#9370DB"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/auto_t_m_hi_u_th_m_s_ki_n"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_centerInParent="true" />
-
-        </RelativeLayout>
-    </androidx.appcompat.widget.Toolbar>
-
-    <!-- Top decorative bg -->
-    <View
-        android:id="@+id/topDeco"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:background="@color/purple_main"
-        android:alpha="0.1"
-        app:layout_constraintTop_toBottomOf="@id/toolbarEventInfo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <ScrollView
-        android:layout_width="0dp"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/toolbarEventInfo"
+        android:clipToPadding="false"
+        android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/customTopBar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="50dp"
-            android:paddingBottom="40dp"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp">
+            android:paddingHorizontal="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="40dp">
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="6dp"
-                app:cardBackgroundColor="@color/white">
+                app:cardBackgroundColor="#CCFFFFFF"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -92,33 +72,41 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/auto_h_ng_d_n_s_d_ng_tr_c_khi_tham"
-                        android:textColor="#000000"
-                        android:textSize="17sp"
+                        android:textColor="#9370DB"
+                        android:textSize="18sp"
                         android:textStyle="bold"
-                        android:layout_marginBottom="24dp"/>
+                        android:layout_marginBottom="20dp"/>
 
                     <TextView
                         android:id="@+id/tvPara1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#333333"
+                        android:textColor="#2D3142"
                         android:textSize="15sp"
                         android:lineSpacingExtra="6dp"
+                        android:layout_marginBottom="24dp"
+                        tools:text="Nội dung đoạn văn 1 sẽ đổ vào đây..."/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#F0E6FF"
                         android:layout_marginBottom="24dp"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/auto_2_ph_n_th_ng"
-                        android:textColor="#333333"
-                        android:textSize="15sp"
+                        android:textColor="#9370DB"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
                         android:layout_marginBottom="12dp"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/auto_top_1_g_i_premium_3_th_ng_n_t"
-                        android:textColor="@color/purple_main"
+                        android:textColor="#9370DB"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:lineSpacingExtra="6dp"
@@ -128,8 +116,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/auto_n_u_b_n_l_m_th_nh_vi_n_premiu"
-                        android:textColor="@color/orange_main"
+                        android:textColor="#FF9800"
                         android:textSize="14sp"
+                        android:textStyle="bold"
                         android:lineSpacingExtra="4dp"
                         android:layout_marginBottom="24dp"/>
 
@@ -137,14 +126,27 @@
                         android:id="@+id/tvPara3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#333333"
+                        android:textColor="#2D3142"
                         android:textSize="15sp"
-                        android:lineSpacingExtra="6dp"/>
+                        android:lineSpacingExtra="6dp"
+                        tools:text="Nội dung đoạn văn 3 sẽ đổ vào đây..."/>
 
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGotIt"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:text="Đã hiểu"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                app:backgroundTint="#9370DB"
+                app:cornerRadius="28dp"
+                android:visibility="gone"/>
 
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,94 +5,116 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/wavi_background"
-    android:fontFamily="sans-serif"
-    tools:context=".SignupActivity">
+    android:background="@drawable/wavi_pastel_purple_gradient"
+    tools:context="com.example.waviapp.activities.SignupActivity">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
-        <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="30dp"
-        android:gravity="center">
-        <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/auto_ch_o_m_ng_n_v_i_wavi"
-        android:textColor="#9932CC"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:fontFamily="sans-serif-black" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="20dp">
+            android:gravity="center"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
 
-            <EditText
-                android:id="@+id/edtFullName"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="@string/auto_h_v_t_n"
-                android:background="@android:color/transparent"
-                android:drawableStart="@drawable/ic_name"
-                android:drawablePadding="10dp"
-                android:textColor="#000000"
-                android:textColorHint="#80000000"
-                android:fontFamily="sans-serif" />
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#80000000" android:layout_marginBottom="10dp"/>
+            <!-- Tiêu đề -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/auto_ch_o_m_ng_n_v_i_wavi"
+                android:textColor="#9370DB"
+                android:textSize="29sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:layout_marginBottom="48dp" />
 
-            <EditText
-                android:id="@+id/edtEmail"
+            <!-- Input Fields -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="@string/auto_email"
-                android:background="@android:color/transparent"
-                android:drawableStart="@drawable/ic_email"
-                android:drawablePadding="10dp"
-                android:textColor="#000000"
-                android:textColorHint="#80000000"
-                android:fontFamily="sans-serif" />
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#80000000" android:layout_marginBottom="10dp"/>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/edtPassword"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="@string/auto_m_t_kh_u"
-                android:inputType="textPassword"
-                android:background="@android:color/transparent"
-                android:drawableStart="@drawable/ic_lock"
-                android:drawablePadding="10dp"
-                android:textColor="#000000"
-                android:textColorHint="#80000000"
-                android:fontFamily="sans-serif" />
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#80000000" android:layout_marginBottom="10dp"/>
+                <!-- Full Name -->
+                <EditText
+                    android:id="@+id/edtFullName"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:background="@drawable/rounded_input_background"
+                    android:drawableStart="@drawable/ic_name"
+                    android:drawablePadding="16dp"
+                    android:hint="@string/auto_h_v_t_n"
+                    android:textColor="#2C2C2C"
+                    android:textColorHint="#9E9E9E"
+                    android:textSize="16sp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp" />
 
-            <EditText
-                android:id="@+id/edtConfirmPassword"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="@string/auto_x_c_nh_n_m_t_kh_u"
-                android:inputType="textPassword"
-                android:background="@android:color/transparent"
-                android:drawableStart="@drawable/ic_lock"
-                android:drawablePadding="10dp"
-                android:textColor="#000000"
-                android:textColorHint="#80000000"
-                android:fontFamily="sans-serif" />
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#80000000" android:layout_marginBottom="20dp"/>
-        </LinearLayout>
+                <!-- Email -->
+                <EditText
+                    android:id="@+id/edtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/rounded_input_background"
+                    android:drawableStart="@drawable/ic_email"
+                    android:drawablePadding="16dp"
+                    android:hint="@string/auto_email"
+                    android:textColor="#2C2C2C"
+                    android:textColorHint="#9E9E9E"
+                    android:textSize="16sp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:inputType="textEmailAddress" />
+
+                <!-- Password -->
+                <EditText
+                    android:id="@+id/edtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/rounded_input_background"
+                    android:drawableStart="@drawable/ic_lock"
+                    android:drawablePadding="16dp"
+                    android:hint="@string/auto_m_t_kh_u"
+                    android:inputType="textPassword"
+                    android:textColor="#2C2C2C"
+                    android:textColorHint="#9E9E9E"
+                    android:textSize="16sp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp" />
+
+                <!-- Confirm Password -->
+                <EditText
+                    android:id="@+id/edtConfirmPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/rounded_input_background"
+                    android:drawableStart="@drawable/ic_lock"
+                    android:drawablePadding="16dp"
+                    android:hint="@string/auto_x_c_nh_n_m_t_kh_u"
+                    android:inputType="textPassword"
+                    android:textColor="#2C2C2C"
+                    android:textColorHint="#9E9E9E"
+                    android:textSize="16sp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp" />
+
+            </LinearLayout>
+
+            <!-- Terms & Conditions -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="28dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -105,64 +127,75 @@
                     android:padding="0dp"
                     android:button="@null"
                     android:drawableStart="?android:attr/listChoiceIndicatorMultiple"
-                    android:drawablePadding="10dp"
-                    app:buttonTint="#8A2BE2"
+                    android:drawablePadding="8dp"
+                    app:buttonTint="#9370DB"
                     android:background="@android:color/transparent" />
+
                 <TextView
                     android:id="@+id/txtTerms"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/auto_b_ng_vi_c_ng_k_b_n_ng_v_i_i_u"
-                    android:textColor="#333333"
-                    android:textSize="12sp"
+                    android:textColor="#555555"
+                    android:textSize="13.5sp"
                     android:fontFamily="sans-serif" />
             </LinearLayout>
 
-        <Button
-            android:id="@+id/btnRegister"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="@string/auto_ng_k"
-            android:backgroundTint="#9370DB"
-            android:textColor="#FFFFFF"
-            android:fontFamily="sans-serif"
-            app:cornerRadius="28dp" />
+            <!-- Register Button -->
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:text="@string/auto_ng_k"
+                android:textSize="17sp"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#9370DB"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:includeFontPadding="false"
+                app:cornerRadius="28dp"
+                android:elevation="4dp" />
 
+            <!-- Google Signup -->
+            <LinearLayout
+                android:id="@+id/btnGoogle"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/google_button_background"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_google"
+                    android:layout_marginEnd="12dp"/>
 
-        <TextView
-            android:id="@+id/txtLoginLink"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="@string/auto_c_t_i_kho_n_ng_nh_p"
-            android:textColor="#000000"
-            android:textSize="14sp"
-            android:fontFamily="sans-serif" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/auto_ng_nh_p_v_i_google"
+                    android:textColor="#2C2C2C"
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif-medium" />
+            </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/btnGoogle"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/google_button_background"
-            android:gravity="center"
-            android:clickable="true"
-            android:focusable="true">
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_google"
-                android:layout_marginEnd="10dp"/>
+            <!-- Link to Login -->
             <TextView
+                android:id="@+id/txtLoginLink"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/auto_ng_nh_p_v_i_google"
-                android:textColor="#1f1f1f"
-                android:textSize="16sp"
-                android:fontFamily="sans-serif-medium" />
-        </LinearLayout>
+                android:layout_marginTop="42dp"
+                android:text="@string/auto_c_t_i_kho_n_ng_nh_p"
+                android:textColor="#555555"
+                android:textSize="15sp"
+                android:fontFamily="sans-serif" />
 
-    </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

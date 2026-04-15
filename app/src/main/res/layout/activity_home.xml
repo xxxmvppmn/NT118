@@ -2,38 +2,86 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA">
+    android:background="@drawable/wavi_pastel_purple_gradient"
+    tools:context="com.example.waviapp.activities.HomeActivity">
 
-    <View
-        android:id="@+id/headerBg"
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:background="@drawable/bg_curved_header"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
+
+    <!-- Include Header Decor -->
     <include layout="@layout/layout_header_decor" />
 
+    <!-- Toolbar -->
     <RelativeLayout
         android:id="@+id/toolbarHome"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="72dp"
         android:paddingHorizontal="24dp"
+        android:background="#9370DB"
         app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/auto_wavi"
-            android:textColor="@color/white"
-            android:textSize="26sp"
-            android:textStyle="bold"
             android:layout_centerVertical="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgAvatarHome"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:padding="2dp"
+                app:strokeColor="#FFFFFF"
+                app:strokeWidth="2dp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" /> <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chào Ngân"
+                android:textColor="#E1D5FF"
+                android:textSize="25dp" />
+
+
+        </LinearLayout>
+        </LinearLayout>
+        <!-- Streak -->
+        <LinearLayout
+            android:id="@+id/llStreak"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:layout_toStartOf="@id/layoutNotification"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="12dp"
+            android:paddingHorizontal="12dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_streak_container">
+
+            <ImageView
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:src="@drawable/ic_fire" />
+
+            <TextView
+                android:id="@+id/tvStreakCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="12"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <!-- Notification -->
         <FrameLayout
             android:id="@+id/layoutNotification"
             android:layout_width="wrap_content"
@@ -46,54 +94,26 @@
 
             <ImageView
                 android:id="@+id/icNotification"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
+                android:layout_width="29dp"
+                android:layout_height="29dp"
                 android:src="@drawable/ic_notification"
-                app:tint="@color/white" />
+                app:tint="#FFFFFF" />
 
             <TextView
                 android:id="@+id/tvNotificationCount"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
                 android:layout_gravity="top|end"
-                android:layout_marginTop="-2dp"
-                android:layout_marginEnd="-2dp"
+                android:layout_marginTop="-3dp"
+                android:layout_marginEnd="-3dp"
                 android:background="@drawable/bg_notification_badge"
                 android:gravity="center"
                 android:text="1"
                 android:textColor="#FFFFFF"
-                android:textSize="9sp"
+                android:textSize="10sp"
                 android:textStyle="bold"
                 android:visibility="gone" />
         </FrameLayout>
-
-        <LinearLayout
-            android:id="@+id/llStreak"
-            android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:layout_toStartOf="@id/layoutNotification"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="8dp"
-            android:paddingHorizontal="10dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:background="@drawable/bg_streak_container">
-
-            <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:src="@drawable/ic_fire" />
-
-            <TextView
-                android:id="@+id/tvStreakCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="12"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp" />
-        </LinearLayout>
     </RelativeLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -109,16 +129,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="40dp">
+            android:paddingBottom="50dp">
 
+            <!-- Daily Motivational Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="110dp"
+                android:layout_height="115dp"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="8dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="2dp">
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -129,41 +150,41 @@
                         android:layout_height="match_parent"
                         android:src="@drawable/wavi_background"
                         android:scaleType="centerCrop"
-                        android:alpha="0.8"/>
+                        android:alpha="0.78"/>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="#40000000"/>
+                        android:background="#28000000"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/auto_ch_o_b_n_h_m_nay_ch_ng_ta_h_c"
                         android:textColor="#FFFFFF"
-                        android:textSize="20sp"
-                        android:textStyle="bold|italic"
+                        android:textSize="19.5sp"
+                        android:textStyle="bold"
                         android:gravity="center"
                         android:layout_centerInParent="true"
-                        android:paddingHorizontal="24dp"/>
+                        android:paddingHorizontal="26dp"/>
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Progress Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="142dp"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="25dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="6dp"
-                app:cardBackgroundColor="@color/white">
+                android:layout_marginBottom="28dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="5dp"
+                app:cardBackgroundColor="#FFFFFF">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:padding="16dp"
+                    android:padding="18dp"
                     android:baselineAligned="false">
 
                     <RelativeLayout
@@ -178,11 +199,10 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:progress="65"
-                            app:indicatorColor="@color/orange_main"
-                            app:indicatorSize="80dp"
-                            app:trackColor="#F5F5F5"
-                            app:trackCornerRadius="4dp"
-                            app:trackThickness="8dp" />
+                            app:indicatorColor="#9370DB"
+                            app:indicatorSize="84dp"
+                            app:trackColor="#F0E6FF"
+                            app:trackThickness="9dp" />
 
                         <TextView
                             android:id="@+id/tvProgressPercent"
@@ -190,31 +210,31 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:text="65%"
-                            android:textColor="#2D3142"
-                            android:textSize="18sp"
+                            android:textColor="#2C2C2C"
+                            android:textSize="19sp"
                             android:textStyle="bold" />
                     </RelativeLayout>
 
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:layout_marginVertical="8dp"
-                        android:background="#E0E0E0" />
+                        android:layout_marginVertical="12dp"
+                        android:background="#EDE4FF" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1.6"
+                        android:layout_weight="1.7"
                         android:orientation="vertical"
-                        android:paddingStart="16dp"
+                        android:paddingStart="18dp"
                         android:gravity="center_vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/auto_m_c_ti_u_toeic"
-                            android:textColor="#888888"
-                            android:textSize="12sp"
+                            android:textColor="#9E9E9E"
+                            android:textSize="12.5sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -222,10 +242,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/auto_t_800"
-                            android:textColor="@color/purple_main"
-                            android:textSize="18sp"
+                            android:textColor="#9370DB"
+                            android:textSize="20sp"
                             android:textStyle="bold"
-                            android:layout_marginBottom="8dp" />
+                            android:layout_marginBottom="10dp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -241,14 +261,14 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/auto_t_v_ng"
-                                    android:textColor="#888888"
-                                    android:textSize="12sp" />
+                                    android:textColor="#9E9E9E"
+                                    android:textSize="12.5sp" />
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="650"
-                                    android:textColor="#2D3142"
-                                    android:textSize="15sp"
+                                    android:textColor="#2C2C2C"
+                                    android:textSize="16sp"
                                     android:textStyle="bold" />
                             </LinearLayout>
 
@@ -261,14 +281,14 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/auto_c_n_n"
-                                    android:textColor="#888888"
-                                    android:textSize="12sp" />
+                                    android:textColor="#9E9E9E"
+                                    android:textSize="12.5sp" />
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/auto_14_l_i"
-                                    android:textColor="#FF5252"
-                                    android:textSize="15sp"
+                                    android:textColor="#FF6B6B"
+                                    android:textSize="16sp"
                                     android:textStyle="bold" />
                             </LinearLayout>
                         </LinearLayout>
@@ -276,16 +296,18 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Luyện tập kỹ năng -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/auto_luy_n_t_p_k_n_ng"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="21sp"
                 android:layout_marginStart="24dp"
                 android:layout_marginBottom="16dp"
-                android:textColor="#2D3142"/>
+                android:textColor="#2C2C2C"/>
 
+            <!-- Grid 4 kỹ năng -->
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -320,7 +342,7 @@
                         android:textSize="14sp"
                         android:textStyle="bold"
                         android:layout_marginTop="8dp"
-                        android:textColor="#4F5E7B"/>
+                        android:textColor="#6B5B8E"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -350,7 +372,7 @@
                         android:textSize="14sp"
                         android:textStyle="bold"
                         android:layout_marginTop="8dp"
-                        android:textColor="#4F5E7B"/>
+                        android:textColor="#6B5B8E"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -380,7 +402,7 @@
                         android:textSize="14sp"
                         android:textStyle="bold"
                         android:layout_marginTop="8dp"
-                        android:textColor="#4F5E7B"/>
+                        android:textColor="#6B5B8E"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -410,20 +432,22 @@
                         android:textSize="14sp"
                         android:textStyle="bold"
                         android:layout_marginTop="8dp"
-                        android:textColor="#4F5E7B"/>
+                        android:textColor="#6B5B8E"/>
                 </LinearLayout>
             </GridLayout>
 
+            <!-- Gợi ý chức năng -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/auto_g_c_th_s_c"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="21sp"
                 android:layout_marginStart="24dp"
                 android:layout_marginBottom="16dp"
-                android:textColor="#2D3142"/>
+                android:textColor="#2C2C2C"/>
 
+            <!-- Grid 3 cột -->
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -457,7 +481,7 @@
                         android:text="@string/auto_thi_online"
                         android:textSize="15sp"
                         android:layout_marginTop="12dp"
-                        android:textColor="#2D3142"
+                        android:textColor="#2C2C2C"
                         android:textStyle="bold"/>
                 </LinearLayout>
 
@@ -488,7 +512,7 @@
                         android:text="@string/auto_thi_th"
                         android:textSize="15sp"
                         android:layout_marginTop="12dp"
-                        android:textColor="#2D3142"
+                        android:textColor="#2C2C2C"
                         android:textStyle="bold"/>
                 </LinearLayout>
 
@@ -519,17 +543,19 @@
                         android:text="@string/auto_l_thuy_t"
                         android:textSize="15sp"
                         android:layout_marginTop="12dp"
-                        android:textColor="#2D3142"
+                        android:textColor="#2C2C2C"
                         android:textStyle="bold"/>
                 </LinearLayout>
             </GridLayout>
+
+            <!-- Phần Sổ tay từ vựng và Luyện tập -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingHorizontal="20dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp">
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="40dp">
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
@@ -539,7 +565,7 @@
                     app:cardElevation="2dp"
                     app:strokeColor="#F0F0F0"
                     app:strokeWidth="1dp"
-                    app:cardBackgroundColor="@color/white">
+                    app:cardBackgroundColor="#FFFFFF">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -601,7 +627,7 @@
                                 android:text="Bắt đầu nào"
                                 android:textAllCaps="false"
                                 app:cornerRadius="20dp"
-                                app:backgroundTint="#9073db" />
+                                app:backgroundTint="#9370DB" />
                         </LinearLayout>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -613,7 +639,7 @@
                     app:cardElevation="2dp"
                     app:strokeColor="#F0F0F0"
                     app:strokeWidth="1dp"
-                    app:cardBackgroundColor="@color/white">
+                    app:cardBackgroundColor="#FFFFFF">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -639,7 +665,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:text="Sổ tay từ vựng"
-                                android:textColor="#2D3142"
+                                android:textColor="#2C2C2C"
                                 android:textStyle="bold"
                                 android:textSize="14sp" />
 
@@ -661,30 +687,33 @@
                                 android:textSize="12sp"
                                 android:padding="0dp"
                                 app:cornerRadius="15dp"
-                                app:strokeColor="#000000"
-                                android:textColor="#000000"/>
+                                app:strokeColor="#9370DB"
+                                android:textColor="#9370DB"/>
                         </LinearLayout>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
+    <!-- Divider -->
     <View
         android:id="@+id/navDivider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#EBEBEB"
+        android:background="#E0D9FF"
         app:layout_constraintBottom_toTopOf="@id/bottomNav" />
 
+    <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:itemIconTint="@null"
-        app:itemTextColor="#000000"
-        android:background="@color/white"
-        android:paddingBottom="15dp"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        android:background="#FFFFFF"
+        android:paddingBottom="12dp"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu"
         app:layout_constraintBottom_toBottomOf="parent"

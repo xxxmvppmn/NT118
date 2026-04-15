@@ -5,120 +5,48 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 import com.example.waviapp.R;
-import com.example.waviapp.utils.DataImporter;
 import com.example.waviapp.databinding.ActivityHomeBinding;
-import com.google.firebase.auth.FirebaseUser;
-import com.example.waviapp.firebase.FirebaseAuthHelper;
-import com.example.waviapp.firebase.DatabaseHelper;
+import com.example.waviapp.managers.UserSessionManager;
 import com.example.waviapp.models.TaiKhoan;
 
 public class HomeActivity extends BaseActivity {
 
     private ActivityHomeBinding binding;
-    private FirebaseAuthHelper authHelper;
-    private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Sử dụng ViewBinding
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        authHelper = new FirebaseAuthHelper();
-        dbHelper = new DatabaseHelper();
+        UserSessionManager.getInstance().getUserLiveData().observe(this, this::updateUI);
 
-        // Load thông tin user từ Firebase
-        loadUserStats();
-
-        // Xóa logic DataImporter để tránh Firebase Block (Quota Exceeded)
-        // DataImporter.importVocab(this);
-        // DataImporter.importGrammar(this);
-
-        // Xử lý icon thông báo
         binding.icNotification.setOnClickListener(v ->
                 Toast.makeText(this, getString(R.string.no_notification), Toast.LENGTH_SHORT).show()
         );
 
-        // Xử lý click các kỹ năng
         binding.llNghe.setOnClickListener(v -> openSkillPractice(SkillPracticeActivity.CAT_LISTEN));
         binding.llDoc.setOnClickListener(v -> openSkillPractice(SkillPracticeActivity.CAT_READ));
         binding.llNoi.setOnClickListener(v -> openSkillPractice(SkillPracticeActivity.CAT_SPEAK));
         binding.llViet.setOnClickListener(v -> openSkillPractice(SkillPracticeActivity.CAT_WRITE));
 
-        // 1. Click Thi Online
-        binding.llThiOnline.setOnClickListener(v -> {
-            startActivity(new Intent(HomeActivity.this, OnlineExamActivity.class));
-        });
-
-        // 2. Click Thi Thử
-        binding.llThiThu.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, ExamActivity.class);
-            startActivity(intent);
-        });
-
-        // 3. Click Lý Thuyết
+        binding.llThiOnline.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, OnlineExamActivity.class)));
+        binding.llThiThu.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, ExamActivity.class)));
         binding.llLyThuyet.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, TheoryActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(intent);
         });
+        binding.btnReviewVocab.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, FavoriteWordsActivity.class)));
 
-        // 4. Xử lý nút Ôn tập (Mở Sổ tay từ vựng)
-        binding.btnReviewVocab.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, FavoriteWordsActivity.class);
-            startActivity(intent);
-        });
-
-        // Xử lý Bottom Navigation
-        binding.bottomNav.setOnItemSelectedListener(item -> {
-            int id = item.getItemId();
-            if (id == R.id.nav_home) {
-                // Đã ở trang chủ rồi
-            } else if (id == R.id.nav_exam) {
-                Intent intent = new Intent(HomeActivity.this, ExamActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
-            } else if (id == R.id.nav_premium) {
-                Intent intent = new Intent(HomeActivity.this, PremiumActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
-            } else if (id == R.id.nav_profile) {
-                Intent intent = new Intent(HomeActivity.this, UserInfoActivity.class);
-                startActivity(intent);
-            } else if (id == R.id.nav_setting) {
-                Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
-            }
-            return true;
-        });
+        setupBottomNavigation();
     }
 
-    /**
-     * Load thống kê user từ Firebase và hiển thị trên dashboard
-     */
-    private void loadUserStats() {
-        FirebaseUser firebaseUser = authHelper.getCurrentUser();
-        if (firebaseUser == null) return;
-
-        dbHelper.getUser(firebaseUser.getUid(), new DatabaseHelper.UserCallback() {
-            @Override
-            public void onSuccess(TaiKhoan user) {
-                // Cập nhật streak
-                if (binding.tvStreakCount != null) {
-                    binding.tvStreakCount.setText(String.valueOf(user.getChuoiNgayHoc()));
-                }
-            }
-
-            @Override
-            public void onFailure(String error) {
-                // Giữ giá trị mặc định
-            }
-        });
+    private void updateUI(TaiKhoan user) {
+        if (user == null) return;
+        if (binding.tvStreakCount != null) {
+            binding.tvStreakCount.setText(String.valueOf(user.getChuoiNgayHoc()));
+        }
     }
 
     private void openSkillPractice(String category) {
@@ -127,23 +55,24 @@ public class HomeActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    private void updateNotificationBadge() {
-        FirebaseUser user = authHelper.getCurrentUser();
-        if (user == null) return;
+    private void setupBottomNavigation() {
+        binding.bottomNav.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_home) return false;
+            
+            Intent intent = null;
+            if (id == R.id.nav_exam) intent = new Intent(this, ExamActivity.class);
+            else if (id == R.id.nav_premium) intent = new Intent(this, PremiumActivity.class);
+            else if (id == R.id.nav_profile) intent = new Intent(this, UserInfoActivity.class);
+            else if (id == R.id.nav_setting) intent = new Intent(this, SettingsActivity.class);
 
-        String currentUserId = user.getUid();
-        dbHelper.getUnreadNotificationCount(currentUserId, new DatabaseHelper.CountCallback() {
-            @Override
-            public void onSuccess(int count) {
-                if (count > 0) {
-                    binding.tvNotificationCount.setVisibility(View.VISIBLE);
-                    binding.tvNotificationCount.setText(String.valueOf(count));
-                } else {
-                    binding.tvNotificationCount.setVisibility(View.GONE);
-                }
+            if (intent != null) {
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                return true;
             }
-            @Override
-            public void onFailure(String error) { /* Xử lý lỗi */ }
+            return false;
         });
     }
 }
