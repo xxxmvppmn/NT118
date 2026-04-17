@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/wavi_pastel_purple_gradient"
-    tools:context="com.example.waviapp.activities.SkillActivity">
+    tools:context="com.example.waviapp.activities.SkillPracticeActivity">
 
     <include layout="@layout/layout_header_decor" />
 

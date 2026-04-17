@@ -46,6 +46,9 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation "androidx.cardview:cardview:1.0.0"
 
+    // Confetti for gamification
+    implementation 'com.github.jinatonic.confetti:confetti:1.1.2'
+
     // Firebase
     implementation platform('com.google.firebase:firebase-bom:33.1.0')
     implementation 'com.google.firebase:firebase-auth'

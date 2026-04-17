@@ -31,6 +31,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- TOEIC Part 5 Activities -->
+        <activity
+            android:name=".activities.Part5SetActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.Part5PracticeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.Part5Activity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".activities.FlashcardActivity"
             android:exported="false"

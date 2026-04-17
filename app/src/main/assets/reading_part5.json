@@ -1,0 +1,1002 @@
+[
+  {
+    "id": 1,
+    "question": "She _____ to work every day by bus.",
+    "optionA": "go",
+    "optionB": "goes",
+    "optionC": "going",
+    "optionD": "gone",
+    "correctAnswer": "B",
+    "explanation": "Chủ ngữ số ít (She) nên động từ thêm 's' → 'goes'."
+  },
+  {
+    "id": 2,
+    "question": "The report _____ submitted before the deadline.",
+    "optionA": "must be",
+    "optionB": "must",
+    "optionC": "must been",
+    "optionD": "must being",
+    "correctAnswer": "A",
+    "explanation": "Câu bị động cần 'must be + V3'."
+  },
+  {
+    "id": 3,
+    "question": "Please send the email _____ you finish the draft.",
+    "optionA": "while",
+    "optionB": "after",
+    "optionC": "before",
+    "optionD": "during",
+    "correctAnswer": "B",
+    "explanation": "'After' phù hợp vì hành động gửi xảy ra sau khi hoàn thành."
+  },
+  {
+    "id": 4,
+    "question": "The employees are satisfied _____ their new working conditions.",
+    "optionA": "at",
+    "optionB": "on",
+    "optionC": "with",
+    "optionD": "for",
+    "correctAnswer": "C",
+    "explanation": "Cụm đúng là 'satisfied with'."
+  },
+  {
+    "id": 5,
+    "question": "He _____ a meeting when I called him.",
+    "optionA": "has",
+    "optionB": "had",
+    "optionC": "was having",
+    "optionD": "is having",
+    "correctAnswer": "C",
+    "explanation": "Diễn tả hành động đang xảy ra trong quá khứ → 'was having'."
+  },
+  {
+    "id": 6,
+    "question": "We need to hire someone _____ can manage this project.",
+    "optionA": "which",
+    "optionB": "who",
+    "optionC": "where",
+    "optionD": "when",
+    "correctAnswer": "B",
+    "explanation": "Dùng 'who' cho người trong mệnh đề quan hệ."
+  },
+  {
+    "id": 7,
+    "question": "The company plans to expand _____ Asia next year.",
+    "optionA": "into",
+    "optionB": "on",
+    "optionC": "at",
+    "optionD": "from",
+    "correctAnswer": "A",
+    "explanation": "Cụm đúng là 'expand into' (mở rộng vào khu vực)."
+  },
+  {
+    "id": 8,
+    "question": "This software is much _____ than the previous version.",
+    "optionA": "fast",
+    "optionB": "faster",
+    "optionC": "fastest",
+    "optionD": "more fast",
+    "correctAnswer": "B",
+    "explanation": "So sánh hơn của 'fast' là 'faster'."
+  },
+  {
+    "id": 9,
+    "question": "The doctor advised him _____ more exercise.",
+    "optionA": "take",
+    "optionB": "to take",
+    "optionC": "taking",
+    "optionD": "took",
+    "correctAnswer": "B",
+    "explanation": "Cấu trúc 'advise + O + to V'."
+  },
+  {
+    "id": 10,
+    "question": "There are _____ documents on your desk.",
+    "optionA": "any",
+    "optionB": "much",
+    "optionC": "many",
+    "optionD": "little",
+    "correctAnswer": "C",
+    "explanation": "'Documents' là danh từ đếm được số nhiều → dùng 'many'."
+  },
+  {
+    "id": 11,
+    "question": "The meeting was canceled _____ the manager was sick.",
+    "optionA": "because",
+    "optionB": "although",
+    "optionC": "unless",
+    "optionD": "despite",
+    "correctAnswer": "A",
+    "explanation": "'Because' diễn tả nguyên nhân."
+  },
+  {
+    "id": 12,
+    "question": "She is responsible _____ preparing the monthly report.",
+    "optionA": "to",
+    "optionB": "for",
+    "optionC": "with",
+    "optionD": "on",
+    "correctAnswer": "B",
+    "explanation": "Cụm 'responsible for'."
+  },
+  {
+    "id": 13,
+    "question": "If you _____ early, you will catch the train.",
+    "optionA": "leave",
+    "optionB": "left",
+    "optionC": "leaving",
+    "optionD": "leaves",
+    "correctAnswer": "A",
+    "explanation": "Câu điều kiện loại 1: If + hiện tại đơn."
+  },
+  {
+    "id": 14,
+    "question": "He works _____ than his colleagues.",
+    "optionA": "hard",
+    "optionB": "harder",
+    "optionC": "hardest",
+    "optionD": "more hard",
+    "correctAnswer": "B",
+    "explanation": "So sánh hơn của 'hard' là 'harder'."
+  },
+  {
+    "id": 15,
+    "question": "Please let me know _____ you have any questions.",
+    "optionA": "if",
+    "optionB": "so",
+    "optionC": "but",
+    "optionD": "and",
+    "correctAnswer": "A",
+    "explanation": "'If' dùng để diễn tả điều kiện."
+  },
+  {
+    "id": 16,
+    "question": "The company offers a wide _____ of products.",
+    "optionA": "variety",
+    "optionB": "various",
+    "optionC": "vary",
+    "optionD": "varied",
+    "correctAnswer": "A",
+    "explanation": "Cụm 'a wide variety of'."
+  },
+  {
+    "id": 17,
+    "question": "He made a quick _____ about the proposal.",
+    "optionA": "decide",
+    "optionB": "decision",
+    "optionC": "deciding",
+    "optionD": "decisive",
+    "correctAnswer": "B",
+    "explanation": "Cần danh từ → 'decision'."
+  },
+  {
+    "id": 18,
+    "question": "The new policy will be _____ next month.",
+    "optionA": "implement",
+    "optionB": "implementation",
+    "optionC": "implemented",
+    "optionD": "implementing",
+    "correctAnswer": "C",
+    "explanation": "Câu bị động → 'will be + V3'."
+  },
+  {
+    "id": 19,
+    "question": "She spoke very _____ during the presentation.",
+    "optionA": "confidence",
+    "optionB": "confident",
+    "optionC": "confidently",
+    "optionD": "confiding",
+    "correctAnswer": "C",
+    "explanation": "Cần trạng từ → 'confidently'."
+  },
+  {
+    "id": 20,
+    "question": "The results were _____ than expected.",
+    "optionA": "good",
+    "optionB": "better",
+    "optionC": "best",
+    "optionD": "well",
+    "correctAnswer": "B",
+    "explanation": "So sánh hơn → 'better'."
+  },
+  {
+    "id": 21,
+    "question": "We will proceed _____ your approval.",
+    "optionA": "despite",
+    "optionB": "according to",
+    "optionC": "unless",
+    "optionD": "in case",
+    "correctAnswer": "B",
+    "explanation": "'According to' phù hợp với 'theo sự chấp thuận'."
+  },
+  {
+    "id": 22,
+    "question": "The employee was praised _____ his hard work.",
+    "optionA": "for",
+    "optionB": "with",
+    "optionC": "on",
+    "optionD": "at",
+    "correctAnswer": "A",
+    "explanation": "Cụm 'praised for'."
+  },
+  {
+    "id": 23,
+    "question": "The hotel provides free Wi-Fi _____ all guests.",
+    "optionA": "to",
+    "optionB": "for",
+    "optionC": "with",
+    "optionD": "by",
+    "correctAnswer": "A",
+    "explanation": "Cấu trúc 'provide something to someone'."
+  },
+  {
+    "id": 24,
+    "question": "The system needs to be updated _____ regularly.",
+    "optionA": "frequency",
+    "optionB": "frequent",
+    "optionC": "frequently",
+    "optionD": "frequence",
+    "correctAnswer": "C",
+    "explanation": "Cần trạng từ → 'frequently'."
+  },
+  {
+    "id": 25,
+    "question": "He is one of the best engineers _____ our company.",
+    "optionA": "at",
+    "optionB": "in",
+    "optionC": "on",
+    "optionD": "from",
+    "correctAnswer": "B",
+    "explanation": "Dùng 'in' với tổ chức."
+  },
+  {
+    "id": 26,
+    "question": "The project was completed _____ schedule.",
+    "optionA": "in",
+    "optionB": "on",
+    "optionC": "at",
+    "optionD": "by",
+    "correctAnswer": "B",
+    "explanation": "Cụm 'on schedule'."
+  },
+  {
+    "id": 27,
+    "question": "We are looking forward to _____ you.",
+    "optionA": "meet",
+    "optionB": "meeting",
+    "optionC": "met",
+    "optionD": "meets",
+    "correctAnswer": "B",
+    "explanation": "'Look forward to' + V-ing."
+  },
+  {
+    "id": 28,
+    "question": "The manager asked him to _____ the issue immediately.",
+    "optionA": "deal",
+    "optionB": "handle",
+    "optionC": "operate",
+    "optionD": "run",
+    "correctAnswer": "B",
+    "explanation": "'Handle' phù hợp với 'xử lý vấn đề'."
+  },
+  {
+    "id": 29,
+    "question": "The flight was delayed _____ bad weather.",
+    "optionA": "because",
+    "optionB": "because of",
+    "optionC": "although",
+    "optionD": "despite",
+    "correctAnswer": "B",
+    "explanation": "'Because of' + danh từ."
+  },
+  {
+    "id": 30,
+    "question": "She prefers coffee _____ tea.",
+    "optionA": "than",
+    "optionB": "over",
+    "optionC": "to",
+    "optionD": "with",
+    "correctAnswer": "C",
+    "explanation": "Cấu trúc 'prefer A to B'."
+  },
+  {
+    "id": 31,
+    "question": "The agreement will remain in _____ for two years.",
+    "optionA": "effect",
+    "optionB": "affect",
+    "optionC": "effective",
+    "optionD": "affection",
+    "correctAnswer": "A",
+    "explanation": "Cụm 'in effect' nghĩa là có hiệu lực."
+  },
+  {
+    "id": 32,
+    "question": "The CEO insisted that the plan _____ revised.",
+    "optionA": "is",
+    "optionB": "was",
+    "optionC": "be",
+    "optionD": "being",
+    "correctAnswer": "C",
+    "explanation": "Câu giả định → 'insist that + S + V (nguyên mẫu)'."
+  },
+  {
+    "id": 33,
+    "question": "The company needs to cut _____ on expenses.",
+    "optionA": "off",
+    "optionB": "down",
+    "optionC": "out",
+    "optionD": "away",
+    "correctAnswer": "B",
+    "explanation": "Phrasal verb 'cut down on' = giảm."
+  },
+  {
+    "id": 34,
+    "question": "She was promoted due to her _____ performance.",
+    "optionA": "exception",
+    "optionB": "exceptional",
+    "optionC": "except",
+    "optionD": "exceptionally",
+    "correctAnswer": "B",
+    "explanation": "Cần tính từ → 'exceptional'."
+  },
+  {
+    "id": 35,
+    "question": "The results did not live up _____ expectations.",
+    "optionA": "to",
+    "optionB": "with",
+    "optionC": "for",
+    "optionD": "on",
+    "correctAnswer": "A",
+    "explanation": "Cụm 'live up to'."
+  },
+  {
+    "id": 36,
+    "question": "He came up _____ a brilliant idea.",
+    "optionA": "with",
+    "optionB": "to",
+    "optionC": "on",
+    "optionD": "for",
+    "correctAnswer": "A",
+    "explanation": "'Come up with' = nghĩ ra."
+  },
+  {
+    "id": 37,
+    "question": "The report is _____ accurate.",
+    "optionA": "high",
+    "optionB": "highly",
+    "optionC": "height",
+    "optionD": "higher",
+    "correctAnswer": "B",
+    "explanation": "'Highly' là trạng từ bổ nghĩa cho 'accurate'."
+  },
+  {
+    "id": 38,
+    "question": "We must comply _____ all safety regulations.",
+    "optionA": "to",
+    "optionB": "with",
+    "optionC": "for",
+    "optionD": "on",
+    "correctAnswer": "B",
+    "explanation": "Cụm 'comply with'."
+  },
+  {
+    "id": 39,
+    "question": "The proposal was rejected _____ several reasons.",
+    "optionA": "because",
+    "optionB": "due",
+    "optionC": "for",
+    "optionD": "since",
+    "correctAnswer": "C",
+    "explanation": "'For several reasons' là cách dùng đúng."
+  },
+  {
+    "id": 40,
+    "question": "He is capable _____ handling complex tasks.",
+    "optionA": "to",
+    "optionB": "of",
+    "optionC": "for",
+    "optionD": "with",
+    "correctAnswer": "B",
+    "explanation": "Cụm 'capable of'."
+  },
+  {
+    "id": 41,
+    "question": "The company is aiming _____ global expansion.",
+    "optionA": "at",
+    "optionB": "to",
+    "optionC": "for",
+    "optionD": "on",
+    "correctAnswer": "A",
+    "explanation": "Cụm 'aim at'."
+  },
+  {
+    "id": 42,
+    "question": "She took _____ the responsibility willingly.",
+    "optionA": "on",
+    "optionB": "off",
+    "optionC": "up",
+    "optionD": "out",
+    "correctAnswer": "A",
+    "explanation": "'Take on' = nhận trách nhiệm."
+  },
+  {
+    "id": 43,
+    "question": "The manager is in charge _____ the project.",
+    "optionA": "of",
+    "optionB": "for",
+    "optionC": "to",
+    "optionD": "with",
+    "correctAnswer": "A",
+    "explanation": "Cụm 'in charge of'."
+  },
+  {
+    "id": 44,
+    "question": "We need to come up _____ a solution quickly.",
+    "optionA": "to",
+    "optionB": "with",
+    "optionC": "for",
+    "optionD": "on",
+    "correctAnswer": "B",
+    "explanation": "'Come up with' = đưa ra."
+  },
+  {
+    "id": 45,
+    "question": "He apologized _____ the mistake.",
+    "optionA": "for",
+    "optionB": "to",
+    "optionC": "with",
+    "optionD": "on",
+    "correctAnswer": "A",
+    "explanation": "Cụm 'apologize for'."
+  },
+  {
+    "id": 46,
+    "question": "The contract is subject _____ change.",
+    "optionA": "to",
+    "optionB": "for",
+    "optionC": "with",
+    "optionD": "on",
+    "correctAnswer": "A",
+    "explanation": "Cụm 'subject to'."
+  },
+  {
+    "id": 47,
+    "question": "The company has a strong _____ in the market.",
+    "optionA": "present",
+    "optionB": "presence",
+    "optionC": "presenting",
+    "optionD": "presentation",
+    "correctAnswer": "B",
+    "explanation": "'Presence' = sự hiện diện."
+  },
+  {
+    "id": 48,
+    "question": "The meeting was put _____ until next week.",
+    "optionA": "off",
+    "optionB": "on",
+    "optionC": "out",
+    "optionD": "up",
+    "correctAnswer": "A",
+    "explanation": "'Put off' = hoãn."
+  },
+  {
+    "id": 49,
+    "question": "He is well aware _____ the risks involved.",
+    "optionA": "to",
+    "optionB": "for",
+    "optionC": "of",
+    "optionD": "with",
+    "correctAnswer": "C",
+    "explanation": "Cụm 'aware of'."
+  },
+  {
+    "id": 50,
+    "question": "The company strives _____ excellence in all areas.",
+    "optionA": "for",
+    "optionB": "to",
+    "optionC": "with",
+    "optionD": "on",
+    "correctAnswer": "A",
+    "explanation": "Cụm 'strive for'."
+  },
+  {
+    "id": 51,
+    "question": "The employee was absent _____ work due to illness.",
+    "optionA": "from",
+    "optionB": "at",
+    "optionC": "in",
+    "optionD": "on",
+    "correctAnswer": "A",
+    "explanation": "Cụm đúng là 'absent from work'."
+  },
+  {
+    "id": 52,
+    "question": "The software update will improve system _____.",
+    "optionA": "perform",
+    "optionB": "performance",
+    "optionC": "performing",
+    "optionD": "performed",
+    "correctAnswer": "B",
+    "explanation": "Cần danh từ → 'performance'."
+  },
+  {
+    "id": 53,
+    "question": "The manager requested that all reports _____ submitted by Friday.",
+    "optionA": "are",
+    "optionB": "were",
+    "optionC": "be",
+    "optionD": "being",
+    "correctAnswer": "C",
+    "explanation": "Câu giả định: 'request that + S + V nguyên mẫu'."
+  },
+  {
+    "id": 54,
+    "question": "Customers are advised to check their orders _____ confirming.",
+    "optionA": "before",
+    "optionB": "after",
+    "optionC": "while",
+    "optionD": "during",
+    "correctAnswer": "A",
+    "explanation": "'Before' phù hợp nghĩa: kiểm tra trước khi xác nhận."
+  },
+  {
+    "id": 55,
+    "question": "The new policy aims to reduce operating _____.",
+    "optionA": "cost",
+    "optionB": "costs",
+    "optionC": "costly",
+    "optionD": "costing",
+    "correctAnswer": "B",
+    "explanation": "'Operating costs' là cụm danh từ đúng."
+  },
+  {
+    "id": 56,
+    "question": "The conference will take place _____ July.",
+    "optionA": "at",
+    "optionB": "on",
+    "optionC": "in",
+    "optionD": "by",
+    "correctAnswer": "C",
+    "explanation": "Dùng 'in' với tháng."
+  },
+  {
+    "id": 57,
+    "question": "He has been working here _____ five years.",
+    "optionA": "since",
+    "optionB": "for",
+    "optionC": "during",
+    "optionD": "while",
+    "correctAnswer": "B",
+    "explanation": "'For' dùng với khoảng thời gian."
+  },
+  {
+    "id": 58,
+    "question": "The product was recalled due to safety _____.",
+    "optionA": "concerns",
+    "optionB": "concern",
+    "optionC": "concerning",
+    "optionD": "concerned",
+    "correctAnswer": "A",
+    "explanation": "'Safety concerns' là cụm danh từ đúng."
+  },
+  {
+    "id": 59,
+    "question": "The manager asked the staff to _____ their tasks on time.",
+    "optionA": "complete",
+    "optionB": "completion",
+    "optionC": "completing",
+    "optionD": "completed",
+    "correctAnswer": "A",
+    "explanation": "Sau 'to' dùng động từ nguyên mẫu."
+  },
+  {
+    "id": 60,
+    "question": "This restaurant is known _____ its excellent service.",
+    "optionA": "for",
+    "optionB": "to",
+    "optionC": "with",
+    "optionD": "on",
+    "correctAnswer": "A",
+    "explanation": "Cụm 'known for'."
+  },
+  {
+    "id": 61,
+    "question": "The company is considering _____ a new branch overseas.",
+    "optionA": "open",
+    "optionB": "to open",
+    "optionC": "opening",
+    "optionD": "opened",
+    "correctAnswer": "C",
+    "explanation": "'Consider' + V-ing."
+  },
+  {
+    "id": 62,
+    "question": "The results of the survey were quite _____.",
+    "optionA": "interest",
+    "optionB": "interesting",
+    "optionC": "interested",
+    "optionD": "interestingly",
+    "correctAnswer": "B",
+    "explanation": "Dùng tính từ '-ing' để mô tả sự vật."
+  },
+  {
+    "id": 63,
+    "question": "He is responsible for _____ the equipment.",
+    "optionA": "maintain",
+    "optionB": "maintaining",
+    "optionC": "maintenance",
+    "optionD": "maintained",
+    "correctAnswer": "B",
+    "explanation": "Sau 'for' dùng V-ing."
+  },
+  {
+    "id": 64,
+    "question": "The flight arrived _____ time despite the delay.",
+    "optionA": "in",
+    "optionB": "on",
+    "optionC": "at",
+    "optionD": "by",
+    "correctAnswer": "B",
+    "explanation": "Cụm 'on time'."
+  },
+  {
+    "id": 65,
+    "question": "Employees are encouraged to participate _____ training programs.",
+    "optionA": "at",
+    "optionB": "in",
+    "optionC": "on",
+    "optionD": "for",
+    "correctAnswer": "B",
+    "explanation": "'Participate in'."
+  },
+  {
+    "id": 66,
+    "question": "The company has recently _____ a new marketing strategy.",
+    "optionA": "adopt",
+    "optionB": "adopted",
+    "optionC": "adopting",
+    "optionD": "adoption",
+    "correctAnswer": "B",
+    "explanation": "Hiện tại hoàn thành → 'has + V3'."
+  },
+  {
+    "id": 67,
+    "question": "The manager will review the proposal _____ making a decision.",
+    "optionA": "before",
+    "optionB": "after",
+    "optionC": "during",
+    "optionD": "while",
+    "correctAnswer": "A",
+    "explanation": "'Before' hợp nghĩa."
+  },
+  {
+    "id": 68,
+    "question": "He has a strong ability to work _____ pressure.",
+    "optionA": "on",
+    "optionB": "under",
+    "optionC": "at",
+    "optionD": "in",
+    "correctAnswer": "B",
+    "explanation": "Cụm 'under pressure'."
+  },
+  {
+    "id": 69,
+    "question": "The company is looking to expand its _____ base.",
+    "optionA": "customer",
+    "optionB": "customers",
+    "optionC": "custom",
+    "optionD": "customize",
+    "correctAnswer": "A",
+    "explanation": "'Customer base' là cụm cố định."
+  },
+  {
+    "id": 70,
+    "question": "The machine needs _____ before use.",
+    "optionA": "inspect",
+    "optionB": "inspection",
+    "optionC": "inspecting",
+    "optionD": "to inspect",
+    "correctAnswer": "B",
+    "explanation": "Cần danh từ 'inspection'."
+  },
+  {
+    "id": 71,
+    "question": "She succeeded _____ completing the project on time.",
+    "optionA": "in",
+    "optionB": "at",
+    "optionC": "to",
+    "optionD": "for",
+    "correctAnswer": "A",
+    "explanation": "Cụm 'succeed in'."
+  },
+  {
+    "id": 72,
+    "question": "The company decided to call _____ the deal.",
+    "optionA": "off",
+    "optionB": "on",
+    "optionC": "up",
+    "optionD": "in",
+    "correctAnswer": "A",
+    "explanation": "'Call off' = hủy."
+  },
+  {
+    "id": 73,
+    "question": "He was promoted _____ his dedication to the company.",
+    "optionA": "because",
+    "optionB": "because of",
+    "optionC": "although",
+    "optionD": "despite",
+    "correctAnswer": "B",
+    "explanation": "'Because of' + danh từ."
+  },
+  {
+    "id": 74,
+    "question": "The instructions were not clearly _____.",
+    "optionA": "explain",
+    "optionB": "explained",
+    "optionC": "explaining",
+    "optionD": "explanation",
+    "correctAnswer": "B",
+    "explanation": "Câu bị động → 'were explained'."
+  },
+  {
+    "id": 75,
+    "question": "The project deadline has been _____ to next month.",
+    "optionA": "extend",
+    "optionB": "extended",
+    "optionC": "extending",
+    "optionD": "extension",
+    "correctAnswer": "B",
+    "explanation": "Hiện tại hoàn thành bị động."
+  },
+  {
+    "id": 76,
+    "question": "The team worked together to _____ the problem.",
+    "optionA": "solve",
+    "optionB": "solution",
+    "optionC": "solving",
+    "optionD": "solved",
+    "correctAnswer": "A",
+    "explanation": "Sau 'to' dùng động từ nguyên mẫu."
+  },
+  {
+    "id": 77,
+    "question": "He is not only experienced _____ also very reliable.",
+    "optionA": "but",
+    "optionB": "and",
+    "optionC": "so",
+    "optionD": "or",
+    "correctAnswer": "A",
+    "explanation": "Cấu trúc 'not only... but also'."
+  },
+  {
+    "id": 78,
+    "question": "The company is committed _____ providing quality service.",
+    "optionA": "to",
+    "optionB": "for",
+    "optionC": "with",
+    "optionD": "on",
+    "correctAnswer": "A",
+    "explanation": "'Committed to' + V-ing."
+  },
+  {
+    "id": 79,
+    "question": "The manager asked whether the task _____ completed.",
+    "optionA": "has",
+    "optionB": "had been",
+    "optionC": "have",
+    "optionD": "is",
+    "correctAnswer": "B",
+    "explanation": "Tường thuật + quá khứ hoàn thành bị động."
+  },
+  {
+    "id": 80,
+    "question": "The new system is designed to be user-_____.",
+    "optionA": "friend",
+    "optionB": "friendly",
+    "optionC": "friendship",
+    "optionD": "befriend",
+    "correctAnswer": "B",
+    "explanation": "'User-friendly' là tính từ đúng."
+  },
+  {
+    "id": 81,
+    "question": "The company is facing a _____ shortage of skilled workers.",
+    "optionA": "serious",
+    "optionB": "seriously",
+    "optionC": "seriousness",
+    "optionD": "series",
+    "correctAnswer": "A",
+    "explanation": "Cần tính từ bổ nghĩa cho 'shortage'."
+  },
+  {
+    "id": 82,
+    "question": "The CEO emphasized the importance _____ teamwork.",
+    "optionA": "of",
+    "optionB": "to",
+    "optionC": "for",
+    "optionD": "with",
+    "correctAnswer": "A",
+    "explanation": "'Importance of'."
+  },
+  {
+    "id": 83,
+    "question": "The package will be delivered _____ two days.",
+    "optionA": "in",
+    "optionB": "on",
+    "optionC": "at",
+    "optionD": "by",
+    "correctAnswer": "A",
+    "explanation": "'In + thời gian' cho tương lai."
+  },
+  {
+    "id": 84,
+    "question": "She is used to _____ early in the morning.",
+    "optionA": "wake",
+    "optionB": "waking",
+    "optionC": "woke",
+    "optionD": "to wake",
+    "correctAnswer": "B",
+    "explanation": "'Be used to' + V-ing."
+  },
+  {
+    "id": 85,
+    "question": "The company has decided to phase _____ outdated equipment.",
+    "optionA": "out",
+    "optionB": "in",
+    "optionC": "on",
+    "optionD": "up",
+    "correctAnswer": "A",
+    "explanation": "'Phase out' = loại bỏ dần."
+  },
+  {
+    "id": 86,
+    "question": "The manager suggested _____ a new approach.",
+    "optionA": "try",
+    "optionB": "to try",
+    "optionC": "trying",
+    "optionD": "tried",
+    "correctAnswer": "C",
+    "explanation": "'Suggest' + V-ing."
+  },
+  {
+    "id": 87,
+    "question": "The company is well-known _____ its innovation.",
+    "optionA": "for",
+    "optionB": "to",
+    "optionC": "with",
+    "optionD": "on",
+    "correctAnswer": "A",
+    "explanation": "'Well-known for'."
+  },
+  {
+    "id": 88,
+    "question": "The instructions must be followed _____.",
+    "optionA": "care",
+    "optionB": "careful",
+    "optionC": "carefully",
+    "optionD": "careless",
+    "correctAnswer": "C",
+    "explanation": "Cần trạng từ."
+  },
+  {
+    "id": 89,
+    "question": "The company is planning to carry _____ a survey.",
+    "optionA": "out",
+    "optionB": "on",
+    "optionC": "up",
+    "optionD": "off",
+    "correctAnswer": "A",
+    "explanation": "'Carry out' = tiến hành."
+  },
+  {
+    "id": 90,
+    "question": "The employee was dismissed _____ violating company policy.",
+    "optionA": "because",
+    "optionB": "because of",
+    "optionC": "due",
+    "optionD": "although",
+    "correctAnswer": "B",
+    "explanation": "'Because of' + V-ing/danh từ."
+  },
+  {
+    "id": 91,
+    "question": "The company is trying to keep _____ with market trends.",
+    "optionA": "up",
+    "optionB": "on",
+    "optionC": "in",
+    "optionD": "at",
+    "correctAnswer": "A",
+    "explanation": "'Keep up with'."
+  },
+  {
+    "id": 92,
+    "question": "The manager is responsible _____ ensuring quality control.",
+    "optionA": "to",
+    "optionB": "for",
+    "optionC": "with",
+    "optionD": "on",
+    "correctAnswer": "B",
+    "explanation": "'Responsible for' + V-ing."
+  },
+  {
+    "id": 93,
+    "question": "The company has made significant _____ in technology.",
+    "optionA": "advance",
+    "optionB": "advances",
+    "optionC": "advanced",
+    "optionD": "advancing",
+    "correctAnswer": "B",
+    "explanation": "'Make advances' là cụm đúng."
+  },
+  {
+    "id": 94,
+    "question": "The project was delayed _____ unforeseen circumstances.",
+    "optionA": "due to",
+    "optionB": "because",
+    "optionC": "although",
+    "optionD": "despite",
+    "correctAnswer": "A",
+    "explanation": "'Due to' + danh từ."
+  },
+  {
+    "id": 95,
+    "question": "The employee was praised for his _____ to detail.",
+    "optionA": "attention",
+    "optionB": "attend",
+    "optionC": "attending",
+    "optionD": "attentive",
+    "correctAnswer": "A",
+    "explanation": "'Attention to detail' là collocation."
+  },
+  {
+    "id": 96,
+    "question": "The company needs to look _____ new opportunities.",
+    "optionA": "for",
+    "optionB": "on",
+    "optionC": "in",
+    "optionD": "at",
+    "correctAnswer": "A",
+    "explanation": "'Look for' = tìm kiếm."
+  },
+  {
+    "id": 97,
+    "question": "The manager advised him to carry _____ with the plan.",
+    "optionA": "on",
+    "optionB": "out",
+    "optionC": "up",
+    "optionD": "off",
+    "correctAnswer": "A",
+    "explanation": "'Carry on' = tiếp tục."
+  },
+  {
+    "id": 98,
+    "question": "The company is taking steps to _____ customer satisfaction.",
+    "optionA": "improve",
+    "optionB": "improvement",
+    "optionC": "improving",
+    "optionD": "improved",
+    "correctAnswer": "A",
+    "explanation": "Sau 'to' dùng động từ nguyên mẫu."
+  },
+  {
+    "id": 99,
+    "question": "The results were _____ disappointing.",
+    "optionA": "extreme",
+    "optionB": "extremely",
+    "optionC": "extremity",
+    "optionD": "extremes",
+    "correctAnswer": "B",
+    "explanation": "Cần trạng từ bổ nghĩa cho tính từ."
+  },
+  {
+    "id": 100,
+    "question": "The company plans to set _____ a new office in Hanoi.",
+    "optionA": "up",
+    "optionB": "on",
+    "optionC": "off",
+    "optionD": "in",
+    "correctAnswer": "A",
+    "explanation": "'Set up' = thành lập."
+  }
+]

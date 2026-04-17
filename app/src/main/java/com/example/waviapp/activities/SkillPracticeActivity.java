@@ -1,5 +1,6 @@
 package com.example.waviapp.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -98,6 +99,7 @@ public class SkillPracticeActivity extends BaseActivity {
 
         LayoutInflater inflater = LayoutInflater.from(this);
         for (int i = 0; i < parts.length; i++) {
+            final int index = i;
             View itemView = inflater.inflate(R.layout.item_skill_part, llPartsContainer, false);
 
             TextView tvPartTitle = itemView.findViewById(R.id.tvPartTitle);
@@ -113,8 +115,17 @@ public class SkillPracticeActivity extends BaseActivity {
             }
 
             ivPartLock.setVisibility(View.GONE);
+
+            // Task 1: Add Click Logic to Dynamic Views
+            itemView.setOnClickListener(v -> {
+                if (CAT_READ.equals(category) && parts[index].equals(getString(R.string.read_part1))) {
+                    // Chuyển sang màn hình chọn Set thay vì vào trực tiếp bài làm
+                    Intent intent = new Intent(SkillPracticeActivity.this, Part5SetActivity.class);
+                    startActivity(intent);
+                }
+            });
+
             llPartsContainer.addView(itemView);
         }
     }
 }
-
