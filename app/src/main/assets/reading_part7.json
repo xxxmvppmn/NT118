@@ -1,0 +1,1327 @@
+[
+  {
+    "id": 1,
+    "type": "Memo",
+    "topic": "Office Security Policy",
+    "difficulty": "Easy",
+    "content": "To: All Employees\nFrom: Security Department\nDate: April 15, 2026\nSubject: Updated Office Security Procedures\n\nDue to recent security incidents in the building, all staff must now scan their employee ID cards upon entering and exiting the main lobby. Visitors will no longer be allowed without prior approval from their host. Additionally, employees are reminded to lock their computers when leaving their desks and to report any suspicious activity immediately to the security desk. These measures aim to enhance the safety of our workplace and protect company assets. Thank you for your cooperation in maintaining a secure environment.",
+    "questions": [
+      {
+        "question": "What is the main purpose of this memo?",
+        "options": {
+          "A": "To announce a company holiday",
+          "B": "To inform staff about new security rules",
+          "C": "To invite employees to a meeting",
+          "D": "To introduce new software"
+        },
+        "correctAnswer": "B",
+        "explanation": "Mục đích chính của memo là thông báo về các quy trình an ninh mới (updated office security procedures) để tăng cường an toàn cho nơi làm việc."
+      },
+      {
+        "question": "According to the memo, what must visitors do?",
+        "options": {
+          "A": "Scan their own ID cards",
+          "B": "Obtain prior approval from their host",
+          "C": "Pay a security fee",
+          "D": "Leave their belongings at the entrance"
+        },
+        "correctAnswer": "B",
+        "explanation": "Thông tin trực tiếp: \"Visitors will no longer be allowed without prior approval from their host.\" Đây là câu hỏi chi tiết dễ tìm."
+      },
+      {
+        "question": "What should employees do when leaving their desks?",
+        "options": {
+          "A": "Turn off the lights",
+          "B": "Lock their computers",
+          "C": "Take all documents home",
+          "D": "Notify the manager"
+        },
+        "correctAnswer": "B",
+        "explanation": "Câu trả lời nằm rõ ràng ở phần \"employees are reminded to lock their computers when leaving their desks\"."
+      },
+      {
+        "question": "Which of the following is NOT mentioned as a new security measure?",
+        "options": {
+          "A": "Scanning ID cards",
+          "B": "Reporting suspicious activity",
+          "C": "Installing new cameras in all rooms",
+          "D": "Requiring approval for visitors"
+        },
+        "correctAnswer": "C",
+        "explanation": "Memo không đề cập đến việc lắp camera mới. Đây là dạng câu hỏi \"NOT mentioned\" yêu cầu loại trừ thông tin không có."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "type": "Email",
+    "topic": "Job Recruitment",
+    "difficulty": "Medium",
+    "content": "From: HR Department <hr@techinnovate.vn>\nTo: All Department Managers\nSubject: Urgent Recruitment for Software Engineer Positions\n\nWe are currently seeking three experienced Software Engineers for our expanding AI development team. Candidates should have at least three years of experience in Python and machine learning frameworks. The positions offer competitive salaries, health insurance, and opportunities for international training. Please encourage qualified staff members to refer suitable candidates or forward this email to your professional network. The deadline for applications is April 30, 2026. Detailed job descriptions are attached.",
+    "questions": [
+      {
+        "question": "Why did the HR Department send this email?",
+        "options": {
+          "A": "To announce a company picnic",
+          "B": "To request help in recruiting new engineers",
+          "C": "To introduce new company policies",
+          "D": "To congratulate successful employees"
+        },
+        "correctAnswer": "B",
+        "explanation": "Email yêu cầu managers khuyến khích giới thiệu ứng viên (“encourage qualified staff members to refer suitable candidates”), đây là mục đích chính."
+      },
+      {
+        "question": "What qualification is required for the positions?",
+        "options": {
+          "A": "Two years of teaching experience",
+          "B": "At least three years in Python and machine learning",
+          "C": "Master’s degree in marketing",
+          "D": "Experience in sales"
+        },
+        "correctAnswer": "B",
+        "explanation": "Thông tin chi tiết: \"Candidates should have at least three years of experience in Python and machine learning frameworks.\""
+      },
+      {
+        "question": "What benefit is offered to new employees?",
+        "options": {
+          "A": "Free company car",
+          "B": "Opportunities for international training",
+          "C": "Extra vacation days only",
+          "D": "Housing allowance"
+        },
+        "correctAnswer": "B",
+        "explanation": "Email nêu rõ lợi ích bao gồm \"opportunities for international training\"."
+      },
+      {
+        "question": "What can be inferred about the company?",
+        "options": {
+          "A": "It is downsizing its workforce",
+          "B": "Its AI development team is growing",
+          "C": "It has stopped hiring new staff",
+          "D": "It only hires fresh graduates"
+        },
+        "correctAnswer": "B",
+        "explanation": "Cụm \"our expanding AI development team\" cho thấy đội ngũ đang mở rộng → suy luận gián tiếp."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "type": "Advertisement",
+    "topic": "Travel Promotion",
+    "difficulty": "Medium",
+    "content": "Summer Escape to Da Nang – Special Package Deal!\n\nDiscover the beauty of Da Nang with our exclusive 4-day 3-night package. Enjoy luxurious beachfront accommodation at a 5-star resort, daily buffet breakfast, and a complimentary half-day city tour. Book before May 15, 2026, and receive a free spa session worth 1,500,000 VND. This limited offer includes round-trip flights from Ho Chi Minh City and airport transfers. Perfect for couples and families seeking relaxation and adventure. Don’t miss this unforgettable summer getaway!",
+    "questions": [
+      {
+        "question": "What is being advertised?",
+        "options": {
+          "A": "A new smartphone model",
+          "B": "A travel package to Da Nang",
+          "C": "Office furniture sale",
+          "D": "Online cooking classes"
+        },
+        "correctAnswer": "B",
+        "explanation": "Toàn bộ quảng cáo tập trung vào gói du lịch 4 ngày 3 đêm tại Đà Nẵng."
+      },
+      {
+        "question": "What is included in the package?",
+        "options": {
+          "A": "Only flight tickets",
+          "B": "Accommodation, breakfast, and a city tour",
+          "C": "Car rental for one month",
+          "D": "Free language lessons"
+        },
+        "correctAnswer": "B",
+        "explanation": "Chi tiết rõ: \"luxurious beachfront accommodation … daily buffet breakfast, and a complimentary half-day city tour.\""
+      },
+      {
+        "question": "When does the special offer end?",
+        "options": {
+          "A": "April 15, 2026",
+          "B": "May 15, 2026",
+          "C": "June 30, 2026",
+          "D": "December 31, 2026"
+        },
+        "correctAnswer": "B",
+        "explanation": "Thông tin trực tiếp: \"Book before May 15, 2026\"."
+      },
+      {
+        "question": "Which of the following is NOT included in the package?",
+        "options": {
+          "A": "Airport transfers",
+          "B": "Round-trip flights",
+          "C": "A free spa session for all bookings",
+          "D": "Daily buffet breakfast"
+        },
+        "correctAnswer": "C",
+        "explanation": "Spa session miễn phí chỉ dành cho khách book trước ngày 15/5, không phải cho tất cả. Đây là dạng \"NOT included\"."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "type": "Article",
+    "topic": "Technology Trends",
+    "difficulty": "Hard",
+    "content": "The Rise of Artificial Intelligence in Vietnamese Businesses\n\nIn recent years, Vietnamese companies have increasingly adopted artificial intelligence (AI) to improve operational efficiency. According to a recent survey by the Ministry of Information and Communications, over 65% of large enterprises now use AI tools for customer service and data analysis. While this technological shift creates new job opportunities in programming and data science, it also raises concerns about workforce displacement in routine tasks. Experts recommend that the government invest more in retraining programs to help workers adapt to the digital economy.",
+    "questions": [
+      {
+        "question": "What is the main topic of the article?",
+        "options": {
+          "A": "Traditional farming methods in Vietnam",
+          "B": "The increasing use of AI in Vietnamese companies",
+          "C": "Problems with internet connection",
+          "D": "Tourism development strategies"
+        },
+        "correctAnswer": "B",
+        "explanation": "Toàn bài tập trung vào việc áp dụng AI trong doanh nghiệp Việt Nam và các tác động liên quan."
+      },
+      {
+        "question": "According to the survey, what percentage of large enterprises use AI?",
+        "options": {
+          "A": "Less than 30%",
+          "B": "Over 65%",
+          "C": "Exactly 50%",
+          "D": "Around 80%"
+        },
+        "correctAnswer": "B",
+        "explanation": "Thông tin trực tiếp: \"over 65% of large enterprises now use AI tools\"."
+      },
+      {
+        "question": "What concern is mentioned regarding AI adoption?",
+        "options": {
+          "A": "Increased company profits",
+          "B": "Workforce displacement in routine tasks",
+          "C": "Decrease in customer satisfaction",
+          "D": "Higher electricity costs"
+        },
+        "correctAnswer": "B",
+        "explanation": "Bài viết nêu rõ lo ngại về \"workforce displacement in routine tasks\"."
+      },
+      {
+        "question": "What does the article suggest the government should do?",
+        "options": {
+          "A": "Ban the use of AI immediately",
+          "B": "Invest more in retraining programs",
+          "C": "Reduce technology imports",
+          "D": "Focus only on traditional industries"
+        },
+        "correctAnswer": "B",
+        "explanation": "Câu cuối bài: \"Experts recommend that the government invest more in retraining programs\" – đây là suy luận từ khuyến nghị của chuyên gia."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "type": "Letter",
+    "topic": "Customer Complaint",
+    "difficulty": "Hard",
+    "content": "Dear Customer Relations Manager,\n\nI am writing to express my disappointment with the delivery service of your company. I ordered a laptop on March 20, 2026, with guaranteed next-day delivery. However, the package arrived five days late and the box was damaged. Upon inspection, I discovered that the laptop screen had a visible crack. Despite my request for an immediate replacement, your representative only offered a partial refund. This experience has greatly affected my trust in your brand. I expect a full resolution within seven days.\n\nSincerely,\nNguyen Thi Lan",
+    "questions": [
+      {
+        "question": "What is the main purpose of this letter?",
+        "options": {
+          "A": "To request a product catalog",
+          "B": "To complain about a damaged product and late delivery",
+          "C": "To thank the company for excellent service",
+          "D": "To apply for a job"
+        },
+        "correctAnswer": "B",
+        "explanation": "Người viết bày tỏ sự thất vọng về giao hàng chậm và sản phẩm hỏng, đồng thời yêu cầu giải quyết."
+      },
+      {
+        "question": "When was the laptop ordered?",
+        "options": {
+          "A": "March 15, 2026",
+          "B": "March 20, 2026",
+          "C": "April 5, 2026",
+          "D": "February 28, 2026"
+        },
+        "correctAnswer": "B",
+        "explanation": "Thông tin rõ ràng: \"I ordered a laptop on March 20, 2026\"."
+      },
+      {
+        "question": "What problem did the writer discover with the laptop?",
+        "options": {
+          "A": "Missing charger",
+          "B": "A visible crack on the screen",
+          "C": "Wrong color",
+          "D": "Outdated software"
+        },
+        "correctAnswer": "B",
+        "explanation": "Chi tiết: \"the laptop screen had a visible crack\"."
+      },
+      {
+        "question": "What can be inferred about the writer's attitude?",
+        "options": {
+          "A": "She is completely satisfied",
+          "B": "She has lost confidence in the company",
+          "C": "She wants to order more products",
+          "D": "She plans to visit the store"
+        },
+        "correctAnswer": "B",
+        "explanation": "Câu \"This experience has greatly affected my trust in your brand\" cho thấy sự mất lòng tin – suy luận từ giọng văn."
+      }
+    ]
+  },
+  {
+      "id": 6,
+      "type": "Memo",
+      "topic": "Meeting Schedule Change",
+      "difficulty": "Easy",
+      "content": "To: All Department Heads\nFrom: Executive Assistant\nDate: April 17, 2026\nSubject: Change in Quarterly Strategy Meeting Schedule\n\nPlease be informed that the quarterly strategy meeting originally scheduled for April 22 has been rescheduled to April 25, 2026, at 9:00 AM in Conference Room B. This change is due to the CEO’s unexpected business trip. All participants are requested to update their calendars and prepare the monthly performance reports as previously instructed. Refreshments will be provided. If you have any conflicts with the new date, please contact me before April 20.",
+      "questions": [
+        {
+          "question": "Why was the meeting rescheduled?",
+          "options": {
+            "A": "The conference room is under renovation",
+            "B": "The CEO has an unexpected business trip",
+            "C": "Most employees are on vacation",
+            "D": "The company is celebrating a holiday"
+          },
+          "correctAnswer": "B",
+          "explanation": "Thông tin trực tiếp trong memo: \"This change is due to the CEO’s unexpected business trip.\""
+        },
+        {
+          "question": "When will the new meeting take place?",
+          "options": {
+            "A": "April 20, 2026",
+            "B": "April 22, 2026",
+            "C": "April 25, 2026",
+            "D": "April 30, 2026"
+          },
+          "correctAnswer": "C",
+          "explanation": "Memo nêu rõ ngày mới là April 25, 2026."
+        },
+        {
+          "question": "What should participants prepare?",
+          "options": {
+            "A": "A budget proposal",
+            "B": "Monthly performance reports",
+            "C": "New product samples",
+            "D": "Customer feedback forms"
+          },
+          "correctAnswer": "B",
+          "explanation": "Yêu cầu rõ ràng: \"prepare the monthly performance reports as previously instructed.\""
+        },
+        {
+          "question": "What should department heads do if they cannot attend?",
+          "options": {
+            "A": "Send a representative",
+            "B": "Contact the writer before April 20",
+            "C": "Ignore the memo",
+            "D": "Reschedule personally with the CEO"
+          },
+          "correctAnswer": "B",
+          "explanation": "Memo yêu cầu liên hệ trước ngày 20 tháng 4 nếu có xung đột lịch."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "Email",
+      "topic": "Order Confirmation",
+      "difficulty": "Medium",
+      "content": "From: Sales Department <sales@officepro.vn>\nTo: Mr. Tran Van Minh <minh.tran@abccompany.com>\nSubject: Confirmation of Your Office Furniture Order #OP-78492\n\nDear Mr. Tran,\n\nThank you for your recent order. We are pleased to confirm that your order for 12 ergonomic office chairs and 5 filing cabinets has been processed. The items will be delivered to your office on April 28, 2026, between 10:00 AM and 12:00 PM. A tracking number has been sent to your account. If you need to make any changes or have questions about the delivery, please reply to this email before April 25. We appreciate your continued trust in our products.",
+      "questions": [
+        {
+          "question": "What is the main purpose of this email?",
+          "options": {
+            "A": "To request payment",
+            "B": "To confirm an order and delivery date",
+            "C": "To offer a discount on new products",
+            "D": "To apologize for a delay"
+          },
+          "correctAnswer": "B",
+          "explanation": "Email xác nhận đơn hàng và thông báo ngày giao hàng cụ thể."
+        },
+        {
+          "question": "What items did the customer order?",
+          "options": {
+            "A": "Desks and computers",
+            "B": "12 ergonomic chairs and 5 filing cabinets",
+            "C": "Printers and scanners",
+            "D": "Meeting tables only"
+          },
+          "correctAnswer": "B",
+          "explanation": "Chi tiết đơn hàng được nêu rõ ngay đoạn đầu."
+        },
+        {
+          "question": "When will the delivery take place?",
+          "options": {
+            "A": "April 25, 2026",
+            "B": "April 28, 2026",
+            "C": "May 5, 2026",
+            "D": "April 20, 2026"
+          },
+          "correctAnswer": "B",
+          "explanation": "Ngày giao hàng là April 28, 2026."
+        },
+        {
+          "question": "What can be inferred about the customer?",
+          "options": {
+            "A": "This is his first order with the company",
+            "B": "He is a returning customer",
+            "C": "He works in the sales department",
+            "D": "He canceled the order"
+          },
+          "correctAnswer": "B",
+          "explanation": "Cụm \"We appreciate your continued trust\" ngụ ý khách hàng đã mua hàng trước đây."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "Advertisement",
+      "topic": "Language Training Course",
+      "difficulty": "Medium",
+      "content": "Boost Your Career with Professional English Training!\n\nEnroll now in our intensive Business English course at Horizon Language Center. This 8-week program focuses on presentation skills, email writing, negotiation, and meeting participation. Classes are held twice a week in the evening with native-speaking instructors. Early bird registration before May 10, 2026, receives a 25% discount and free business vocabulary e-book. Limited seats available. Suitable for professionals aiming for promotion or international projects. Visit our website or call 028-3824-5678 today!",
+      "questions": [
+        {
+          "question": "What is being advertised?",
+          "options": {
+            "A": "A new smartphone application",
+            "B": "An intensive Business English course",
+            "C": "A fitness membership program",
+            "D": "Online cooking classes"
+          },
+          "correctAnswer": "B",
+          "explanation": "Toàn bộ quảng cáo giới thiệu khóa học Business English."
+        },
+        {
+          "question": "How long does the course last?",
+          "options": {
+            "A": "4 weeks",
+            "B": "8 weeks",
+            "C": "12 weeks",
+            "D": "6 months"
+          },
+          "correctAnswer": "B",
+          "explanation": "Thông tin rõ: \"This 8-week program\"."
+        },
+        {
+          "question": "What benefit is offered for early registration?",
+          "options": {
+            "A": "Free laptop",
+            "B": "25% discount and free e-book",
+            "C": "Extra private lessons",
+            "D": "Transportation allowance"
+          },
+          "correctAnswer": "B",
+          "explanation": "Early bird trước 10/5 nhận giảm 25% và sách điện tử miễn phí."
+        },
+        {
+          "question": "Which of the following is NOT mentioned as a course focus?",
+          "options": {
+            "A": "Presentation skills",
+            "B": "Email writing",
+            "C": "Negotiation techniques",
+            "D": "Advanced grammar rules"
+          },
+          "correctAnswer": "D",
+          "explanation": "Quảng cáo không đề cập đến ngữ pháp nâng cao."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "Article",
+      "topic": "Remote Work Trends",
+      "difficulty": "Hard",
+      "content": "Remote Work Continues to Reshape Vietnam’s Labor Market\n\nAfter the pandemic, many Vietnamese companies have adopted hybrid working models permanently. A recent study by the Vietnam Chamber of Commerce and Industry reveals that 58% of white-collar workers prefer working from home at least three days a week. While this flexibility increases employee satisfaction and reduces commuting costs, it also presents challenges in team collaboration and company culture maintenance. HR managers suggest regular virtual team-building activities and clear performance metrics to ensure productivity remains high in the new working environment.",
+      "questions": [
+        {
+          "question": "What is the main idea of the article?",
+          "options": {
+            "A": "Traditional office work is more effective",
+            "B": "Hybrid and remote work are becoming common in Vietnam",
+            "C": "Companies are returning to full-time office work",
+            "D": "Unemployment rates are increasing dramatically"
+          },
+          "correctAnswer": "B",
+          "explanation": "Bài báo thảo luận về xu hướng làm việc từ xa/hybrid và tác động của nó."
+        },
+        {
+          "question": "According to the study, what percentage of white-collar workers prefer hybrid work?",
+          "options": {
+            "A": "35%",
+            "B": "58%",
+            "C": "72%",
+            "D": "45%"
+          },
+          "correctAnswer": "B",
+          "explanation": "Số liệu trực tiếp: \"58% of white-collar workers prefer...\""
+        },
+        {
+          "question": "What challenge of remote work is mentioned?",
+          "options": {
+            "A": "Higher electricity bills",
+            "B": "Difficulties in team collaboration and culture",
+            "C": "Increased transportation costs",
+            "D": "Lack of internet access"
+          },
+          "correctAnswer": "B",
+          "explanation": "Bài viết nêu rõ thách thức về \"team collaboration and company culture maintenance\"."
+        },
+        {
+          "question": "What solution do HR managers recommend?",
+          "options": {
+            "A": "Ban remote work completely",
+            "B": "Organize virtual team-building and set clear metrics",
+            "C": "Reduce employee salaries",
+            "D": "Require all staff to work overtime"
+          },
+          "correctAnswer": "B",
+          "explanation": "Khuyến nghị của HR: \"regular virtual team-building activities and clear performance metrics\"."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "Letter",
+      "topic": "Job Application Follow-up",
+      "difficulty": "Hard",
+      "content": "Dear Hiring Manager,\n\nI am writing to follow up on my application for the Marketing Specialist position (Ref: MK-2304) that I submitted on March 28, 2026. I remain very enthusiastic about the opportunity to contribute to your dynamic marketing team at Green Solutions. With my five years of experience in digital campaign management and proven track record of increasing brand engagement by 40%, I believe I would be a strong addition to your company. I would greatly appreciate any update regarding the status of my application. Thank you once again for considering my candidacy.\n\nBest regards,\nLe Thi Kim Anh",
+      "questions": [
+        {
+          "question": "What is the purpose of this letter?",
+          "options": {
+            "A": "To resign from current job",
+            "B": "To follow up on a job application",
+            "C": "To request a salary increase",
+            "D": "To complain about service"
+          },
+          "correctAnswer": "B",
+          "explanation": "Người viết theo dõi hồ sơ xin việc đã nộp."
+        },
+        {
+          "question": "When did the writer submit the application?",
+          "options": {
+            "A": "March 15, 2026",
+            "B": "March 28, 2026",
+            "C": "April 10, 2026",
+            "D": "February 20, 2026"
+          },
+          "correctAnswer": "B",
+          "explanation": "Thông tin rõ ràng: \"submitted on March 28, 2026\"."
+        },
+        {
+          "question": "What achievement does the writer mention?",
+          "options": {
+            "A": "Managed a team of 50 people",
+            "B": "Increased brand engagement by 40%",
+            "C": "Won an international award",
+            "D": "Graduated with highest honors"
+          },
+          "correctAnswer": "B",
+          "explanation": "Thành tích được nêu: \"increasing brand engagement by 40%\"."
+        },
+        {
+          "question": "What can be inferred about the writer’s attitude?",
+          "options": {
+            "A": "She is no longer interested in the position",
+            "B": "She is still highly motivated and eager",
+            "C": "She has already accepted another offer",
+            "D": "She is dissatisfied with the recruitment process"
+          },
+          "correctAnswer": "B",
+          "explanation": "Cụm \"I remain very enthusiastic\" cho thấy sự nhiệt tình vẫn cao."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "Memo",
+      "topic": "Office Maintenance Notice",
+      "difficulty": "Medium",
+      "content": "To: All Employees\nFrom: Facilities Management\nDate: April 18, 2026\nSubject: Scheduled Elevator Maintenance\n\nThe elevators in Building A will undergo routine maintenance from 6:00 PM on April 22 to 6:00 AM on April 23, 2026. During this period, only the emergency stairs will be available. We apologize for any inconvenience this may cause. Employees working late are advised to plan accordingly. The maintenance team will work efficiently to minimize disruption. Normal elevator service will resume on the morning of April 23. Thank you for your understanding and cooperation.",
+      "questions": [
+        {
+          "question": "What is the main purpose of this memo?",
+          "options": {
+            "A": "To announce a company party",
+            "B": "To inform staff about elevator maintenance",
+            "C": "To introduce new parking rules",
+            "D": "To celebrate Employee Appreciation Day"
+          },
+          "correctAnswer": "B",
+          "explanation": "Memo thông báo lịch bảo trì thang máy."
+        },
+        {
+          "question": "When will the maintenance take place?",
+          "options": {
+            "A": "During office hours on April 22",
+            "B": "From 6:00 PM April 22 to 6:00 AM April 23",
+            "C": "All day on April 23",
+            "D": "Next week"
+          },
+          "correctAnswer": "B",
+          "explanation": "Thời gian bảo trì được ghi rõ ràng."
+        },
+        {
+          "question": "What should employees use during the maintenance period?",
+          "options": {
+            "A": "The main entrance only",
+            "B": "Emergency stairs",
+            "C": "Service elevator",
+            "D": "Company shuttle bus"
+          },
+          "correctAnswer": "B",
+          "explanation": "Chỉ có cầu thang thoát hiểm khả dụng."
+        },
+        {
+          "question": "Which of the following is NOT true according to the memo?",
+          "options": {
+            "A": "Maintenance will last overnight",
+            "B": "Elevators will be fully operational on April 23 morning",
+            "C": "Employees do not need to make any changes to their plans",
+            "D": "The company apologizes for the inconvenience"
+          },
+          "correctAnswer": "C",
+          "explanation": "Memo khuyên nhân viên làm việc muộn nên lập kế hoạch (plan accordingly), nên câu C không đúng."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "type": "Advertisement",
+      "topic": "Banking Service Promotion",
+      "difficulty": "Hard",
+      "content": "Open a Premium Savings Account Today and Enjoy Exclusive Benefits!\n\nABC Bank is offering a special promotion for new Premium Savings Account holders. Deposit VND 500 million or more and receive an attractive interest rate of 7.2% per annum for the first 12 months. In addition, you will enjoy free unlimited domestic transfers, priority customer service, and complimentary travel insurance when booking flights through our partner. This limited-time offer ends on May 31, 2026. Visit any ABC Bank branch or apply online to secure your financial future with peace of mind.",
+      "questions": [
+        {
+          "question": "What is the minimum deposit required for the promotion?",
+          "options": {
+            "A": "VND 100 million",
+            "B": "VND 500 million",
+            "C": "VND 1 billion",
+            "D": "No minimum deposit"
+          },
+          "correctAnswer": "B",
+          "explanation": "Thông tin trực tiếp: \"Deposit VND 500 million or more\"."
+        },
+        {
+          "question": "What interest rate is offered for the first year?",
+          "options": {
+            "A": "5.5%",
+            "B": "6.8%",
+            "C": "7.2%",
+            "D": "8.0%"
+          },
+          "correctAnswer": "C",
+          "explanation": "Lãi suất là 7.2% mỗi năm trong 12 tháng đầu."
+        },
+        {
+          "question": "Which benefit is included with the account?",
+          "options": {
+            "A": "Free international flight tickets",
+            "B": "Complimentary travel insurance",
+            "C": "Monthly cashback on groceries",
+            "D": "Free coffee at partner cafes"
+          },
+          "correctAnswer": "B",
+          "explanation": "Quà tặng bao gồm bảo hiểm du lịch miễn phí."
+        },
+        {
+          "question": "What can be inferred about this promotion?",
+          "options": {
+            "A": "It is available all year round",
+            "B": "It targets customers with substantial savings",
+            "C": "Only existing customers can apply",
+            "D": "The interest rate is fixed for 5 years"
+          },
+          "correctAnswer": "B",
+          "explanation": "Số tiền gửi tối thiểu cao (500 triệu) cho thấy dành cho khách hàng có vốn lớn."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "Article",
+      "topic": "Sustainable Tourism",
+      "difficulty": "Hard",
+      "content": "Vietnam’s Tourism Industry Embraces Sustainability\n\nWith over 18 million international visitors last year, Vietnam is actively promoting eco-friendly tourism practices. Many hotels and tour operators have adopted green initiatives such as reducing single-use plastics, using solar energy, and supporting local communities. However, experts warn that rapid development without proper planning could harm fragile ecosystems in popular destinations like Ha Long Bay and Phu Quoc. The government has recently launched a national campaign encouraging both businesses and tourists to practice responsible travel to preserve Vietnam’s natural beauty for future generations.",
+      "questions": [
+        {
+          "question": "What is the main topic of the article?",
+          "options": {
+            "A": "Decline in tourist numbers in Vietnam",
+            "B": "Efforts to develop sustainable tourism in Vietnam",
+            "C": "New visa policies for foreign visitors",
+            "D": "Problems with domestic flights"
+          },
+          "correctAnswer": "B",
+          "explanation": "Bài báo tập trung vào việc thúc đẩy du lịch bền vững."
+        },
+        {
+          "question": "Approximately how many international visitors did Vietnam welcome last year?",
+          "options": {
+            "A": "8 million",
+            "B": "18 million",
+            "C": "25 million",
+            "D": "12 million"
+          },
+          "correctAnswer": "B",
+          "explanation": "Số liệu: \"over 18 million international visitors last year\"."
+        },
+        {
+          "question": "What warning do experts give?",
+          "options": {
+            "A": "Tourism will decrease sharply next year",
+            "B": "Unplanned development may damage ecosystems",
+            "C": "Hotels are becoming too expensive",
+            "D": "Local communities do not support tourism"
+          },
+          "correctAnswer": "B",
+          "explanation": "Chuyên gia cảnh báo về tác hại đến hệ sinh thái mong manh."
+        },
+        {
+          "question": "What has the government launched?",
+          "options": {
+            "A": "A campaign to ban international tourism",
+            "B": "A national campaign for responsible travel",
+            "C": "New taxes on hotel bookings",
+            "D": "Free tours for domestic travelers"
+          },
+          "correctAnswer": "B",
+          "explanation": "Chính phủ khởi xướng chiến dịch khuyến khích du lịch có trách nhiệm."
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "type": "Email",
+      "topic": "Customer Service Feedback",
+      "difficulty": "Medium",
+      "content": "From: Customer Service <support@techgear.vn>\nTo: Ms. Pham Thi Hoa\nSubject: Thank You for Your Recent Feedback\n\nDear Ms. Pham,\n\nThank you for taking the time to share your experience with our wireless headphones purchased last month. We are sorry to hear that the battery life did not meet your expectations. Our technical team has noted your feedback and is currently working on improving the product’s performance in the next version. As a token of appreciation, we would like to offer you a 30% discount voucher for your next purchase. Please use code THANKYOU30 at checkout. We value your opinion and strive to provide better service.",
+      "questions": [
+        {
+          "question": "Why did the company send this email?",
+          "options": {
+            "A": "To request a product review",
+            "B": "To respond to customer feedback about headphones",
+            "C": "To announce a new product launch",
+            "D": "To offer a job position"
+          },
+          "correctAnswer": "B",
+          "explanation": "Email cảm ơn phản hồi và giải quyết vấn đề về thời lượng pin."
+        },
+        {
+          "question": "What problem did the customer mention?",
+          "options": {
+            "A": "The sound quality was poor",
+            "B": "The battery life was unsatisfactory",
+            "C": "The headphones were too heavy",
+            "D": "Delivery was delayed"
+          },
+          "correctAnswer": "B",
+          "explanation": "Vấn đề được đề cập là thời lượng pin không như mong đợi."
+        },
+        {
+          "question": "What compensation is offered to the customer?",
+          "options": {
+            "A": "A full refund",
+            "B": "A 30% discount voucher",
+            "C": "A free replacement pair",
+            "D": "Free shipping for life"
+          },
+          "correctAnswer": "B",
+          "explanation": "Công ty tặng voucher giảm 30% cho lần mua sau."
+        },
+        {
+          "question": "What can be inferred about the company’s attitude?",
+          "options": {
+            "A": "They ignore customer complaints",
+            "B": "They take feedback seriously and try to improve",
+            "C": "They only care about profit",
+            "D": "They stopped producing headphones"
+          },
+          "correctAnswer": "B",
+          "explanation": "Công ty ghi nhận phản hồi, đang cải tiến sản phẩm và tặng quà tri ân."
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "type": "Letter",
+      "topic": "Invitation to Corporate Event",
+      "difficulty": "Hard",
+      "content": "Dear Valued Partner,\n\nWe are delighted to invite you and your team to our Annual Corporate Social Responsibility Gala Dinner on May 15, 2026, at 6:30 PM at the Grand Palace Hotel, Ho Chi Minh City. This year’s event will honor outstanding contributions to environmental protection projects in the Mekong Delta region. Your presence would mean a great deal to us as we continue building strong partnerships for sustainable development. Please confirm your attendance by May 5, 2026. We look forward to celebrating meaningful achievements together.\n\nSincerely,\nNguyen Hoang Vu\nCEO, EcoFuture Corporation",
+      "questions": [
+        {
+          "question": "What is the purpose of this letter?",
+          "options": {
+            "A": "To complain about a delayed project",
+            "B": "To invite partners to a CSR gala dinner",
+            "C": "To request financial support",
+            "D": "To announce company closure"
+          },
+          "correctAnswer": "B",
+          "explanation": "Thư mời tham dự buổi gala từ thiện hàng năm."
+        },
+        {
+          "question": "When and where will the event be held?",
+          "options": {
+            "A": "May 5, 2026 at Grand Palace Hotel",
+            "B": "May 15, 2026 at 6:30 PM at Grand Palace Hotel",
+            "C": "April 30, 2026 at Mekong Delta",
+            "D": "June 10, 2026 online"
+          },
+          "correctAnswer": "B",
+          "explanation": "Thời gian và địa điểm được nêu rõ ràng."
+        },
+        {
+          "question": "What will the event honor this year?",
+          "options": {
+            "A": "Best sales performance",
+            "B": "Contributions to environmental projects in Mekong Delta",
+            "C": "Longest-serving employees",
+            "D": "Most innovative product design"
+          },
+          "correctAnswer": "B",
+          "explanation": "Sự kiện tôn vinh đóng góp cho các dự án bảo vệ môi trường."
+        },
+        {
+          "question": "By when should the recipient reply?",
+          "options": {
+            "A": "April 15, 2026",
+            "B": "May 5, 2026",
+            "C": "May 15, 2026",
+            "D": "June 1, 2026"
+          },
+          "correctAnswer": "B",
+          "explanation": "Hạn xác nhận tham dự là trước ngày 5 tháng 5 năm 2026."
+        }
+      ]
+    },
+  {
+    "id": 16,
+    "type": "Memo",
+    "topic": "Company Policy Update",
+    "difficulty": "Medium",
+    "content": "To: All Employees\nFrom: Human Resources Department\nDate: April 18, 2026\nSubject: Update on Annual Leave Policy\n\nEffective from May 1, 2026, the company will increase annual leave entitlement from 12 days to 15 days per year for all full-time employees. This change aims to improve work-life balance and employee well-being. Please note that unused leave can now be carried forward to the following year up to a maximum of 10 days. Employees are encouraged to plan their vacations in advance and submit leave requests at least two weeks prior to the intended date. The updated policy document is attached for your reference.",
+    "questions": [
+      {
+        "question": "What is the main purpose of this memo?",
+        "options": {
+          "A": "To announce a salary increase",
+          "B": "To inform staff about changes in annual leave policy",
+          "C": "To introduce new dress code rules",
+          "D": "To schedule a team-building event"
+        },
+        "correctAnswer": "B",
+        "explanation": "Memo thông báo rõ ràng việc tăng ngày nghỉ phép hàng năm từ 12 lên 15 ngày."
+      },
+      {
+        "question": "How many annual leave days will employees receive after May 1?",
+        "options": {
+          "A": "10 days",
+          "B": "12 days",
+          "C": "15 days",
+          "D": "20 days"
+        },
+        "correctAnswer": "C",
+        "explanation": "Thông tin trực tiếp: tăng từ 12 ngày lên 15 ngày."
+      },
+      {
+        "question": "What is the new maximum number of carry-forward leave days?",
+        "options": {
+          "A": "5 days",
+          "B": "8 days",
+          "C": "10 days",
+          "D": "15 days"
+        },
+        "correctAnswer": "C",
+        "explanation": "Memo nêu rõ \"up to a maximum of 10 days\"."
+      },
+      {
+        "question": "What should employees do before taking leave?",
+        "options": {
+          "A": "Inform their colleagues directly",
+          "B": "Submit requests at least two weeks in advance",
+          "C": "Wait for manager approval without notice",
+          "D": "Pay a fee for each leave day"
+        },
+        "correctAnswer": "B",
+        "explanation": "Yêu cầu nộp đơn xin nghỉ trước ít nhất hai tuần."
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "type": "Email",
+    "topic": "Product Launch Invitation",
+    "difficulty": "Medium",
+    "content": "From: Marketing Team <marketing@novatech.vn>\nTo: Valued Clients\nSubject: Invitation to Our Latest Smartwatch Launch Event\n\nDear Valued Clients,\n\nWe are excited to invite you to the official launch of our newest smartwatch model – NovaWatch Pro – on May 8, 2026, at 7:00 PM at the Tech Innovation Center. You will have the opportunity to experience advanced health monitoring features and exclusive pricing available only on the launch day. Light refreshments and networking opportunities with industry experts will be provided. Please RSVP by May 5 using the link below. We look forward to sharing this exciting innovation with you.",
+    "questions": [
+      {
+        "question": "What is the purpose of this email?",
+        "options": {
+          "A": "To apologize for a product defect",
+          "B": "To invite clients to a smartwatch launch event",
+          "C": "To offer after-sales service",
+          "D": "To announce company bankruptcy"
+        },
+        "correctAnswer": "B",
+        "explanation": "Email mời khách hàng tham dự sự kiện ra mắt smartwatch mới."
+      },
+      {
+        "question": "When and where will the event be held?",
+        "options": {
+          "A": "May 5 at company headquarters",
+          "B": "May 8 at 7:00 PM at Tech Innovation Center",
+          "C": "April 30 online",
+          "D": "May 15 at a shopping mall"
+        },
+        "correctAnswer": "B",
+        "explanation": "Thời gian và địa điểm được ghi rõ ràng trong email."
+      },
+      {
+        "question": "What special benefit is offered on the launch day?",
+        "options": {
+          "A": "Free delivery for all products",
+          "B": "Exclusive pricing",
+          "C": "Free smartphone with every purchase",
+          "D": "Extended warranty of 5 years"
+        },
+        "correctAnswer": "B",
+        "explanation": "Khách tham dự sẽ nhận được giá ưu đãi độc quyền chỉ có trong ngày ra mắt."
+      },
+      {
+        "question": "By when should recipients reply?",
+        "options": {
+          "A": "May 8",
+          "B": "May 5",
+          "C": "April 25",
+          "D": "May 10"
+        },
+        "correctAnswer": "B",
+        "explanation": "Hạn RSVP là trước ngày 5 tháng 5."
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "type": "Advertisement",
+    "topic": "Fitness Center Membership",
+    "difficulty": "Easy",
+    "content": "Get Fit This Summer at Peak Fitness Center!\n\nJoin our state-of-the-art fitness center today and enjoy unlimited access to modern gym equipment, group exercise classes, and a spacious swimming pool. New members who sign up before May 31, 2026 will receive the first month free and a personal training session worth 1,200,000 VND. Our experienced instructors are ready to help you achieve your fitness goals. Located conveniently in District 7, Ho Chi Minh City. Don’t wait – transform your body and boost your energy now! Call 028-3911-2233 or visit our website to register.",
+    "questions": [
+      {
+        "question": "What is being advertised?",
+        "options": {
+          "A": "A new restaurant",
+          "B": "A fitness center membership",
+          "C": "Online language courses",
+          "D": "Car rental service"
+        },
+        "correctAnswer": "B",
+        "explanation": "Quảng cáo giới thiệu trung tâm thể dục và gói hội viên."
+      },
+      {
+        "question": "What benefit is offered to new members who register before May 31?",
+        "options": {
+          "A": "Free swimming lessons",
+          "B": "First month free and a personal training session",
+          "C": "50% discount on all equipment",
+          "D": "Free transportation"
+        },
+        "correctAnswer": "B",
+        "explanation": "Ưu đãi rõ ràng cho thành viên mới đăng ký trước hạn chót."
+      },
+      {
+        "question": "Where is the fitness center located?",
+        "options": {
+          "A": "District 1",
+          "B": "District 7, Ho Chi Minh City",
+          "C": "Hanoi city center",
+          "D": "Da Nang beach area"
+        },
+        "correctAnswer": "B",
+        "explanation": "Vị trí được nêu: \"Located conveniently in District 7, Ho Chi Minh City.\""
+      },
+      {
+        "question": "Which of the following is NOT mentioned in the advertisement?",
+        "options": {
+          "A": "Modern gym equipment",
+          "B": "Group exercise classes",
+          "C": "Free childcare service",
+          "D": "Swimming pool"
+        },
+        "correctAnswer": "C",
+        "explanation": "Quảng cáo không đề cập đến dịch vụ giữ trẻ."
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "type": "Article",
+    "topic": "Electric Vehicle Market",
+    "difficulty": "Hard",
+    "content": "Vietnam’s Electric Vehicle Market Shows Strong Growth Potential\n\nThe demand for electric vehicles (EVs) in Vietnam has grown rapidly over the past two years. According to industry reports, EV sales increased by 85% in 2025 compared to the previous year. Major manufacturers are expanding their production lines while the government offers tax incentives to encourage green transportation. However, challenges remain, including limited charging infrastructure and high battery replacement costs. Experts predict that with continued investment and policy support, EVs could account for 30% of new vehicle sales by 2030.",
+    "questions": [
+      {
+        "question": "What is the main topic of the article?",
+        "options": {
+          "A": "Decline in traditional car sales",
+          "B": "Rapid growth of the electric vehicle market in Vietnam",
+          "C": "Problems with public transportation",
+          "D": "Fuel price fluctuations"
+        },
+        "correctAnswer": "B",
+        "explanation": "Bài báo tập trung vào sự phát triển mạnh mẽ của thị trường xe điện tại Việt Nam."
+      },
+      {
+        "question": "By what percentage did EV sales increase in 2025?",
+        "options": {
+          "A": "45%",
+          "B": "85%",
+          "C": "120%",
+          "D": "60%"
+        },
+        "correctAnswer": "B",
+        "explanation": "Số liệu trực tiếp: tăng 85% so với năm trước."
+      },
+      {
+        "question": "What challenge is mentioned regarding EVs?",
+        "options": {
+          "A": "Too many manufacturers",
+          "B": "Limited charging infrastructure",
+          "C": "Low customer interest",
+          "D": "Government ban on imports"
+        },
+        "correctAnswer": "B",
+        "explanation": "Thách thức được nêu là hạ tầng sạc còn hạn chế."
+      },
+      {
+        "question": "What do experts predict for 2030?",
+        "options": {
+          "A": "EVs will disappear from the market",
+          "B": "EVs may reach 30% of new vehicle sales",
+          "C": "Traditional cars will dominate completely",
+          "D": "No government support will be given"
+        },
+        "correctAnswer": "B",
+        "explanation": "Dự báo của chuyên gia: xe điện có thể chiếm 30% doanh số xe mới vào năm 2030."
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "type": "Letter",
+    "topic": "Supplier Payment Complaint",
+    "difficulty": "Hard",
+    "content": "Dear Accounts Payable Manager,\n\nI am writing regarding overdue payments for three invoices (INV-3921, INV-3924, and INV-3930) that were due on March 15, 2026. Despite several reminders, we have not yet received the outstanding amount of VND 285,000,000. This delay has seriously affected our cash flow and ability to fulfill other orders. We value our long-term business relationship and hope this matter can be resolved promptly. Please arrange payment within the next seven business days. We look forward to your immediate attention to this issue.\n\nSincerely,\nPham Quang Huy\nProcurement Manager, Viet Supplies Co.",
+    "questions": [
+      {
+        "question": "What is the main purpose of this letter?",
+        "options": {
+          "A": "To request a new contract",
+          "B": "To complain about late payments",
+          "C": "To offer a discount",
+          "D": "To cancel a business partnership"
+        },
+        "correctAnswer": "B",
+        "explanation": "Thư khiếu nại về việc thanh toán chậm trễ các hóa đơn."
+      },
+      {
+        "question": "How much money is still outstanding?",
+        "options": {
+          "A": "VND 150 million",
+          "B": "VND 285 million",
+          "C": "VND 400 million",
+          "D": "VND 95 million"
+        },
+        "correctAnswer": "B",
+        "explanation": "Số tiền còn nợ là VND 285,000,000."
+      },
+      {
+        "question": "When were the invoices originally due?",
+        "options": {
+          "A": "February 28, 2026",
+          "B": "March 15, 2026",
+          "C": "April 10, 2026",
+          "D": "January 20, 2026"
+        },
+        "correctAnswer": "B",
+        "explanation": "Hạn thanh toán ban đầu là ngày 15 tháng 3 năm 2026."
+      },
+      {
+        "question": "What can be inferred about the relationship between the two companies?",
+        "options": {
+          "A": "This is their first transaction",
+          "B": "They have had a long-term business relationship",
+          "C": "They have never worked together before",
+          "D": "The partnership has already ended"
+        },
+        "correctAnswer": "B",
+        "explanation": "Cụm \"We value our long-term business relationship\" cho thấy quan hệ hợp tác lâu dài."
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "type": "Memo",
+    "topic": "Fire Safety Drill",
+    "difficulty": "Easy",
+    "content": "To: All Staff\nFrom: Safety Committee\nDate: April 20, 2026\nSubject: Monthly Fire Safety Drill\n\nA fire safety drill will be conducted on Thursday, April 24, 2026, at 10:30 AM. All employees must participate and follow the instructions of the safety officers. When the alarm sounds, please leave the building calmly using the nearest emergency exit and gather at the designated assembly point in the courtyard. Do not use the elevators. This drill is essential to ensure everyone knows the correct evacuation procedures in case of a real emergency. Your cooperation is greatly appreciated.",
+    "questions": [
+      {
+        "question": "What is the purpose of this memo?",
+        "options": {
+          "A": "To announce a company holiday",
+          "B": "To inform staff about a fire safety drill",
+          "C": "To introduce new parking regulations",
+          "D": "To celebrate a successful project"
+        },
+        "correctAnswer": "B",
+        "explanation": "Memo thông báo về buổi diễn tập phòng cháy chữa cháy."
+      },
+      {
+        "question": "When will the fire drill take place?",
+        "options": {
+          "A": "April 20 at 9:00 AM",
+          "B": "April 24 at 10:30 AM",
+          "C": "April 30 at 2:00 PM",
+          "D": "May 5 at 11:00 AM"
+        },
+        "correctAnswer": "B",
+        "explanation": "Ngày và giờ được nêu rõ: Thursday, April 24, 2026, at 10:30 AM."
+      },
+      {
+        "question": "What should employees do when the alarm sounds?",
+        "options": {
+          "A": "Stay at their desks",
+          "B": "Leave using the nearest emergency exit",
+          "C": "Take the elevator downstairs",
+          "D": "Call the manager first"
+        },
+        "correctAnswer": "B",
+        "explanation": "Hướng dẫn rõ ràng là sử dụng lối thoát hiểm gần nhất."
+      },
+      {
+        "question": "Where should staff gather after evacuation?",
+        "options": {
+          "A": "In the lobby",
+          "B": "At the designated assembly point in the courtyard",
+          "C": "In the cafeteria",
+          "D": "On the rooftop"
+        },
+        "correctAnswer": "B",
+        "explanation": "Điểm tập trung là sân trước (courtyard)."
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "type": "Advertisement",
+    "topic": "Online English Course",
+    "difficulty": "Medium",
+    "content": "Master Business English from Anywhere with FlexLearn!\n\nFlexLearn’s new online Business English course offers flexible scheduling and interactive lessons with certified native teachers. Improve your speaking, writing, and presentation skills through real-life business scenarios. The 12-week program includes weekly live classes, recorded sessions, and personalized feedback. Enroll before April 30, 2026, and get 40% off the regular fee plus free access to our business vocabulary library. Ideal for working professionals who want to advance their careers. Start your free trial today at www.flexlearn.edu.vn.",
+    "questions": [
+      {
+        "question": "What is being advertised?",
+        "options": {
+          "A": "A new mobile game",
+          "B": "An online Business English course",
+          "C": "A cooking app",
+          "D": "A fitness tracker"
+        },
+        "correctAnswer": "B",
+        "explanation": "Quảng cáo giới thiệu khóa học tiếng Anh kinh doanh trực tuyến."
+      },
+      {
+        "question": "How long is the program?",
+        "options": {
+          "A": "6 weeks",
+          "B": "12 weeks",
+          "C": "8 weeks",
+          "D": "16 weeks"
+        },
+        "correctAnswer": "B",
+        "explanation": "Chương trình kéo dài 12 tuần."
+      },
+      {
+        "question": "What discount is offered if enrolling before April 30?",
+        "options": {
+          "A": "20% off",
+          "B": "40% off",
+          "C": "Free first month only",
+          "D": "50% off"
+        },
+        "correctAnswer": "B",
+        "explanation": "Giảm 40% phí học nếu đăng ký trước ngày 30 tháng 4."
+      },
+      {
+        "question": "Which of the following is NOT included in the course?",
+        "options": {
+          "A": "Live classes",
+          "B": "Personalized feedback",
+          "C": "Free textbooks sent by post",
+          "D": "Recorded sessions"
+        },
+        "correctAnswer": "C",
+        "explanation": "Khóa học không đề cập đến sách in gửi qua bưu điện."
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "type": "Article",
+    "topic": "Youth Entrepreneurship",
+    "difficulty": "Hard",
+    "content": "Young Entrepreneurs Drive Innovation in Vietnam’s Startup Ecosystem\n\nIn the past five years, the number of startups founded by people under 30 in Vietnam has increased dramatically. These young founders bring fresh ideas in fintech, e-commerce, and green technology. While access to funding remains a major challenge, government initiatives and private incubators have provided valuable mentorship and seed capital. Success stories such as VNPay and Tiki have inspired a new generation. However, experts emphasize that sustainable growth requires not only innovative ideas but also strong business management skills and market understanding.",
+    "questions": [
+      {
+        "question": "What is the main idea of the article?",
+        "options": {
+          "A": "Traditional businesses are more successful than startups",
+          "B": "Young people are playing a key role in Vietnam’s startup scene",
+          "C": "The government has banned new startups",
+          "D": "Foreign investment is decreasing"
+        },
+        "correctAnswer": "B",
+        "explanation": "Bài báo nhấn mạnh vai trò của giới trẻ trong hệ sinh thái khởi nghiệp."
+      },
+      {
+        "question": "What fields are mentioned as areas of innovation?",
+        "options": {
+          "A": "Agriculture and mining",
+          "B": "Fintech, e-commerce, and green technology",
+          "C": "Tourism and hospitality only",
+          "D": "Heavy industry"
+        },
+        "correctAnswer": "B",
+        "explanation": "Các lĩnh vực được nêu là fintech, thương mại điện tử và công nghệ xanh."
+      },
+      {
+        "question": "What remains a major challenge for young entrepreneurs?",
+        "options": {
+          "A": "Too much government support",
+          "B": "Access to funding",
+          "C": "Lack of customers",
+          "D": "Overqualified workforce"
+        },
+        "correctAnswer": "B",
+        "explanation": "Thách thức lớn là tiếp cận vốn."
+      },
+      {
+        "question": "What do experts say is necessary for sustainable growth?",
+        "options": {
+          "A": "Only creative ideas",
+          "B": "Strong business management skills and market understanding",
+          "C": "Large office spaces in city centers",
+          "D": "Avoiding all risks"
+        },
+        "correctAnswer": "B",
+        "explanation": "Chuyên gia nhấn mạnh cần kỹ năng quản lý và hiểu biết thị trường."
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "type": "Email",
+    "topic": "Training Program Announcement",
+    "difficulty": "Medium",
+    "content": "From: Training & Development <training@globalcorp.vn>\nTo: All Staff\nSubject: Registration Open for Leadership Development Program\n\nDear Colleagues,\n\nWe are pleased to announce that registration is now open for the 2026 Leadership Development Program. This six-month course is designed for high-potential employees who wish to enhance their management and strategic thinking skills. Sessions will be held every Saturday morning from May to October. Participants will receive certificates upon successful completion. Limited spots are available. Please submit your application through the internal portal by April 30, 2026. Don’t miss this opportunity to invest in your professional growth.",
+    "questions": [
+      {
+        "question": "What is the purpose of this email?",
+        "options": {
+          "A": "To invite staff to a company picnic",
+          "B": "To announce a leadership training program",
+          "C": "To inform about office relocation",
+          "D": "To request feedback on new software"
+        },
+        "correctAnswer": "B",
+        "explanation": "Email thông báo mở đăng ký chương trình phát triển lãnh đạo."
+      },
+      {
+        "question": "How long does the program last?",
+        "options": {
+          "A": "3 months",
+          "B": "6 months",
+          "C": "9 months",
+          "D": "12 months"
+        },
+        "correctAnswer": "B",
+        "explanation": "Chương trình kéo dài sáu tháng."
+      },
+      {
+        "question": "When will the sessions be held?",
+        "options": {
+          "A": "Every weekday afternoon",
+          "B": "Every Saturday morning",
+          "C": "Twice a month on Fridays",
+          "D": "Online only on Sundays"
+        },
+        "correctAnswer": "B",
+        "explanation": "Buổi học diễn ra vào sáng thứ Bảy."
+      },
+      {
+        "question": "By when must employees submit their applications?",
+        "options": {
+          "A": "May 15, 2026",
+          "B": "April 30, 2026",
+          "C": "June 10, 2026",
+          "D": "March 31, 2026"
+        },
+        "correctAnswer": "B",
+        "explanation": "Hạn nộp đơn là trước ngày 30 tháng 4 năm 2026."
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "type": "Letter",
+    "topic": "Thank You Letter After Interview",
+    "difficulty": "Hard",
+    "content": "Dear Ms. Nguyen Thi Lan,\n\nThank you very much for interviewing me yesterday for the Senior Accountant position at Bright Accounting Firm. I enjoyed our discussion about the company’s expansion plans and the challenges of implementing new financial software. The interview further strengthened my desire to contribute my seven years of experience in financial reporting and auditing to your respected team. I am confident that my skills and enthusiasm would make me a valuable asset. Please let me know if you need any additional information. I look forward to hearing from you soon.\n\nSincerely,\nVo Minh Tuan",
+    "questions": [
+      {
+        "question": "What is the purpose of this letter?",
+        "options": {
+          "A": "To withdraw the job application",
+          "B": "To thank the interviewer and express continued interest",
+          "C": "To request a higher salary",
+          "D": "To complain about the interview process"
+        },
+        "correctAnswer": "B",
+        "explanation": "Đây là thư cảm ơn sau phỏng vấn và khẳng định mong muốn được làm việc."
+      },
+      {
+        "question": "How many years of experience does the writer have?",
+        "options": {
+          "A": "Five years",
+          "B": "Seven years",
+          "C": "Ten years",
+          "D": "Three years"
+        },
+        "correctAnswer": "B",
+        "explanation": "Người viết có bảy năm kinh nghiệm trong báo cáo tài chính và kiểm toán."
+      },
+      {
+        "question": "What topic was discussed during the interview?",
+        "options": {
+          "A": "Company holiday plans",
+          "B": "Expansion plans and new financial software",
+          "C": "Staff cafeteria menu",
+          "D": "Office decoration ideas"
+        },
+        "correctAnswer": "B",
+        "explanation": "Chủ đề thảo luận là kế hoạch mở rộng và thách thức triển khai phần mềm tài chính mới."
+      },
+      {
+        "question": "What can be inferred about the writer’s feelings after the interview?",
+        "options": {
+          "A": "He is no longer interested in the position",
+          "B": "He is even more motivated to join the company",
+          "C": "He found the interview too difficult",
+          "D": "He has accepted another job offer"
+        },
+        "correctAnswer": "B",
+        "explanation": "Cụm \"further strengthened my desire\" cho thấy sự nhiệt tình tăng lên sau buổi phỏng vấn."
+      }
+    ]
+  }
+]

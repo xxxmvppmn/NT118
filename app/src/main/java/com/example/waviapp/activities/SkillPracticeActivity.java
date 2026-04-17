@@ -123,6 +123,8 @@ public class SkillPracticeActivity extends BaseActivity {
                         startActivity(new Intent(this, Part5SetActivity.class));
                     } else if (parts[index].equals(getString(R.string.read_part2))) {
                         startActivity(new Intent(this, Part6SetActivity.class));
+                    } else if (parts[index].equals(getString(R.string.read_part3))) {
+                        startActivity(new Intent(this, Part7SetActivity.class));
                     }
                 }
             });

@@ -3,6 +3,7 @@ package com.example.waviapp.utils;
 import android.content.Context;
 import com.example.waviapp.models.Part5Question;
 import com.example.waviapp.models.Part6Paragraph;
+import com.example.waviapp.models.Part7Paragraph;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.io.InputStream;
@@ -35,6 +36,21 @@ public class JsonHelper {
             is.close();
             String json = new String(buffer, StandardCharsets.UTF_8);
             return new Gson().fromJson(json, new TypeToken<List<Part6Paragraph>>(){}.getType());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
+    public static List<Part7Paragraph> loadPart7Paragraphs(Context context) {
+        try {
+            InputStream is = context.getAssets().open("reading_part7.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            String json = new String(buffer, StandardCharsets.UTF_8);
+            return new Gson().fromJson(json, new TypeToken<List<Part7Paragraph>>(){}.getType());
         } catch (Exception e) {
             e.printStackTrace();
             return new ArrayList<>();
