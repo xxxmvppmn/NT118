@@ -116,12 +116,14 @@ public class SkillPracticeActivity extends BaseActivity {
 
             ivPartLock.setVisibility(View.GONE);
 
-            // Task 1: Add Click Logic to Dynamic Views
+            // Task: Add Click Logic
             itemView.setOnClickListener(v -> {
-                if (CAT_READ.equals(category) && parts[index].equals(getString(R.string.read_part1))) {
-                    // Chuyển sang màn hình chọn Set thay vì vào trực tiếp bài làm
-                    Intent intent = new Intent(SkillPracticeActivity.this, Part5SetActivity.class);
-                    startActivity(intent);
+                if (CAT_READ.equals(category)) {
+                    if (parts[index].equals(getString(R.string.read_part1))) {
+                        startActivity(new Intent(this, Part5SetActivity.class));
+                    } else if (parts[index].equals(getString(R.string.read_part2))) {
+                        startActivity(new Intent(this, Part6SetActivity.class));
+                    }
                 }
             });
 

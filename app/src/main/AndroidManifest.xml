@@ -46,6 +46,16 @@
             android:exported="false"
             android:screenOrientation="portrait" />
 
+        <!-- TOEIC Part 6 Activities -->
+        <activity
+            android:name=".activities.Part6SetActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.Part6PracticeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".activities.FlashcardActivity"
             android:exported="false"

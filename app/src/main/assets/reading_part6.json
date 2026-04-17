@@ -1,0 +1,902 @@
+[
+  {
+    "id": 1,
+    "type": "Email",
+    "content": "Dear Team, I am delighted to announce that our new marketing campaign proposal (1) been officially approved by senior management. This success reflects the hard work of everyone involved. To move forward effectively, all team members should (2) their tasks in the shared project plan by Friday. Your active participation in brainstorming sessions will (3) greatly to the project's outcome. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "has", "B": "have", "C": "had", "D": "is" },
+        "correctAnswer": "A",
+        "explanation": "Chủ ngữ \"proposal\" là số ít, dùng thì hiện tại hoàn thành \"has been approved\"."
+      },
+      {
+        "number": 2,
+        "options": { "A": "update", "B": "updates", "C": "updated", "D": "updating" },
+        "correctAnswer": "A",
+        "explanation": "Sau \"should\" phải dùng động từ nguyên thể (base form) → \"update\"."
+      },
+      {
+        "number": 3,
+        "options": { "A": "contribute", "B": "contribution", "C": "contributed", "D": "contributing" },
+        "correctAnswer": "A",
+        "explanation": "Cấu trúc \"will contribute to\" – động từ nguyên thể sau \"will\"."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "We look forward to your continued dedication and creative ideas.",
+          "B": "Please delete this email after reading.",
+          "C": "The project has been postponed until next year.",
+          "D": "Only managers are allowed to participate."
+        },
+        "correctAnswer": "A",
+        "explanation": "Câu kết thúc email chuyên nghiệp, thể hiện sự mong đợi và khích lệ đội ngũ."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "type": "Announcement",
+    "content": "Internal Announcement: Due to some technical issues, the quarterly performance review meeting (1) been postponed to next Wednesday at 9:30 AM. All department heads are required to (2) their updated reports at least two days in advance. Please note that attendance is (3) for everyone in managerial positions. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "has", "B": "have", "C": "had", "D": "will" },
+        "correctAnswer": "A",
+        "explanation": "Thì hiện tại hoàn thành \"has been postponed\" với chủ ngữ số ít \"meeting\"."
+      },
+      {
+        "number": 2,
+        "options": { "A": "submit", "B": "submission", "C": "submitted", "D": "submitting" },
+        "correctAnswer": "A",
+        "explanation": "Sau \"required to\" dùng động từ nguyên thể → \"submit\"."
+      },
+      {
+        "number": 3,
+        "options": { "A": "mandatory", "B": "optional", "C": "flexible", "D": "recommended" },
+        "correctAnswer": "A",
+        "explanation": "\"Mandatory\" nghĩa là bắt buộc, phù hợp với thông báo nội bộ."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "Kindly confirm your availability by replying to this announcement before Tuesday.",
+          "B": "This meeting is no longer necessary.",
+          "C": "Only selected staff need to attend.",
+          "D": "The schedule will remain unchanged."
+        },
+        "correctAnswer": "A",
+        "explanation": "Câu yêu cầu xác nhận tham dự, phù hợp phong cách thông báo nội bộ."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "type": "Complaint Letter",
+    "content": "Dear Customer Service, I am writing to express my dissatisfaction with the wireless headphones I bought from your website last month. The right earpiece (1) working properly since the second day of use. Despite several attempts, the problem has not been resolved. I kindly request that you (2) a full refund or a new replacement as soon as possible. (3) the poor quality has caused me significant inconvenience. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "has not been", "B": "is not", "C": "was not", "D": "will not" },
+        "correctAnswer": "A",
+        "explanation": "Thì hiện tại hoàn thành \"has not been working\" cho hành động bắt đầu trong quá khứ và vẫn tiếp diễn."
+      },
+      {
+        "number": 2,
+        "options": { "A": "issue", "B": "issues", "C": "issued", "D": "issuing" },
+        "correctAnswer": "A",
+        "explanation": "Cấu trúc \"request that you issue\" – dùng động từ nguyên thể trong mệnh đề giả định."
+      },
+      {
+        "number": 3,
+        "options": { "A": "Unfortunately", "B": "Fortunately", "C": "Surprisingly", "D": "Hopefully" },
+        "correctAnswer": "A",
+        "explanation": "\"Unfortunately\" thể hiện thái độ tiêu cực, phù hợp với thư khiếu nại."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "I expect to receive your response within the next seven business days.",
+          "B": "Thank you for your wonderful product.",
+          "C": "I will recommend your store to my friends.",
+          "D": "The headphones are working perfectly."
+        },
+        "correctAnswer": "A",
+        "explanation": "Câu thể hiện yêu cầu thời gian phản hồi rõ ràng và chuyên nghiệp."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "type": "Advertisement",
+    "content": "Exciting News! Become a member of our premium loyalty program today and enjoy (1) discounts on all products. Members will also (2) early access to limited edition items and special sales events. This exclusive offer is only (3) until the end of this month. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "attractive", "B": "attract", "C": "attractively", "D": "attraction" },
+        "correctAnswer": "A",
+        "explanation": "Cần tính từ \"attractive\" để bổ nghĩa cho danh từ \"discounts\"."
+      },
+      {
+        "number": 2,
+        "options": { "A": "receive", "B": "receipt", "C": "received", "D": "receiving" },
+        "correctAnswer": "A",
+        "explanation": "Sau \"will\" dùng động từ nguyên thể → \"receive\"."
+      },
+      {
+        "number": 3,
+        "options": { "A": "available", "B": "expired", "C": "permanent", "D": "hidden" },
+        "correctAnswer": "A",
+        "explanation": "\"Available\" nghĩa là còn áp dụng, phù hợp với ưu đãi có thời hạn."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "Sign up now and start enjoying these amazing benefits before it's too late!",
+          "B": "This program is only for existing customers.",
+          "C": "The offer has already ended.",
+          "D": "Please do not join if you are not interested."
+        },
+        "correctAnswer": "A",
+        "explanation": "Lời kêu gọi hành động mạnh mẽ, điển hình trong quảng cáo."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "type": "Economic Article",
+    "content": "According to the latest report, Vietnam's economy (1) grown steadily over the past six months thanks to strong export performance. Experts predict that inflation (2) stay under control if the government continues its current policies. Nevertheless, many small businesses still (3) difficulties due to rising material costs. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "has", "B": "have", "C": "had", "D": "is" },
+        "correctAnswer": "A",
+        "explanation": "Thì hiện tại hoàn thành \"has grown\" với chủ ngữ số ít \"economy\"."
+      },
+      {
+        "number": 2,
+        "options": { "A": "will", "B": "would", "C": "should", "D": "might" },
+        "correctAnswer": "A",
+        "explanation": "\"Will stay\" thể hiện dự báo tương lai chắc chắn."
+      },
+      {
+        "number": 3,
+        "options": { "A": "face", "B": "faces", "C": "faced", "D": "facing" },
+        "correctAnswer": "A",
+        "explanation": "Sau \"still\" dùng động từ nguyên thể \"face\" (many businesses still face)."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "Business owners are advised to carefully review their financial strategies in the coming months.",
+          "B": "The economy is expected to collapse soon.",
+          "C": "No challenges remain for local companies.",
+          "D": "Inflation has increased dramatically this year."
+        },
+        "correctAnswer": "A",
+        "explanation": "Câu đưa ra lời khuyên thực tế, phù hợp với phong cách bài báo kinh tế."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "type": "Email",
+    "content": "Dear All Staff, Due to the upcoming company restructuring, the annual performance appraisal process (1) been delayed by two weeks. We understand this may affect your preparation time. Therefore, please (2) your self-evaluation forms by the new deadline of April 30th. The HR department will organize online training sessions next week to help employees better understand the new criteria. Your cooperation during this transition period is highly appreciated. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "has", "B": "have", "C": "had", "D": "is" },
+        "correctAnswer": "A",
+        "explanation": "Chủ ngữ \"process\" số ít, dùng thì hiện tại hoàn thành \"has been delayed\"."
+      },
+      {
+        "number": 2,
+        "options": { "A": "submit", "B": "submits", "C": "submitted", "D": "submitting" },
+        "correctAnswer": "A",
+        "explanation": "Sau \"please\" thường dùng động từ nguyên thể → \"submit\"."
+      },
+      {
+        "number": 3,
+        "options": { "A": "valuable", "B": "value", "C": "valued", "D": "valuing" },
+        "correctAnswer": "A",
+        "explanation": "Cần tính từ \"valuable\" để bổ nghĩa cho danh từ \"feedback\" (sẽ xuất hiện ở câu 4)."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "Please feel free to contact HR if you have any questions regarding this change.",
+          "B": "The appraisal has been completely canceled.",
+          "C": "Only senior staff need to submit forms.",
+          "D": "Thank you for ignoring this email."
+        },
+        "correctAnswer": "A",
+        "explanation": "Câu kết thúc email lịch sự, khuyến khích nhân viên hỏi thêm thông tin."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "type": "Announcement",
+    "content": "Internal Announcement: The office will be closed next Monday for the national holiday. All employees are advised to (1) their important documents and files before this weekend. Remote access to the company system will still be (2) during the holiday. However, only urgent matters should be handled. The normal working schedule will resume on Tuesday. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "backup", "B": "backups", "C": "backed up", "D": "backing up" },
+        "correctAnswer": "A",
+        "explanation": "Sau \"advised to\" dùng động từ nguyên thể → \"backup\"."
+      },
+      {
+        "number": 2,
+        "options": { "A": "available", "B": "availability", "C": "availably", "D": "availed" },
+        "correctAnswer": "A",
+        "explanation": "Tính từ \"available\" phù hợp sau \"will still be\"."
+      },
+      {
+        "number": 3,
+        "options": { "A": "reminded", "B": "remind", "C": "reminding", "D": "reminder" },
+        "correctAnswer": "A",
+        "explanation": "Cấu trúc bị động \"are reminded\" phù hợp với thông báo."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "We wish everyone a joyful and relaxing holiday with family.",
+          "B": "The office will remain open as usual.",
+          "C": "All staff must work from home next Monday.",
+          "D": "Please do not take any days off."
+        },
+        "correctAnswer": "A",
+        "explanation": "Câu chúc mừng lễ hội tích cực, phù hợp với thông báo nội bộ."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "type": "Complaint Letter",
+    "content": "Dear Manager, I am writing to complain about the poor service I received at your restaurant last Saturday evening. The waiter (1) our order incorrectly, and the food arrived cold after a long wait. Moreover, the bill contained several mistakes which (2) us extra money. Despite my request, the staff did not offer any apology or compensation. This experience has (3) my confidence in your establishment. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "took", "B": "takes", "C": "taken", "D": "taking" },
+        "correctAnswer": "A",
+        "explanation": "Thì quá khứ đơn \"took\" vì sự việc đã xảy ra vào ngày cụ thể trong quá khứ."
+      },
+      {
+        "number": 2,
+        "options": { "A": "cost", "B": "costs", "C": "costed", "D": "costing" },
+        "correctAnswer": "A",
+        "explanation": "Động từ \"cost\" ở thì quá khứ vẫn giữ nguyên dạng \"cost\"."
+      },
+      {
+        "number": 3,
+        "options": { "A": "seriously damaged", "B": "serious damaged", "C": "seriously damaging", "D": "serious damage" },
+        "correctAnswer": "A",
+        "explanation": "Cụm \"has seriously damaged\" – trạng từ \"seriously\" bổ nghĩa cho động từ."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "I expect a full explanation and appropriate compensation within one week.",
+          "B": "Thank you for the excellent dining experience.",
+          "C": "I will visit your restaurant again soon.",
+          "D": "Everything was perfect that evening."
+        },
+        "correctAnswer": "A",
+        "explanation": "Yêu cầu xử lý rõ ràng và có thời hạn, đặc trưng của thư khiếu nại."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "type": "Advertisement",
+    "content": "Limited Time Offer! Upgrade your home office with our latest ergonomic chair collection. Customers who purchase today will (1) a free adjustable desk lamp and a two-year extended warranty. These chairs are designed with premium materials to provide maximum comfort and support during long working hours. Don't miss this chance to improve your productivity and health. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "receive", "B": "receives", "C": "received", "D": "receiving" },
+        "correctAnswer": "A",
+        "explanation": "Sau \"will\" dùng động từ nguyên thể \"receive\"."
+      },
+      {
+        "number": 2,
+        "options": { "A": "specially", "B": "special", "C": "specialty", "D": "specialize" },
+        "correctAnswer": "B",
+        "explanation": "Tính từ \"special\" bổ nghĩa cho danh từ \"offer\" hoặc \"price\"."
+      },
+      {
+        "number": 3,
+        "options": { "A": "guaranteed", "B": "guarantee", "C": "guaranteeing", "D": "guarantees" },
+        "correctAnswer": "A",
+        "explanation": "Hình thức bị động \"is guaranteed\" phù hợp với chất lượng sản phẩm."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "Visit our showroom or order online today to take advantage of this amazing deal!",
+          "B": "This offer ended yesterday.",
+          "C": "Only expensive chairs are available.",
+          "D": "We do not provide any warranty."
+        },
+        "correctAnswer": "A",
+        "explanation": "Lời kêu gọi hành động mạnh mẽ, điển hình trong quảng cáo."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "type": "Economic Article",
+    "content": "Recent economic data shows that consumer spending in Vietnam (1) increased by 8.5% in the first quarter of this year. This growth is largely driven by rising incomes and improved consumer confidence. However, economists warn that high inflation rates may (2) this positive trend if not carefully managed by the government. Many experts recommend that policymakers (3) interest rates gradually to maintain economic stability. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "has", "B": "have", "C": "had", "D": "is" },
+        "correctAnswer": "A",
+        "explanation": "Thì hiện tại hoàn thành \"has increased\" với chủ ngữ số ít \"spending\"."
+      },
+      {
+        "number": 2,
+        "options": { "A": "threaten", "B": "threatens", "C": "threatened", "D": "threatening" },
+        "correctAnswer": "A",
+        "explanation": "Sau \"may\" dùng động từ nguyên thể \"threaten\"."
+      },
+      {
+        "number": 3,
+        "options": { "A": "adjust", "B": "adjustment", "C": "adjusted", "D": "adjusting" },
+        "correctAnswer": "A",
+        "explanation": "Cấu trúc \"recommend that + subject + base verb\" → \"adjust\"."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "Overall, the outlook for the Vietnamese economy remains cautiously optimistic.",
+          "B": "The economy is facing a severe recession.",
+          "C": "Consumer spending has dropped dramatically.",
+          "D": "No growth is expected this year."
+        },
+        "correctAnswer": "A",
+        "explanation": "Kết luận cân bằng và chuyên nghiệp của bài báo kinh tế."
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "type": "Email",
+    "content": "Subject: Project Update Dear Colleagues, I would like to update you on the progress of the new software development project. The team (1) successfully completed the first two phases ahead of schedule. However, we are currently facing some technical challenges that (2) be resolved before moving to the testing phase. All members are requested to (3) any innovative solutions they may have during tomorrow’s meeting. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "has", "B": "have", "C": "had", "D": "is" },
+        "correctAnswer": "A",
+        "explanation": "Chủ ngữ \"team\" được xem là số ít trong ngữ cảnh này → \"has completed\"."
+      },
+      {
+        "number": 2,
+        "options": { "A": "need to", "B": "needs to", "C": "needing to", "D": "needed to" },
+        "correctAnswer": "A",
+        "explanation": "\"Challenges\" số nhiều → \"need to be resolved\"."
+      },
+      {
+        "number": 3,
+        "options": { "A": "share", "B": "shares", "C": "shared", "D": "sharing" },
+        "correctAnswer": "A",
+        "explanation": "Sau \"requested to\" dùng động từ nguyên thể \"share\"."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "Thank you all for your hard work and continued commitment to this important project.",
+          "B": "The project has been canceled due to budget cuts.",
+          "C": "Please stop working on this task immediately.",
+          "D": "Only senior developers should attend the meeting."
+        },
+        "correctAnswer": "A",
+        "explanation": "Lời cảm ơn và khích lệ đội ngũ, phù hợp với email cập nhật tiến độ."
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "type": "Announcement",
+    "content": "Dear Employees, We are excited to announce the launch of our new employee wellness program starting from next month. This program aims to support both physical and mental health through various activities. Participation is completely (1) but highly encouraged. Employees who join regularly will (2) special rewards and recognition at the end of the year. More details will be sent via email soon. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "voluntary", "B": "voluntarily", "C": "volunteer", "D": "volunteering" },
+        "correctAnswer": "A",
+        "explanation": "Tính từ \"voluntary\" nghĩa là tự nguyện."
+      },
+      {
+        "number": 2,
+        "options": { "A": "receive", "B": "receives", "C": "received", "D": "receiving" },
+        "correctAnswer": "A",
+        "explanation": "Sau \"will\" dùng động từ nguyên thể \"receive\"."
+      },
+      {
+        "number": 3,
+        "options": { "A": "beneficial", "B": "benefit", "C": "benefited", "D": "benefiting" },
+        "correctAnswer": "A",
+        "explanation": "Tính từ \"beneficial\" bổ nghĩa cho chương trình."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "We believe this initiative will greatly improve workplace satisfaction and productivity.",
+          "B": "The program is mandatory for all staff.",
+          "C": "No rewards will be given to participants.",
+          "D": "The program has been discontinued."
+        },
+        "correctAnswer": "A",
+        "explanation": "Câu khẳng định lợi ích của chương trình, phù hợp với thông báo nội bộ."
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "type": "Complaint Letter",
+    "content": "To Whom It May Concern, I recently purchased a smartphone from your official store, but I am extremely disappointed with its performance. The battery drains very quickly even when the device is not in use. Additionally, the screen (1) flickering occasionally, making it difficult to use. I have visited your service center twice, but the issue (2) not been fixed properly. This situation has caused me considerable inconvenience. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "has been", "B": "is", "C": "was", "D": "will be" },
+        "correctAnswer": "A",
+        "explanation": "Thì hiện tại hoàn thành \"has been flickering\" cho vấn đề đang tiếp diễn."
+      },
+      {
+        "number": 2,
+        "options": { "A": "has", "B": "have", "C": "had", "D": "is" },
+        "correctAnswer": "A",
+        "explanation": "Chủ ngữ \"issue\" số ít → \"has not been fixed\"."
+      },
+      {
+        "number": 3,
+        "options": { "A": "unfortunately", "B": "fortunately", "C": "surprisingly", "D": "hopefully" },
+        "correctAnswer": "A",
+        "explanation": "\"Unfortunately\" thể hiện sự thất vọng trong thư khiếu nại."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "I demand a replacement or full refund within the next 10 days.",
+          "B": "I am completely satisfied with the product.",
+          "C": "Thank you for your outstanding service.",
+          "D": "I will buy another phone from your store immediately."
+        },
+        "correctAnswer": "A",
+        "explanation": "Yêu cầu mạnh mẽ nhưng chuyên nghiệp, phù hợp với thư khiếu nại."
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "type": "Advertisement",
+    "content": "Transform your skin with our revolutionary anti-aging serum. Formulated with natural ingredients and advanced technology, this product (1) visible results within just two weeks of daily use. Thousands of satisfied customers have already experienced smoother and younger-looking skin. For a limited time, we are offering a special 30% discount when you purchase two bottles. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "delivers", "B": "deliver", "C": "delivered", "D": "delivering" },
+        "correctAnswer": "A",
+        "explanation": "Thì hiện tại đơn \"delivers\" cho sự thật chung về sản phẩm."
+      },
+      {
+        "number": 2,
+        "options": { "A": "effective", "B": "effectively", "C": "effectiveness", "D": "effect" },
+        "correctAnswer": "A",
+        "explanation": "Tính từ \"effective\" bổ nghĩa cho danh từ \"solution\" hoặc \"product\"."
+      },
+      {
+        "number": 3,
+        "options": { "A": "recommended", "B": "recommend", "C": "recommending", "D": "recommendation" },
+        "correctAnswer": "A",
+        "explanation": "Hình thức bị động \"is highly recommended\"."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "Order now and enjoy beautiful, youthful skin with confidence!",
+          "B": "This product is no longer available.",
+          "C": "The discount has expired.",
+          "D": "We do not recommend this serum."
+        },
+        "correctAnswer": "A",
+        "explanation": "Lời kêu gọi hành động hấp dẫn, đặc trưng của quảng cáo mỹ phẩm."
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "type": "Economic Article",
+    "content": "The global supply chain has faced significant disruptions over the past year, causing prices of many essential goods to rise sharply. In Vietnam, manufacturing companies (1) struggling to maintain production levels due to higher import costs. Analysts suggest that if the situation continues, economic growth (2) slow down in the second half of the year. However, the government is taking measures to (3) the impact on local businesses. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "are", "B": "is", "C": "was", "D": "were" },
+        "correctAnswer": "A",
+        "explanation": "Chủ ngữ số nhiều \"companies\" → \"are struggling\"."
+      },
+      {
+        "number": 2,
+        "options": { "A": "may", "B": "must", "C": "should", "D": "would" },
+        "correctAnswer": "A",
+        "explanation": "\"May slow down\" thể hiện khả năng xảy ra trong tương lai."
+      },
+      {
+        "number": 3,
+        "options": { "A": "minimize", "B": "minimizes", "C": "minimized", "D": "minimizing" },
+        "correctAnswer": "A",
+        "explanation": "Sau \"to\" dùng động từ nguyên thể \"minimize\"."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "Experts remain hopeful that stability will return by the end of the year.",
+          "B": "The economy is predicted to collapse completely.",
+          "C": "No solutions have been proposed by the authorities.",
+          "D": "Import costs are expected to decrease dramatically."
+        },
+        "correctAnswer": "A",
+        "explanation": "Kết luận lạc quan nhưng thận trọng, phù hợp với bài báo kinh tế."
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "type": "General Text",
+    "content": "Last weekend, my family decided to go on a short trip to the mountains. The weather was perfect, and the scenery (1) breathtaking. We spent the whole morning hiking along a beautiful trail. However, my younger brother suddenly felt tired and (2) to take a break. After resting for a while, we continued our journey and reached the summit just before sunset. The view from the top was so amazing that we (3) there for nearly an hour taking photos. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "was", "B": "were", "C": "is", "D": "are" },
+        "correctAnswer": "A",
+        "explanation": "Thì quá khứ đơn, chủ ngữ \"scenery\" số ít → \"was breathtaking\"."
+      },
+      {
+        "number": 2,
+        "options": { "A": "asked", "B": "asks", "C": "asking", "D": "ask" },
+        "correctAnswer": "A",
+        "explanation": "Thì quá khứ đơn kể chuyện → \"asked\"."
+      },
+      {
+        "number": 3,
+        "options": { "A": "stayed", "B": "stay", "C": "stays", "D": "staying" },
+        "correctAnswer": "A",
+        "explanation": "Thì quá khứ đơn, hành động đã xảy ra → \"stayed\"."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "It was truly one of the most memorable trips we have ever had together.",
+          "B": "We decided never to go hiking again.",
+          "C": "The weather suddenly turned bad and we had to return early.",
+          "D": "Everyone felt bored and wanted to go home immediately."
+        },
+        "correctAnswer": "A",
+        "explanation": "Câu kết thúc tích cực, tóm tắt cảm xúc của chuyến đi."
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "type": "General Text",
+    "content": "Learning a new language can be both challenging and rewarding. At first, many students feel overwhelmed by the large number of vocabulary words and grammar rules they (1) to memorize. However, with consistent practice and the right methods, progress comes much faster than expected. Listening to podcasts and watching movies in the target language (2) especially helpful. Most importantly, learners should not be afraid of making mistakes because they are an essential part of the learning process. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "need", "B": "needs", "C": "needed", "D": "needing" },
+        "correctAnswer": "A",
+        "explanation": "Chủ ngữ số nhiều \"students\" → \"need to memorize\"."
+      },
+      {
+        "number": 2,
+        "options": { "A": "prove", "B": "proves", "C": "proved", "D": "proving" },
+        "correctAnswer": "B",
+        "explanation": "Thì hiện tại đơn, chủ ngữ \"Listening... and watching...\" được xem là một hoạt động → \"proves\"."
+      },
+      {
+        "number": 3,
+        "options": { "A": "encouraged", "B": "encourage", "C": "encouraging", "D": "encouragement" },
+        "correctAnswer": "A",
+        "explanation": "Cấu trúc bị động \"are encouraged\"."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "Patience and persistence are the keys to successfully mastering any foreign language.",
+          "B": "Learning languages is a waste of time.",
+          "C": "It is impossible to learn a new language after the age of 20.",
+          "D": "Grammar rules are not important at all."
+        },
+        "correctAnswer": "A",
+        "explanation": "Câu kết luận tích cực về việc học ngôn ngữ."
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "type": "General Text",
+    "content": "Technology has changed the way people communicate in recent years. Social media platforms allow us to stay connected with friends and family who live far away. However, many people now spend too much time on their phones, which (1) affect their real-life relationships. Experts suggest that we should set clear boundaries and (2) certain hours without using digital devices. By doing so, we can enjoy more meaningful conversations and improve our overall well-being. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "can", "B": "must", "C": "should", "D": "would" },
+        "correctAnswer": "A",
+        "explanation": "\"Can affect\" thể hiện khả năng xảy ra."
+      },
+      {
+        "number": 2,
+        "options": { "A": "designate", "B": "designates", "C": "designated", "D": "designating" },
+        "correctAnswer": "A",
+        "explanation": "Sau \"should\" dùng động từ nguyên thể \"designate\"."
+      },
+      {
+        "number": 3,
+        "options": { "A": "reduced", "B": "reduce", "C": "reducing", "D": "reduction" },
+        "correctAnswer": "B",
+        "explanation": "Cấu trúc song song \"set... and reduce...\"."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "Finding the right balance between online and offline life is essential in the modern world.",
+          "B": "We should spend all our time on social media.",
+          "C": "Technology has made communication worse.",
+          "D": "Phones should be banned completely."
+        },
+        "correctAnswer": "A",
+        "explanation": "Câu nhấn mạnh sự cân bằng, phù hợp với nội dung đoạn văn."
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "type": "General Text",
+    "content": "Reading books is one of the best ways to expand our knowledge and imagination. Unlike watching television or browsing the internet, reading (1) us to focus deeply and think critically about the content. Many successful people claim that their achievements are partly due to the habit of reading every day. Young readers especially benefit from stories that teach valuable life lessons. Therefore, parents should (2) their children to read from an early age. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "allows", "B": "allow", "C": "allowed", "D": "allowing" },
+        "correctAnswer": "A",
+        "explanation": "Thì hiện tại đơn, chủ ngữ \"reading\" số ít → \"allows\"."
+      },
+      {
+        "number": 2,
+        "options": { "A": "encourage", "B": "encourages", "C": "encouraged", "D": "encouraging" },
+        "correctAnswer": "A",
+        "explanation": "Sau \"should\" dùng động từ nguyên thể \"encourage\"."
+      },
+      {
+        "number": 3,
+        "options": { "A": "widely", "B": "wide", "C": "widen", "D": "width" },
+        "correctAnswer": "A",
+        "explanation": "Trạng từ \"widely\" bổ nghĩa cho động từ \"recommended\"."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "In conclusion, developing a reading habit can bring lifelong benefits to both children and adults.",
+          "B": "Reading books is no longer necessary in the digital age.",
+          "C": "Watching TV is much better than reading.",
+          "D": "Children should only play games instead of reading."
+        },
+        "correctAnswer": "A",
+        "explanation": "Câu tóm tắt lợi ích của việc đọc sách."
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "type": "General Text",
+    "content": "Environmental protection has become one of the most urgent issues of our time. Human activities such as deforestation and excessive use of plastic (1) serious damage to the planet. Many species of animals and plants are now at risk of extinction. Fortunately, more and more people and organizations are taking action to (2) the environment. Simple actions like recycling, using public transport, and planting trees can (3) a big difference. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "have caused", "B": "has caused", "C": "caused", "D": "causing" },
+        "correctAnswer": "A",
+        "explanation": "Thì hiện tại hoàn thành \"have caused\" với chủ ngữ số nhiều \"activities\"."
+      },
+      {
+        "number": 2,
+        "options": { "A": "protect", "B": "protects", "C": "protected", "D": "protecting" },
+        "correctAnswer": "A",
+        "explanation": "Sau \"to\" dùng động từ nguyên thể \"protect\"."
+      },
+      {
+        "number": 3,
+        "options": { "A": "make", "B": "makes", "C": "made", "D": "making" },
+        "correctAnswer": "A",
+        "explanation": "Cụm \"can make a big difference\"."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "Everyone has a responsibility to contribute to saving our planet for future generations.",
+          "B": "Environmental problems are not serious at all.",
+          "C": "We should continue using as much plastic as possible.",
+          "D": "It is too late to do anything about climate change."
+        },
+        "correctAnswer": "A",
+        "explanation": "Lời kêu gọi trách nhiệm chung."
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "type": "General Text",
+    "content": "Exercise plays an important role in maintaining good physical and mental health. Regular physical activity helps reduce stress, improve mood, and strengthen the immune system. However, many people find it difficult to (1) a consistent exercise routine because of their busy schedules. Experts recommend starting with simple activities such as walking or cycling for at least 30 minutes a day. Over time, these small habits (2) lead to significant improvements in overall well-being. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "maintain", "B": "maintains", "C": "maintained", "D": "maintaining" },
+        "correctAnswer": "A",
+        "explanation": "Sau \"find it difficult to\" dùng động từ nguyên thể \"maintain\"."
+      },
+      {
+        "number": 2,
+        "options": { "A": "can", "B": "must", "C": "should", "D": "would" },
+        "correctAnswer": "A",
+        "explanation": "\"Can lead to\" thể hiện khả năng."
+      },
+      {
+        "number": 3,
+        "options": { "A": "gradually", "B": "gradual", "C": "gradualness", "D": "graduating" },
+        "correctAnswer": "A",
+        "explanation": "Trạng từ \"gradually\" bổ nghĩa cho động từ."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "Making exercise a daily habit is one of the best investments we can make for our health.",
+          "B": "Exercise is harmful and should be avoided.",
+          "C": "Only professional athletes need to exercise.",
+          "D": "Busy people do not have time to stay healthy."
+        },
+        "correctAnswer": "A",
+        "explanation": "Câu nhấn mạnh lợi ích lâu dài của việc tập luyện."
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "type": "General Text",
+    "content": "Friendship is one of the most valuable relationships in our lives. True friends support us during difficult times and celebrate our successes with genuine happiness. However, maintaining a good friendship requires effort from both sides. We need to be honest, respectful, and (1) to spend quality time together. In today’s busy world, many people find it challenging to keep in touch regularly. Nevertheless, a simple message or phone call (2) make a big difference. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "willing", "B": "will", "C": "willed", "D": "willingly" },
+        "correctAnswer": "A",
+        "explanation": "Tính từ \"willing\" sau \"and\" trong cụm song song."
+      },
+      {
+        "number": 2,
+        "options": { "A": "can", "B": "must", "C": "should", "D": "would" },
+        "correctAnswer": "A",
+        "explanation": "\"Can make a big difference\"."
+      },
+      {
+        "number": 3,
+        "options": { "A": "carefully", "B": "careful", "C": "care", "D": "caring" },
+        "correctAnswer": "A",
+        "explanation": "Trạng từ \"carefully\" bổ nghĩa cho động từ \"choose\"."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "Nurturing friendships is essential for a happy and fulfilling life.",
+          "B": "Friends are not important in modern society.",
+          "C": "It is better to have no friends at all.",
+          "D": "Only family members can provide real support."
+        },
+        "correctAnswer": "A",
+        "explanation": "Câu kết luận về giá trị của tình bạn."
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "type": "General Text",
+    "content": "Music has a powerful effect on human emotions and behavior. Many studies have shown that listening to music can reduce anxiety and improve concentration. Different types of music (1) different feelings. For example, classical music often creates a calm atmosphere while upbeat songs can energize people. Therefore, choosing the right kind of music for each situation is very important. Many therapists even (2) music as part of their treatment programs. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "create", "B": "creates", "C": "created", "D": "creating" },
+        "correctAnswer": "A",
+        "explanation": "Chủ ngữ số nhiều \"types\" → \"create\"."
+      },
+      {
+        "number": 2,
+        "options": { "A": "use", "B": "uses", "C": "used", "D": "using" },
+        "correctAnswer": "A",
+        "explanation": "Thì hiện tại đơn \"use\" cho sự thật chung."
+      },
+      {
+        "number": 3,
+        "options": { "A": "beneficial", "B": "benefit", "C": "benefited", "D": "benefiting" },
+        "correctAnswer": "A",
+        "explanation": "Tính từ \"beneficial\" sau \"can be\"."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "In short, music is not only a form of entertainment but also a valuable tool for improving mental health.",
+          "B": "Music has no effect on human emotions.",
+          "C": "Only sad music should be listened to.",
+          "D": "Therapists never recommend listening to music."
+        },
+        "correctAnswer": "A",
+        "explanation": "Câu tóm tắt vai trò của âm nhạc."
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "type": "General Text",
+    "content": "Volunteering is a meaningful way to contribute to society while gaining valuable experience. Many young people choose to volunteer during their free time because it helps them develop new skills and meet like-minded individuals. Working with different organizations also allows them to (1) a deeper understanding of social issues. Although volunteering is unpaid, the sense of fulfillment it brings is often (2) any amount of money. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "gain", "B": "gains", "C": "gained", "D": "gaining" },
+        "correctAnswer": "A",
+        "explanation": "Sau \"allows them to\" dùng động từ nguyên thể \"gain\"."
+      },
+      {
+        "number": 2,
+        "options": { "A": "greater than", "B": "more than", "C": "better than", "D": "less than" },
+        "correctAnswer": "B",
+        "explanation": "Cụm so sánh \"more than any amount of money\"."
+      },
+      {
+        "number": 3,
+        "options": { "A": "personally", "B": "personal", "C": "personality", "D": "personalize" },
+        "correctAnswer": "A",
+        "explanation": "Trạng từ \"personally\" bổ nghĩa cho động từ \"rewarding\"."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "Volunteering not only helps others but also enriches our own lives in many ways.",
+          "B": "Volunteering is a complete waste of time.",
+          "C": "Only retired people should do volunteer work.",
+          "D": "Paid jobs are always better than volunteering."
+        },
+        "correctAnswer": "A",
+        "explanation": "Câu nhấn mạnh lợi ích hai chiều của tình nguyện."
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "type": "General Text",
+    "content": "Dreams have always fascinated scientists and psychologists. Some researchers believe that dreams help our brains process emotions and memories from the day. Others think they are simply random signals created by the brain during sleep. Although there is still much we do not understand, most experts agree that getting enough quality sleep is (1) for both physical and mental health. Keeping a dream journal can sometimes help people (2) patterns in their dreams. (4)",
+    "questions": [
+      {
+        "number": 1,
+        "options": { "A": "essential", "B": "essence", "C": "essentially", "D": "essentiality" },
+        "correctAnswer": "A",
+        "explanation": "Tính từ \"essential\" sau động từ \"is\"."
+      },
+      {
+        "number": 2,
+        "options": { "A": "recognize", "B": "recognizes", "C": "recognized", "D": "recognizing" },
+        "correctAnswer": "A",
+        "explanation": "Sau \"help people\" dùng động từ nguyên thể \"recognize\"."
+      },
+      {
+        "number": 3,
+        "options": { "A": "carefully", "B": "careful", "C": "care", "D": "caring" },
+        "correctAnswer": "A",
+        "explanation": "Trạng từ \"carefully\" bổ nghĩa cho \"analyze\"."
+      },
+      {
+        "number": 4,
+        "options": {
+          "A": "Understanding our dreams may provide valuable insights into our subconscious mind.",
+          "B": "Dreams have no meaning whatsoever.",
+          "C": "Sleeping is a waste of time.",
+          "D": "Everyone dreams exactly the same things every night."
+        },
+        "correctAnswer": "A",
+        "explanation": "Câu kết nối với chủ đề giấc mơ một cách sâu sắc."
+      }
+    ]
+  }
+]
