@@ -126,8 +126,15 @@ public class SkillPracticeActivity extends BaseActivity {
                     } else if (parts[index].equals(getString(R.string.read_part3))) {
                         startActivity(new Intent(this, Part7SetActivity.class));
                     }
+                } else if (CAT_SPEAK.equals(category)) {
+                    Intent intent = new Intent(this, SpeakSetActivity.class);
+                    startActivity(intent);
+                } else if (CAT_WRITE.equals(category)) {
+                    Intent intent = new Intent(this, WriteSetActivity.class);
+                    startActivity(intent);
                 }
             });
+
 
             llPartsContainer.addView(itemView);
         }
