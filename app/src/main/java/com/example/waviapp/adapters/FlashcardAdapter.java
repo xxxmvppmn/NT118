@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.waviapp.R;
 import com.example.waviapp.models.TuVung;
+import com.google.android.material.card.MaterialCardView;
 import java.util.List;
 
 public class FlashcardAdapter extends RecyclerView.Adapter<FlashcardAdapter.FlashcardViewHolder> {
@@ -38,16 +39,18 @@ public class FlashcardAdapter extends RecyclerView.Adapter<FlashcardAdapter.Flas
         holder.tvMeaning.setText(word.getNghiaTiengViet());
         holder.tvExample.setText(word.getCauViDu() != null ? word.getCauViDu() : "");
 
-        // --- QUAN TRỌNG: Reset trạng thái khi scroll ---
-        // Đảm bảo card mới luôn hiện mặt trước và chữ XUÔI CHIỀU (0 độ)
+        // --- Reset trạng thái khi scroll ---
         holder.frontCard.setVisibility(View.VISIBLE);
         holder.backCard.setVisibility(View.GONE);
         holder.frontCard.setRotationY(0f);
         holder.backCard.setRotationY(0f);
-        holder.itemView.setCameraDistance(8000 * holder.itemView.getContext().getResources().getDisplayMetrics().density);
+        
+        // Tăng khoảng cách camera để hiệu ứng lật mượt hơn, không bị vỡ hình
+        float density = holder.itemView.getContext().getResources().getDisplayMetrics().density;
+        holder.cardView.setCameraDistance(8000 * density);
 
-        // Sự kiện lật thẻ
-        holder.itemView.setOnClickListener(v -> flipCard(holder));
+        // Sự kiện lật thẻ: Bắt trên cardView thay vì itemView để tránh "nuốt" event hoặc click nhầm vùng trống
+        holder.cardView.setOnClickListener(v -> flipCard(holder));
 
         // Sự kiện loa phát âm
         holder.ivSpeaker.setOnClickListener(v -> {
@@ -63,23 +66,19 @@ public class FlashcardAdapter extends RecyclerView.Adapter<FlashcardAdapter.Flas
 
         if (front.getVisibility() == View.VISIBLE) {
             // LẬT TRƯỚC -> SAU
-            // Bước 1: Xoay mặt trước đi 90 độ (đứng lại)
-            front.animate().rotationY(90).setDuration(200).withEndAction(() -> {
+            front.animate().rotationY(90).setDuration(250).withEndAction(() -> {
                 front.setVisibility(View.GONE);
                 back.setVisibility(View.VISIBLE);
-                // Bước 2: Ép mặt sau chờ ở góc -90 độ rồi xoay về 0 (để chữ xuôi)
                 back.setRotationY(-90);
-                back.animate().rotationY(0).setDuration(200).start();
+                back.animate().rotationY(0).setDuration(250).start();
             }).start();
         } else {
-            // LẬT SAU -> TRƯỚC (Fix lỗi soi gương)
-            // Bước 1: Xoay mặt sau đi 90 độ
-            back.animate().rotationY(90).setDuration(200).withEndAction(() -> {
+            // LẬT SAU -> TRƯỚC
+            back.animate().rotationY(90).setDuration(250).withEndAction(() -> {
                 back.setVisibility(View.GONE);
                 front.setVisibility(View.VISIBLE);
-                // Bước 2: Ép mặt trước chờ ở góc -90 rồi xoay về 0 => CHỮ LUÔN XUÔI
                 front.setRotationY(-90);
-                front.animate().rotationY(0).setDuration(200).start();
+                front.animate().rotationY(0).setDuration(250).start();
             }).start();
         }
     }
@@ -90,12 +89,14 @@ public class FlashcardAdapter extends RecyclerView.Adapter<FlashcardAdapter.Flas
     }
 
     public static class FlashcardViewHolder extends RecyclerView.ViewHolder {
+        MaterialCardView cardView;
         LinearLayout frontCard, backCard;
         TextView tvWord, tvPhonetic, tvMeaning, tvExample;
         ImageView ivSpeaker;
 
         public FlashcardViewHolder(@NonNull View itemView) {
             super(itemView);
+            cardView = itemView.findViewById(R.id.cardView);
             frontCard = itemView.findViewById(R.id.frontCard);
             backCard = itemView.findViewById(R.id.backCard);
             tvWord = itemView.findViewById(R.id.tvWord);

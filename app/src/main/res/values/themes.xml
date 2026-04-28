@@ -2,13 +2,15 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.WaviApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="android:windowAnimationStyle">@style/SmoothAnimation</item>
         <item name="android:windowBackground">@color/bg_light_gray</item>
     </style>
 
     <style name="Theme.WaviApp" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowAnimationStyle">@style/SmoothAnimation</item>
+
+        <!-- Cách 2: Ép màu highlight Autofill của hệ thống về trong suốt (API 26+) -->
+        <item name="android:autofilledHighlight" tools:targetApi="o">@android:color/transparent</item>
     </style>
 
     <!-- Styles for Settings UI -->
@@ -43,12 +45,15 @@
         <item name="android:layout_marginStart">56dp</item>
         <item name="android:background">#E0E0E0</item>
     </style>
+
     <style name="SmoothAnimation">
         <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
         <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
         <item name="android:activityCloseEnterAnimation">@anim/slide_in_left</item>
         <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
     </style>
+
     <style name="CircleImage">
-        <item name="cornerSize">50%</item> </style>
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

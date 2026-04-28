@@ -49,7 +49,9 @@
                 android:textSize="16sp"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
-                android:inputType="textEmailAddress" />
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress|textNoSuggestions"
+                tools:targetApi="o" />
 
             <!-- Password Input -->
             <EditText
@@ -61,12 +63,14 @@
                 android:drawableStart="@drawable/ic_lock"
                 android:drawablePadding="16dp"
                 android:hint="@string/auto_m_t_kh_u"
-                android:inputType="textPassword"
                 android:textColor="#2C2C2C"
                 android:textColorHint="#9E9E9E"
                 android:textSize="16sp"
                 android:paddingStart="20dp"
-                android:paddingEnd="20dp" />
+                android:paddingEnd="20dp"
+                android:importantForAutofill="no"
+                android:inputType="textPassword|textNoSuggestions"
+                tools:targetApi="o" />
 
             <!-- Forgot Password -->
             <TextView
