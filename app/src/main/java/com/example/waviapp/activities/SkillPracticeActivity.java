@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.waviapp.R;
 
@@ -116,7 +117,6 @@ public class SkillPracticeActivity extends BaseActivity {
 
             ivPartLock.setVisibility(View.GONE);
 
-            // Task: Add Click Logic
             itemView.setOnClickListener(v -> {
                 if (CAT_READ.equals(category)) {
                     if (parts[index].equals(getString(R.string.read_part1))) {
@@ -126,6 +126,13 @@ public class SkillPracticeActivity extends BaseActivity {
                     } else if (parts[index].equals(getString(R.string.read_part3))) {
                         startActivity(new Intent(this, Part7SetActivity.class));
                     }
+                } else if (CAT_LISTEN.equals(category)) {
+                    if (parts[index].equals(getString(R.string.listen_part2))) {
+                        // Điều hướng đúng đến màn hình chọn Set cho Part 2
+                        startActivity(new Intent(this, Part2SetActivity.class));
+                    } else {
+                        Toast.makeText(this, "Tính năng đang được cập nhật", Toast.LENGTH_SHORT).show();
+                    }
                 } else if (CAT_SPEAK.equals(category)) {
                     Intent intent = new Intent(this, SpeakSetActivity.class);
                     startActivity(intent);
@@ -134,7 +141,6 @@ public class SkillPracticeActivity extends BaseActivity {
                     startActivity(intent);
                 }
             });
-
 
             llPartsContainer.addView(itemView);
         }

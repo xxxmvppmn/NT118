@@ -1,6 +1,7 @@
 package com.example.waviapp.utils;
 
 import android.content.Context;
+import com.example.waviapp.models.Part2Model;
 import com.example.waviapp.models.Part5Question;
 import com.example.waviapp.models.Part6Paragraph;
 import com.example.waviapp.models.Part7Paragraph;
@@ -51,6 +52,21 @@ public class JsonHelper {
             is.close();
             String json = new String(buffer, StandardCharsets.UTF_8);
             return new Gson().fromJson(json, new TypeToken<List<Part7Paragraph>>(){}.getType());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
+    public static List<Part2Model> loadPart2Data(Context context) {
+        try {
+            InputStream is = context.getAssets().open("listening_p2.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            String json = new String(buffer, StandardCharsets.UTF_8);
+            return new Gson().fromJson(json, new TypeToken<List<Part2Model>>(){}.getType());
         } catch (Exception e) {
             e.printStackTrace();
             return new ArrayList<>();

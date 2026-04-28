@@ -1,0 +1,234 @@
+[
+  {
+    "id": 1,
+    "audioName": "p2_q01.mp3",
+    "correctAnswer": "A",
+    "script": "Q: Where should I put the extra extension cords?\nA: In the top drawer.\nB: The deadline is strict.\nC: After today's meeting.",
+    "explanation": "Câu hỏi 'Where' cần một cụm từ chỉ nơi chốn. 'In the top drawer' là đáp án chỉ vị trí hợp lý nhất."
+  },
+  {
+    "id": 2,
+    "audioName": "p2_q02.mp3",
+    "correctAnswer": "B",
+    "script": "Q: Where are the training materials being distributed?\nA: Please pass me the stapler.\nB: In room 403.\nC: On the job training.",
+    "explanation": "Hỏi về địa điểm (Where), 'In room 403' cung cấp thông tin phòng họp cụ thể."
+  },
+  {
+    "id": 3,
+    "audioName": "p2_q03.mp3",
+    "correctAnswer": "C",
+    "script": "Q: Where was the company picnic held?\nA: In April.\nB: Refreshments will be provided.\nC: At a park next to a lake.",
+    "explanation": "Hỏi địa điểm tổ chức (Where), 'At a park' là nơi chốn phù hợp."
+  },
+  {
+    "id": 4,
+    "audioName": "p2_q04.mp3",
+    "correctAnswer": "A",
+    "script": "Q: When will the meeting be held?\nA: After lunch.\nB: Yes, it will be.\nC: Next to the conference room.",
+    "explanation": "Câu hỏi 'When' cần mốc thời gian. 'After lunch' là câu trả lời đúng."
+  },
+  {
+    "id": 5,
+    "audioName": "p2_q05.mp3",
+    "correctAnswer": "A",
+    "script": "Q: Who's presenting the sales report at the next meeting?\nA: I think Jason is.\nB: It's already been sold.\nC: At the nearest port.",
+    "explanation": "Câu hỏi 'Who' tìm người thực hiện. 'Jason' là tên người phù hợp."
+  },
+  {
+    "id": 6,
+    "audioName": "p2_q06.mp3",
+    "correctAnswer": "C",
+    "script": "Q: Who's responsible for the report?\nA: Sometime in the afternoon.\nB: In the news report.\nC: It's John Draper.",
+    "explanation": "Hỏi về người chịu trách nhiệm, 'John Draper' là câu trả lời chỉ người."
+  },
+  {
+    "id": 7,
+    "audioName": "p2_q07.mp3",
+    "correctAnswer": "A",
+    "script": "Q: Who are you going to send on the business trip?\nA: I've picked Susan in accounting.\nB: It was a very rewarding trip.\nC: At the start of next year.",
+    "explanation": "Hỏi về đối tượng (Who), đáp án cung cấp tên 'Susan'."
+  },
+  {
+    "id": 8,
+    "audioName": "p2_q08.mp3",
+    "correctAnswer": "B",
+    "script": "Q: How often should I replace the battery in this device?\nA: It is in place.\nB: At least once a year.\nC: He often goes on business trips.",
+    "explanation": "Câu hỏi tần suất 'How often', 'At least once a year' là câu trả lời chính xác."
+  },
+  {
+    "id": 9,
+    "audioName": "p2_q09.mp3",
+    "correctAnswer": "C",
+    "script": "Q: You've been to Japan before, haven't you?\nA: After 3:30 p.m.\nB: I prefer Japanese food.\nC: No, never.",
+    "explanation": "Câu hỏi đuôi xác nhận trải nghiệm, 'No, never' là câu trả lời phủ định hợp lý."
+  },
+  {
+    "id": 10,
+    "audioName": "p2_q10.mp3",
+    "correctAnswer": "B",
+    "script": "Q: How much longer do you need on this project?\nA: About 10 pages long.\nB: Roughly half an hour.\nC: In my office soon.",
+    "explanation": "Hỏi về thời lượng còn lại (How much longer), 'Half an hour' chỉ thời gian."
+  },
+  {
+    "id": 11,
+    "audioName": "p2_q11.mp3",
+    "correctAnswer": "A",
+    "script": "Q: The files have all been submitted, haven't they?\nA: Yes, about 2 hours ago.\nB: I'll submit my application then.\nC: Mr. Peters wants to see them.",
+    "explanation": "Xác nhận việc nộp file, đáp án xác nhận 'Yes' kèm mốc thời gian."
+  },
+  {
+    "id": 12,
+    "audioName": "p2_q12.mp3",
+    "correctAnswer": "B",
+    "script": "Q: Who is interested in working overtime this weekend?\nA: It won't go over well with them.\nB: I don't mind coming in on Saturday.\nC: Jason's meeting his friends on the weekend.",
+    "explanation": "Hỏi ai sẵn sàng làm thêm, 'I don't mind' thể hiện sự đồng ý."
+  },
+  {
+    "id": 13,
+    "audioName": "p2_q13.mp3",
+    "correctAnswer": "C",
+    "script": "Q: How would you like me to prepare your coffee?\nA: She's making copies.\nB: From the local cafe.\nC: Black with no sugar.",
+    "explanation": "Hỏi về cách thức pha chế, 'Black with no sugar' mô tả đúng loại đồ uống."
+  },
+  {
+    "id": 14,
+    "audioName": "p2_q14.mp3",
+    "correctAnswer": "C",
+    "script": "Q: What should I bring to David's birthday party?\nA: The party will take place at 6:00 p.m.\nB: Send her a thank you card.\nC: Let's discuss it after lunch.",
+    "explanation": "Đây là câu trả lời gián tiếp, đề nghị thảo luận sau thay vì đưa ra vật dụng cụ thể."
+  },
+  {
+    "id": 15,
+    "audioName": "p2_q15.mp3",
+    "correctAnswer": "C",
+    "script": "Q: I don't think that I can make it to the conference this afternoon.\nA: I think it's about plans for the next year.\nB: I'll be there, too.\nC: Why is that?", "explanation": "Phản hồi tự nhiên khi nghe đối phương báo vắng mặt là hỏi lý do 'Why is that?'."
+  },
+  {
+    "id": 16,
+    "audioName": "p2_q16.mp3",
+    "correctAnswer": "B",
+    "script": "Q: When did you come back?\nA: To my hometown.\nB: The day before yesterday.\nC: Next weekend.",
+    "explanation": "Câu hỏi quá khứ 'When did', cần đáp án quá khứ 'The day before yesterday'."
+  },
+  {
+    "id": 17,
+    "audioName": "p2_q17.mp3",
+    "correctAnswer": "B",
+    "script": "Q: Do you know how the weather will be today?\nA: I feel good today.\nB: It will be raining in the afternoon.\nC: I don't know whether he'll come today.",
+    "explanation": "Hỏi về thời tiết, đáp án cung cấp thông tin về mưa."
+  },
+  {
+    "id": 18, "audioName": "p2_q18.mp3",
+    "correctAnswer": "B",
+    "script": "Q: Where can I pick up the catalog?\nA: Sure, I'll pick you up later.\nB: Next to the entrance.\nC: Late this afternoon.",
+    "explanation": "Hỏi địa điểm lấy danh mục, 'Next to the entrance' là vị trí chính xác."
+  },
+  {
+    "id": 19, "audioName": "p2_q19.mp3",
+    "correctAnswer": "B",
+    "script": "Q: Have you delivered the package to Mr. Jones or should I get someone to do it?\nA: The post office is just across the street.\nB: I'll hand it over to him after I finish typing this document.\nC: Yes, I packed my suitcase already.",
+    "explanation": "Câu hỏi lựa chọn, người nói xác nhận sẽ tự thực hiện việc giao hàng."
+  },
+  {
+    "id": 20, "audioName": "p2_q20.mp3",
+    "correctAnswer": "B",
+    "script": "Q: Where are the assembly instructions?\nA: I don't know how to assemble it.\nB: I put it in the top drawer.\nC: The instructor will be here soon.",
+    "explanation": "Hỏi vị trí tài liệu, đáp án chỉ nơi cất giữ là 'top drawer'."
+  },
+  {
+    "id": 21, "audioName": "p2_q21.mp3",
+    "correctAnswer": "B",
+    "script": "Q: When are you leaving for the airport?\nA: There's no fee.\nB: Around 11:00.\nC: Does this bus go to the airport?",
+    "explanation": "Hỏi thời gian khởi hành, đáp án 'Around 11:00' là mốc giờ phù hợp."
+  },
+  {
+    "id": 22, "audioName": "p2_q22.mp3",
+    "correctAnswer": "C",
+    "script": "Q: Did you buy this jacket at a discount?\nA: They're in the men's department.\nB: A winter ski vacation.\nC: Yes, it was half off.",
+    "explanation": "Xác nhận mua hàng giảm giá, 'half off' tương đương với việc giảm 50%."
+  },
+  {
+    "id": 23, "audioName": "p2_q23.mp3",
+    "correctAnswer": "C",
+    "script": "Q: Where is he going?\nA: She's going to the store.\nB: I'm going to the store.\nC: He's going to the store.",
+    "explanation": "Lặp lại đúng chủ ngữ 'He' để trả lời về địa điểm."
+  },
+  {
+    "id": 24, "audioName": "p2_q24.mp3",
+    "correctAnswer": "C",
+    "script": "Q: Where did John go today?\nA: Yes, I'll talk to him right away.\nB: He doesn't know it yet.\nC: He's in his office.",
+    "explanation": "Hỏi vị trí của người (John), 'In his office' là nơi chốn."
+  },
+  {
+    "id": 25, "audioName": "p2_q25.mp3",
+    "correctAnswer": "B",
+    "script": "Q: How did you find the movie?\nA: It was around the corner.\nB: It was very scary.\nC: We might be late for the movie.",
+    "explanation": "Hỏi về cảm nhận bộ phim, 'scary' (đáng sợ) là tính từ miêu tả cảm nhận."
+  },
+  {
+    "id": 26, "audioName": "p2_q26.mp3",
+    "correctAnswer": "C",
+    "script": "Q: What time does our flight leave?\nA: By 3:00.\nB: About 3 or four times a day.\nC: Is scheduled to take off at 7:30.",
+    "explanation": "Hỏi về giờ bay, đáp án cung cấp giờ cất cánh 7:30."
+  },
+  {
+    "id": 27, "audioName": "p2_q27.mp3",
+    "correctAnswer": "B",
+    "script": "Q: Did you hear about John's promotion?\nA: The sales promotion was successful.\nB: Yes, he is being recognized for the great work he did on the project.\nC: No, I have not heard anything from him yet.",
+    "explanation": "Xác nhận tin thăng chức của đồng nghiệp và bổ sung lý do tích cực."
+  },
+  {
+    "id": 28, "audioName": "p2_q28.mp3",
+    "correctAnswer": "A",
+    "script": "Q: Will you be going away this summer?\nA: Most likely in June.\nB: I will be away later.\nC: He's coming soon.",
+    "explanation": "Hỏi về dự định mùa hè, 'June' là tháng trong mùa hè phù hợp."
+  },
+  {
+    "id": 29, "audioName": "p2_q29.mp3",
+    "correctAnswer": "B",
+    "script": "Q: Have you finished writing the monthly report?\nA: Please rate clearly.\nB: It's almost complete.\nC: Yes, it'll be finished by Monday.",
+    "explanation": "Hỏi về tiến độ hoàn thành, 'almost complete' (gần xong) là phản hồi đúng."
+  },
+  {
+    "id": 30, "audioName": "p2_q30.mp3",
+    "correctAnswer": "A",
+    "script": "Q: You haven't seen the Jenkins report, have you?\nA: No, I haven't.\nB: No, I have.\nC: Yes, I haven't.",
+    "explanation": "Câu hỏi đuôi phủ định, trả lời phủ định 'No, I haven't' là đúng cấu trúc."
+  },
+  {
+    "id": 31, "audioName": "p2_q31.mp3",
+    "correctAnswer": "A",
+    "script": "Q: The movie is set to start at 5:00, right?\nA: We can go to another screening if you'd like.\nB: It was fantastic, wasn't it?\nC: I've never visited a movie set before.",
+    "explanation": "Trả lời gián tiếp: đề xuất suất chiếu khác gợi ý rằng suất 5:00 có thể không kịp."
+  },
+  {
+    "id": 32, "audioName": "p2_q32.mp3",
+    "correctAnswer": "A",
+    "script": "Q: Can you load the luggage by yourself or do you need my help?\nA: If it's not too much trouble.\nB: Yes, I packed my own bags.\nC: No, it's not loaded.",
+    "explanation": "Đồng ý nhận sự giúp đỡ một cách lịch sự bằng cụm 'If it's not too much trouble'."
+  },
+  {
+    "id": 33, "audioName": "p2_q33.mp3",
+    "correctAnswer": "A",
+    "script": "Q: Shouldn't we look at the other products on the market?\nA: Yes, we should.\nB: No, the market's closed.\nC: I didn't see it.",
+    "explanation": "Đồng tình với lời đề nghị 'Shouldn't we...'."
+  },
+  {
+    "id": 34, "audioName": "p2_q34.mp3",
+    "correctAnswer": "A",
+    "script": "Q: Should we purchase new fax machines for the office or get multi-function printers?\nA: We need more computers for the new employees.\nB: Because the printer isn't working.\nC: I like the new office building.",
+    "explanation": "Câu trả lời gián tiếp thường gặp: đưa ra một nhu cầu khác thay vì chọn 2 cái đề bài cho."
+  },
+  {
+    "id": 35, "audioName": "p2_q35.mp3",
+    "correctAnswer": "C",
+    "script": "Q: Could I borrow your cell phone for a local call?\nA: Yes, thanks for your advice.\nB: She's on the other line at the moment.\nC: Sure. Push the green button to send.",
+    "explanation": "Đồng ý cho mượn điện thoại kèm theo hướng dẫn sử dụng nhanh."
+  },
+  {
+    "id": 36, "audioName": "p2_q36.mp3",
+    "correctAnswer": "B",
+    "script": "Q: That cake looks really delicious.\nA: Would you like some pieces?\nB: Would you like a piece?\nC: Do you like a piece?",
+    "explanation": "Lời mời lịch sự 'Would you like a piece?' là phản hồi phù hợp nhất sau lời khen."
+  }
+]
