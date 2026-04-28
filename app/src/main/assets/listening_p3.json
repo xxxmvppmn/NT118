@@ -1,0 +1,618 @@
+[
+  {
+    "passageId": 1,
+    "audioName": "p3_q01.mp3",
+    "transcript": "Hello, I'm Steven from Home Appliance M. I'm here to install the UHD television that you ordered last week. Yes, come right this way. We would like to mount the television on this wall. We plan to use it for presentations and training seminars. Oh no, it looks like I forgot the tools that I need to screw the television to the wall mount. I'm sorry. I'll have to come back tomorrow morning. Oh, that's all right. However, please call me before you come tomorrow to make sure that someone is in in the office to meet you. [1]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "What are the speakers mainly discussing? [2]",
+        "options": ["A. Installing a television", "B. Buying a new computer", "C. Repairing a wall", "D. Scheduling a seminar"],
+        "correctAnswer": "A",
+        "explanation": "Đoạn hội thoại mở đầu bằng việc người đàn ông giới thiệu đến để lắp đặt TV UHD mà người phụ nữ đã đặt [1]. Do đó, họ đang thảo luận về việc lắp đặt một chiếc tivi."
+      },
+      {
+        "questionId": 2,
+        "questionText": "What is the problem? [2]",
+        "options": ["A. The TV is broken", "B. The man forgot his tools", "C. The wall is too small", "D. The appointment was canceled"],
+        "correctAnswer": "B",
+        "explanation": "Người đàn ông nhận ra và xin lỗi vì anh ấy đã quên mang theo các dụng cụ cần thiết để gắn tivi lên tường [1]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "What most likely will the Man do first tomorrow? [2]",
+        "options": ["A. Buy new tools", "B. Call the woman", "C. Come to the office immediately", "D. Send a replacement"],
+        "correctAnswer": "B",
+        "explanation": "Người phụ nữ yêu cầu người đàn ông hãy gọi cho cô ấy trước khi đến vào ngày mai để đảm bảo có người ở văn phòng [1]. Vì vậy anh ấy sẽ gọi điện."
+      }
+    ]
+  },
+  {
+    "passageId": 2,
+    "audioName": "p3_q02.mp3",
+    "transcript": "Miss Potter, the package that you sent to the advertising agency in Tokyo was returned today. It seems that you sent it to the wrong address. Actually, I received an email from the Tokyo office today informing me that they relocated their office yesterday. I wish they had told me earlier. Well, that's unfortunate. It seemed unfair that you had to pay for the postage. It must have been expensive to send such a large package. Yes, it was. I'm going to request that the company in Tokyo pay me. Back [3]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "What are the speakers discussing? [4]",
+        "options": ["A. A returned package", "B. A new advertising campaign", "C. Relocating to Tokyo", "D. Postage fees"],
+        "correctAnswer": "A",
+        "explanation": "Người đàn ông thông báo rằng gói hàng mà người phụ nữ gửi đến Tokyo đã bị trả lại vào ngày hôm nay [3]. Vì vậy, chủ đề chính là về một bưu kiện bị hoàn trả."
+      },
+      {
+        "questionId": 2,
+        "questionText": "What problem does the woman mention? [4]",
+        "options": ["A. The package was damaged", "B. The office relocated", "C. The postage was too cheap", "D. The Tokyo office closed down"],
+        "correctAnswer": "B",
+        "explanation": "Người phụ nữ giải thích nguyên nhân là do văn phòng ở Tokyo đã chuyển địa điểm (relocated) vào ngày hôm qua [3]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "What does the woman say she will do? [4]",
+        "options": ["A. Send a new package", "B. Pay for the postage", "C. Request the company to pay her back", "D. Travel to Tokyo"],
+        "correctAnswer": "C",
+        "explanation": "Cô ấy nói rằng cô ấy sẽ yêu cầu công ty ở Tokyo trả lại tiền bưu phí cho mình (request that the company in Tokyo pay me back) [3]."
+      }
+    ]
+  },
+  {
+    "passageId": 3,
+    "audioName": "p3_q03.mp3",
+    "transcript": "Hello, this is Julia Kramer calling from human resources. I gave your department a laptop computer to be fixed last week and I still haven't received an update. The keyboard needed to be replaced. Ah, yes, Miss Kramer. We have had a lot of work orders lately, so we are a little behind with repairs. Is the matter urgent? Well, I just forgot to copy an important file off the hard drive that I need for my work. I can transfer that file onto a storage device for you. Come to my office at your convenience. [5]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Which department does the man most likely work in? [5]",
+        "options": ["A. Human Resources", "B. IT / Computer Repair", "C. Accounting", "D. Marketing"],
+        "correctAnswer": "B",
+        "explanation": "Người phụ nữ gọi đến để hỏi về chiếc máy tính xách tay mà cô ấy đã gửi đi sửa chữa [5], chứng tỏ người đàn ông làm ở bộ phận sửa chữa máy tính/IT."
+      },
+      {
+        "questionId": 2,
+        "questionText": "What is the woman unable to do? [5]",
+        "options": ["A. Fix her keyboard", "B. Copy an important file", "C. Call her boss", "D. Update the work orders"],
+        "correctAnswer": "B",
+        "explanation": "Người phụ nữ cho biết cô ấy đã quên sao chép một tệp quan trọng từ ổ cứng mà cô ấy cần cho công việc [5]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "What does the man suggest doing? [5]",
+        "options": ["A. Transferring the file to a storage device", "B. Buying a new laptop", "C. Waiting for another week", "D. Emailing the file"],
+        "correctAnswer": "A",
+        "explanation": "Người đàn ông đề nghị anh có thể chuyển tệp đó sang một thiết bị lưu trữ (storage device) cho cô ấy [5]."
+      }
+    ]
+  },
+  {
+    "passageId": 4,
+    "audioName": "p3_q04.mp3",
+    "transcript": "Hello. Last Thursday, I arranged to have cable television installed at my house this Wednesday. Unfortunately, I will have to be out of town that day because of some urgent matters and would like to reschedu the appointment for Friday afternoon. Okay, that shouldn't be a problem. However, I would like to warn you that there is a $5 rescheduling fee. That's our company's policy. Can I have your name, please? Oh, I see. My name is Charlie Kramer. I'm I'm living in Hanesville. Do you know when I'll have to pay this fee? [6] I'll email you soon about a username and temporary password that you can use on our website. Please check the email and pay all your bills through our website. [7]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "What did the man recently do? [7]",
+        "options": ["A. Paid a bill online", "B. Arranged to have cable television installed", "C. Moved to a new house", "D. Changed his password"],
+        "correctAnswer": "B",
+        "explanation": "Người đàn ông nói rằng vào thứ Năm tuần trước, anh ấy đã sắp xếp để lắp đặt truyền hình cáp tại nhà [6]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Why must the man pay a fee? [7]",
+        "options": ["A. For the installation equipment", "B. For a late payment", "C. For rescheduling the appointment", "D. For a temporary password"],
+        "correctAnswer": "C",
+        "explanation": "Người phụ nữ cảnh báo rằng có một khoản phí 5 đô la cho việc dời lịch hẹn (rescheduling fee) theo chính sách của công ty [6]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "What will the woman include in an email? [7]",
+        "options": ["A. A bill", "B. A new contract", "C. A username and temporary password", "D. A cancellation notice"],
+        "correctAnswer": "C",
+        "explanation": "Người phụ nữ cho biết sẽ gửi email sớm để cung cấp tên người dùng và mật khẩu tạm thời cho trang web [7]."
+      }
+    ]
+  },
+  {
+    "passageId": 5,
+    "audioName": "p3_q05.mp3",
+    "transcript": "Hi, James. This is Candace in the marketing department. I'm supposed to be leading a weekly meeting in room 302 soon, but I just discovered that the room is already in use. I'm sorry, Candies. Actually, I have been getting calls like this all day. It looks like an error with our computer system is to blame for the mixup. Oh, I see. Well, is there a currently vacant room that I could use for the meeting? The room will need to be equipped with a computer and a projector. I'll need to check manually. to determine which room will be available. I'll let you know as soon as I find another suitable room. Please wait for a moment. [8]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "What is the woman's problem? [8]",
+        "options": ["A. The projector is broken", "B. The meeting room is already in use", "C. The computer system failed", "D. She forgot the meeting time"],
+        "correctAnswer": "B",
+        "explanation": "Người phụ nữ chuẩn bị dẫn dắt cuộc họp ở phòng 302 nhưng lại phát hiện ra phòng đó đã có người sử dụng [8]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Why does the man mention a system malfunction? [8]",
+        "options": ["A. To explain the scheduling mix-up", "B. To cancel the meeting", "C. To ask for repair", "D. To test the new software"],
+        "correctAnswer": "A",
+        "explanation": "Người đàn ông cho biết lỗi hệ thống máy tính chính là nguyên nhân dẫn đến sự nhầm lẫn (mixup) trong việc đặt phòng hôm nay [8]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "What does the man say he will do? [8]",
+        "options": ["A. Check manually for an available room", "B. Fix the computer system", "C. Call the marketing department", "D. Equip the room with a projector"],
+        "correctAnswer": "A",
+        "explanation": "Anh ấy nói rằng sẽ kiểm tra thủ công (check manually) để xác định xem phòng nào đang trống và báo lại cho cô ấy [8]."
+      }
+    ]
+  },
+  {
+    "passageId": 6,
+    "audioName": "p3_q06.mp3",
+    "transcript": "Hi, Mr. Joyce. This is Sally Walker calling from Forman Publishing. My company has a three-page text that we need translated into Chinese. I know you sometimes do these kind of short-term jobs for a company. Yeah, I would be happy to. However, you should know that it is my policy to be paid in advance. Is that okay? That's no problem. I'll transfer the money into your bank account immediately. The deadline for this translation hasn't been decided yet. Once I know, I will inform you. Thank you for your understanding. Please email me the document. I'll do my best. [9]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Why is the woman calling? [9]",
+        "options": ["A. To ask for a translation job", "B. To complain about a text", "C. To request a refund", "D. To open a bank account"],
+        "correctAnswer": "A",
+        "explanation": "Người phụ nữ gọi đến vì công ty cô ấy có một văn bản 3 trang cần được dịch sang tiếng Trung (translated into Chinese) [9]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "What does the man ask the woman to do? [9]",
+        "options": ["A. Translate a three-page text", "B. Pay in advance", "C. Decide the deadline", "D. Email the document later"],
+        "correctAnswer": "B",
+        "explanation": "Người đàn ông đồng ý làm nhưng yêu cầu chính sách của anh ta là phải được trả tiền trước (paid in advance) [9]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "What will the woman inform the man about? [9]",
+        "options": ["A. The bank account number", "B. The deadline", "C. The publishing date", "D. The company policy"],
+        "correctAnswer": "B",
+        "explanation": "Cô ấy nói rằng thời hạn (deadline) cho bản dịch vẫn chưa được quyết định và cô ấy sẽ thông báo cho anh ngay khi cô biết [9]."
+      }
+    ]
+  },
+  {
+    "passageId": 7,
+    "audioName": "p3_q07.mp3",
+    "transcript": "Hi, Mark. This is Julian Accounting. Our printer has broken down again and nobody in our department knows how to fix it. Could you stop by and give us a hand? I wish I could help, but I have a meeting with an important client in half an hour. I have to be fully prepared when he arrives. I understand. I'll try to find an instruction manual. I hope it will help me figure out what exactly is wrong. All right. I'll check on you right after the meeting. [10]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "What does the woman ask the man to do? [10]",
+        "options": ["A. Fix the broken printer", "B. Prepare for a client meeting", "C. Find an instruction manual", "D. Buy a new printer"],
+        "correctAnswer": "A",
+        "explanation": "Máy in bị hỏng và không ai biết sửa, do đó người phụ nữ nhờ người đàn ông ghé qua để giúp sửa chữa nó [10]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Why is the man unable to help? [10]",
+        "options": ["A. He doesn't know how", "B. He has a meeting with a client", "C. He is in another building", "D. He lost the manual"],
+        "correctAnswer": "B",
+        "explanation": "Người đàn ông từ chối vì anh ấy có một cuộc họp với khách hàng quan trọng trong vòng nửa giờ tới [10]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "What will the woman do next? [10]",
+        "options": ["A. Wait for the man", "B. Call a repair service", "C. Find an instruction manual", "D. Talk to the client"],
+        "correctAnswer": "C",
+        "explanation": "Người phụ nữ nói rằng cô ấy sẽ cố gắng tìm sổ tay hướng dẫn (instruction manual) để tự tìm ra lỗi [10]."
+      }
+    ]
+  },
+  {
+    "passageId": 8,
+    "audioName": "p3_q08.mp3",
+    "transcript": "Hi, I was hired yesterday to work here on the night cleaning staff. Today is my first day and I'm not sure who I need to talk to. Oh, welcome to the staff of the Hampton Lodge Hotel. Mr. Carter is in charge of the cleaning staff, but he doesn't come in to work for another hour. I think you're here early. They told me to report to work at 11:00. Then what should I do in the meantime? I see. Well, normally new employees watch a series of training videos as part of their orient. ation. Please follow me. [11]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Who is the man? [12]",
+        "options": ["A. A new cleaning staff member", "B. A hotel manager", "C. A guest", "D. Mr. Carter"],
+        "correctAnswer": "A",
+        "explanation": "Người đàn ông tự giới thiệu rằng anh ấy mới được thuê hôm qua để làm việc trong đội dọn dẹp ban đêm [11]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Why is Mr. Carter unavailable? [12]",
+        "options": ["A. He is in a meeting", "B. He doesn't come in to work for another hour", "C. He is watching a training video", "D. He resigned yesterday"],
+        "correctAnswer": "B",
+        "explanation": "Người phụ nữ giải thích rằng ông Carter phụ trách nhân viên vệ sinh nhưng khoảng một tiếng nữa ông ấy mới đến làm việc [11]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "What will the man do next? [12]",
+        "options": ["A. Meet Mr. Carter", "B. Watch a series of training videos", "C. Start cleaning", "D. Go home"],
+        "correctAnswer": "B",
+        "explanation": "Người phụ nữ hướng dẫn rằng nhân viên mới thường sẽ xem một loạt video đào tạo (training videos) trong lúc chờ đợi, và bảo anh ấy đi theo cô [11]."
+      }
+    ]
+  },
+  {
+    "passageId": 9,
+    "audioName": "p3_q09.mp3",
+    "transcript": "Hello, Mr. Penn. I wanted to ask about changing my work hours. I will be entering university starting next month and my availability is going to change. Well, Nami, we really value you as a hardworking employee at this restaurant, so I want you to continue working here. What do you think your schedule will be? Thank you for saying so. I haven't registered for classes yet, so I'm not completely sure. I see. Once you find out, please let me know. I'm sure we can figure something out so that you can attend university and continue working here. [13]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "What is the woman requesting? [13]",
+        "options": ["A. A pay raise", "B. Changing her work hours", "C. A promotion", "D. More vacation days"],
+        "correctAnswer": "B",
+        "explanation": "Người phụ nữ hỏi về việc thay đổi giờ làm việc (changing work hours) vì cô ấy sắp vào đại học [13]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Why is the woman unsure about the man's question? [13]",
+        "options": ["A. She hasn't registered for classes yet", "B. She doesn't like her university", "C. She wants to quit", "D. She forgot her schedule"],
+        "correctAnswer": "A",
+        "explanation": "Khi được hỏi về lịch trình sắp tới, cô ấy trả lời rằng mình chưa đăng ký lớp học nên chưa chắc chắn [13]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "What does the man ask the woman to do? [13]",
+        "options": ["A. Quit the job", "B. Let him know her schedule once she finds out", "C. Work overtime", "D. Register for more classes"],
+        "correctAnswer": "B",
+        "explanation": "Người quản lý dặn cô ấy hãy cho anh biết ngay khi cô nhận được lịch học chính thức (once you find out, please let me know) [13]."
+      }
+    ]
+  },
+  {
+    "passageId": 10,
+    "audioName": "p3_q10.mp3",
+    "transcript": "Hello. Are you Miss Joyce, right? I just started working here today and I was told to shadow you. Is it okay if I follow you around and watch how you do things? Nice to meet you. Of course, you can shadow me today. And if you ever have any questions, don't hesitate to ask. I was just about to take inventory in the warehouse. Let's do it together. That sounds great. But before I do anything, I just need to change into my work uniform. I'll join you in the warehouse in 10 minutes. [14]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "How do the speakers know each other? [14]",
+        "options": ["A. They are coworkers", "B. They are old friends", "C. They met at university", "D. They are siblings"],
+        "correctAnswer": "A",
+        "explanation": "Người đàn ông là nhân viên mới và được phân công theo dõi (shadow) quá trình làm việc của người phụ nữ, chứng tỏ họ là đồng nghiệp [14]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "What does the woman suggest that the man do? [14]",
+        "options": ["A. Change his uniform", "B. Take inventory in the warehouse together", "C. Go home early", "D. Organize the files"],
+        "correctAnswer": "B",
+        "explanation": "Người phụ nữ rủ người đàn ông cùng đi kiểm kê hàng hóa trong kho với mình (take inventory in the warehouse) [14]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "What does the man need to do first? [14]",
+        "options": ["A. Take inventory", "B. Ask a question", "C. Change into his work uniform", "D. Meet the manager"],
+        "correctAnswer": "C",
+        "explanation": "Trước khi làm bất cứ việc gì, người đàn ông nói rằng anh ấy cần phải thay đồng phục làm việc (change into my work uniform) [14]."
+      }
+    ]
+  },
+  {
+    "passageId": 11,
+    "audioName": "p3_q11.mp3",
+    "transcript": "Hello, Mr. Sanders. This is Julie Maple calling. I contacted you by email this morning about a condo I'd like to look at. Do you have time to show me the place today? I sure do, Miss Maple. You mentioned you'd prefer to check it out around 3:30. Is that time still satisfactory for you? Oh, no, it isn't. I've got a meeting scheduled at 4:00, so I'd like to see the place around 2 instead. That should give me plenty of time to check out the property. Fortunately, I've got time then, so I can comply with your request. Why don't we meet at 52 Jackson Avenue at that time? [15]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Who most likely is the man? [15]",
+        "options": ["A. A real estate agent", "B. An architect", "C. A banker", "D. A contractor"],
+        "correctAnswer": "A",
+        "explanation": "Người phụ nữ gọi cho ông Sanders để nhờ ông dẫn đi xem một căn hộ chung cư (condo), điều này cho thấy ông ấy là một đại lý bất động sản [15]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "What does the woman want to do? [15]",
+        "options": ["A. Buy a house immediately", "B. Change the meeting time to look at a condo", "C. Cancel the meeting", "D. Rent an office space"],
+        "correctAnswer": "B",
+        "explanation": "Người phụ nữ muốn thay đổi lịch xem nhà từ 3:30 sang 2:00 vì cô có một cuộc họp lúc 4:00 [15]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "When are the speakers going to meet? [15]",
+        "options": ["A. 3:30", "B. 4:00", "C. 2:00", "D. 5:00"],
+        "correctAnswer": "C",
+        "explanation": "Họ đã đồng ý đổi thời gian gặp mặt sang 2 giờ chiều (around 2 instead) để cô ấy có đủ thời gian xem tài sản [15]."
+      }
+    ]
+  },
+  {
+    "passageId": 12,
+    "audioName": "p3_q12.mp3",
+    "transcript": "We've just arrived at the Cumberland House. This was the home of John Cumberland, who founded our city more than 200 years ago. It's now been turned into a museum. Why don't you all take a look around it for an hour or so? Are there any pamphlets we can get to learn more about the house and its history? Yes, there are. You can pick up some free pamphlets at the information desk right beside the front door. They'll tell you everything you need to know about this place. Be sure to be back at the bus by 11:30 so that we can depart here and visit the Landers Art salary. Next [16]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "What is the man's job? [16]",
+        "options": ["A. A tour guide", "B. A museum curator", "C. A bus driver", "D. A historian"],
+        "correctAnswer": "A",
+        "explanation": "Người đàn ông đang giới thiệu điểm đến (nhà Cumberland), cho du khách thời gian tham quan và dặn dò giờ lên xe buýt, cho thấy anh ta là hướng dẫn viên du lịch [16]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "What does the woman ask about? [16]",
+        "options": ["A. The ticket price", "B. Free pamphlets", "C. The opening hours", "D. The location of the restroom"],
+        "correctAnswer": "B",
+        "explanation": "Người phụ nữ hỏi xem có tập sách nhỏ (pamphlets) nào để tìm hiểu thêm về ngôi nhà và lịch sử của nó không [16]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "What will happen at 11:30? [16]",
+        "options": ["A. They will watch a video", "B. The museum will close", "C. They will depart for the art gallery", "D. They will have lunch"],
+        "correctAnswer": "C",
+        "explanation": "Người hướng dẫn viên dặn du khách phải quay lại xe buýt trước 11:30 để khởi hành đến tham quan phòng trưng bày nghệ thuật (depart here and visit the Landers Art gallery) [16]."
+      }
+    ]
+  },
+  {
+    "passageId": 13,
+    "audioName": "p3_q13.mp3",
+    "transcript": "We finally finished rearranging the desks in the office, Mr. Marino. Does everything look satisfactory? The way you set up everything is fine. It appears as though you've made efficient use of space. In fact, there's a large area over by the windows that doesn't have any desks or equipment in it. What are your plans for utilizing that space? We intend to set up some cubicles there next week. When the summer interns arrive, that's where they're going to be put. Good thinking. We didn't have a place for them last year, and they got in everyone. Way [17]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "What are the speakers mainly discussing? [17]",
+        "options": ["A. Hiring new interns", "B. Rearranging office space and desks", "C. Buying new equipment", "D. Organizing a summer party"],
+        "correctAnswer": "B",
+        "explanation": "Đoạn hội thoại xoay quanh việc họ vừa hoàn thành việc sắp xếp lại bàn làm việc trong văn phòng và thảo luận về cách sử dụng không gian trống [17]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "What will the woman do with the area by the window? [17]",
+        "options": ["A. Put some plants there", "B. Leave it empty", "C. Set up cubicles for interns", "D. Build a meeting room"],
+        "correctAnswer": "C",
+        "explanation": "Người phụ nữ dự định thiết lập một số buồng làm việc (cubicles) vào tuần tới để làm chỗ ngồi cho các thực tập sinh mùa hè [17]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "According to the man, what happened to the interns last year? [17]",
+        "options": ["A. They worked very hard", "B. They got in everyone's way", "C. They had no computers", "D. They quit early"],
+        "correctAnswer": "B",
+        "explanation": "Người đàn ông nhớ lại rằng năm ngoái không có chỗ cho các thực tập sinh, vì thế họ đã cản trở đường đi của mọi người (got in everyone's way) [17]."
+      }
+    ]
+  },
+  {
+    "passageId": 14,
+    "audioName": "p3_q14.mp3",
+    "transcript": "I'm so glad I decided to attend the seminar today. The talk which Mark Kenmore just gave on how to market products in foreign countries was brilliant. I couldn't agree with you more. He mentioned several things that seem obvious now, but which had never previously occurred to me. I'm going to request that my firm implement some of his suggestions immediately. I'm glad I took comprehensive notes. I'm supposed to give a presentation on what I learned on Monday morning, and my co-workers should be pleased to hear what I have to tell them. [18]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "What are the speakers mainly discussing? [18]",
+        "options": ["A. A marketing seminar", "B. A new product launch", "C. A business trip to a foreign country", "D. A Monday morning meeting"],
+        "correctAnswer": "A",
+        "explanation": "Họ đang ca ngợi một hội thảo (seminar) về cách tiếp thị sản phẩm ở nước ngoài mà họ vừa tham dự [18]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "What does the woman mention? [18]",
+        "options": ["A. She will travel to foreign countries", "B. She will request her firm to implement the suggestions immediately", "C. She will change her job", "D. She didn't take notes"],
+        "correctAnswer": "B",
+        "explanation": "Người phụ nữ cho biết cô ấy sẽ yêu cầu công ty của mình áp dụng (implement) ngay lập tức một số gợi ý từ buổi hội thảo [18]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "What is going to happen on Monday? [18]",
+        "options": ["A. A product launch", "B. A presentation by the man", "C. A presentation by the woman", "D. A seminar on sales"],
+        "correctAnswer": "B",
+        "explanation": "Người đàn ông đề cập rằng anh ấy dự kiến sẽ có một bài thuyết trình (presentation) về những gì học được vào sáng thứ Hai [18]."
+      }
+    ]
+  },
+  {
+    "passageId": 15,
+    "audioName": "p3_q15.mp3",
+    "transcript": "Sally, I can't believe it's so crowded here today. Look, there are not enough cashiers on duty. That's the problem. Seems like we will have to wait in line for ages. You can say that again, Jenny. Our lunch break is almost over, but I don't really want to miss this opportunity. It would save me about $100 if I bought a fur coat here today. You say a h 100red bucks? That is such a bargain. I can't resist it either. But we'd better get back to the office and prepare for the presentation this afternoon. We should have the materials at hand and have the text we want to reference marked for easy access. Maybe we can come back here after work. [19] You're right. Hopefully, the store will be less crowded when we come back. Let me ask a clerk what time the store will close today. [20]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Where are the speakers? [20]",
+        "options": ["A. At an office", "B. At a clothing store", "C. In a restaurant", "D. At a bank"],
+        "correctAnswer": "B",
+        "explanation": "Hai người đang bàn về việc phải xếp hàng đợi thu ngân, cùng với việc người phụ nữ muốn mua áo khoác lông (fur coat) để tiết kiệm tiền [19], chứng tỏ họ đang ở cửa hàng quần áo."
+      },
+      {
+        "questionId": 2,
+        "questionText": "What does Jenny suggest? [20]",
+        "options": ["A. Buying the coat immediately", "B. Asking for a discount", "C. Coming back to the store after work", "D. Skipping the presentation"],
+        "correctAnswer": "C",
+        "explanation": "Jenny khuyên rằng họ nên trở về văn phòng chuẩn bị cho bài thuyết trình và quay lại cửa hàng sau khi tan làm (come back here after work) [19]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "What will the speakers most likely do next? [20]",
+        "options": ["A. Ask a clerk about the closing time", "B. Buy a fur coat", "C. Go for lunch", "D. Talk to the manager"],
+        "correctAnswer": "A",
+        "explanation": "Người phụ nữ nói sẽ đi hỏi một nhân viên (clerk) xem cửa hàng đóng cửa lúc mấy giờ [20]."
+      }
+    ]
+  },
+  {
+    "passageId": 16,
+    "audioName": "p3_q16.mp3",
+    "transcript": "Hello. Is Mr. Smith in the office? I'm here for the delivery from McDonald office supplies. I'm afraid he is not here. He is talking with overseas clients in the meeting room right now. If it's urgent, I can go and see if he's available for a minute. Otherwise, please give me your phone number and I'll ring you when he's back in the office. Well, I don't think it's urgent because this is just a box of copy paper he ordered last week. If you don't mind, I'll leave it with you. But you need to sign here. [21] No problem. Where should to put my signature. [22]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Where is Mr. Smith now? [22]",
+        "options": ["A. At home", "B. In the meeting room", "C. On a business trip", "D. At McDonald office supplies"],
+        "correctAnswer": "B",
+        "explanation": "Người phụ nữ báo rằng ông Smith hiện đang nói chuyện với khách hàng quốc tế trong phòng họp (meeting room) [21]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Who most likely is the woman? [22]",
+        "options": ["A. A delivery driver", "B. A receptionist or assistant", "C. A store manager", "D. An overseas client"],
+        "correctAnswer": "B",
+        "explanation": "Cô ấy tiếp đón người giao hàng tại văn phòng, đề nghị gọi ông Smith ra ngoài hoặc giữ liên lạc báo lại, chứng tỏ cô ấy là một trợ lý hoặc lễ tân [21]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "What is the woman requested to do? [22]",
+        "options": ["A. Call Mr. Smith", "B. Sign for the delivery", "C. Carry the box", "D. Reschedule the delivery"],
+        "correctAnswer": "B",
+        "explanation": "Người giao hàng nhờ người phụ nữ nhận thay một hộp giấy và yêu cầu cô ấy ký tên xác nhận vào giấy biên nhận (sign here) [21]."
+      }
+    ]
+  },
+  {
+    "passageId": 17,
+    "audioName": "p3_q17.mp3",
+    "transcript": "Excuse me. I'm here to buy a laptop computer, but I don't have a lot of knowledge about computers. Don't worry. I think I could help you. What features are you looking for? Well, I'm a college student, so I don't need a high-end personal computer designed for technical or scientific applications. I want something light and portable that can run some basic programs. Then I recommend the new laptop model from Bell. I think the model 300 XT would be perfect for you. It has a 5-in display. display with 800x480 resolution. It also supports dual mode function and wireless internet. Also, it comes with a 24-month warranty. If you buy this today, we offer you a laser printer for free. So, don't miss this great opportunity. [23]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "What most likely is the man's occupation? [23]",
+        "options": ["A. A college student", "B. A store salesperson", "C. A computer technician", "D. A scientist"],
+        "correctAnswer": "B",
+        "explanation": "Người đàn ông giới thiệu và tư vấn các dòng máy tính xách tay cũng như thông báo chương trình khuyến mãi cho khách hàng [23], chứng tỏ anh ấy là nhân viên bán hàng."
+      },
+      {
+        "questionId": 2,
+        "questionText": "What does the man say about the model 300 XT? [23]",
+        "options": ["A. It is designed for scientific applications", "B. It is extremely expensive", "C. It has a 5-inch display and dual mode function", "D. It is not portable"],
+        "correctAnswer": "C",
+        "explanation": "Người bán hàng mô tả model 300 XT có màn hình 5 inch, độ phân giải 800x480 và hỗ trợ chức năng chế độ kép (dual mode function) [23]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "What does the man offer for free? [23]",
+        "options": ["A. A laptop bag", "B. A laser printer", "C. A wireless mouse", "D. An extended warranty"],
+        "correctAnswer": "B",
+        "explanation": "Người đàn ông thông báo rằng nếu mua máy ngay hôm nay, khách hàng sẽ được tặng kèm một máy in laser miễn phí (laser printer for free) [23]."
+      }
+    ]
+  },
+  {
+    "passageId": 18,
+    "audioName": "p3_q18.mp3",
+    "transcript": "Pardon me. I'm looking for an LCD TV for the living room. Sure. Come with me, please. This HD 300X model will be an excellent choice. It features highdein resolution and built-in stereo speakers. I bet you will be able to catch up on your favorite sports and latest movies in your house. Wow, it looks fantastic, but it seems too big for our living room. Do you have anything in a smaller size? Of course. Here's a 32-in flat screen TV that's suitable for small spaces. It's selling for only $150 today. It is such a bargain. It would be much better to get this one rather than plan a summer vacation. [24]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "What does the man want to do? [24]",
+        "options": ["A. Buy an LCD TV", "B. Repair a speaker", "C. Go on summer vacation", "D. Return a product"],
+        "correctAnswer": "A",
+        "explanation": "Người đàn ông mở đầu cuộc hội thoại bằng việc nói rằng anh ấy đang tìm mua một chiếc tivi LCD cho phòng khách [24]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "What is the woman doing? [24]",
+        "options": ["A. Watching a movie", "B. Recommending TV models to the customer", "C. Installing an HD 300X", "D. Planning a trip"],
+        "correctAnswer": "B",
+        "explanation": "Người phụ nữ, với vai trò là người bán hàng, đang giới thiệu và đề xuất các mẫu TV (HD 300X và loại 32 inch) cho khách hàng [24]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "What does the man say about the HG300X model? [24]",
+        "options": ["A. It is cheap", "B. It looks fantastic but seems too big", "C. It has bad resolution", "D. It is perfect for small spaces"],
+        "correctAnswer": "B",
+        "explanation": "Người đàn ông khen mẫu TV trông rất tuyệt vời, nhưng có vẻ nó quá to (too big) so với phòng khách nhà anh [24]."
+      }
+    ]
+  },
+  {
+    "passageId": 19,
+    "audioName": "p3_q19.mp3",
+    "transcript": "Jack, have you tried Sevie, the famous French restaurant located on Park Avenue? I heard it was chosen as the best restaurant in a cooking contest held in Paris last year. Not yet. Mike in sales went there last Wednesday, and he said the service and atmosphere were fantastic. He didn't say much about the food, though. Apparently, the head chef specializes in seafood. I'd love to try steamed king crab or lobster. I want to try the weekend barbecue brunch as well. It sounds tempting, but I have a bunch of things to catch up on this week. Why don't we go together next Friday? [25]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "What are the speakers mainly talking about? [26]",
+        "options": ["A. A cooking contest in Paris", "B. A famous French restaurant", "C. A weekend barbecue", "D. Sales figures"],
+        "correctAnswer": "B",
+        "explanation": "Chủ đề chính của họ xoay quanh việc thảo luận và rủ nhau đi ăn tại nhà hàng Pháp nổi tiếng tên là Sevie [25]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "What is mentioned about Salev? [26]",
+        "options": ["A. It has terrible service", "B. It was chosen as the best restaurant in a contest", "C. It only serves breakfast", "D. It is moving to a new location"],
+        "correctAnswer": "B",
+        "explanation": "Người phụ nữ nhắc tới thông tin rằng nhà hàng này đã được chọn là nhà hàng tốt nhất trong một cuộc thi nấu ăn ở Paris năm ngoái [25]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "What does the man say he will do this week? [26]",
+        "options": ["A. Try the steamed king crab", "B. Go to Paris", "C. Catch up on a bunch of things", "D. Go out with Mike"],
+        "correctAnswer": "C",
+        "explanation": "Người đàn ông từ chối đi trong tuần này vì anh ấy có rất nhiều công việc cần phải hoàn thành (catch up on a bunch of things this week) [25]."
+      }
+    ]
+  },
+  {
+    "passageId": 20,
+    "audioName": "p3_q20.mp3",
+    "transcript": "Hi Rachel. I heard you are planning to open your accounting office in Glendale. Have you had any luck finding a good location for it? Not yet. I looked at several spots with the real estate agent last week. Actually, I like the one on St. Paul Avenue, but it was a little small for the number of our current staff. As we are planning to add dozens of employees to our office next year, the space should be large enough to accommodate all the staff members, including prospective ones. You know what? Today I happened to read a newspaper article about the huge office building that has just opened. You could find a large space there. [27] Great. Where did you leave the newspaper? I really want to look at the article. [28]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Who is the woman? [28]",
+        "options": ["A. A real estate agent", "B. A newspaper reporter", "C. An accountant", "D. A construction worker"],
+        "correctAnswer": "C",
+        "explanation": "Người đàn ông đề cập đến việc người phụ nữ chuẩn bị mở văn phòng kế toán (accounting office) của riêng mình, nên cô ấy là một kế toán viên [27]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "How did the man learn about a new office building? [28]",
+        "options": ["A. From a real estate agent", "B. From a newspaper article", "C. From Rachel", "D. From a television ad"],
+        "correctAnswer": "B",
+        "explanation": "Người đàn ông tình cờ đọc được một bài báo trên tờ báo (newspaper article) viết về tòa nhà văn phòng rộng lớn mới mở [27]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "What will the woman probably do next? [28]",
+        "options": ["A. Call the real estate agent", "B. Look at the newspaper article", "C. Hire dozens of employees", "D. Sign a lease"],
+        "correctAnswer": "B",
+        "explanation": "Người phụ nữ hỏi người đàn ông để tờ báo ở đâu vì cô ấy rất muốn xem qua bài viết đó ngay [28]."
+      }
+    ]
+  },
+  {
+    "passageId": 21,
+    "audioName": "p3_q21.mp3",
+    "transcript": "Hi, I'm calling to find out if your restaurant can accommodate a group of 60 people. My company gives out awards every year and I'm in charge of organizing the event. H I don't know whether our chef would be comfortable handling such a large group at once. I'll talk to him and see what he thinks. All right. Here is my phone number. 5012458792. And could you call me back after lunchtime? I have a client meeting this morning. Sure. Thanks for considering us. [29]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "What event is the woman organizing? [29]",
+        "options": ["A. A wedding", "B. A company award event", "C. A birthday party", "D. A chef cooking class"],
+        "correctAnswer": "B",
+        "explanation": "Người phụ nữ cho biết cô ấy phụ trách tổ chức sự kiện trao giải (gives out awards) hàng năm của công ty cho 60 người [29]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "What does the man plan to do? [29]",
+        "options": ["A. Call the client", "B. Talk to the chef", "C. Book the room immediately", "D. Prepare the menu"],
+        "correctAnswer": "B",
+        "explanation": "Người quản lý nhà hàng nói sẽ trao đổi với đầu bếp của họ (talk to him / the chef) để xem có thể phục vụ nhóm đông người như vậy hay không [29]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "What will the woman do this morning? [29]",
+        "options": ["A. Have a client meeting", "B. Visit the restaurant", "C. Call the chef", "D. Eat lunch"],
+        "correctAnswer": "A",
+        "explanation": "Cô ấy nhắc nhở gọi lại sau bữa trưa vì sáng nay cô ấy có một cuộc họp với khách hàng (client meeting) [29]."
+      }
+    ]
+  },
+  {
+    "passageId": 22,
+    "audioName": "p3_q22.mp3",
+    "transcript": "Hi, Boyouong. I know our store's annual summer sale is coming up soon. How are the preparations going? Last year, people were crowded around the sale items and it was really hectic. This year, we'll temporarily allow customers to reserve items in advance through our website. We'll have a special area where they can exchange their claim forms for the items on the event day. That will work well. Are we advertising this new option? Yes, but employees should also tell customers about it. I'll hang up a notice in the break room now explaining the plan. [30]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "What are the speakers discussing? [31]",
+        "options": ["A. A summer vacation", "B. Annual summer sale preparations", "C. A website redesign", "D. A new break room"],
+        "correctAnswer": "B",
+        "explanation": "Cả hai đang thảo luận về tiến độ chuẩn bị cho đợt giảm giá mùa hè hàng năm (annual summer sale preparations) của cửa hàng [30]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "What will be temporarily available to customers? [31]",
+        "options": ["A. Free shipping", "B. Reserving items in advance through the website", "C. Extra discounts", "D. Extended return periods"],
+        "correctAnswer": "B",
+        "explanation": "Người phụ nữ giải thích rằng năm nay họ sẽ tạm thời cho phép khách hàng đặt trước các mặt hàng qua trang web (reserve items in advance through our website) để tránh chen chúc [30]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "What will the woman do next? [31]",
+        "options": ["A. Create a new website", "B. Exchange claim forms", "C. Hang up a notice in the break room", "D. Talk to customers"],
+        "correctAnswer": "C",
+        "explanation": "Cuối đoạn hội thoại, cô ấy nói rằng sẽ đi treo một bảng thông báo trong phòng nghỉ (hang up a notice in the break room) để giải thích kế hoạch cho nhân viên [30]."
+      }
+    ]
+  }
+]

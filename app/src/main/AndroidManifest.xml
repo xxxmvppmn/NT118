@@ -33,6 +33,16 @@
             </intent-filter>
         </activity>
 
+        <!-- TOEIC Listening Part 3 -->
+        <activity
+            android:name=".activities.Part3SetActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.Part3Activity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
         <!-- TOEIC Part 5 Activities -->
         <activity
             android:name=".activities.Part5SetActivity"

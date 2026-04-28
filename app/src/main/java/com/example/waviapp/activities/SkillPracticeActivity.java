@@ -128,8 +128,9 @@ public class SkillPracticeActivity extends BaseActivity {
                     }
                 } else if (CAT_LISTEN.equals(category)) {
                     if (parts[index].equals(getString(R.string.listen_part2))) {
-                        // Điều hướng đúng đến màn hình chọn Set cho Part 2
                         startActivity(new Intent(this, Part2SetActivity.class));
+                    } else if (parts[index].equals(getString(R.string.listen_part3))) {
+                        startActivity(new Intent(this, Part3SetActivity.class));
                     } else {
                         Toast.makeText(this, "Tính năng đang được cập nhật", Toast.LENGTH_SHORT).show();
                     }
