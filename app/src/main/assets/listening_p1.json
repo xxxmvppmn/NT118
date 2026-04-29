@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "audioName": "p1_q01.mp3",
+    "imageName": "p1_img01.png",
+    "correctAnswer": "A",
+    "script": "A. The woman is talking on the phone.\nB. The woman is using her cell phone.\nC. The woman is typing on the laptop.\nD. The woman is writing in her notebook.",
+    "explanation": "Trong hình, người phụ nữ đang cầm điện thoại bàn (không phải điện thoại di động) và mỉm cười nói chuyện, khớp với câu A."
+  },
+  {
+    "id": 2,
+    "audioName": "p1_q02.mp3",
+    "imageName": "p1_img02.png",
+    "correctAnswer": "A",
+    "script": "A. The plane is docked at the airport.\nB. There is luggage being put onto the plane.\nC. There are many people boarding the plane.\nD. There are maintenance workers fixing the plane.",
+    "explanation": "Chiếc máy bay lớn đang đậu (docked) tại sân bay, khớp với câu A. Chưa thấy rõ hành lý đang được đưa lên, cũng không có người đang lên máy bay hay công nhân đang bảo trì sửa chữa."
+  },
+  {
+    "id": 3,
+    "audioName": "p1_q03.mp3",
+    "imageName": "p1_img03.png",
+    "correctAnswer": "B",
+    "script": "A. The woman is looking at some menu.\nB. There is a measuring tape around her neck.\nC. She's holding a pair of scissors.\nD. She is making some curtains with her measuring tape.",
+    "explanation": "Người phụ nữ (thợ may) đang làm việc với một thước dây (measuring tape) quấn quanh cổ, khớp với câu B."
+  },
+  {
+    "id": 4,
+    "audioName": "p1_q04.mp3",
+    "imageName": "p1_img04.png",
+    "correctAnswer": "C",
+    "script": "A. There are a lot of other people at the park.\nB. The boy is riding on his daddy's shoulders.\nC. They are taking a walk in the park.\nD. The boy is running on the path.",
+    "explanation": "Một gia đình ba người đang cùng nhau đi dạo (taking a walk) trong công viên (đứa bé được nhấc bổng qua tay), khớp với câu C."
+  },
+  {
+    "id": 5,
+    "audioName": "p1_q05.mp3",
+    "imageName": "p1_img05.png",
+    "correctAnswer": "C",
+    "script": "A. He is wearing a tool belt.\nB. The man is loading a cart.\nC. He is changing the tire in the garage.\nD. The tire is brand new.",
+    "explanation": "Người đàn ông đang ngồi xổm cạnh bánh xe, sử dụng con đội (kích) để thao tác thay lốp xe (changing the tire) trong gara, khớp với câu C."
+  },
+  {
+    "id": 6,
+    "audioName": "p1_q06.mp3",
+    "imageName": "p1_img06.png",
+    "correctAnswer": "C",
+    "script": "A. She has some grocery bags.\nB. She is holding some flowers.\nC. She's reaching out to pick up a vegetable.\nD. She's washing the fruits.",
+    "explanation": "Người phụ nữ đang vươn tay (reaching out) ra để lấy một loại rau củ quả (vegetable - quả ớt chuông) tại quầy siêu thị, khớp với câu C."
+  },
+  {
+    "id": 7,
+    "audioName": "p1_q07.mp3",
+    "imageName": "p1_img07.png",
+    "correctAnswer": "B",
+    "script": "A. They are drinking cups of coffee.\nB. He's pointing at some information.\nC. The man is writing something on the document.\nD. All of the women are looking at the man.",
+    "explanation": "Người đàn ông đang đứng thuyết trình và chỉ tay (pointing) vào các thông tin trên bảng (flipchart), khớp với câu B."
+  },
+  {
+    "id": 8,
+    "audioName": "p1_q08.mp3",
+    "imageName": "p1_img08.png",
+    "correctAnswer": "A",
+    "script": "A. One of the women is handing some paper to the man.\nB. They are all using laptops.\nC. The lady is typing on the laptop.\nD. The man is presenting in the office.",
+    "explanation": "Một người phụ nữ đang vươn tay đưa một số giấy tờ cho người đàn ông đối diện ngang qua bàn họp, khớp với câu A."
+  },
+  {
+    "id": 9,
+    "audioName": "p1_q09.mp3",
+    "imageName": "p1_img09.png",
+    "correctAnswer": "C",
+    "script": "A. There are many people in the store.\nB. She is purchasing a garment.\nC. She is looking at some clothing.\nD. There are clothes on all the coat hangers.",
+    "explanation": "Người phụ nữ đang cầm và ngắm nghía một chiếc áo (trang phục) đang treo trên giá, khớp với câu C."
+  },
+  {
+    "id": 10,
+    "audioName": "p1_q10.mp3",
+    "imageName": "p1_img10.png",
+    "correctAnswer": "C",
+    "script": "A. The woman is looking at the computer.\nB. The woman is typing on the computer.\nC. The woman is taking a phone call.\nD. The woman is talking on the cell phone.",
+    "explanation": "Người phụ nữ đang mỉm cười và nhận một cuộc gọi từ điện thoại bàn (taking a phone call) tại nơi làm việc, khớp với câu C. (Câu D sai vì đó không phải điện thoại di động)."
+  },
+  {
+    "id": 11,
+    "audioName": "p1_q11.mp3",
+    "imageName": "p1_img11.png",
+    "correctAnswer": "D",
+    "script": "A. A lecture is being given in a boardroom.\nB. The woman has gotten up from the chair.\nC. A diagram is being drawn on the board by the woman.\nD. Some documents have been placed on the table.",
+    "explanation": "Do dữ liệu nguồn không cung cấp hình ảnh số 11, đáp án D được giả định là đúng dựa trên các tình huống miêu tả vật tĩnh thường thấy trong TOEIC."
+  },
+  {
+    "id": 12,
+    "audioName": "p1_q12.mp3",
+    "imageName": "p1_img12.png",
+    "correctAnswer": "B",
+    "script": "A. Attendance at the event is higher than it normally is.\nB. Several people are focusing on the man standing up.\nC. The professor is lecturing to the students in his class.\nD. Notes are being taken about the lessons being learned.",
+    "explanation": "Trong phòng họp, một vài người đang hướng sự chú ý (focusing) vào người đàn ông đang đứng thuyết trình, khớp với câu B."
+  },
+  {
+    "id": 13,
+    "audioName": "p1_q13.mp3",
+    "imageName": "p1_img13.png",
+    "correctAnswer": "C",
+    "script": "A. The farmer is sewing some crops in the field.\nB. The sewing machine is being used.\nC. The woman is cutting something with scissors.\nD. The clothes are being stitched by the woman.",
+    "explanation": "Người phụ nữ đang dùng kéo cắt một tấm vải đặt trên mặt bàn, khớp với câu C. Chiếc máy may bên cạnh không có người thao tác, nên câu B sai."
+  },
+  {
+    "id": 14,
+    "audioName": "p1_q14.mp3",
+    "imageName": "p1_img14.png",
+    "correctAnswer": "C",
+    "script": "A. Firemen are spraying the fire with water from the hose.\nB. The crops in the garden are being watered.\nC. Workmen with tools are walking in the same direction.\nD. People are enjoying playing in the water.",
+    "explanation": "Hai người công nhân mặc áo phản quang, tay cầm dụng cụ (vòi xịt nước và chổi) đang bước đi cùng về một hướng để xịt rửa đường, khớp với câu C."
+  },
+  {
+    "id": 15,
+    "audioName": "p1_q15.mp3",
+    "imageName": "p1_img15.png",
+    "correctAnswer": "A",
+    "script": "A. He is looking at a newspaper.\nB. He is reading a letter.\nC. He is reviewing some documents indoors.\nD. He is arranging some tables.",
+    "explanation": "Người đàn ông đội mũ đang ngồi tại quán cà phê ngoài trời và đang nhìn vào một tờ báo (newspaper), khớp với câu A."
+  },
+  {
+    "id": 16,
+    "audioName": "p1_q16.mp3",
+    "imageName": "p1_img16.png",
+    "correctAnswer": "B",
+    "script": "A. A man is pushing a cart.\nB. A man is guiding a stroller.\nC. A man is walking a dog.\nD. A man is strolling along the lake.",
+    "explanation": "Người đàn ông đang kéo và điều khiển (guiding) một chiếc xe đẩy trẻ em (stroller) trên bãi cát, khớp với câu B."
+  },
+  {
+    "id": 17,
+    "audioName": "p1_q17.mp3",
+    "imageName": "p1_img17.png",
+    "correctAnswer": "A",
+    "script": "A. He is clearing snow off the roof.\nB. He is shoveling snow off the street.\nC. He is digging a hole with a tool.\nD. He is fixing the roof.",
+    "explanation": "Người đàn ông đang dùng xẻng để xúc và dọn dẹp lớp tuyết dày (clearing snow) trên mái nhà, khớp với câu A."
+  },
+  {
+    "id": 18,
+    "audioName": "p1_q18.mp3",
+    "imageName": "p1_img18.png",
+    "correctAnswer": "C",
+    "script": "A. A woman is walking across the street.\nB. A woman is carrying a backpack.\nC. A woman is holding an umbrella.\nD. A woman is folding up an umbrella.",
+    "explanation": "Người phụ nữ đang đi bộ trên đường và đang che/giữ một chiếc ô (holding an umbrella) đang mở, khớp với câu C."
+  },
+  {
+    "id": 19,
+    "audioName": "p1_q19.mp3",
+    "imageName": "p1_img19.png",
+    "correctAnswer": "C",
+    "script": "A. The blinds are being closed.\nB. There are four chairs around the table.\nC. A hat has been put on the table.\nD. A globe has been placed next to the vase.",
+    "explanation": "Có một chiếc mũ rộng vành được đặt trên chiếc bàn vuông cạnh cửa sổ, khớp với câu C."
+  },
+  {
+    "id": 20,
+    "audioName": "p1_q20.mp3",
+    "imageName": "p1_img20.png",
+    "correctAnswer": "D",
+    "script": "A. All the people are wearing helmets.\nB. Some people are walking along the train platform.\nC. The train is pulling out of the station.\nD. Nobody is riding a bicycle.",
+    "explanation": "Trong ảnh chụp tại sân ga, hai người đang đứng/ngồi nghỉ ngơi và các xe đạp đang được dựng lại, không có ai đang đạp xe, khớp với câu D."
+  },
+  {
+    "id": 21,
+    "audioName": "p1_q21.mp3",
+    "imageName": "p1_img21.png",
+    "correctAnswer": "C",
+    "script": "A. He's opening a bag.\nB. He's riding on a bicycle.\nC. He's wearing a pair of sunglasses.\nD. He's sitting on some rocks.",
+    "explanation": "Do dữ liệu nguồn không cung cấp hình ảnh số 21, đáp án C được giả định chọn làm đáp án dựa trên phán đoán logic ngẫu nhiên."
+  },
+  {
+    "id": 22,
+    "audioName": "p1_q22.mp3",
+    "imageName": "p1_img22.png",
+    "correctAnswer": "C",
+    "script": "A. He is standing beside a sofa.\nB. He is turning on a TV.\nC. He is wiping some furniture.\nD. He is hanging a mirror.",
+    "explanation": "Người đàn ông mặc đồ bảo hộ đang dùng khăn để lau chùi một chiếc kệ (đồ nội thất - furniture), khớp với câu C."
+  },
+  {
+    "id": 23,
+    "audioName": "p1_q23.mp3",
+    "imageName": "p1_img23.png",
+    "correctAnswer": "A",
+    "script": "A. They're looking at a book.\nB. They're trying to cook.\nC. They're reading a newspaper.\nD. They're greeting each other.",
+    "explanation": "Do dữ liệu nguồn không cung cấp hình ảnh số 23, đáp án A được giả định chọn dựa trên phán đoán ngẫu nhiên."
+  },
+  {
+    "id": 24,
+    "audioName": "p1_q24.mp3",
+    "imageName": "p1_img24.png",
+    "correctAnswer": "A",
+    "script": "A. He's fixing the car.\nB. He's opening the hood.\nC. He's working on a farm.\nD. He's mixing something good.",
+    "explanation": "Người thợ máy đang làm việc dưới nắp capo ô tô đang mở rộng, thực hiện thao tác sửa chữa động cơ xe (fixing the car), khớp với câu A."
+  },
+  {
+    "id": 25,
+    "audioName": "p1_q25.mp3",
+    "imageName": "p1_img25.png",
+    "correctAnswer": "C",
+    "script": "A. A picture is hanging on the wall.\nB. The basket is empty.\nC. There's a picture on the table.\nD. The bread is on the plate.",
+    "explanation": "Trên bàn có một bình nước (pitcher). Lời đọc (script) cố tình dùng từ 'picture' do lỗi bẫy đồng âm phổ biến trong TOEIC (pitcher/picture). Chọn C vì nó phản ánh vật thể đang nằm trên bàn (bình nước) trong bức ảnh thực tế."
+  }
+]

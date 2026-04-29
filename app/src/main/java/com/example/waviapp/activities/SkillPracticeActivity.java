@@ -129,7 +129,7 @@ public class SkillPracticeActivity extends BaseActivity {
                 } else if (CAT_LISTEN.equals(category)) {
                     switch (index) {
                         case 0:
-                            Toast.makeText(this, "Tính năng đang được cập nhật", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(this, Part1SetActivity.class));
                             break;
                         case 1:
                             startActivity(new Intent(this, Part2SetActivity.class));
