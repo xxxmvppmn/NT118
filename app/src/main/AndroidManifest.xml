@@ -33,11 +33,17 @@
             </intent-filter>
         </activity>
 
-        <!-- TOEIC Listening Part 3 -->
+        <!-- TOEIC Listening Part 3 & 4 (Dùng chung) -->
         <activity
             android:name=".activities.Part3SetActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.Part34Activity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- TOEIC Listening Part 3 (Old - keep for safety or remove if unused) -->
         <activity
             android:name=".activities.Part3Activity"
             android:exported="false"
@@ -111,9 +117,6 @@
             android:name=".activities.PremiumActivity"
             android:exported="false"
             android:launchMode="singleTask" />
-        <activity
-            android:name=".activities.LoginActivity"
-            android:exported="false" />
         <activity
             android:name=".activities.HomeActivity"
             android:exported="false"

@@ -109,8 +109,6 @@ public class Part3Adapter extends RecyclerView.Adapter<Part3Adapter.QuestionView
         holder.tvExplanation.setText(questions.get(position).getExplanation());
         holder.tvExplanation.setVisibility(View.VISIBLE);
 
-        // Nếu đã trả lời rồi thì updateButtonStyle đã lo phần màu sắc
-        // Nếu chưa trả lời mà đã bấm xem đáp án, ta highlight câu đúng
         if (!userAnswers.containsKey(position)) {
             String correct = questions.get(position).getCorrectAnswer();
             Button[] buttons = {holder.btnA, holder.btnB, holder.btnC, holder.btnD};
@@ -123,7 +121,6 @@ public class Part3Adapter extends RecyclerView.Adapter<Part3Adapter.QuestionView
                 buttons[i].setEnabled(false);
             }
         } else {
-            // Re-apply selection styles to ensure consistency after scroll/rebind
             String selected = userAnswers.get(position);
             String correct = questions.get(position).getCorrectAnswer();
             updateButtonStyle(holder, selected, selected.equals(correct), correct);
@@ -132,11 +129,11 @@ public class Part3Adapter extends RecyclerView.Adapter<Part3Adapter.QuestionView
 
     private void resetButtonStyles(QuestionViewHolder holder, int position) {
         Button[] buttons = {holder.btnA, holder.btnB, holder.btnC, holder.btnD};
-        int purpleMain = Color.parseColor("#9370DB");
 
         for (Button btn : buttons) {
-            btn.setBackgroundTintList(ColorStateList.valueOf(purpleMain));
-            btn.setTextColor(Color.WHITE);
+            // Đặt lại nền trắng và chữ xám đậm như Part 2
+            btn.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
+            btn.setTextColor(Color.parseColor("#333333"));
             btn.setEnabled(true);
         }
 

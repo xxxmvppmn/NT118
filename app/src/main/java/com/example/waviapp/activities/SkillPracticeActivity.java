@@ -119,20 +119,31 @@ public class SkillPracticeActivity extends BaseActivity {
 
             itemView.setOnClickListener(v -> {
                 if (CAT_READ.equals(category)) {
-                    if (parts[index].equals(getString(R.string.read_part1))) {
+                    if (index == 0) {
                         startActivity(new Intent(this, Part5SetActivity.class));
-                    } else if (parts[index].equals(getString(R.string.read_part2))) {
+                    } else if (index == 1) {
                         startActivity(new Intent(this, Part6SetActivity.class));
-                    } else if (parts[index].equals(getString(R.string.read_part3))) {
+                    } else if (index == 2) {
                         startActivity(new Intent(this, Part7SetActivity.class));
                     }
                 } else if (CAT_LISTEN.equals(category)) {
-                    if (parts[index].equals(getString(R.string.listen_part2))) {
-                        startActivity(new Intent(this, Part2SetActivity.class));
-                    } else if (parts[index].equals(getString(R.string.listen_part3))) {
-                        startActivity(new Intent(this, Part3SetActivity.class));
-                    } else {
-                        Toast.makeText(this, "Tính năng đang được cập nhật", Toast.LENGTH_SHORT).show();
+                    switch (index) {
+                        case 0:
+                            Toast.makeText(this, "Tính năng đang được cập nhật", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 1:
+                            startActivity(new Intent(this, Part2SetActivity.class));
+                            break;
+                        case 2:
+                            Intent intent3 = new Intent(this, Part3SetActivity.class);
+                            intent3.putExtra("PART_TYPE", 3);
+                            startActivity(intent3);
+                            break;
+                        case 3:
+                            Intent intent4 = new Intent(this, Part3SetActivity.class);
+                            intent4.putExtra("PART_TYPE", 4);
+                            startActivity(intent4);
+                            break;
                     }
                 } else if (CAT_SPEAK.equals(category)) {
                     Intent intent = new Intent(this, SpeakSetActivity.class);

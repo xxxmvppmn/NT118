@@ -1,0 +1,562 @@
+[
+  {
+    "passageId": 1,
+    "audioName": "p4_q01.mp3",
+    "transcript": "Amy, it is your responsibility to check that the store is clean and well stocked for customers before we open for the day. Most importantly, I would like you to make sure that the proper price tags are displayed in front of their corresponding products. Customers get really confused and upset when the price of a product is displayed incorrectly. In the case that a customer ever does get displeased, please let me know right away so I can come and deal with the problem in person. [1]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Number 71. Where most likely does the speaker work?",
+        "options": ["A. At a retail store", "B. At a hospital", "C. At a restaurant", "D. At a post office"],
+        "correctAnswer": "A",
+        "explanation": "Từ khóa 'store is clean', 'price tags' và 'products' chỉ ra người nói làm việc tại cửa hàng bán lẻ [1]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Number 72. What does the listener asked to double-check?",
+        "options": ["A. The store hours", "B. The proper price tags", "C. The product inventory", "D. The customer list"],
+        "correctAnswer": "B",
+        "explanation": "Người nói nhắc nhở: 'make sure that the proper price tags are displayed' (đảm bảo hiển thị đúng thẻ giá) [1]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "Number 73. When should the listener contact the speaker?",
+        "options": ["A. When a delivery arrives", "B. When the store closes", "C. When a customer is displeased", "D. When products are out of stock"],
+        "correctAnswer": "C",
+        "explanation": "Từ khóa 'In the case that a customer ever does get displeased, please let me know right away' (nếu khách hàng không hài lòng, hãy báo ngay) [1]."
+      }
+    ]
+  },
+  {
+    "passageId": 2,
+    "audioName": "p4_q02.mp3",
+    "transcript": "Hello, my name is Rick Dunn. I was in your store today and I'm worried I may have left my wallet there. Earlier today, I was in the home furniture section looking at some couches. I think my wallet may have slipped out of my pocket while sitting on one of the couches. If you could please look for it, I would really appreciate it. I'd like to stop by your store when you open it at 9:00 a.m. tomorrow. I hope you have good news for me. My phone number is 0235556541. Thank you in advance. [2]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Number 71. Who is the message probably for?",
+        "options": ["A. A store employee", "B. A repairperson", "C. A bank teller", "D. A police officer"],
+        "correctAnswer": "A",
+        "explanation": "Khách hàng nói 'I was in your store today' (tôi đã ở cửa hàng của bạn hôm nay), vậy tin nhắn gửi cho nhân viên cửa hàng [2]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Number 72. According to the speaker, when does he think he lost his wallet?",
+        "options": ["A. While walking outside", "B. While sitting on a couch", "C. While paying at the register", "D. While driving his car"],
+        "correctAnswer": "B",
+        "explanation": "Từ khóa 'wallet may have slipped out... while sitting on one of the couches' (ví có thể rơi khi ngồi trên ghế sofa) [2]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "Number 73. What does the speaker plan to do?",
+        "options": ["A. Cancel a credit card", "B. Call back later", "C. Stop by the store at 9:00 a.m.", "D. Buy a new couch"],
+        "correctAnswer": "C",
+        "explanation": "Người nói đề cập 'I'd like to stop by your store when you open it at 9:00 a.m.' (tôi muốn ghé qua lúc 9 giờ sáng) [2]."
+      }
+    ]
+  },
+  {
+    "passageId": 3,
+    "audioName": "p4_q03.mp3",
+    "transcript": "Hello, my name is Alice Keller. I'm calling to reserve some tables for a private party next Thursday. I've been a loyal customer of your restaurant for years and trust it will be the perfect place for my wedding afterparty. We are expecting around 50 guests and will pay for food and drinks to be served to all guests. One of our requests is that vegetarian options be available for some guests. [3]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Number 71. Why is the speaker calling?",
+        "options": ["A. To reserve tables for a party", "B. To order takeout", "C. To apply for a job", "D. To complain about the food"],
+        "correctAnswer": "A",
+        "explanation": "Từ khóa 'calling to reserve some tables for a private party' (gọi để đặt bàn cho một bữa tiệc riêng) [3]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Number 72. What will the speaker celebrate next week?",
+        "options": ["A. A birthday", "B. A wedding afterparty", "C. An anniversary", "D. A graduation"],
+        "correctAnswer": "B",
+        "explanation": "Từ khóa 'perfect place for my wedding afterparty' (địa điểm hoàn hảo cho tiệc sau lễ cưới) [3]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "Number 73. What does the speaker want the listener to do?",
+        "options": ["A. Send a menu", "B. Change a reservation time", "C. Provide vegetarian options", "D. Confirm the guest list"],
+        "correctAnswer": "C",
+        "explanation": "Người nói yêu cầu 'vegetarian options be available for some guests' (chuẩn bị món chay cho một số khách) [3]."
+      }
+    ]
+  },
+  {
+    "passageId": 4,
+    "audioName": "p4_q04.mp3",
+    "transcript": "Attention conference attendees. Thank you for your patience while you wait for us to solve this delay. Unfortunately, the computer that is to be used during the keynote speaker presentation is having problems. As a result, we are currently transferring the necessary files onto a different computer. We plan to get underway with the presentation in half an hour. In the meantime, feel free to enjoy some of the refreshments provided near the entrance. We will dim the lights in order to indicate that the presentation will be beginning. Please return to your seats at that time. [4]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Number 71. What is causing a delay?",
+        "options": ["A. A computer problem", "B. Traffic congestion", "C. A missing speaker", "D. Bad weather"],
+        "correctAnswer": "A",
+        "explanation": "Từ khóa 'the computer... is having problems' (máy tính đang gặp sự cố) [4]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Number 72. According to the speaker, after how long will the presentation begin?",
+        "options": ["A. In 15 minutes", "B. In half an hour", "C. In one hour", "D. Immediately"],
+        "correctAnswer": "B",
+        "explanation": "Từ khóa 'get underway with the presentation in half an hour' (bài thuyết trình sẽ bắt đầu trong nửa giờ nữa) [4]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "Number 73. What will happen when the listeners should return?",
+        "options": ["A. A bell will ring", "B. An announcement will be made", "C. The lights will be dimmed", "D. Music will play"],
+        "correctAnswer": "C",
+        "explanation": "Từ khóa 'We will dim the lights in order to indicate that the presentation will be beginning' (Chúng tôi sẽ giảm độ sáng đèn báo hiệu) [4]."
+      }
+    ]
+  },
+  {
+    "passageId": 5,
+    "audioName": "p4_q05.mp3",
+    "transcript": "Hello, Miss Grayson. This is Michael Cook calling from Alliance Financial Bank. It has recently come to my attention that some clients who renewed their credit card this month were sent the wrong card. We have had multiple calls from bank members saying that they were sent a credit card with someone else's name on it. According to our records, you were also sent the wrong credit card. We ask that you please dispose of the credit card by cutting it with a pair of scissors. In the meantime, we will issue to a new credit card and have it delivered by express mail. We apologize for the inconvenience. [5]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Number 71. Where does the speaker work?",
+        "options": ["A. At a bank", "B. At a post office", "C. At an accounting firm", "D. At a retail store"],
+        "correctAnswer": "A",
+        "explanation": "Từ khóa 'calling from Alliance Financial Bank' (gọi từ Ngân hàng Alliance Financial) [5]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Number 72. What does the speaker apologize for?",
+        "options": ["A. A delayed shipment", "B. Sending the wrong credit card", "C. Overcharging an account", "D. Losing a document"],
+        "correctAnswer": "B",
+        "explanation": "Ngân hàng xin lỗi vì đã 'sent the wrong credit card' (gửi nhầm thẻ tín dụng) [5]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "Number 73. What does the speaker ask the listener to do?",
+        "options": ["A. Call back later", "B. Visit the branch", "C. Dispose of the card by cutting it", "D. Sign a form"],
+        "correctAnswer": "C",
+        "explanation": "Từ khóa 'dispose of the credit card by cutting it with a pair of scissors' (vứt thẻ bằng cách cắt nó đi) [5]."
+      }
+    ]
+  },
+  {
+    "passageId": 6,
+    "audioName": "p4_q06.mp3",
+    "transcript": "You are listening to the news for the town of Clinton on your local CCBN radio station. School district officials have announced that they will be extending the deadline for new candidates to register for the upcoming school board election this May. Remember, you can find the location for your voting district by visiting the official website of the town of Clinton. We encourage all of the citizens of Clinton to exercise their right to vote in the May election. [6]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Number 71. What is the announcement about?",
+        "options": ["A. Extending an election registration deadline", "B. Opening a new school", "C. Hiring new teachers", "D. Changing radio frequencies"],
+        "correctAnswer": "A",
+        "explanation": "Từ khóa 'extending the deadline for new candidates to register' (gia hạn hạn chót đăng ký ứng cử viên mới) [6]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Number 72. What can listeners do on the website?",
+        "options": ["A. Read the news", "B. Find their voting district location", "C. Download a form", "D. Listen to a broadcast"],
+        "correctAnswer": "B",
+        "explanation": "Từ khóa 'find the location for your voting district by visiting the official website' (tìm địa điểm khu vực bỏ phiếu trên website) [6]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "Number 73. What are listeners encouraged to do?",
+        "options": ["A. Donate to a school", "B. Attend a meeting", "C. Vote in the May election", "D. Volunteer for a campaign"],
+        "correctAnswer": "C",
+        "explanation": "Từ khóa 'encourage all of the citizens of Clinton to exercise their right to vote' (khuyến khích người dân đi bỏ phiếu) [6]."
+      }
+    ]
+  },
+  {
+    "passageId": 7,
+    "audioName": "p4_q07.mp3",
+    "transcript": "Are you feeling down this fall season? Then come down to Kim's Taewondo Center and energize yourself with the healthy and exciting sport of taekwond do. We are offering a special discounted membership to those with no prior experience. So even if it's your first time, don't hesitate. Come sign up today. We are located on Main Street. You can also come by bus by getting off at the bus stop near Gella Bank. Now is the time to refresh yourself with Taekwond do [7]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Number 71. What is the advertisement about?",
+        "options": ["A. A martial arts center", "B. A fitness gym", "C. A sports goods store", "D. A health clinic"],
+        "correctAnswer": "A",
+        "explanation": "Từ khóa 'Kim's Taewondo Center' và 'sport of taekwond do' cho thấy đây là quảng cáo về trung tâm võ thuật [7]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Number 72. Who is the special offer directed at?",
+        "options": ["A. Professional athletes", "B. People with no prior experience", "C. Children under 12", "D. Returning members"],
+        "correctAnswer": "B",
+        "explanation": "Từ khóa 'discounted membership to those with no prior experience' (giảm giá cho người chưa có kinh nghiệm) [7]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "Number 73. What does the speaker say about the advertised location?",
+        "options": ["A. It has free parking", "B. It is currently closed", "C. It is located on Main Street", "D. It recently moved"],
+        "correctAnswer": "C",
+        "explanation": "Người nói chỉ rõ 'We are located on Main Street' (Chúng tôi nằm trên đường Main Street) [7]."
+      }
+    ]
+  },
+  {
+    "passageId": 8,
+    "audioName": "p4_q08.mp3",
+    "transcript": "Hello passengers. This is an announcement from your conductor. Due to a freight train stalled at the next station, our departure will be delayed. The train ahead of us seems to be suffering a slight malfunction. Once you receive official permission from the traffic control center, we will proceed as normal. Unfortunately, we will arrive a little bit later than the scheduled arrival time. We apologize for this inconvenience. Please adjust your plans accordingly. Thank you for your patience. We should be on the move shortly. [8]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Number 71. Where does the announcement most likely take place?",
+        "options": ["A. On a train", "B. On an airplane", "C. At a bus station", "D. On a boat"],
+        "correctAnswer": "A",
+        "explanation": "Từ khóa 'passengers', 'conductor' (người soát vé) và 'freight train' (tàu chở hàng) chỉ ra thông báo trên tàu hoả [8]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Number 72. What is the speaker waiting for?",
+        "options": ["A. More passengers", "B. Official permission from the control center", "C. The weather to clear", "D. A maintenance crew"],
+        "correctAnswer": "B",
+        "explanation": "Từ khóa 'Once you receive official permission from the traffic control center' (chờ nhận được sự cho phép từ trung tâm) [8]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "Number 73. What does the speaker suggest listeners do?",
+        "options": ["A. Read a magazine", "B. Ask for a refund", "C. Adjust their plans accordingly", "D. Exit the vehicle"],
+        "correctAnswer": "C",
+        "explanation": "Người nói khuyên: 'Please adjust your plans accordingly' (Vui lòng điều chỉnh kế hoạch của bạn cho phù hợp) [8]."
+      }
+    ]
+  },
+  {
+    "passageId": 9,
+    "audioName": "p4_q09.mp3",
+    "transcript": "Hello, this is Sam Booth calling from Crimson Realy. This message is for Jordan King. I am happy to say that someone is interested in making an offer on your house. I would like to stop by with a potential buyer this Thursday to discuss the sale in more detail. Please let me know what time on Thursday you're available and I'll arrange a time with a potential buyer. In the meantime, I suggest you clean up the house so it looks as impressive as possible for Thursday. Thank you. [9]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Number 71. Who most likely is the speaker?",
+        "options": ["A. A real estate agent", "B. A home inspector", "C. A cleaning service owner", "D. A construction worker"],
+        "correctAnswer": "A",
+        "explanation": "Từ khóa 'Crimson Realy', 'offer on your house', 'potential buyer' cho thấy người nói là đại lý bất động sản [9]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Number 72. Why would the speaker like to arrange a meeting?",
+        "options": ["A. To sign a lease", "B. To discuss a sale with a buyer", "C. To appraise a property", "D. To review a contract"],
+        "correctAnswer": "B",
+        "explanation": "Người nói hẹn 'discuss the sale in more detail' với 'potential buyer' (thảo luận chi tiết về việc bán với người mua tiềm năng) [9]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "Number 73. What does the speaker suggest doing?",
+        "options": ["A. Moving furniture", "B. Taking photos", "C. Cleaning up the house", "D. Painting the walls"],
+        "correctAnswer": "C",
+        "explanation": "Người nói đề xuất 'I suggest you clean up the house' (Tôi khuyên bạn nên dọn dẹp nhà cửa) [9]."
+      }
+    ]
+  },
+  {
+    "passageId": 10,
+    "audioName": "p4_q10.mp3",
+    "transcript": "Hello, Miss Jansen. It's Kate Douglas. I'm so grateful that you offered to babysit my son, Michael, this weekend. As you know, something urgent came up and I have to be away on business this weekend. An important merger will take place in April, and I need to be in New York in order to lead a meeting between my company and NX Electronics. Oh, and also, please let me know how much you expect to be compensated for babysitting. Thanks again. [10]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Number 71. What did the listener offer to do?",
+        "options": ["A. Babysit the speaker's son", "B. Drive to the airport", "C. Book a hotel room", "D. Lead a meeting"],
+        "correctAnswer": "A",
+        "explanation": "Từ khóa 'you offered to babysit my son' (bạn đã đề nghị trông con trai tôi) [10]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Number 72. What will happen in April?",
+        "options": ["A. A vacation", "B. An important merger", "C. A job interview", "D. A training session"],
+        "correctAnswer": "B",
+        "explanation": "Từ khóa 'An important merger will take place in April' (Một vụ sáp nhập quan trọng sẽ diễn ra vào tháng Tư) [10]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "Number 73. What will the listener most likely inform the speaker about?",
+        "options": ["A. A flight schedule", "B. A contact number", "C. The expected compensation", "D. A new policy"],
+        "correctAnswer": "C",
+        "explanation": "Người nói yêu cầu 'let me know how much you expect to be compensated' (hãy cho tôi biết bạn mong đợi thù lao bao nhiêu) [10]."
+      }
+    ]
+  },
+  {
+    "passageId": 11,
+    "audioName": "p4_q11.mp3",
+    "transcript": "Before we close this meeting, there's one more thing I'd like to cover. I'm well aware of the problems at the Dayton factory. A team of inspectors was sent there to look at the problems this morning, so none of you needs to worry about that anymore since we're handling the issue. I would, however, like to thank all of you who reported the problems to me. Your observations may have helped us avoid a catastrophe, and that's something I'd like to remind everyone to do. When you see something wrong, let a supervisor know immediately. That's how we can prevent small issues from transforming into major problems. [11]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Number 71. Where most likely does the talk take place?",
+        "options": ["A. At a company meeting", "B. In a factory warehouse", "C. At a press conference", "D. In a laboratory"],
+        "correctAnswer": "A",
+        "explanation": "Từ khóa 'Before we close this meeting' (Trước khi chúng ta kết thúc cuộc họp này) [11]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Number 72. What does the speaker say about the Dayton facility?",
+        "options": ["A. It will be closed down", "B. Inspectors were sent there", "C. It needs more staff", "D. Production is increasing"],
+        "correctAnswer": "B",
+        "explanation": "Từ khóa 'A team of inspectors was sent there' (Một nhóm thanh tra đã được cử đến đó) [11]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "Number 73. What does the speaker tell the listeners to do?",
+        "options": ["A. Fill out a form", "B. Attend a workshop", "C. Report problems to a supervisor", "D. Check their emails"],
+        "correctAnswer": "C",
+        "explanation": "Từ khóa 'When you see something wrong, let a supervisor know immediately' (hãy báo cho giám sát viên ngay lập tức) [11]."
+      }
+    ]
+  },
+  {
+    "passageId": 12,
+    "audioName": "p4_q12.mp3",
+    "transcript": "My next guest on tonight's show is one of the city's most popular residents. One year ago, Jeff Gonzalez was a guy who sometimes sang at weddings to earn a few extra dollars. But when he performed at a wedding last August, a music producer happened to be in attendance. Fascinated by his voice, the producer signed Jeff to a contract on the spot. In the following 10 months, Jeff has produced two number one singles and sold more than 2 million copies of his debut album. He's going to be here in my studio performing his latest song, right after we listen to a few words from our sponsors. [12]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Number 71. Who most likely is the speaker?",
+        "options": ["A. A talk show host", "B. A music producer", "C. A wedding planner", "D. A journalist"],
+        "correctAnswer": "A",
+        "explanation": "Từ khóa 'My next guest on tonight's show' và 'in my studio' cho thấy người nói là người dẫn chương trình [12]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Number 72. What happened to Jeff Gonzalez last year?",
+        "options": ["A. He started a new business", "B. He signed a contract with a producer", "C. He moved to a new city", "D. He won an award"],
+        "correctAnswer": "B",
+        "explanation": "Từ khóa 'producer signed Jeff to a contract on the spot' (nhà sản xuất ký hợp đồng ngay lập tức với Jeff) [12]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "Number 73. What will the listeners hear next?",
+        "options": ["A. A live performance", "B. An interview", "C. A few words from sponsors", "D. A news update"],
+        "correctAnswer": "C",
+        "explanation": "Từ khóa 'right after we listen to a few words from our sponsors' (ngay sau khi nghe vài lời từ nhà tài trợ) [12]."
+      }
+    ]
+  },
+  {
+    "passageId": 13,
+    "audioName": "p4_q13.mp3",
+    "transcript": "Phipe, this is Fred Reynolds in marketing. I'm calling regarding the work I'm doing on the Simpson project. I'm afraid I'm going to require an extension. Instead of finishing the work on Friday, as we had originally discussed, I'd like to change the due date to next Wednesday. I apologize for requesting this change, but Tina Westerly, the head of my department, just assigned me to work with Dave Powers in accounting on his project. Apparently, Dave is progressing slowly and is way behind schedule, and she wants it done no later than Thursday. Once we complete it, I can resume been working on our project. [13]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Number 71. What is the purpose of the call?",
+        "options": ["A. To ask for a deadline extension", "B. To request more funding", "C. To schedule a meeting", "D. To resign from a project"],
+        "correctAnswer": "A",
+        "explanation": "Từ khóa 'I'm going to require an extension' và 'change the due date' (yêu cầu gia hạn, thay đổi ngày đến hạn) [13]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Number 72. Where most likely does Tina Westerly work?",
+        "options": ["A. In human resources", "B. In the marketing department", "C. In accounting", "D. In sales"],
+        "correctAnswer": "B",
+        "explanation": "Người nói tự giới thiệu 'in marketing' và nói Tina là 'the head of my department' (trưởng phòng của tôi) [13]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "Number 73. What Does the speaker say he needs to do?",
+        "options": ["A. Travel for business", "B. Hire a new assistant", "C. Work with Dave Powers in accounting", "D. Submit a report"],
+        "correctAnswer": "C",
+        "explanation": "Từ khóa 'assigned me to work with Dave Powers in accounting' (phân công làm việc với Dave Powers bên kế toán) [13]."
+      }
+    ]
+  },
+  {
+    "passageId": 14,
+    "audioName": "p4_q14.mp3",
+    "transcript": "Good afternoon, Craig. It's Julie. I'm afraid I'm going to miss our meeting 30 minutes from now. I was on my way to your office when I received a call from my son's school. Apparently, he broke his leg while playing soccer during recess. So, he has been taken to the hospital. I've got to get there as soon as I can. So, that's where I'm heading now. Would you mind meeting me tomorrow in the afternoon? I'm available anytime after lunch. How about sending me a text message since I won't be able to answer my phone at the hospital? I hope you understand. [14]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Number 71. What is the problem?",
+        "options": ["A. Her son broke his leg", "B. She is stuck in traffic", "C. She forgot her documents", "D. Her car broke down"],
+        "correctAnswer": "A",
+        "explanation": "Từ khóa 'he broke his leg... taken to the hospital' (con trai bị gãy chân và phải tới bệnh viện) [14]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Number 72. When does the speaker want to meet Craig?",
+        "options": ["A. Next week", "B. Tomorrow afternoon", "C. Later today", "D. On the weekend"],
+        "correctAnswer": "B",
+        "explanation": "Từ khóa 'Would you mind meeting me tomorrow in the afternoon?' (Bạn có phiền gặp tôi chiều mai không?) [14]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "Number 73. What does the speaker ask Craig to do?",
+        "options": ["A. Call her office", "B. Reschedule the venue", "C. Send a text message", "D. Email the documents"],
+        "correctAnswer": "C",
+        "explanation": "Từ khóa 'How about sending me a text message' (Hãy gửi tin nhắn văn bản cho tôi nhé) [14]."
+      }
+    ]
+  },
+  {
+    "passageId": 15,
+    "audioName": "p4_q15.mp3",
+    "transcript": "Good afternoon, Miss Garcia. This is Ron Taylor calling from Peace Home Depot. I'm calling to let you know that the lawnmower you ordered on January 13th has just arrived in our warehouse. We are going to get it delivered to your office in Atlanta within a week. As usual, our delivery men will leave an invoice with the receptionist at the front desk, but please be sure that our account number for making payments has recently been changed. You can find the new account number at the top of the invoice easily. Thanks and have a nice day. [15]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Number 71. Why does Mr. Taylor leave this message?",
+        "options": ["A. To inform about a delivery", "B. To apologize for a delay", "C. To confirm an address", "D. To request a refund"],
+        "correctAnswer": "A",
+        "explanation": "Từ khóa 'lawnmower you ordered... has just arrived... get it delivered' (máy cắt cỏ đã đến và sẽ được giao hàng) [15]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Number 72. What did Miss Garcia do on January 13th?",
+        "options": ["A. Opened an account", "B. Ordered a lawnmower", "C. Visited the store", "D. Paid a bill"],
+        "correctAnswer": "B",
+        "explanation": "Từ khóa 'the lawnmower you ordered on January 13th' (máy cắt cỏ bạn đặt hôm 13/1) [15]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "Number 73. What recently happened to Peace Home?",
+        "options": ["A. Their location moved", "B. They changed management", "C. Their account number changed", "D. They expanded their inventory"],
+        "correctAnswer": "C",
+        "explanation": "Từ khóa 'our account number for making payments has recently been changed' (số tài khoản thanh toán vừa bị thay đổi) [15]."
+      }
+    ]
+  },
+  {
+    "passageId": 16,
+    "audioName": "p4_q16.mp3",
+    "transcript": "Good evening listeners. This is Henry Gomez from KTN Radio Traffic News. Looking at the expressways, traffic is slowly starting to pick up as we head into the evening on Saturday. Particularly, there's a major delay at the West Coast Tunnel. It was reported that there's a collision between two vehicles inside the tunnel. This has forced the police to shut down one lane temporarily. The authorities said the tunnel won't reopen until past midnight as it takes time to have those cars towed from the tunnel. If you are driving into the city from the west side now, you are encouraged to take the Silver Bridge instead. Also, just as a note, if you're on southbound Interstate 75 near Waterlue River, please be aware that there is currently a high wind advisory out for that area. So, please drive safely. For more of your latest updates, keep it tuned to KTN Radio. The next traffic news will be aired in an hour. [16]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Number 71. When is this Report being aired?",
+        "options": ["A. On Saturday evening", "B. On Friday morning", "C. On Sunday afternoon", "D. On Monday night"],
+        "correctAnswer": "A",
+        "explanation": "Từ khóa 'as we head into the evening on Saturday' (khi chúng ta bước vào buổi tối thứ Bảy) [16]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Number 72. What is the cause of the delay at the tunnel?",
+        "options": ["A. Road construction", "B. A collision between two vehicles", "C. Heavy rain", "D. A broken traffic light"],
+        "correctAnswer": "B",
+        "explanation": "Từ khóa 'collision between two vehicles inside the tunnel' (va chạm giữa hai xe trong đường hầm) [16]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "Number 73. What is advised for drivers on Interstate 75?",
+        "options": ["A. Expect detours", "B. Use a different bridge", "C. Be aware of high wind", "D. Watch out for ice"],
+        "correctAnswer": "C",
+        "explanation": "Từ khóa 'Interstate 75... be aware that there is currently a high wind advisory' (lưu ý có cảnh báo gió giật mạnh) [16]."
+      }
+    ]
+  },
+  {
+    "passageId": 17,
+    "audioName": "p4_q17.mp3",
+    "transcript": "Are you interested in learning foreign languages? Do you suffer from a serious language barrier while you work or study? Then come to New Discovery Language Institution. Here are some unique benefits we can offer. First, all internet users can access us at any time from any computer, whether you are at school or at home. Second, our education material delivered to you is of the highest standard, so you don't have to worry about unsuitable material being used in class. Besides, Our professional instructors are all licensed and they have at least 5 years or more teaching experience. Finally, there is good news for those who want to learn Chinese. We are scheduled to open an introductory Chinese course next month for the first time in town. This class will meet two times a week for 3 months. If you sign up for the class within this week, we offer a 20% discount. If you want more information, please call our office at 1 800544123. [17]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Number 71. What is being advertised?",
+        "options": ["A. A language institution", "B. An online library", "C. A translation app", "D. A travel agency"],
+        "correctAnswer": "A",
+        "explanation": "Từ khóa 'learning foreign languages' và 'New Discovery Language Institution' chỉ ra đây là trung tâm ngoại ngữ [17]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Number 72. How often is the introductory Chinese class offered?",
+        "options": ["A. Once a week", "B. Two times a week", "C. Every day", "D. Once a month"],
+        "correctAnswer": "B",
+        "explanation": "Từ khóa 'This class will meet two times a week' (lớp học này sẽ gặp nhau 2 lần một tuần) [17]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "Number 73. What should a listener do to get a discount?",
+        "options": ["A. Refer a friend", "B. Pay in cash", "C. Sign up within this week", "D. Buy textbooks early"],
+        "correctAnswer": "C",
+        "explanation": "Từ khóa 'If you sign up for the class within this week, we offer a 20% discount' (nếu đăng ký trong tuần này sẽ được giảm giá 20%) [17]."
+      }
+    ]
+  },
+  {
+    "passageId": 18,
+    "audioName": "p4_q18.mp3",
+    "transcript": "Attention shoppers. Kmart is about to close in approximately 30 minutes. Please finish your shopping as soon as possible and come to one of our cash registers. Please be informed that our checkout counters will be closing at 9:00, so don't be late. If you have eight items or less, please proceed to counters number one through number three. They are our express counters. Don't forget to stop by our customer service desk where you can apply for our membership card, which will give you a 3% an extra discount on your total purchase. Finally, I'd like to remind you that our annual clearance sale will begin next Monday. Thank you and have a nice day. [18]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Number 71. What time most likely is the announcement being made?",
+        "options": ["A. At 8:30", "B. At 9:00", "C. At 9:30", "D. At 10:00"],
+        "correctAnswer": "A",
+        "explanation": "Từ khóa 'close in approximately 30 minutes' và 'closing at 9:00', suy ra thông báo được phát lúc 8:30 [18]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Number 72. What can shoppers do at counter number one?",
+        "options": ["A. Apply for membership", "B. Use the express checkout", "C. Return an item", "D. Pick up an order"],
+        "correctAnswer": "B",
+        "explanation": "Từ khóa 'counters number one through number three. They are our express counters' (quầy thanh toán nhanh) [18]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "Number 73. What will take place next Monday?",
+        "options": ["A. A staff meeting", "B. A store expansion", "C. An annual clearance sale", "D. A new product launch"],
+        "correctAnswer": "C",
+        "explanation": "Từ khóa 'our annual clearance sale will begin next Monday' (đợt xả hàng thường niên sẽ bắt đầu vào thứ Hai tới) [18]."
+      }
+    ]
+  },
+  {
+    "passageId": 19,
+    "audioName": "p4_q19.mp3",
+    "transcript": "Good afternoon everyone. I'm thrilled to introduce our new executive chef, Richard Jordan. He has been in the restaurant field for over 20 years. Over his career, he has worked in large cities such as LA and San Francisco. He also served as chef at the Lomato Hotel in Sacramento, where he also opened his own business. In addition, he is a recipient of numerous cooking awards. I'm sure he will play an important role in creating distinguished culinary tradition in our restaurant. through his creative dishes and wonderful flavors. There's more good news for us. He agreed to take charge of teaching our chef trainees. He has plenty of teaching experience and has taught college students at California Community College and led numerous cooking seminars. Please welcome Chef Jordan with our warm heart. [19]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Number 71. What is the purpose of the talk?",
+        "options": ["A. To introduce a new executive chef", "B. To announce a menu change", "C. To promote a cooking seminar", "D. To open a new restaurant"],
+        "correctAnswer": "A",
+        "explanation": "Từ khóa 'introduce our new executive chef, Richard Jordan' (giới thiệu bếp trưởng điều hành mới) [19]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Number 72. What did Mr. Jordan agree to do?",
+        "options": ["A. Rewrite the recipes", "B. Teach chef trainees", "C. Manage the budget", "D. Hire new waiters"],
+        "correctAnswer": "B",
+        "explanation": "Từ khóa 'agreed to take charge of teaching our chef trainees' (đồng ý phụ trách đào tạo thực tập sinh đầu bếp) [19]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "Number 73. What did Mr. Jordan do in Sacramento?",
+        "options": ["A. Won a competition", "B. Taught at a college", "C. Opened his own business", "D. Studied cooking"],
+        "correctAnswer": "C",
+        "explanation": "Từ khóa 'served as chef at the Lomato Hotel in Sacramento, where he also opened his own business' (đã mở doanh nghiệp riêng tại Sacramento) [19]."
+      }
+    ]
+  },
+  {
+    "passageId": 20,
+    "audioName": "p4_q20.mp3",
+    "transcript": "Thank you for shopping at Jmart, where we pride ourselves in selling fresh products to our community. Do you need fresh produce for dinner? Are you looking for great deals on fruits? Why not check out our produce section on the second floor? All kinds of imported tropical fruits such as mango, pineapple, and durian are now available at half price for a limited period only. They are in aisle 5. If you are interested in organic food, look in aisle 7 for our special 30% discount. As you may know, the latest study conducted by the University of Hawaii revealed that organic foods contain up to 40% more antioxidants than conventional equivalents. Our produce suppliers use organically managed soil, which is higher quality and has higher water retention along with 60% less fertilizer and 90% less pesticides. Should you need help with your shopping, please ask a manager on duty. Enjoy shopping here today. [20]",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Number 71. What is the purpose of the announcement?",
+        "options": ["A. To promote fresh produce", "B. To announce a closing time", "C. To introduce a new supplier", "D. To call a manager"],
+        "correctAnswer": "A",
+        "explanation": "Từ khóa 'great deals on fruits' và 'check out our produce section' (mục đích là để quảng bá nông sản tươi và trái cây) [20]."
+      },
+      {
+        "questionId": 2,
+        "questionText": "Number 72. Where most likely is the announcement made?",
+        "options": ["A. At a farm", "B. At a supermarket", "C. At a restaurant", "D. At a university"],
+        "correctAnswer": "B",
+        "explanation": "Từ khóa 'shopping at Jmart', 'aisle 5', 'aisle 7' chỉ ra đây là thông báo tại siêu thị [20]."
+      },
+      {
+        "questionId": 3,
+        "questionText": "Number 73. What does the latest study conducted by the University of Hawaii reveal?",
+        "options": ["A. Tropical fruits are cheaper", "B. Organic soil uses more water", "C. Organic foods contain more antioxidants", "D. Fertilizers are increasing"],
+        "correctAnswer": "C",
+        "explanation": "Từ khóa 'the latest study... revealed that organic foods contain up to 40% more antioxidants' (thực phẩm hữu cơ chứa nhiều chất chống oxy hóa hơn) [20]."
+      }
+    ]
+  }
+]

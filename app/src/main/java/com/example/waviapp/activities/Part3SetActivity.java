@@ -23,15 +23,23 @@ public class Part3SetActivity extends BaseActivity {
     private RecyclerView rvSets;
     private ProgressManager progressManager;
     private TextView tvTotalXP;
+    private int partType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_part3_sets);
 
+        partType = getIntent().getIntExtra("PART_TYPE", 3);
+
         progressManager = new ProgressManager(this);
         tvTotalXP = findViewById(R.id.tvTotalXP);
         rvSets = findViewById(R.id.rvSets);
+
+        TextView tvToolbarTitle = findViewById(R.id.tvToolbarTitle);
+        if (tvToolbarTitle != null) {
+            tvToolbarTitle.setText("Listening Part " + partType + " Sets");
+        }
 
         findViewById(R.id.ivBack).setOnClickListener(v -> finish());
 
@@ -46,11 +54,12 @@ public class Part3SetActivity extends BaseActivity {
 
     private void setupRecyclerView() {
         List<String> setNames = new ArrayList<>();
-        setNames.add("Listening Part 3 - Set 1 (4 đoạn)");
-        setNames.add("Listening Part 3 - Set 2 (4 đoạn)");
-        setNames.add("Listening Part 3 - Set 3 (4 đoạn)");
-        setNames.add("Listening Part 3 - Set 4 (4 đoạn)");
-        setNames.add("Listening Part 3 - Set 5 (6 đoạn)");
+        String prefix = "Listening Part " + partType + " - Set ";
+        
+        // Cấu trúc 4 đoạn/set, riêng set cuối có thể nhiều hơn để đủ 20-22 đoạn
+        for (int i = 1; i <= 4; i++) {
+            setNames.add(prefix + i + " (5 đoạn)");
+        }
 
         rvSets.setLayoutManager(new LinearLayoutManager(this));
         rvSets.setAdapter(new Part3SetAdapter(setNames));
@@ -73,12 +82,12 @@ public class Part3SetActivity extends BaseActivity {
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             holder.tvTitle.setText(sets.get(position));
-            int questionCount = (position == 4) ? 6 : 4;
-            holder.tvStat.setText(questionCount + " đoạn hội thoại");
+            holder.tvStat.setText("5 đoạn hội thoại");
             holder.ivLock.setVisibility(View.GONE);
             
             holder.itemView.setOnClickListener(v -> {
-                Intent intent = new Intent(Part3SetActivity.this, Part3Activity.class);
+                Intent intent = new Intent(Part3SetActivity.this, Part34Activity.class);
+                intent.putExtra("PART_TYPE", partType);
                 intent.putExtra("SET_INDEX", position);
                 startActivity(intent);
             });

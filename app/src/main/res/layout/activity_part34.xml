@@ -3,34 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#F8F9FE">
+    android:background="#F8F9FE"
+    android:orientation="vertical">
 
     <!-- Header Section -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         android:background="@android:color/white"
         android:elevation="4dp"
-        android:padding="16dp">
+        android:paddingHorizontal="16dp">
 
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="32dp"
             android:layout_height="32dp"
+            android:layout_centerVertical="true"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_back"
             app:tint="#9370DB" />
 
         <TextView
-            android:id="@+id/tvProgress"
+            android:id="@+id/tvToolbarTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Đoạn 1/4"
+            android:text="Listening Practice"
             android:textColor="#9370DB"
-            android:textStyle="bold"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -57,30 +58,40 @@
     </RelativeLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:clipToPadding="false"
-        android:paddingBottom="20dp">
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <!-- Media Section -->
-            <androidx.cardview.widget.CardView
+            <!-- Audio Player Card -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/tvProgress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12dp"
+                        android:text="Passage 1/5"
+                        android:textColor="#9370DB"
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -90,8 +101,8 @@
 
                         <ImageButton
                             android:id="@+id/btnPlayPause"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
+                            android:layout_width="54dp"
+                            android:layout_height="54dp"
                             android:background="@drawable/bg_circle_purple"
                             android:src="@drawable/ic_play"
                             app:tint="@color/white" />
@@ -108,14 +119,15 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp">
+                        android:layout_marginTop="8dp"
+                        android:paddingHorizontal="4dp">
 
                         <TextView
                             android:id="@+id/tvCurrentTime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="00:00"
-                            android:textColor="#757575"
+                            android:textColor="#888888"
                             android:textSize="12sp" />
 
                         <TextView
@@ -124,91 +136,95 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:text="00:00"
-                            android:textColor="#757575"
+                            android:textColor="#888888"
                             android:textSize="12sp" />
                     </RelativeLayout>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- Questions RecyclerView -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvQuestions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:padding="8dp" />
+                android:layout_marginTop="16dp"
+                android:nestedScrollingEnabled="false" />
 
-            <!-- Transcript Section (White Tag style) -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/scrollTranscript"
+            <!-- Script & Explanation Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardScript"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_marginTop="16dp"
                 android:visibility="gone"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp">
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Transcript &amp; Explanation"
+                        android:text="Script &amp; Explanation"
                         android:textColor="#9370DB"
                         android:textStyle="bold"
-                        android:textSize="16sp"
-                        android:layout_marginBottom="8dp"/>
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#EEEEEE"
-                        android:layout_marginBottom="12dp"/>
+                        android:layout_marginVertical="12dp"
+                        android:background="#EEEEEE" />
 
                     <TextView
                         android:id="@+id/tvTranscript"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#424242"
-                        android:textSize="15sp"
-                        android:lineSpacingExtra="4dp" />
+                        android:lineSpacingExtra="4dp"
+                        android:textColor="#444444"
+                        android:textSize="15sp" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <!-- Bottom Actions inside the scrollable area - Horizontal Layout -->
+            <!-- Bottom Action Buttons inside scroll for better UX -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp">
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btnShowTranscript"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCheck"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="56dp"
                     android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:backgroundTint="#F3E5F5"
-                    android:text="Show Script"
+                    android:backgroundTint="#BDBDBD"
+                    android:enabled="false"
+                    android:text="Check Answers"
                     android:textAllCaps="false"
-                    android:textColor="#9370DB"
-                    android:visibility="gone" />
+                    android:textColor="@color/white"
+                    app:cornerRadius="16dp" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnNext"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="56dp"
                     android:layout_weight="1"
+                    android:layout_marginStart="12dp"
                     android:backgroundTint="#9370DB"
                     android:text="Next Passage"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    app:cornerRadius="16dp" />
             </LinearLayout>
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
