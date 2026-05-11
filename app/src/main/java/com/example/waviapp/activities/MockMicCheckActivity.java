@@ -6,28 +6,30 @@ import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
 import com.example.waviapp.R;
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import java.io.File;
+
 import java.io.IOException;
 
-public class MockMicCheckActivity extends BaseActivity {
+public class MockMicCheckActivity extends AppCompatActivity {
 
-    private static final int REQUEST_RECORD_AUDIO = 200;
-    private FloatingActionButton fabRecordTest;
-    private TextView tvMicStatus;
-    private MaterialButton btnConfirm;
-
-    private MediaRecorder mediaRecorder;
-    private MediaPlayer mediaPlayer;
-    private String tempAudioPath;
+    private static final int PERMISSION_REQUEST_CODE = 200;
+    private Button btnRecordTest, btnPlayTest, btnStartTest;
+    private TextView tvStatus;
+    
+    private MediaRecorder recorder;
+    private MediaPlayer player;
+    private String fileName;
+    
     private boolean isRecording = false;
     private boolean isPlaying = false;
 
@@ -36,123 +38,143 @@ public class MockMicCheckActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mock_mic_check);
 
-        fabRecordTest = findViewById(R.id.fabRecordTest);
-        tvMicStatus = findViewById(R.id.tvMicStatus);
-        btnConfirm = findViewById(R.id.btnConfirm);
+        btnRecordTest = findViewById(R.id.btnRecordTest);
+        btnPlayTest = findViewById(R.id.btnPlayTest);
+        btnStartTest = findViewById(R.id.btnStartTest);
+        tvStatus = findViewById(R.id.tvStatus);
 
-        tempAudioPath = getCacheDir().getAbsolutePath() + "/mic_test.m4a";
+        fileName = getExternalCacheDir().getAbsolutePath() + "/mic_test.3gp";
 
-        fabRecordTest.setOnClickListener(v -> {
+        btnRecordTest.setOnClickListener(v -> {
             if (checkPermissions()) {
-                if (!isRecording && !isPlaying) {
-                    startRecordingTest();
+                if (isRecording) {
+                    stopRecording();
+                } else {
+                    startRecording();
                 }
+            } else {
+                requestPermissions();
             }
         });
 
-        btnConfirm.setOnClickListener(v -> {
-            // Start the actual mock test
+        btnPlayTest.setOnClickListener(v -> {
+            if (isPlaying) {
+                stopPlaying();
+            } else {
+                startPlaying();
+            }
+        });
+
+        btnStartTest.setOnClickListener(v -> {
             Intent intent = new Intent(MockMicCheckActivity.this, MockSpeakActivity.class);
+            intent.putExtra("TEST_ID", getIntent().getStringExtra("TEST_ID"));
             startActivity(intent);
             finish();
         });
-        
-        checkPermissions();
     }
 
     private boolean checkPermissions() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, REQUEST_RECORD_AUDIO);
-            return false;
-        }
-        return true;
+        return ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestPermissions() {
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, PERMISSION_REQUEST_CODE);
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_RECORD_AUDIO) {
+        if (requestCode == PERMISSION_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission granted
+                startRecording();
             } else {
-                Toast.makeText(this, "Bạn phải cấp quyền Mic để thi thử!", Toast.LENGTH_LONG).show();
-                finish();
+                Toast.makeText(this, "Permission denied. Cannot test microphone.", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    private void startRecordingTest() {
+    private void startRecording() {
+        recorder = new MediaRecorder();
+        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        recorder.setOutputFile(fileName);
+        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+
         try {
-            mediaRecorder = new MediaRecorder();
-            mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-            mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
-            mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
-            mediaRecorder.setOutputFile(tempAudioPath);
-            mediaRecorder.prepare();
-            mediaRecorder.start();
-
+            recorder.prepare();
+            recorder.start();
             isRecording = true;
-            tvMicStatus.setText("Đang ghi âm (5s)...");
-            fabRecordTest.setImageResource(R.drawable.ic_stop);
-            fabRecordTest.setBackgroundTintList(android.content.res.ColorStateList.valueOf(android.graphics.Color.parseColor("#F44336")));
-
-            new CountDownTimer(5000, 1000) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    tvMicStatus.setText("Đang ghi âm (" + (millisUntilFinished / 1000) + "s)...");
-                }
-
-                @Override
-                public void onFinish() {
-                    stopRecordingAndPlay();
-                }
-            }.start();
-
+            btnRecordTest.setText("STOP");
+            btnRecordTest.setBackgroundColor(0xFFEF4444); // Red
+            tvStatus.setText("Recording... Please speak.");
+            btnPlayTest.setEnabled(false);
+            btnStartTest.setEnabled(false);
+            
+            // Auto stop after 5 seconds
+            new Handler().postDelayed(() -> {
+                if (isRecording) stopRecording();
+            }, 5000);
+            
         } catch (IOException e) {
-            Toast.makeText(this, "Lỗi khi ghi âm!", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+            Toast.makeText(this, "Recording failed", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void stopRecordingAndPlay() {
-        if (mediaRecorder != null) {
-            try { mediaRecorder.stop(); } catch (Exception ignored) {}
-            mediaRecorder.release();
-            mediaRecorder = null;
-        }
-        isRecording = false;
-
-        tvMicStatus.setText("Đang phát lại...");
-        fabRecordTest.setImageResource(R.drawable.ic_listen); // Make sure you have ic_listen or similar
-        fabRecordTest.setBackgroundTintList(android.content.res.ColorStateList.valueOf(android.graphics.Color.parseColor("#4CAF50")));
-
-        isPlaying = true;
-        mediaPlayer = new MediaPlayer();
+    private void stopRecording() {
         try {
-            mediaPlayer.setDataSource(tempAudioPath);
-            mediaPlayer.prepare();
-            mediaPlayer.start();
-            mediaPlayer.setOnCompletionListener(mp -> {
-                isPlaying = false;
-                tvMicStatus.setText("Nhấn Mic để thử lại");
-                fabRecordTest.setImageResource(R.drawable.ic_mic);
-                fabRecordTest.setBackgroundTintList(android.content.res.ColorStateList.valueOf(android.graphics.Color.parseColor("#9370DB")));
-                btnConfirm.setEnabled(true);
+            recorder.stop();
+            recorder.release();
+            recorder = null;
+            isRecording = false;
+            btnRecordTest.setText("RECORD");
+            btnRecordTest.setBackgroundColor(0xFF4F46E5); // Indigo
+            tvStatus.setText("Recording saved. Press Play to listen.");
+            btnPlayTest.setEnabled(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void startPlaying() {
+        player = new MediaPlayer();
+        try {
+            player.setDataSource(fileName);
+            player.prepare();
+            player.start();
+            isPlaying = true;
+            btnPlayTest.setText("Stop Playing");
+            
+            player.setOnCompletionListener(mp -> {
+                stopPlaying();
+                btnStartTest.setEnabled(true); // Enable start test after playing successfully
+                tvStatus.setText("Mic test completed! You can start the test.");
             });
+            
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void stopPlaying() {
+        if (player != null) {
+            player.release();
+            player = null;
             isPlaying = false;
-            Toast.makeText(this, "Lỗi khi phát lại!", Toast.LENGTH_SHORT).show();
+            btnPlayTest.setText("Play Recording");
         }
     }
 
     @Override
-    protected void onDestroy() {
-        if (mediaRecorder != null) {
-            try { mediaRecorder.stop(); } catch (Exception e) {}
-            mediaRecorder.release();
+    protected void onStop() {
+        super.onStop();
+        if (recorder != null) {
+            recorder.release();
+            recorder = null;
         }
-        if (mediaPlayer != null) {
-            mediaPlayer.release();
+        if (player != null) {
+            player.release();
+            player = null;
         }
-        super.onDestroy();
     }
 }

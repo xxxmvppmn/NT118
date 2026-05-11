@@ -1,59 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     android:padding="24dp"
-    android:background="@color/white">
+    android:background="#FFFFFF"
+    android:gravity="center_horizontal">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kiểm tra Microphone"
-        android:textSize="24sp"
+        android:text="Microphone Check"
+        android:textSize="22sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="#111827"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Để đảm bảo bài thi Speaking được ghi âm tốt nhất, vui lòng nhấn nút bên dưới để ghi âm thử 5 giây. Sau đó hệ thống sẽ tự động phát lại để bạn kiểm tra."
+        android:text="Please record your voice to ensure your microphone is working correctly before starting the test."
         android:textSize="16sp"
-        android:textColor="#666666"
-        android:textAlignment="center"
+        android:textColor="#4B5563"
+        android:gravity="center"
         android:layout_marginBottom="32dp"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabRecordTest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_mic"
-        app:backgroundTint="@color/purple_main"
-        app:tint="@color/white"
-        android:layout_marginBottom="16dp"/>
+    <!-- Record Button -->
+    <Button
+        android:id="@+id/btnRecordTest"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:background="@drawable/bg_circle_primary"
+        android:text="RECORD"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp"/>
 
     <TextView
-        android:id="@+id/tvMicStatus"
+        android:id="@+id/tvStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nhấn để ghi âm thử"
-        android:textSize="16sp"
-        android:textColor="@color/purple_main"
-        android:textStyle="bold"
+        android:text="Press RECORD and say something."
+        android:textSize="14sp"
+        android:textColor="#6B7280"
         android:layout_marginBottom="32dp"/>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnConfirm"
+    <!-- Playback Button -->
+    <Button
+        android:id="@+id/btnPlayTest"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:text="Tôi nghe rõ, Bắt đầu thi"
+        android:text="Play Recording"
+        android:textAllCaps="false"
         android:textSize="16sp"
-        app:cornerRadius="12dp"
-        app:backgroundTint="@color/purple_main"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:backgroundTint="#10B981"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="16dp"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!-- Start Test Button -->
+    <Button
+        android:id="@+id/btnStartTest"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Start Speaking Test"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:enabled="false"
+        android:backgroundTint="#4F46E5"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="16dp"/>
 
 </LinearLayout>

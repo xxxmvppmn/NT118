@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <!-- Top Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#4F46E5"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/tvReviewTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Review - Q1"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/tvQuestionCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1/19"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvInstruction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Instruction"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                android:textColor="#6B7280"
+                android:layout_marginBottom="8dp"/>
+
+            <ImageView
+                android:id="@+id/ivQuestionImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitCenter"
+                android:visibility="gone"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/tvPrompt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Prompt..."
+                android:textSize="16sp"
+                android:textColor="#111827"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- My Answer Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Answer:"
+                android:textStyle="bold"
+                android:textColor="#3B82F6"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Writing Answer -->
+            <TextView
+                android:id="@+id/tvMyTextAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="My written answer..."
+                android:padding="12dp"
+                android:background="@drawable/bg_edittext"
+                android:textColor="#111827"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone"/>
+
+            <!-- Speaking Answer -->
+            <LinearLayout
+                android:id="@+id/llMyAudioAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_edittext"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone">
+                <Button
+                    android:id="@+id/btnPlayMyAudio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Play Audio"
+                    android:backgroundTint="#3B82F6"/>
+                <TextView
+                    android:id="@+id/tvAudioStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Ready"
+                    android:layout_marginStart="16dp"
+                    android:textColor="#6B7280"/>
+            </LinearLayout>
+
+            <!-- Sample Answer Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sample Answer:"
+                android:textStyle="bold"
+                android:textColor="#10B981"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/tvSampleAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sample..."
+                android:padding="12dp"
+                android:background="@drawable/bg_rounded_primary_light"
+                android:textColor="#111827"
+                android:layout_marginBottom="16dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Nav -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center">
+        
+        <Button
+            android:id="@+id/btnPrev"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="Previous"
+            android:backgroundTint="#9CA3AF"
+            android:layout_marginEnd="8dp"/>
+            
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="Next"
+            android:backgroundTint="#4F46E5"
+            android:layout_marginStart="8dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

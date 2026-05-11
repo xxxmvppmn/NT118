@@ -395,50 +395,50 @@ public class SkillDataProvider {
     }
 
     // =========================================================
-    // MOCK EXAM DATA (Real test format)
+    // MOCK EXAM DATA (Real test format for Speaking & Writing)
     // =========================================================
 
     public static List<SpeakQuestion> getMockSpeakingQuestions() {
         List<SpeakQuestion> list = new ArrayList<>();
-        // Part 1: Q1, Q2
-        list.add(new SpeakQuestion(1, "Read the following text aloud.", "Welcome to Greenwood Shopping Center...", "Welcome to Greenwood Shopping Center.", 45, 45, true, null));
-        list.add(new SpeakQuestion(1, "Read the following text aloud.", "Attention, all passengers...", "Attention, all passengers.", 45, 45, true, null));
+        // Part 1: Q1, Q2 (Read Aloud) - 45s prep, 45s speak
+        list.add(new SpeakQuestion(1, "Read the following text aloud.", "Welcome to Greenwood Shopping Center. We are open from 9 a.m. to 9 p.m.", "Welcome to Greenwood Shopping Center. We are open from 9 a.m. to 9 p.m.", 45, 45, true, (Integer) null));
+        list.add(new SpeakQuestion(1, "Read the following text aloud.", "Attention, all passengers. Flight 302 to Singapore has been delayed.", "Attention, all passengers. Flight 302 to Singapore has been delayed.", 45, 45, true, (Integer) null));
         
-        // Part 2: Q3, Q4
-        list.add(new SpeakQuestion(2, "Describe the picture in as much detail as possible.", "🖼️ [Picture: A woman is working at a desk.]", "In this picture, I can see a woman working...", 45, 45, true, null));
-        list.add(new SpeakQuestion(2, "Describe the picture in as much detail as possible.", "🖼️ [Picture: Two men are having a meeting.]", "This picture shows two men in a conference room...", 45, 45, true, null));
+        // Part 2: Q3, Q4 (Describe Picture) - 45s prep, 30s speak
+        list.add(new SpeakQuestion(2, "Describe the picture in as much detail as possible.", "🖼️ [Picture: A woman is working at a desk.]", "In this picture, I can see a woman working...", 45, 30, false, (Integer) null));
+        list.add(new SpeakQuestion(2, "Describe the picture in as much detail as possible.", "🖼️ [Picture: Two men are having a meeting.]", "This picture shows two men in a conference room...", 45, 30, false, (Integer) null));
         
-        // Part 3: Q5, Q6, Q7 (Hidden text, simulate audio)
-        list.add(new SpeakQuestion(3, "Imagine that a Canadian marketing firm is doing research. You have agreed to participate in a telephone interview about shopping.\n\n(Q5) Where do you usually do your grocery shopping?", "Where do you usually do your grocery shopping?", "I usually do my grocery shopping at the local supermarket.", 3, 15, false, null));
-        list.add(new SpeakQuestion(3, "Imagine that a Canadian marketing firm is doing research. You have agreed to participate in a telephone interview about shopping.\n\n(Q6) What do you usually buy?", "What do you usually buy?", "I usually buy fresh fruits and vegetables.", 3, 15, false, null));
-        list.add(new SpeakQuestion(3, "Imagine that a Canadian marketing firm is doing research. You have agreed to participate in a telephone interview about shopping.\n\n(Q7) Describe your favorite store.", "Describe your favorite store.", "My favorite store is very large and has everything I need.", 3, 30, false, null));
+        // Part 3: Q5, Q6, Q7 (Respond to questions) - 3s prep, 15/30s speak
+        list.add(new SpeakQuestion(3, "Imagine that a Canadian marketing firm is doing research. You have agreed to participate in a telephone interview about shopping.\n\n(Q5) Where do you usually do your grocery shopping?", "Where do you usually do your grocery shopping?", "I usually do my grocery shopping at the local supermarket.", 3, 15, false, (Integer) null));
+        list.add(new SpeakQuestion(3, "Imagine that a Canadian marketing firm is doing research. You have agreed to participate in a telephone interview about shopping.\n\n(Q6) What do you usually buy?", "What do you usually buy?", "I usually buy fresh fruits and vegetables.", 3, 15, false, (Integer) null));
+        list.add(new SpeakQuestion(3, "Imagine that a Canadian marketing firm is doing research. You have agreed to participate in a telephone interview about shopping.\n\n(Q7) Describe your favorite store.", "Describe your favorite store.", "My favorite store is very large and has everything I need.", 3, 30, false, (Integer) null));
         
-        // Part 4: Q8, Q9, Q10 (Schedule info, Hidden text)
-        list.add(new SpeakQuestion(4, "Respond to questions using the information provided.\n\n📋 SCHEDULE: City Library Workshop\n• Date: March 10\n• Time: 10 AM – 12 PM", "What date is the workshop?", "The workshop is on March 10th.", 3, 15, false, null));
-        list.add(new SpeakQuestion(4, "Respond to questions using the information provided.\n\n📋 SCHEDULE: City Library Workshop\n• Date: March 10\n• Time: 10 AM – 12 PM", "What time does it start?", "It starts at 10 AM.", 3, 15, false, null));
-        list.add(new SpeakQuestion(4, "Respond to questions using the information provided.\n\n📋 SCHEDULE: City Library Workshop\n• Date: March 10\n• Time: 10 AM – 12 PM", "Could you give me all the details about the workshop?", "Certainly. The workshop is on March 10th from 10 AM to 12 PM.", 3, 30, false, null));
+        // Part 4: Q8, Q9, Q10 (Respond using info) - 3s prep, 15/30s speak
+        list.add(new SpeakQuestion(4, "Respond to questions using the information provided.\n\n📋 SCHEDULE: City Library Workshop\n• Date: March 10\n• Time: 10 AM – 12 PM", "What date is the workshop?", "The workshop is on March 10th.", 3, 15, false, (Integer) null));
+        list.add(new SpeakQuestion(4, "Respond to questions using the information provided.\n\n📋 SCHEDULE: City Library Workshop\n• Date: March 10\n• Time: 10 AM – 12 PM", "What time does it start?", "It starts at 10 AM.", 3, 15, false, (Integer) null));
+        list.add(new SpeakQuestion(4, "Respond to questions using the information provided.\n\n📋 SCHEDULE: City Library Workshop\n• Date: March 10\n• Time: 10 AM – 12 PM", "Could you give me all the details about the workshop?", "Certainly. The workshop is on March 10th from 10 AM to 12 PM.", 3, 30, false, (Integer) null));
         
-        // Part 5 (New Format Express Opinion) or Part 6 (Old Format): Q11
-        list.add(new SpeakQuestion(6, "Express your opinion on the following topic. Support your opinion with reasons and examples.", "Do you think companies should allow employees to work from home permanently? Why or why not?", "In my opinion, companies should offer flexible work-from-home options...", 45, 60, true, null));
+        // Part 5: Q11 (Express opinion) - 45s prep, 60s speak
+        list.add(new SpeakQuestion(5, "Express your opinion on the following topic. Support your opinion with reasons and examples.", "Do you think companies should allow employees to work from home permanently? Why or why not?", "In my opinion, companies should offer flexible work-from-home options...", 45, 60, false, (Integer) null));
         
         return list;
     }
 
     public static List<WriteQuestion> getMockWritingQuestions() {
         List<WriteQuestion> list = new ArrayList<>();
-        // Part 1: Q1 - Q5
-        list.add(new WriteQuestion(1, "Part 1 - Write a Sentence", "Write ONE sentence based on the picture using the TWO words provided.", "🖼️ [Picture: A woman reading]", "woman", "quietly", "The woman is quietly reading.", 5, 20, null));
-        list.add(new WriteQuestion(1, "Part 1 - Write a Sentence", "Write ONE sentence based on the picture using the TWO words provided.", "🖼️ [Picture: A man repairing a bicycle]", "man", "carefully", "The man is carefully repairing the bicycle.", 5, 20, null));
-        list.add(new WriteQuestion(1, "Part 1 - Write a Sentence", "Write ONE sentence based on the picture using the TWO words provided.", "🖼️ [Picture: Employees meeting]", "employees", "conference", "The employees are having a conference.", 5, 20, null));
-        list.add(new WriteQuestion(1, "Part 1 - Write a Sentence", "Write ONE sentence based on the picture using the TWO words provided.", "🖼️ [Picture: Chef cooking]", "chef", "kitchen", "The chef is cooking in the kitchen.", 5, 20, null));
-        list.add(new WriteQuestion(1, "Part 1 - Write a Sentence", "Write ONE sentence based on the picture using the TWO words provided.", "🖼️ [Picture: Tourists looking at map]", "tourists", "looking", "The tourists are looking at the map.", 5, 20, null));
+        // Part 1: Q1-Q5 (Write sentence) - Total 8 mins for 5 questions (we can just set a global timer, but let's give individual time or mock it)
+        list.add(new WriteQuestion(1, "Part 1 - Write a Sentence", "Write ONE sentence based on the picture using the TWO words provided.", "🖼️ [Picture: A woman reading]", "woman", "quietly", "The woman is quietly reading.", 5, 20, (Integer) null));
+        list.add(new WriteQuestion(1, "Part 1 - Write a Sentence", "Write ONE sentence based on the picture using the TWO words provided.", "🖼️ [Picture: A man repairing a bicycle]", "man", "carefully", "The man is carefully repairing the bicycle.", 5, 20, (Integer) null));
+        list.add(new WriteQuestion(1, "Part 1 - Write a Sentence", "Write ONE sentence based on the picture using the TWO words provided.", "🖼️ [Picture: Employees meeting]", "employees", "conference", "The employees are having a conference.", 5, 20, (Integer) null));
+        list.add(new WriteQuestion(1, "Part 1 - Write a Sentence", "Write ONE sentence based on the picture using the TWO words provided.", "🖼️ [Picture: Chef cooking]", "chef", "kitchen", "The chef is cooking in the kitchen.", 5, 20, (Integer) null));
+        list.add(new WriteQuestion(1, "Part 1 - Write a Sentence", "Write ONE sentence based on the picture using the TWO words provided.", "🖼️ [Picture: Tourists looking at map]", "tourists", "looking", "The tourists are looking at the map.", 5, 20, (Integer) null));
         
-        // Part 2: Q6, Q7
-        list.add(new WriteQuestion(2, "Part 2 - Respond to a Written Request", "Read the email and respond.", "From: Sarah\nSubject: Team Lunch\n\nHi,\nCan you attend the team lunch next Friday?", "", "", "Hi Sarah,\nI can attend the lunch. Thank you.", 50, 150, null));
-        list.add(new WriteQuestion(2, "Part 2 - Respond to a Written Request", "Read the email and respond.", "From: Mark\nSubject: Training Session\n\nDear Colleague,\nWhat did you find most useful about the training?", "", "", "Dear Mark,\nThe most useful part was the software tutorial.", 50, 150, null));
+        // Part 2: Q6-Q7 (Email) - 10 mins each
+        list.add(new WriteQuestion(2, "Part 2 - Respond to a Written Request", "Read the email and respond.", "From: Sarah\nSubject: Team Lunch\n\nHi,\nCan you attend the team lunch next Friday?", "", "", "Hi Sarah,\nI can attend the lunch. Thank you.", 50, 150, (Integer) null));
+        list.add(new WriteQuestion(2, "Part 2 - Respond to a Written Request", "Read the email and respond.", "From: Mark\nSubject: Training Session\n\nDear Colleague,\nWhat did you find most useful about the training?", "", "", "Dear Mark,\nThe most useful part was the software tutorial.", 50, 150, (Integer) null));
         
-        // Part 3: Q8
-        list.add(new WriteQuestion(3, "Part 3 - Write an Essay", "Write an essay on the topic below. Support your opinion with reasons.", "Topic: Technology has made communication easier, but less meaningful. Do you agree?", "", "", "I partially agree. Technology has made communication faster...", 150, 300, null));
+        // Part 3: Q8 (Essay) - 30 mins
+        list.add(new WriteQuestion(3, "Part 3 - Write an Essay", "Write an essay on the topic below. Support your opinion with reasons.", "Topic: Technology has made communication easier, but less meaningful. Do you agree?", "", "", "I partially agree. Technology has made communication faster...", 150, 300, (Integer) null));
         
         return list;
     }

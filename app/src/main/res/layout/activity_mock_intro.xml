@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#F9FAFB"
+    android:gravity="center_horizontal">
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_speak"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="Speaking Icon"/>
+
+    <TextView
+        android:id="@+id/tvTestTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TOEIC Speaking Test"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#111827"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="This test is designed to simulate the real TOEIC Speaking Test.\n\n- The test consists of 11 questions.\n- You will be asked to read aloud, describe pictures, answer questions, and express an opinion.\n- A voice will prompt you to prepare and speak.\n- A 'BEEP' sound indicates when recording begins.\n- Please ensure you are in a quiet environment."
+        android:textSize="16sp"
+        android:textColor="#4B5563"
+        android:lineSpacingExtra="4dp"
+        android:layout_marginBottom="32dp"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/btnContinue"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Continue to Mic Check"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:backgroundTint="#4F46E5"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="24dp"/>
+
+</LinearLayout>

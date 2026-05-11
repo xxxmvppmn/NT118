@@ -53,9 +53,10 @@ public class TestDetailActivity extends BaseActivity {
         tvQuestions.setText(qSpannable);
 
         btnStart.setOnClickListener(v -> {
-            if (questions == 16 || (title != null && title.toLowerCase().contains("speaking"))) {
-                // Route to Speaking & Writing Mock Test
-                android.content.Intent intent = new android.content.Intent(TestDetailActivity.this, MockMicCheckActivity.class);
+            if (questions == 19 || (title != null && (title.toLowerCase().contains("speaking") || title.toLowerCase().contains("writing")))) {
+                android.content.Intent intent = new android.content.Intent(TestDetailActivity.this, MockIntroActivity.class);
+                // Truyền testId (= title của bài thi) xuống MockIntroActivity
+                intent.putExtra("TEST_ID", title);
                 startActivity(intent);
                 finish();
             } else {
@@ -65,4 +66,3 @@ public class TestDetailActivity extends BaseActivity {
         });
     }
 }
-

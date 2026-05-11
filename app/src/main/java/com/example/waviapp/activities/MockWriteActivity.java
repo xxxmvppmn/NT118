@@ -5,241 +5,186 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.ActionMode;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.bumptech.glide.Glide;
 import com.example.waviapp.R;
 import com.example.waviapp.models.WriteQuestion;
-import com.example.waviapp.utils.SkillDataProvider;
-import com.google.android.material.button.MaterialButton;
+import com.example.waviapp.utils.MockTestManager;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-public class MockWriteActivity extends BaseActivity {
+public class MockWriteActivity extends AppCompatActivity {
 
-    private TextView tvToolbarTitle, tvTimer, tvProgressText;
-    private ProgressBar progressBar;
-    private TextView tvInstruction, tvPrompt, tvKeyword1, tvKeyword2, tvWordCount;
+    private TextView tvPartTitle, tvQuestionCount, tvInstruction, tvPrompt, tvTimer;
+    private TextView tvWordCount, tvKeyword1, tvKeyword2;
     private ImageView ivQuestionImage;
-    private LinearLayout llKeywords;
     private EditText etAnswer;
-    private MaterialButton btnBack, btnNext;
+    private Button btnNext;
+    private LinearLayout llKeywords;
 
-    private List<WriteQuestion> questions;
-    private ArrayList<String> audioPaths;
-    private String[] answers;
+    private List<WriteQuestion> questionList;
+    private int currentQuestionIndex = 0;
+    private CountDownTimer countDownTimer;
+    private String testId;
 
-    private int currentIndex = 0;
-    private CountDownTimer currentTimer;
-    private long timeLeftInMillis = 0;
-    
-    // Timers configuration
-    private static final long PART1_TIME = 8 * 60 * 1000L;
-    private static final long PART2_TIME = 10 * 60 * 1000L;
-    private static final long PART3_TIME = 30 * 60 * 1000L;
+    // Static list to pass data to Submit Activity
+    public static List<String> mockWriteAnswers = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mock_write);
 
-        audioPaths = getIntent().getStringArrayListExtra("audioPaths");
-        if (audioPaths == null) audioPaths = new ArrayList<>();
-
-        questions = SkillDataProvider.getMockWritingQuestions();
-        answers = new String[questions.size()];
-        for (int i = 0; i < answers.length; i++) answers[i] = "";
+        mockWriteAnswers.clear();
+        testId = getIntent().getStringExtra("TEST_ID");
 
         initViews();
-        setupAntiCheat();
-        
-        displayQuestion(0);
+        // Lấy câu hỏi từ MockTestManager
+        questionList = MockTestManager.getInstance().getWritingQuestions();
+
+        btnNext.setOnClickListener(v -> moveToNextQuestion());
+
+        etAnswer.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                int words = s.toString().trim().isEmpty() ? 0 : s.toString().trim().split("\\s+").length;
+                tvWordCount.setText(String.valueOf(words));
+            }
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
+        startQuestionFlow();
     }
 
     private void initViews() {
-        tvToolbarTitle = findViewById(R.id.tvToolbarTitle);
-        tvTimer = findViewById(R.id.tvTimer);
-        tvProgressText = findViewById(R.id.tvProgressText);
-        progressBar = findViewById(R.id.progressBar);
-        
+        tvPartTitle = findViewById(R.id.tvPartTitle);
+        tvQuestionCount = findViewById(R.id.tvQuestionCount);
         tvInstruction = findViewById(R.id.tvInstruction);
         tvPrompt = findViewById(R.id.tvPrompt);
-        ivQuestionImage = findViewById(R.id.ivQuestionImage);
-        llKeywords = findViewById(R.id.llKeywords);
+        tvTimer = findViewById(R.id.tvTimer);
+        tvWordCount = findViewById(R.id.tvWordCount);
         tvKeyword1 = findViewById(R.id.tvKeyword1);
         tvKeyword2 = findViewById(R.id.tvKeyword2);
-        
+        ivQuestionImage = findViewById(R.id.ivQuestionImage);
         etAnswer = findViewById(R.id.etAnswer);
-        tvWordCount = findViewById(R.id.tvWordCount);
-        
-        btnBack = findViewById(R.id.btnBack);
         btnNext = findViewById(R.id.btnNext);
-        
-        progressBar.setMax(questions.size());
-
-        etAnswer.addTextChangedListener(new TextWatcher() {
-            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
-            @Override public void afterTextChanged(Editable s) {
-                answers[currentIndex] = s.toString();
-                if (questions.get(currentIndex).getPartNumber() == 3) {
-                    updateWordCount(s.toString());
-                }
-            }
-        });
-
-        btnBack.setOnClickListener(v -> navigate(-1));
-        btnNext.setOnClickListener(v -> navigate(1));
+        llKeywords = findViewById(R.id.llKeywords);
     }
 
-    private void setupAntiCheat() {
-        etAnswer.setCustomSelectionActionModeCallback(new ActionMode.Callback() {
-            public boolean onCreateActionMode(ActionMode mode, Menu menu) { return false; }
-            public boolean onPrepareActionMode(ActionMode mode, Menu menu) { return false; }
-            public boolean onActionItemClicked(ActionMode mode, MenuItem item) { return false; }
-            public void onDestroyActionMode(ActionMode mode) {}
-        });
-    }
-
-    private void displayQuestion(int index) {
-        if (index >= questions.size()) {
-            submitExam();
+    private void startQuestionFlow() {
+        if (currentQuestionIndex >= questionList.size()) {
+            finishWritingTest();
             return;
         }
 
-        // Save current time state if moving within Part 1
-        boolean isSamePart = (index > 0 && questions.get(index).getPartNumber() == questions.get(currentIndex).getPartNumber());
-        
-        currentIndex = index;
-        WriteQuestion q = questions.get(currentIndex);
-        
-        tvProgressText.setText((currentIndex + 1) + "/" + questions.size());
-        progressBar.setProgress(currentIndex + 1);
-        
-        tvInstruction.setText(q.getInstruction());
-        tvPrompt.setText(q.getPrompt());
-        etAnswer.setText(answers[currentIndex]);
+        WriteQuestion currentQuestion = questionList.get(currentQuestionIndex);
 
-        // Setup Part specific UI
-        if (q.getPartNumber() == 1) {
-            llKeywords.setVisibility(View.VISIBLE);
-            tvKeyword1.setText(q.getKeyword1());
-            tvKeyword2.setText(q.getKeyword2());
-            ivQuestionImage.setVisibility(View.VISIBLE);
-            ivQuestionImage.setImageResource(R.drawable.wavi_background); // Mock image
-            tvWordCount.setVisibility(View.GONE);
-            
-            btnBack.setVisibility(currentIndex > 0 && questions.get(currentIndex - 1).getPartNumber() == 1 ? View.VISIBLE : View.GONE);
-            btnNext.setText(currentIndex == 4 ? "Tiếp tục (Part 2)" : "Next");
-            
-            if (!isSamePart) startTimer(PART1_TIME);
-            
-        } else if (q.getPartNumber() == 2) {
-            llKeywords.setVisibility(View.GONE);
-            ivQuestionImage.setVisibility(View.GONE);
-            tvWordCount.setVisibility(View.GONE);
-            
-            btnBack.setVisibility(View.GONE); // No back in Part 2
-            btnNext.setText(currentIndex == 6 ? "Tiếp tục (Part 3)" : "Nộp & Qua câu sau");
-            
-            startTimer(PART2_TIME);
-            
-        } else if (q.getPartNumber() == 3) {
-            llKeywords.setVisibility(View.GONE);
-            ivQuestionImage.setVisibility(View.GONE);
-            tvWordCount.setVisibility(View.VISIBLE);
-            updateWordCount(etAnswer.getText().toString());
-            
-            btnBack.setVisibility(View.GONE);
-            btnNext.setText("Nộp bài thi");
-            
-            startTimer(PART3_TIME);
-        }
-    }
+        tvPartTitle.setText("Part " + currentQuestion.getPartNumber());
+        tvQuestionCount.setText((currentQuestionIndex + 1) + "/" + questionList.size());
+        tvInstruction.setText(currentQuestion.getInstruction());
+        etAnswer.setText("");
 
-    private void navigate(int direction) {
-        int nextIndex = currentIndex + direction;
-        WriteQuestion currentQ = questions.get(currentIndex);
-        
-        if (direction > 0 && currentQ.getPartNumber() > 1) {
-            // Confirm early submission for Part 2 and 3
-            displayQuestion(nextIndex);
+        // Hiển thị prompt (nếu có)
+        String prompt = currentQuestion.getPrompt();
+        if (prompt != null && !prompt.isEmpty()) {
+            tvPrompt.setText(prompt);
+            tvPrompt.setVisibility(View.VISIBLE);
         } else {
-            // Free navigation in Part 1
-            displayQuestion(nextIndex);
+            tvPrompt.setVisibility(View.GONE);
+        }
+
+        // Hiển thị hình ảnh bằng Glide (ưu tiên imageUrl)
+        loadQuestionImage(currentQuestion.getImageUrl(), currentQuestion.getImageResId());
+
+        // Keywords
+        if (currentQuestion.getKeyword1() != null && !currentQuestion.getKeyword1().isEmpty()) {
+            llKeywords.setVisibility(View.VISIBLE);
+            tvKeyword1.setText(currentQuestion.getKeyword1());
+            tvKeyword2.setText(currentQuestion.getKeyword2());
+        } else {
+            llKeywords.setVisibility(View.GONE);
+        }
+
+        startTimer(currentQuestion.getPartNumber());
+    }
+
+    private void loadQuestionImage(String imageUrl, Integer imageResId) {
+        if (imageUrl != null && !imageUrl.isEmpty()) {
+            ivQuestionImage.setVisibility(View.VISIBLE);
+            Glide.with(this)
+                    .load(imageUrl)
+                    .placeholder(R.drawable.bg_edittext)
+                    .error(R.drawable.bg_edittext)
+                    .centerCrop()
+                    .into(ivQuestionImage);
+        } else if (imageResId != null) {
+            ivQuestionImage.setImageResource(imageResId);
+            ivQuestionImage.setVisibility(View.VISIBLE);
+        } else {
+            ivQuestionImage.setVisibility(View.GONE);
         }
     }
 
-    private void updateWordCount(String text) {
-        String[] words = text.trim().split("\\s+");
-        int count = text.trim().isEmpty() ? 0 : words.length;
-        tvWordCount.setText("Word count: " + count);
-    }
+    private void startTimer(int partNumber) {
+        if (countDownTimer != null) countDownTimer.cancel();
 
-    private void startTimer(long timeInMillis) {
-        if (currentTimer != null) currentTimer.cancel();
-        
-        timeLeftInMillis = timeInMillis;
-        currentTimer = new CountDownTimer(timeLeftInMillis, 1000) {
+        int timeMs;
+        if (partNumber == 1) timeMs = 96000;      // 1.6 mins per question
+        else if (partNumber == 2) timeMs = 600000; // 10 mins
+        else timeMs = 1800000;                     // 30 mins
+
+        countDownTimer = new CountDownTimer(timeMs, 1000) {
             @Override
-            public void onTick(long ms) {
-                timeLeftInMillis = ms;
-                int min = (int) (ms / 1000) / 60;
-                int sec = (int) (ms / 1000) % 60;
-                tvTimer.setText(String.format(Locale.US, "%02d:%02d", min, sec));
+            public void onTick(long millisUntilFinished) {
+                int seconds = (int) (millisUntilFinished / 1000) % 60;
+                int minutes = (int) ((millisUntilFinished / (1000 * 60)) % 60);
+                tvTimer.setText(String.format("%02d:%02d", minutes, seconds));
             }
 
             @Override
             public void onFinish() {
-                tvTimer.setText("00:00");
-                handleTimeUp();
+                moveToNextQuestion();
             }
         }.start();
     }
 
-    private void handleTimeUp() {
-        WriteQuestion q = questions.get(currentIndex);
-        if (q.getPartNumber() == 1) {
-            displayQuestion(5); // Jump to Part 2
-        } else if (q.getPartNumber() == 2) {
-            displayQuestion(currentIndex + 1); // Jump to next question
-        } else {
-            submitExam();
-        }
+    private void moveToNextQuestion() {
+        if (countDownTimer != null) countDownTimer.cancel();
+
+        mockWriteAnswers.add(etAnswer.getText().toString().trim());
+        currentQuestionIndex++;
+
+        startQuestionFlow();
     }
 
-    private void submitExam() {
-        if (currentTimer != null) currentTimer.cancel();
-        
-        Intent intent = new Intent(MockWriteActivity.this, MockResultActivity.class);
-        intent.putStringArrayListExtra("audioPaths", audioPaths);
-        
-        ArrayList<String> answersList = new ArrayList<>();
-        for (String ans : answers) answersList.add(ans);
-        intent.putStringArrayListExtra("writingAnswers", answersList);
-        
+    private void finishWritingTest() {
+        Intent intent = new Intent(MockWriteActivity.this, MockSubmitActivity.class);
+        intent.putExtra("TEST_ID", testId);
         startActivity(intent);
         finish();
     }
 
     @Override
-    public void onBackPressed() {
-        Toast.makeText(this, "Không thể thoát trong lúc thi.", Toast.LENGTH_SHORT).show();
+    protected void onDestroy() {
+        if (countDownTimer != null) countDownTimer.cancel();
+        super.onDestroy();
     }
 
     @Override
-    protected void onDestroy() {
-        if (currentTimer != null) currentTimer.cancel();
-        super.onDestroy();
+    public void onBackPressed() {
+        Toast.makeText(this, "You cannot go back during the test.", Toast.LENGTH_SHORT).show();
     }
 }
