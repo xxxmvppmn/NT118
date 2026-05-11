@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
+import android.speech.tts.UtteranceProgressListener;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -57,6 +58,18 @@ public class MockSpeakActivity extends AppCompatActivity {
         tts = new TextToSpeech(this, status -> {
             if (status == TextToSpeech.SUCCESS) {
                 tts.setLanguage(Locale.US);
+                tts.setOnUtteranceProgressListener(new UtteranceProgressListener() {
+                    @Override
+                    public void onStart(String utteranceId) {}
+                    @Override
+                    public void onDone(String utteranceId) {
+                        triggerNextStep(utteranceId);
+                    }
+                    @Override
+                    public void onError(String utteranceId) {
+                        triggerNextStep(utteranceId);
+                    }
+                });
                 startQuestionFlow();
             } else {
                 Toast.makeText(this, "TTS Init Failed", Toast.LENGTH_SHORT).show();
@@ -102,8 +115,12 @@ public class MockSpeakActivity extends AppCompatActivity {
 
         // Delay slightly so user can read instruction
         new Handler().postDelayed(() -> {
-            speakText("Begin preparing now.");
-            new Handler().postDelayed(() -> startPreparationTimer(currentQuestion), 1500);
+            boolean shouldReadPrompt = !currentQuestion.isReadAloud() && prompt != null && !prompt.isEmpty();
+            if (shouldReadPrompt) {
+                speakTextWithId(prompt, "READ_PROMPT");
+            } else {
+                speakTextWithId("Begin preparing now.", "BEGIN_PREP");
+            }
         }, 1000);
     }
 
@@ -151,8 +168,7 @@ public class MockSpeakActivity extends AppCompatActivity {
                 toneGenerator.startTone(ToneGenerator.TONE_PROP_BEEP, 500);
 
                 new Handler().postDelayed(() -> {
-                    speakText("Begin speaking now.");
-                    new Handler().postDelayed(() -> startSpeakingTimer(question), 1500);
+                    speakTextWithId("Begin speaking now.", "BEGIN_SPEAK");
                 }, 500);
             }
         }.start();
@@ -226,10 +242,28 @@ public class MockSpeakActivity extends AppCompatActivity {
         tvTimer.setText(timeStr);
     }
 
-    private void speakText(String text) {
+    private void speakTextWithId(String text, String utteranceId) {
         if (tts != null) {
-            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+            Bundle params = new Bundle();
+            params.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, utteranceId);
+            tts.speak(text, TextToSpeech.QUEUE_FLUSH, params, utteranceId);
+        } else {
+            triggerNextStep(utteranceId);
         }
+    }
+
+    private void triggerNextStep(String utteranceId) {
+        runOnUiThread(() -> {
+            if ("READ_PROMPT".equals(utteranceId)) {
+                new Handler().postDelayed(() -> {
+                    speakTextWithId("Begin preparing now.", "BEGIN_PREP");
+                }, 500);
+            } else if ("BEGIN_PREP".equals(utteranceId)) {
+                startPreparationTimer(questionList.get(currentQuestionIndex));
+            } else if ("BEGIN_SPEAK".equals(utteranceId)) {
+                startSpeakingTimer(questionList.get(currentQuestionIndex));
+            }
+        });
     }
 
     private void finishSpeakingTest() {
