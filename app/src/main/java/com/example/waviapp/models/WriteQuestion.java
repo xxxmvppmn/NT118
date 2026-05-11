@@ -12,7 +12,11 @@ public class WriteQuestion {
     private String sampleAnswer;    // Câu trả lời mẫu
     private int minWords;           // Số từ tối thiểu
     private int maxWords;           // Số từ tối đa
+    
+    private int partNumber;         // Phân loại Part (1-3)
+    private Integer imageResId;     // ID của file ảnh trong res/drawable (null nếu không có)
 
+    // Constructor cũ cho Practice
     public WriteQuestion(String taskType, String instruction, String prompt,
                          String keyword1, String keyword2,
                          String sampleAnswer, int minWords, int maxWords) {
@@ -24,6 +28,24 @@ public class WriteQuestion {
         this.sampleAnswer = sampleAnswer;
         this.minWords = minWords;
         this.maxWords = maxWords;
+        this.partNumber = 1;
+        this.imageResId = null;
+    }
+
+    // Constructor mới cho Mock Test
+    public WriteQuestion(int partNumber, String taskType, String instruction, String prompt,
+                         String keyword1, String keyword2, String sampleAnswer, 
+                         int minWords, int maxWords, Integer imageResId) {
+        this.partNumber = partNumber;
+        this.taskType = taskType;
+        this.instruction = instruction;
+        this.prompt = prompt;
+        this.keyword1 = keyword1;
+        this.keyword2 = keyword2;
+        this.sampleAnswer = sampleAnswer;
+        this.minWords = minWords;
+        this.maxWords = maxWords;
+        this.imageResId = imageResId;
     }
 
     public String getTaskType() { return taskType; }
@@ -34,4 +56,6 @@ public class WriteQuestion {
     public String getSampleAnswer() { return sampleAnswer; }
     public int getMinWords() { return minWords; }
     public int getMaxWords() { return maxWords; }
+    public int getPartNumber() { return partNumber; }
+    public Integer getImageResId() { return imageResId; }
 }

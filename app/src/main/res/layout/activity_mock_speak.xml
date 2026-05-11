@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:elevation="4dp"
+        android:paddingHorizontal="16dp">
+        <TextView
+            android:id="@+id/tvToolbarTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Speaking Test"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tvProgressText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1/11"
+            android:textColor="@color/purple_main"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-6dp"
+        android:progressDrawable="@drawable/custom_progress_bar"
+        android:max="11" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:gravity="center_horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#F8F9FA"
+                android:layout_marginBottom="24dp">
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+                    
+                    <TextView
+                        android:id="@+id/tvInstruction"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Directions..."
+                        android:textSize="16sp"
+                        android:textColor="#1A1A1A"
+                        android:textStyle="italic"
+                        android:layout_marginBottom="16dp"/>
+                    
+                    <ImageView
+                        android:id="@+id/ivQuestionImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:scaleType="centerCrop"
+                        android:visibility="gone"
+                        android:layout_marginBottom="16dp"/>
+                        
+                    <TextView
+                        android:id="@+id/tvPrompt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Prompt..."
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:lineSpacingExtra="4dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Preparation Time"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/purple_main"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/tvTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00"
+                android:textSize="48sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginBottom="32dp"/>
+
+            <!-- Waveform Layout -->
+            <LinearLayout
+                android:id="@+id/llWaveform"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:visibility="invisible">
+                <View android:id="@+id/wave1" android:layout_width="4dp" android:layout_height="20dp" android:background="@color/purple_main" android:layout_marginEnd="4dp"/>
+                <View android:id="@+id/wave2" android:layout_width="4dp" android:layout_height="30dp" android:background="@color/purple_main" android:layout_marginEnd="4dp"/>
+                <View android:id="@+id/wave3" android:layout_width="4dp" android:layout_height="40dp" android:background="@color/purple_main" android:layout_marginEnd="4dp"/>
+                <View android:id="@+id/wave4" android:layout_width="4dp" android:layout_height="50dp" android:background="@color/purple_main" android:layout_marginEnd="4dp"/>
+                <View android:id="@+id/wave5" android:layout_width="4dp" android:layout_height="40dp" android:background="@color/purple_main" android:layout_marginEnd="4dp"/>
+                <View android:id="@+id/wave6" android:layout_width="4dp" android:layout_height="30dp" android:background="@color/purple_main" android:layout_marginEnd="4dp"/>
+                <View android:id="@+id/wave7" android:layout_width="4dp" android:layout_height="20dp" android:background="@color/purple_main" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

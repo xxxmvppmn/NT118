@@ -53,8 +53,15 @@ public class TestDetailActivity extends BaseActivity {
         tvQuestions.setText(qSpannable);
 
         btnStart.setOnClickListener(v -> {
-            Toast.makeText(this, "Bài thi đang bắt đầu...", Toast.LENGTH_SHORT).show();
-            // Implement test start logic here
+            if (questions == 16 || (title != null && title.toLowerCase().contains("speaking"))) {
+                // Route to Speaking & Writing Mock Test
+                android.content.Intent intent = new android.content.Intent(TestDetailActivity.this, MockMicCheckActivity.class);
+                startActivity(intent);
+                finish();
+            } else {
+                Toast.makeText(this, "Bài thi đang bắt đầu...", Toast.LENGTH_SHORT).show();
+                // Implement other test start logic here
+            }
         });
     }
 }

@@ -186,6 +186,24 @@
             android:exported="false"
             android:screenOrientation="portrait" />
 
+        <!-- Mock Test Activities -->
+        <activity
+            android:name=".activities.MockMicCheckActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.MockSpeakActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.MockWriteActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.MockResultActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
         <receiver
             android:name=".utils.AlarmReceiver"
             android:exported="false" />
