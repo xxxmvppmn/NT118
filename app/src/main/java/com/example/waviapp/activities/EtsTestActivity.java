@@ -1,5 +1,6 @@
 package com.example.waviapp.activities;
 
+import android.content.res.AssetFileDescriptor;
 import android.graphics.pdf.PdfRenderer;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -37,7 +38,7 @@ import java.util.Map;
 
 public class EtsTestActivity extends AppCompatActivity {
 
-    public static final String EXTRA_ETS_ID = "extra_ets_id"; // Ví dụ: "ets01", "ets02"
+    public static final String EXTRA_ETS_ID = "extra_ets_id"; 
     private static final String TAG = "EtsTestActivity";
     private RecyclerView rvPdf;
     private RecyclerView rvAnswers;
@@ -54,7 +55,7 @@ public class EtsTestActivity extends AppCompatActivity {
     private final Map<Integer, String> correctAnswers = new HashMap<>();
     private final Handler handler = new Handler();
     
-    private String etsId = "ets01"; // Mặc định là ets01
+    private String etsId = "ets01"; 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +71,9 @@ public class EtsTestActivity extends AppCompatActivity {
         setupTabs();
         loadAllAnswers();
         setupAnswerSheet();
-        loadPdf(etsId + "/" + etsId + "_lc.pdf");
+        
+        // Load mặc định trang LC
+        loadPdfWithFallback("_lc.pdf");
     }
 
     private void initViews() {
@@ -91,11 +94,31 @@ public class EtsTestActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(v -> submitExam());
     }
 
-    private void loadPdf(String assetPath) {
+    private void loadPdfWithFallback(String suffix) {
+        String[] possibleNames = {
+            etsId + suffix,
+            etsId.replace("ets", "est") + suffix
+        };
+        
+        boolean success = false;
+        for (String name : possibleNames) {
+            if (tryLoadPdf(etsId + "/" + name)) {
+                success = true;
+                break;
+            }
+        }
+        
+        if (!success) {
+            Toast.makeText(this, "Không tìm thấy file PDF: " + suffix, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private boolean tryLoadPdf(String assetPath) {
         try {
-            if (pdfAdapter != null) pdfAdapter.close();
-            File tempFile = new File(getCacheDir(), "temp_display.pdf");
             InputStream is = getAssets().open(assetPath);
+            if (pdfAdapter != null) pdfAdapter.close();
+            
+            File tempFile = new File(getCacheDir(), "temp_display.pdf");
             FileOutputStream fos = new FileOutputStream(tempFile);
             byte[] buffer = new byte[1024];
             int read;
@@ -106,22 +129,37 @@ public class EtsTestActivity extends AppCompatActivity {
             ParcelFileDescriptor pfd = ParcelFileDescriptor.open(tempFile, ParcelFileDescriptor.MODE_READ_ONLY);
             pdfAdapter = new PdfAdapter(pfd);
             rvPdf.setAdapter(pdfAdapter);
+            return true;
         } catch (IOException e) {
-            Log.e(TAG, "Error loading PDF: " + e.getMessage());
-            Toast.makeText(this, "Không thể tải file PDF: " + assetPath, Toast.LENGTH_SHORT).show();
+            return false;
         }
     }
 
     private void setupAudio() {
         mediaPlayer = new MediaPlayer();
-        try {
-            String audioPath = etsId + "/" + etsId + "_full_audio.mp3";
-            android.content.res.AssetFileDescriptor afd = getAssets().openFd(audioPath);
-            mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-            mediaPlayer.prepare();
-            afd.close();
-        } catch (IOException e) { 
-            Log.e(TAG, "Error audio: " + e.getMessage());
+        String estId = etsId.replace("ets", "est");
+        
+        String[] possiblePaths = {
+            etsId + "/" + etsId + "_full_audio.mp3",
+            etsId + "/" + estId + "_full_audio.mp3",
+            etsId + "/" + estId + "_full_audio.mp3.mp3", // Sửa lỗi double extension
+            etsId + "/" + etsId + "_audio.mp3"
+        };
+
+        boolean loaded = false;
+        for (String path : possiblePaths) {
+            try {
+                AssetFileDescriptor afd = getAssets().openFd(path);
+                mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+                mediaPlayer.prepare();
+                afd.close();
+                loaded = true;
+                Log.d(TAG, "Loaded audio: " + path);
+                break;
+            } catch (IOException ignored) {}
+        }
+
+        if (!loaded) {
             Toast.makeText(this, "Không thể tải file Audio", Toast.LENGTH_SHORT).show();
         }
 
@@ -136,12 +174,14 @@ public class EtsTestActivity extends AppCompatActivity {
             }
         });
 
-        seekBar.setMax(mediaPlayer.getDuration());
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override public void onProgressChanged(SeekBar sb, int p, boolean b) { if (b) mediaPlayer.seekTo(p); }
-            @Override public void onStartTrackingTouch(SeekBar sb) {}
-            @Override public void onStopTrackingTouch(SeekBar sb) {}
-        });
+        if (loaded) {
+            seekBar.setMax(mediaPlayer.getDuration());
+            seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override public void onProgressChanged(SeekBar sb, int p, boolean b) { if (b) mediaPlayer.seekTo(p); }
+                @Override public void onStartTrackingTouch(SeekBar sb) {}
+                @Override public void onStopTrackingTouch(SeekBar sb) {}
+            });
+        }
     }
 
     private void updateSeekBar() {
@@ -157,8 +197,8 @@ public class EtsTestActivity extends AppCompatActivity {
     private void setupTabs() {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override public void onTabSelected(TabLayout.Tab tab) {
-                String pdfFile = tab.getPosition() == 0 ? etsId + "_lc.pdf" : etsId + "_rc.pdf";
-                loadPdf(etsId + "/" + pdfFile);
+                String suffix = tab.getPosition() == 0 ? "_lc.pdf" : "_rc.pdf";
+                loadPdfWithFallback(suffix);
             }
             @Override public void onTabUnselected(TabLayout.Tab tab) {}
             @Override public void onTabReselected(TabLayout.Tab tab) {}
@@ -166,11 +206,32 @@ public class EtsTestActivity extends AppCompatActivity {
     }
 
     private void loadAllAnswers() {
-        String[] lcPaths = {etsId + "/" + etsId + "_lc_answers.json", etsId + "/" + etsId + "_lc_aswers.json"};
-        String[] rcPaths = {etsId + "/" + etsId + "_rc_answers.json", etsId + "/" + etsId + "_rc_aswers.json"};
+        correctAnswers.clear();
+        String estId = etsId.replace("ets", "est");
+        
+        // Thử tìm LC
+        String[] lcExtensions = {"_lc_answers.json", "_lc_aswers.json"};
+        boolean lcFound = false;
+        for (String id : new String[]{etsId, estId, "ets01", "ets02"}) { // Thử cả ID gốc nếu copy nhầm
+            for (String ext : lcExtensions) {
+                if (loadJsonArrayToMap(etsId + "/" + id + ext)) {
+                    lcFound = true; break;
+                }
+            }
+            if (lcFound) break;
+        }
 
-        for (String path : lcPaths) { if (loadJsonArrayToMap(path)) break; }
-        for (String path : rcPaths) { if (loadJsonArrayToMap(path)) break; }
+        // Thử tìm RC
+        String[] rcExtensions = {"_rc_answers.json", "_rc_aswers.json"};
+        boolean rcFound = false;
+        for (String id : new String[]{etsId, estId, "ets01", "ets02"}) {
+            for (String ext : rcExtensions) {
+                if (loadJsonArrayToMap(etsId + "/" + id + ext)) {
+                    rcFound = true; break;
+                }
+            }
+            if (rcFound) break;
+        }
     }
 
     private boolean loadJsonArrayToMap(String path) {
@@ -192,7 +253,6 @@ public class EtsTestActivity extends AppCompatActivity {
             Log.d(TAG, "Loaded " + jsonArray.length() + " answers from " + path);
             return true;
         } catch (Exception e) {
-            Log.e(TAG, "Fail to load " + path + ": " + e.getMessage());
             return false;
         }
     }
