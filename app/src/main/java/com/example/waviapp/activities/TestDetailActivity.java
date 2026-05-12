@@ -9,6 +9,7 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.graphics.Typeface;
+import android.content.Intent;
 
 import com.example.waviapp.R;
 
@@ -39,7 +40,6 @@ public class TestDetailActivity extends BaseActivity {
             tvTitle.setText(title);
         }
 
-        // Apply localized labels
         String timeLabel = getString(R.string.test_detail_time);
         String timeStr = timeLabel + time + getString(R.string.auto_minute);
         SpannableString timeSpannable = new SpannableString(timeStr);
@@ -53,15 +53,23 @@ public class TestDetailActivity extends BaseActivity {
         tvQuestions.setText(qSpannable);
 
         btnStart.setOnClickListener(v -> {
-            if (questions == 19 || (title != null && (title.toLowerCase().contains("speaking") || title.toLowerCase().contains("writing")))) {
-                android.content.Intent intent = new android.content.Intent(TestDetailActivity.this, MockIntroActivity.class);
-                // Truyền testId (= title của bài thi) xuống MockIntroActivity
+            String lowerTitle = (title != null) ? title.toLowerCase() : "";
+            
+            // Logic nhận diện bài thi
+            if (questions == 19 || lowerTitle.contains("speaking") || lowerTitle.contains("writing")) {
+                Intent intent = new Intent(TestDetailActivity.this, MockIntroActivity.class);
                 intent.putExtra("TEST_ID", title);
                 startActivity(intent);
                 finish();
-            } else {
-                Toast.makeText(this, "Bài thi đang bắt đầu...", Toast.LENGTH_SHORT).show();
-                // Implement other test start logic here
+            } 
+            // Nếu là Test 1 của phần Fulltest (thường có 200 câu)
+            else if (lowerTitle.contains("test 1") && (questions == 200 || questions == 100)) {
+                Intent intent = new Intent(TestDetailActivity.this, EtsTestActivity.class);
+                startActivity(intent);
+                finish();
+            } 
+            else {
+                Toast.makeText(this, "Bài thi " + title + " đang được cập nhật dữ liệu...", Toast.LENGTH_SHORT).show();
             }
         });
     }

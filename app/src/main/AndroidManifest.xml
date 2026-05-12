@@ -196,6 +196,8 @@
         <activity android:name=".activities.MockResultActivity" android:exported="false" android:screenOrientation="portrait"/>
         <activity android:name=".activities.MockReviewActivity" android:exported="false" android:screenOrientation="portrait"/>
 
+        <activity android:name=".activities.EtsTestActivity" android:exported="false" android:screenOrientation="portrait"/>
+
         <receiver
             android:name=".utils.AlarmReceiver"
             android:exported="false" />
