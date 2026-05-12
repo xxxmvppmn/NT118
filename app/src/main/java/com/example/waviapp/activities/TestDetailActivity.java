@@ -62,12 +62,20 @@ public class TestDetailActivity extends BaseActivity {
                 startActivity(intent);
                 finish();
             } 
-            // Nếu là Test 1 của phần Fulltest (thường có 200 câu)
+            // Nếu là Test 1 của phần Fulltest
             else if (lowerTitle.contains("test 1") && (questions == 200 || questions == 100)) {
                 Intent intent = new Intent(TestDetailActivity.this, EtsTestActivity.class);
+                intent.putExtra(EtsTestActivity.EXTRA_ETS_ID, "ets01");
                 startActivity(intent);
                 finish();
             } 
+            // Nếu là Test 2 của phần Fulltest
+            else if (lowerTitle.contains("test 2") && (questions == 200 || questions == 100)) {
+                Intent intent = new Intent(TestDetailActivity.this, EtsTestActivity.class);
+                intent.putExtra(EtsTestActivity.EXTRA_ETS_ID, "ets02");
+                startActivity(intent);
+                finish();
+            }
             else {
                 Toast.makeText(this, "Bài thi " + title + " đang được cập nhật dữ liệu...", Toast.LENGTH_SHORT).show();
             }
