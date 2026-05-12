@@ -78,11 +78,14 @@ public class PremiumActivity extends BaseActivity {
 
     private void setupPricePackages() {
         binding.rvPricePackages.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        
+        // Cấu hình các gói theo yêu cầu của người dùng
         List<PricePackage> packages = Arrays.asList(
-                new PricePackage("1 Tháng", "150.000đ", "99.000đ", "TIẾT KIỆM"),
-                new PricePackage("1 Năm", "600.000đ", "399.000đ", "50% OFF"),
-                new PricePackage("Trọn đời", "1.500.000đ", "999.000đ", "HOT")
+                new PricePackage("Gói 3 tháng", "150.000", "99.000", 33, "49.500", "TIẾT KIỆM"),
+                new PricePackage("Gói 1 năm", "600.000", "299.000", 50, "198.000", "50% OFF"),
+                new PricePackage("Gói Trọn đời", "2.999.000", "999.000", 67, "1.000.000", "HOT")
         );
+        
         binding.rvPricePackages.setAdapter(new PackageAdapter(packages));
     }
 
