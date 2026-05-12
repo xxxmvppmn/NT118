@@ -24,9 +24,16 @@ public class PremiumActivity extends BaseActivity {
     private ActivityPremiumBinding binding;
 
     static class PricePackage {
-        String name, oldPrice, newPrice, promo;
-        PricePackage(String name, String oldPrice, String newPrice, String promo) {
-            this.name = name; this.oldPrice = oldPrice; this.newPrice = newPrice; this.promo = promo;
+        String name, oldPrice, newPrice, discountAmount, promo;
+        int discountPercent;
+
+        PricePackage(String name, String oldPrice, String newPrice, int discountPercent, String discountAmount, String promo) {
+            this.name = name;
+            this.oldPrice = oldPrice;
+            this.newPrice = newPrice;
+            this.discountPercent = discountPercent;
+            this.discountAmount = discountAmount;
+            this.promo = promo;
         }
     }
 
@@ -39,12 +46,16 @@ public class PremiumActivity extends BaseActivity {
         if (binding.ivBack != null) binding.ivBack.setOnClickListener(v -> finish());
         setupPricePackages();
         setupUserReviews();
-        binding.tvRestore.setOnClickListener(v -> Toast.makeText(this, "Đang kiểm tra...", Toast.LENGTH_SHORT).show());
+
+        if (binding.tvRestore != null) {
+            binding.tvRestore.setOnClickListener(v -> Toast.makeText(this, "Đang kiểm tra...", Toast.LENGTH_SHORT).show());
+        }
 
         setupBottomNavigation();
     }
 
     private void setupBottomNavigation() {
+        binding.bottomNav.setSelectedItemId(R.id.nav_premium);
         binding.bottomNav.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.nav_premium) return false;
@@ -100,10 +111,21 @@ public class PremiumActivity extends BaseActivity {
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             PricePackage item = data.get(position);
             holder.tvName.setText(item.name);
-            holder.tvCurrent.setText(item.newPrice);
+            holder.tvCurrent.setText(item.newPrice + "đ");
             holder.tvPromo.setText(item.promo);
-            holder.tvOld.setText(item.oldPrice);
+            holder.tvOld.setText(item.oldPrice + "đ");
             holder.tvOld.setPaintFlags(holder.tvOld.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
+            // Xử lý sự kiện click để truyền dữ liệu sang PaymentActivity
+            holder.itemView.setOnClickListener(v -> {
+                Intent intent = new Intent(PremiumActivity.this, PaymentActivity.class);
+                intent.putExtra("packageName", item.name);
+                intent.putExtra("originalPrice", item.oldPrice);
+                intent.putExtra("discountPercent", item.discountPercent);
+                intent.putExtra("discountAmount", item.discountAmount);
+                intent.putExtra("totalPrice", item.newPrice);
+                startActivity(intent);
+            });
         }
 
         @Override
@@ -129,11 +151,14 @@ public class PremiumActivity extends BaseActivity {
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             androidx.cardview.widget.CardView card = new androidx.cardview.widget.CardView(parent.getContext());
-            card.setRadius(20f); card.setCardElevation(4f);
+            card.setRadius(20f); 
+            card.setCardElevation(4f);
             RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(600, ViewGroup.LayoutParams.WRAP_CONTENT);
-            params.setMargins(16, 16, 16, 16); card.setLayoutParams(params);
+            params.setMargins(16, 16, 16, 16); 
+            card.setLayoutParams(params);
             TextView tv = new TextView(parent.getContext());
-            tv.setPadding(30, 30, 30, 30); card.addView(tv);
+            tv.setPadding(30, 30, 30, 30); 
+            card.addView(tv);
             return new ViewHolder(card, tv);
         }
 

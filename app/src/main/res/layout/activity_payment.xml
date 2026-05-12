@@ -54,15 +54,15 @@
 
             <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp">
                 <TextView android:text="Giá gốc" android:textColor="@color/text_gray" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                <TextView android:text="549.000 đ" android:textColor="@color/text_black" android:layout_alignParentRight="true" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/txtOriginalPrice" android:text="549.000 đ" android:textColor="@color/text_black" android:layout_alignParentRight="true" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
             </RelativeLayout>
 
             <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp">
                 <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
                     <TextView android:text="Giảm giá" android:textColor="@color/text_gray" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="- 20%" android:background="@drawable/bg_total_amount" android:paddingHorizontal="6dp" android:textSize="10sp" android:textColor="@color/premium_purple" android:layout_marginStart="8dp" android:textStyle="bold"/>
+                    <TextView android:id="@+id/txtDiscountPercent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="- 20%" android:background="@drawable/bg_total_amount" android:paddingHorizontal="6dp" android:textSize="10sp" android:textColor="@color/premium_purple" android:layout_marginStart="8dp" android:textStyle="bold"/>
                 </LinearLayout>
-                <TextView android:text="- 109.800 đ" android:textColor="#E53935" android:layout_alignParentRight="true" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/txtDiscountAmount" android:text="- 109.800 đ" android:textColor="#E53935" android:layout_alignParentRight="true" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
             </RelativeLayout>
 
             <LinearLayout
@@ -144,7 +144,6 @@
         android:textColor="@color/text_gray"
         app:strokeColor="@color/text_gray"
         app:cornerRadius="16dp"
-        app:icon="@drawable/ic_restore"
         app:iconGravity="textStart"
         app:iconTint="@color/text_gray"/>
 
