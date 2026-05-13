@@ -31,16 +31,16 @@ public class ExamActivity extends BaseActivity {
 
         dbHelper = new DatabaseHelper();
 
-        // Section 1: ETS 2023 (Fulltest)
-        binding.tvSeeMore1.setOnClickListener(v -> openTestList(TestListActivity.CAT_FULLTEST));
+        // Section 1: ETS 2023
+        binding.tvSeeMore1.setOnClickListener(v -> openTestList(TestListActivity.CAT_FULLTEST, ""));
         
         // Section 2: ETS 2024 (Fulltest 2)
-        binding.tvSeeMore2.setOnClickListener(v -> openTestList(TestListActivity.CAT_FULLTEST_2));
+        binding.tvSeeMore2.setOnClickListener(v -> openTestList(TestListActivity.CAT_FULLTEST_2, "ets2024"));
         
         // Section 3: Speaking & Writing
-        binding.tvSeeMore3.setOnClickListener(v -> openTestList(TestListActivity.CAT_SPEAKING));
+        binding.tvSeeMore3.setOnClickListener(v -> openTestList(TestListActivity.CAT_SPEAKING, ""));
 
-        // Tự động cập nhật giao diện khi User trở thành Premium
+        // Tự động cập nhật khi Premium được kích hoạt
         UserSessionManager.getInstance().getUserLiveData().observe(this, user -> {
             if (user != null) {
                 isUserPremium = user.isPremium();
@@ -61,7 +61,7 @@ public class ExamActivity extends BaseActivity {
             } catch (Exception e) { return t1.getMaBKT().compareTo(t2.getMaBKT()); }
         };
 
-        // Load ETS 2023
+        // 1. Load ETS 2023
         dbHelper.getTests("fulltest", new DatabaseHelper.TestCallback() {
             @Override
             public void onSuccess(List<BaiKiemTra> tests) {
@@ -70,14 +70,14 @@ public class ExamActivity extends BaseActivity {
                 else {
                     java.util.Collections.sort(tests, testSorter);
                     for (int i = 0; i < Math.min(5, tests.size()); i++) {
-                        addTestToLayout(binding.llFulltest, tests.get(i), R.drawable.ic_test, "#FFFDE7");
+                        addTestToLayout(binding.llFulltest, tests.get(i), R.drawable.ic_test, "#FFFDE7", "");
                     }
                 }
             }
             @Override public void onFailure(String error) { setupFulltestDefault(); }
         });
 
-        // Load ETS 2024
+        // 2. Load ETS 2024
         dbHelper.getTests("fulltest2", new DatabaseHelper.TestCallback() {
             @Override
             public void onSuccess(List<BaiKiemTra> tests) {
@@ -86,14 +86,14 @@ public class ExamActivity extends BaseActivity {
                 else {
                     java.util.Collections.sort(tests, testSorter);
                     for (int i = 0; i < Math.min(5, tests.size()); i++) {
-                        addTestToLayout(binding.llFulltest2, tests.get(i), R.drawable.ic_listen, "#E1F5FE");
+                        addTestToLayout(binding.llFulltest2, tests.get(i), R.drawable.ic_test, "#E1F5FE", "ets2024");
                     }
                 }
             }
             @Override public void onFailure(String error) { setupFulltest2Default(); }
         });
 
-        // Load Speaking
+        // 3. Load Speaking
         dbHelper.getTests("speaking", new DatabaseHelper.TestCallback() {
             @Override
             public void onSuccess(List<BaiKiemTra> tests) {
@@ -102,7 +102,7 @@ public class ExamActivity extends BaseActivity {
                 else {
                     java.util.Collections.sort(tests, testSorter);
                     for (int i = 0; i < Math.min(5, tests.size()); i++) {
-                        addTestToLayout(binding.llSpeaking, tests.get(i), R.drawable.ic_speak, "#FCE4EC");
+                        addTestToLayout(binding.llSpeaking, tests.get(i), R.drawable.ic_speak, "#FCE4EC", "");
                     }
                 }
             }
@@ -110,7 +110,7 @@ public class ExamActivity extends BaseActivity {
         });
     }
 
-    private void addTestToLayout(LinearLayout container, BaiKiemTra test, int iconRes, String bgColor) {
+    private void addTestToLayout(LinearLayout container, BaiKiemTra test, int iconRes, String bgColor, String folderPrefix) {
         View itemView = LayoutInflater.from(this).inflate(R.layout.item_test_card, container, false);
         TextView tvTestName = itemView.findViewById(R.id.tvTestName);
         TextView tvTestDesc = itemView.findViewById(R.id.tvTestDesc);
@@ -128,7 +128,7 @@ public class ExamActivity extends BaseActivity {
             itemView.setOnClickListener(v -> Toast.makeText(this, getString(R.string.upgrade_required), Toast.LENGTH_SHORT).show());
         } else {
             ivLock.setVisibility(View.GONE);
-            itemView.setOnClickListener(v -> openTestDetail(test.getTenBKT(), test.getThoiGianLamBai(), test.getTongSoCau()));
+            itemView.setOnClickListener(v -> openTestDetail(test.getTenBKT(), test.getThoiGianLamBai(), test.getTongSoCau(), folderPrefix));
         }
         container.addView(itemView);
     }
@@ -137,7 +137,7 @@ public class ExamActivity extends BaseActivity {
         binding.llFulltest.removeAllViews();
         for (int i = 1; i <= 5; i++) {
             BaiKiemTra test = new BaiKiemTra("ft_" + i, "cd_1", "Test " + i, "ETS 2023", 200, 120, i > 2);
-            addTestToLayout(binding.llFulltest, test, R.drawable.ic_test, "#FFFDE7");
+            addTestToLayout(binding.llFulltest, test, R.drawable.ic_test, "#FFFDE7", "");
         }
     }
 
@@ -145,7 +145,7 @@ public class ExamActivity extends BaseActivity {
         binding.llFulltest2.removeAllViews();
         for (int i = 1; i <= 5; i++) {
             BaiKiemTra test = new BaiKiemTra("ft2_" + i, "cd_2", "Test " + i, "ETS 2024", 200, 120, true);
-            addTestToLayout(binding.llFulltest2, test, R.drawable.ic_listen, "#E1F5FE");
+            addTestToLayout(binding.llFulltest2, test, R.drawable.ic_test, "#E1F5FE", "ets2024");
         }
     }
 
@@ -153,21 +153,23 @@ public class ExamActivity extends BaseActivity {
         binding.llSpeaking.removeAllViews();
         for (int i = 1; i <= 5; i++) {
             BaiKiemTra test = new BaiKiemTra("sp_" + i, "cd_3", "Test " + i, "Speaking", 16, 70, i > 2);
-            addTestToLayout(binding.llSpeaking, test, R.drawable.ic_speak, "#FCE4EC");
+            addTestToLayout(binding.llSpeaking, test, R.drawable.ic_speak, "#FCE4EC", "");
         }
     }
 
-    private void openTestList(String category) {
+    private void openTestList(String category, String folderPrefix) {
         Intent intent = new Intent(this, TestListActivity.class);
         intent.putExtra(TestListActivity.EXTRA_CATEGORY, category);
+        intent.putExtra(TestListActivity.EXTRA_FOLDER_PREFIX, folderPrefix);
         startActivity(intent);
     }
 
-    private void openTestDetail(String title, int time, int questions) {
+    private void openTestDetail(String title, int time, int questions, String folderPrefix) {
         Intent intent = new Intent(this, TestDetailActivity.class);
         intent.putExtra(TestDetailActivity.EXTRA_TITLE, title);
         intent.putExtra(TestDetailActivity.EXTRA_TIME, time);
         intent.putExtra(TestDetailActivity.EXTRA_QUESTIONS, questions);
+        intent.putExtra(EtsTestActivity.EXTRA_FOLDER_PREFIX, folderPrefix);
         startActivity(intent);
     }
 

@@ -13,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,9 +35,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EtsTestActivity extends AppCompatActivity {
+public class EtsTestActivity extends BaseActivity {
 
     public static final String EXTRA_ETS_ID = "extra_ets_id"; 
+    public static final String EXTRA_FOLDER_PREFIX = "extra_folder_prefix";
     private static final String TAG = "EtsTestActivity";
     private RecyclerView rvPdf;
     private RecyclerView rvAnswers;
@@ -56,6 +56,8 @@ public class EtsTestActivity extends AppCompatActivity {
     private final Handler handler = new Handler();
     
     private String etsId = "ets01"; 
+    private String folderPrefix = "";
+    private int totalQuestions = 200;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,10 @@ public class EtsTestActivity extends AppCompatActivity {
         if (getIntent().hasExtra(EXTRA_ETS_ID)) {
             etsId = getIntent().getStringExtra(EXTRA_ETS_ID);
         }
+        if (getIntent().hasExtra(EXTRA_FOLDER_PREFIX)) {
+            folderPrefix = getIntent().getStringExtra(EXTRA_FOLDER_PREFIX);
+        }
+        totalQuestions = getIntent().getIntExtra("extra_questions", 200);
 
         initViews();
         setupAudio();
@@ -72,7 +78,6 @@ public class EtsTestActivity extends AppCompatActivity {
         loadAllAnswers();
         setupAnswerSheet();
         
-        // Load mặc định trang LC
         loadPdfWithFallback("_lc.pdf");
     }
 
@@ -94,22 +99,33 @@ public class EtsTestActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(v -> submitExam());
     }
 
+    private String getAssetPath(String fileName) {
+        if (folderPrefix == null || folderPrefix.isEmpty()) {
+            return etsId + "/" + fileName;
+        } else {
+            return folderPrefix + "/" + etsId + "/" + fileName;
+        }
+    }
+
     private void loadPdfWithFallback(String suffix) {
+        String estId = etsId.replace("ets", "est");
         String[] possibleNames = {
+            "2024_" + etsId + suffix,
+            "2024_" + estId + suffix,
             etsId + suffix,
-            etsId.replace("ets", "est") + suffix
+            estId + suffix
         };
         
         boolean success = false;
         for (String name : possibleNames) {
-            if (tryLoadPdf(etsId + "/" + name)) {
+            if (tryLoadPdf(getAssetPath(name))) {
                 success = true;
                 break;
             }
         }
         
         if (!success) {
-            Toast.makeText(this, "Không tìm thấy file PDF: " + suffix, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Không tìm thấy file PDF: " + etsId, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -139,28 +155,28 @@ public class EtsTestActivity extends AppCompatActivity {
         mediaPlayer = new MediaPlayer();
         String estId = etsId.replace("ets", "est");
         
-        String[] possiblePaths = {
-            etsId + "/" + etsId + "_full_audio.mp3",
-            etsId + "/" + estId + "_full_audio.mp3",
-            etsId + "/" + estId + "_full_audio.mp3.mp3", // Sửa lỗi double extension
-            etsId + "/" + etsId + "_audio.mp3"
+        String[] possibleFiles = {
+            "2024_" + etsId + "_full_audio.mp3",
+            "2024_" + estId + "_full_audio.mp3", // Sửa lỗi est trong tên file audio
+            etsId + "_full_audio.mp3",
+            estId + "_full_audio.mp3",
+            etsId + "_audio.mp3"
         };
 
         boolean loaded = false;
-        for (String path : possiblePaths) {
+        for (String fileName : possibleFiles) {
             try {
-                AssetFileDescriptor afd = getAssets().openFd(path);
+                AssetFileDescriptor afd = getAssets().openFd(getAssetPath(fileName));
                 mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
                 mediaPlayer.prepare();
                 afd.close();
                 loaded = true;
-                Log.d(TAG, "Loaded audio: " + path);
                 break;
             } catch (IOException ignored) {}
         }
 
         if (!loaded) {
-            Toast.makeText(this, "Không thể tải file Audio", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Không thể tải file Audio cho " + etsId, Toast.LENGTH_SHORT).show();
         }
 
         btnPlay.setOnClickListener(v -> {
@@ -208,29 +224,14 @@ public class EtsTestActivity extends AppCompatActivity {
     private void loadAllAnswers() {
         correctAnswers.clear();
         String estId = etsId.replace("ets", "est");
-        
-        // Thử tìm LC
-        String[] lcExtensions = {"_lc_answers.json", "_lc_aswers.json"};
-        boolean lcFound = false;
-        for (String id : new String[]{etsId, estId, "ets01", "ets02"}) { // Thử cả ID gốc nếu copy nhầm
-            for (String ext : lcExtensions) {
-                if (loadJsonArrayToMap(etsId + "/" + id + ext)) {
-                    lcFound = true; break;
-                }
-            }
-            if (lcFound) break;
-        }
 
-        // Thử tìm RC
-        String[] rcExtensions = {"_rc_answers.json", "_rc_aswers.json"};
-        boolean rcFound = false;
-        for (String id : new String[]{etsId, estId, "ets01", "ets02"}) {
-            for (String ext : rcExtensions) {
-                if (loadJsonArrayToMap(etsId + "/" + id + ext)) {
-                    rcFound = true; break;
-                }
+        String[] ids = {"2024_" + etsId, "2024_" + estId, etsId, estId};
+        String[] suffixes = {"_lc_answers.json", "_lc_aswers.json", "_rc_answers.json", "_rc_aswers.json"};
+
+        for (String id : ids) {
+            for (String suffix : suffixes) {
+                loadJsonArrayToMap(getAssetPath(id + suffix));
             }
-            if (rcFound) break;
         }
     }
 
@@ -246,11 +247,9 @@ public class EtsTestActivity extends AppCompatActivity {
             JSONArray jsonArray = new JSONArray(sb.toString());
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject obj = jsonArray.getJSONObject(i);
-                int qNum = obj.getInt("q");
-                String ans = obj.getString("ans");
-                correctAnswers.put(qNum, ans);
+                correctAnswers.put(obj.getInt("q"), obj.getString("ans"));
             }
-            Log.d(TAG, "Loaded " + jsonArray.length() + " answers from " + path);
+            Log.d(TAG, "Loaded answers from: " + path);
             return true;
         } catch (Exception e) {
             return false;
@@ -258,7 +257,7 @@ public class EtsTestActivity extends AppCompatActivity {
     }
 
     private void setupAnswerSheet() {
-        answerAdapter = new AnswerSheetAdapter(200, userAnswers);
+        answerAdapter = new AnswerSheetAdapter(totalQuestions, userAnswers);
         rvAnswers.setAdapter(answerAdapter);
     }
 

@@ -37,6 +37,8 @@ public class TestDetailActivity extends BaseActivity {
         String title = getIntent().getStringExtra(EXTRA_TITLE);
         int time = getIntent().getIntExtra(EXTRA_TIME, 60);
         int questions = getIntent().getIntExtra(EXTRA_QUESTIONS, 100);
+        // Nhận folderPrefix (ví dụ: "ets2024")
+        String folderPrefix = getIntent().getStringExtra(EtsTestActivity.EXTRA_FOLDER_PREFIX);
 
         if (title != null) {
             tvTitle.setText(title);
@@ -65,7 +67,6 @@ public class TestDetailActivity extends BaseActivity {
             } 
             else if (lowerTitle.contains("test") && (questions == 200 || questions == 100)) {
                 try {
-                    // Regex chuẩn: Chỉ lấy số đứng sau chữ "Test"
                     Pattern p = Pattern.compile("test\\s*(\\d+)");
                     Matcher m = p.matcher(lowerTitle);
                     if (m.find()) {
@@ -74,7 +75,9 @@ public class TestDetailActivity extends BaseActivity {
                         
                         Intent intent = new Intent(this, EtsTestActivity.class);
                         intent.putExtra(EtsTestActivity.EXTRA_ETS_ID, etsId);
-                        intent.putExtra("extra_questions", questions); // Truyền số câu hỏi sang
+                        intent.putExtra("extra_questions", questions);
+                        // Truyền folderPrefix tới màn hình làm bài
+                        intent.putExtra(EtsTestActivity.EXTRA_FOLDER_PREFIX, folderPrefix);
                         startActivity(intent);
                         finish();
                     } else {
