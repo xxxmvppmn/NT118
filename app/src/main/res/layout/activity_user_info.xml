@@ -167,6 +167,29 @@
                     android:textSize="16sp"
                     android:layout_marginBottom="16dp"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Loại tài khoản"
+                    android:textColor="#9370DB"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="6dp"/>
+                <EditText
+                    android:id="@+id/etAccountType"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:background="@drawable/rounded_input_background"
+                    android:paddingHorizontal="20dp"
+                    android:textColor="#9370DB"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="16dp"
+                    android:focusable="false"
+                    android:clickable="false"
+                    android:editable="false" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

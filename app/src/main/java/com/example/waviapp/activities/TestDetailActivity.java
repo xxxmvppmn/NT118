@@ -12,6 +12,8 @@ import android.graphics.Typeface;
 import android.content.Intent;
 
 import com.example.waviapp.R;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TestDetailActivity extends BaseActivity {
 
@@ -55,35 +57,35 @@ public class TestDetailActivity extends BaseActivity {
         btnStart.setOnClickListener(v -> {
             String lowerTitle = (title != null) ? title.toLowerCase() : "";
             
-            // Logic nhận diện bài thi
             if (questions == 19 || lowerTitle.contains("speaking") || lowerTitle.contains("writing")) {
-                Intent intent = new Intent(TestDetailActivity.this, MockIntroActivity.class);
+                Intent intent = new Intent(this, MockIntroActivity.class);
                 intent.putExtra("TEST_ID", title);
                 startActivity(intent);
                 finish();
             } 
-            // Logic cho Fulltest/Minitest (Test 1 -> Test 10)
             else if (lowerTitle.contains("test") && (questions == 200 || questions == 100)) {
                 try {
-                    // Trích xuất số từ tiêu đề bài test
-                    String numberOnly = lowerTitle.replaceAll("[^0-9]", "");
-                    if (!numberOnly.isEmpty()) {
-                        int testNum = Integer.parseInt(numberOnly);
+                    // Regex chuẩn: Chỉ lấy số đứng sau chữ "Test"
+                    Pattern p = Pattern.compile("test\\s*(\\d+)");
+                    Matcher m = p.matcher(lowerTitle);
+                    if (m.find()) {
+                        int testNum = Integer.parseInt(m.group(1));
                         String etsId = String.format("ets%02d", testNum);
                         
-                        Intent intent = new Intent(TestDetailActivity.this, EtsTestActivity.class);
+                        Intent intent = new Intent(this, EtsTestActivity.class);
                         intent.putExtra(EtsTestActivity.EXTRA_ETS_ID, etsId);
+                        intent.putExtra("extra_questions", questions); // Truyền số câu hỏi sang
                         startActivity(intent);
                         finish();
                     } else {
-                        Toast.makeText(this, "Không xác định được mã bài thi", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Không nhận diện được mã đề", Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
-                    Toast.makeText(this, "Lỗi định dạng tiêu đề bài thi", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Lỗi định dạng tiêu đề", Toast.LENGTH_SHORT).show();
                 }
             }
             else {
-                Toast.makeText(this, "Bài thi " + title + " đang được cập nhật dữ liệu...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Dữ liệu đang được cập nhật...", Toast.LENGTH_SHORT).show();
             }
         });
     }

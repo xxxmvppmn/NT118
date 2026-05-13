@@ -79,11 +79,11 @@ public class PremiumActivity extends BaseActivity {
     private void setupPricePackages() {
         binding.rvPricePackages.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         
-        // Cấu hình các gói theo yêu cầu của người dùng
+        // Cấu hình các gói theo đúng yêu cầu chính xác của bạn:
         List<PricePackage> packages = Arrays.asList(
                 new PricePackage("Gói 3 tháng", "150.000", "99.000", 33, "49.500", "TIẾT KIỆM"),
-                new PricePackage("Gói 1 năm", "600.000", "299.000", 50, "198.000", "50% OFF"),
-                new PricePackage("Gói Trọn đời", "2.999.000", "999.000", 67, "1.000.000", "HOT")
+                new PricePackage("Gói 1 năm", "600.000", "399.000", 33, "198.000", "BÁN CHẠY"),
+                new PricePackage("Gói Trọn đời", "2.998.000", "999.000", 33, "495.000", "HOT")
         );
         
         binding.rvPricePackages.setAdapter(new PackageAdapter(packages));
@@ -119,7 +119,7 @@ public class PremiumActivity extends BaseActivity {
             holder.tvOld.setText(item.oldPrice + "đ");
             holder.tvOld.setPaintFlags(holder.tvOld.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
-            // Xử lý sự kiện click để truyền dữ liệu sang PaymentActivity
+            // Truyền dữ liệu sang PaymentActivity
             holder.itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(PremiumActivity.this, PaymentActivity.class);
                 intent.putExtra("packageName", item.name);

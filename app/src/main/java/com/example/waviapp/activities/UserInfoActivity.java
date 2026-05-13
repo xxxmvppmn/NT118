@@ -130,6 +130,15 @@ public class UserInfoActivity extends BaseActivity {
         if (user.getDob() != null && !user.getDob().isEmpty()) binding.etDob.setText(user.getDob());
         if (user.getGender() != null && !user.getGender().isEmpty()) binding.etGender.setText(user.getGender());
 
+        // Hiển thị Loại tài khoản
+        if (user.isPremium()) {
+            binding.etAccountType.setText("Tài khoản Premium (Đã kích hoạt)");
+            binding.etAccountType.setTextColor(Color.parseColor("#9370DB")); // Màu tím thương hiệu
+        } else {
+            binding.etAccountType.setText("Tài khoản miễn phí");
+            binding.etAccountType.setTextColor(Color.GRAY);
+        }
+
         if (user.getAvatarUrl() != null && !user.getAvatarUrl().isEmpty()) {
             try {
                 byte[] decodedBytes = Base64.decode(user.getAvatarUrl(), Base64.DEFAULT);
@@ -213,6 +222,7 @@ public class UserInfoActivity extends BaseActivity {
         binding.etName.setFocusable(isEdit); binding.etName.setFocusableInTouchMode(isEdit);
         binding.etPhone.setFocusable(isEdit); binding.etPhone.setFocusableInTouchMode(isEdit);
         binding.etDob.setClickable(isEdit); binding.etGender.setClickable(isEdit);
+        // etAccountType luôn luôn không cho sửa
     }
 
     private void showDeleteAccountDialog() {
