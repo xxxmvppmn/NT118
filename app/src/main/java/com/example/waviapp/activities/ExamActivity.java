@@ -14,7 +14,6 @@ import com.example.waviapp.databinding.ActivityExamBinding;
 import com.example.waviapp.firebase.DatabaseHelper;
 import com.example.waviapp.managers.UserSessionManager;
 import com.example.waviapp.models.BaiKiemTra;
-import com.example.waviapp.models.TaiKhoan;
 
 import java.util.List;
 
@@ -32,15 +31,20 @@ public class ExamActivity extends BaseActivity {
 
         dbHelper = new DatabaseHelper();
 
+        // Section 1: ETS 2023 (Fulltest)
         binding.tvSeeMore1.setOnClickListener(v -> openTestList(TestListActivity.CAT_FULLTEST));
-        binding.tvSeeMore2.setOnClickListener(v -> openTestList(TestListActivity.CAT_MINITEST));
+        
+        // Section 2: ETS 2024 (Fulltest 2)
+        binding.tvSeeMore2.setOnClickListener(v -> openTestList(TestListActivity.CAT_FULLTEST_2));
+        
+        // Section 3: Speaking & Writing
         binding.tvSeeMore3.setOnClickListener(v -> openTestList(TestListActivity.CAT_SPEAKING));
 
         // Tự động cập nhật giao diện khi User trở thành Premium
         UserSessionManager.getInstance().getUserLiveData().observe(this, user -> {
             if (user != null) {
                 isUserPremium = user.isPremium();
-                fetchTestData(); // Nạp lại danh sách bài thi với trạng thái mới
+                fetchTestData(); 
             }
         });
 
@@ -57,6 +61,7 @@ public class ExamActivity extends BaseActivity {
             } catch (Exception e) { return t1.getMaBKT().compareTo(t2.getMaBKT()); }
         };
 
+        // Load ETS 2023
         dbHelper.getTests("fulltest", new DatabaseHelper.TestCallback() {
             @Override
             public void onSuccess(List<BaiKiemTra> tests) {
@@ -72,21 +77,23 @@ public class ExamActivity extends BaseActivity {
             @Override public void onFailure(String error) { setupFulltestDefault(); }
         });
 
-        dbHelper.getTests("minitest", new DatabaseHelper.TestCallback() {
+        // Load ETS 2024
+        dbHelper.getTests("fulltest2", new DatabaseHelper.TestCallback() {
             @Override
             public void onSuccess(List<BaiKiemTra> tests) {
-                binding.llMinitest.removeAllViews();
-                if (tests.isEmpty()) setupMinitestDefault();
+                binding.llFulltest2.removeAllViews();
+                if (tests.isEmpty()) setupFulltest2Default();
                 else {
                     java.util.Collections.sort(tests, testSorter);
                     for (int i = 0; i < Math.min(5, tests.size()); i++) {
-                        addTestToLayout(binding.llMinitest, tests.get(i), R.drawable.ic_listen, "#E1F5FE");
+                        addTestToLayout(binding.llFulltest2, tests.get(i), R.drawable.ic_listen, "#E1F5FE");
                     }
                 }
             }
-            @Override public void onFailure(String error) { setupMinitestDefault(); }
+            @Override public void onFailure(String error) { setupFulltest2Default(); }
         });
 
+        // Load Speaking
         dbHelper.getTests("speaking", new DatabaseHelper.TestCallback() {
             @Override
             public void onSuccess(List<BaiKiemTra> tests) {
@@ -116,7 +123,6 @@ public class ExamActivity extends BaseActivity {
         tvTestName.setText(test.getTenBKT());
         tvTestDesc.setText(test.getLoaiKiemTra());
 
-        // LOGIC MỞ KHÓA: Nếu user là Premium thì ẩn khóa, ngược lại hiện khóa nếu bài đó yêu cầu
         if (test.isLocked() && !isUserPremium) {
             ivLock.setVisibility(View.VISIBLE);
             itemView.setOnClickListener(v -> Toast.makeText(this, getString(R.string.upgrade_required), Toast.LENGTH_SHORT).show());
@@ -135,11 +141,11 @@ public class ExamActivity extends BaseActivity {
         }
     }
 
-    private void setupMinitestDefault() {
-        binding.llMinitest.removeAllViews();
+    private void setupFulltest2Default() {
+        binding.llFulltest2.removeAllViews();
         for (int i = 1; i <= 5; i++) {
-            BaiKiemTra test = new BaiKiemTra("mt_" + i, "cd_2", "Test " + i, "Minitest", 100, 60, i > 2);
-            addTestToLayout(binding.llMinitest, test, R.drawable.ic_listen, "#E1F5FE");
+            BaiKiemTra test = new BaiKiemTra("ft2_" + i, "cd_2", "Test " + i, "ETS 2024", 200, 120, true);
+            addTestToLayout(binding.llFulltest2, test, R.drawable.ic_listen, "#E1F5FE");
         }
     }
 

@@ -24,6 +24,7 @@ public class TestListActivity extends BaseActivity {
 
     public static final String EXTRA_CATEGORY = "extra_category";
     public static final String CAT_FULLTEST = "TOEIC Listening & Reading Fulltest";
+    public static final String CAT_FULLTEST_2 = "TOEIC Listening & Reading Fulltest 2";
     public static final String CAT_MINITEST = "TOEIC Listening & Reading Minitest";
     public static final String CAT_SPEAKING = "TOEIC Speaking & Writing";
 
@@ -77,10 +78,11 @@ public class TestListActivity extends BaseActivity {
     private boolean isUserPremium = false;
 
     private void loadTestsFromFirebase(String category) {
-        // Map category title → Firebase key
         String firebaseKey;
         if (CAT_FULLTEST.equals(category)) {
             firebaseKey = "fulltest";
+        } else if (CAT_FULLTEST_2.equals(category)) {
+            firebaseKey = "fulltest2";
         } else if (CAT_SPEAKING.equals(category)) {
             firebaseKey = "speaking";
         } else {
@@ -95,7 +97,6 @@ public class TestListActivity extends BaseActivity {
                     return;
                 }
                 
-                // Sắp xếp các bài test theo số thứ tự (ví dụ từ fc_1 đến fc_10)
                 java.util.Collections.sort(tests, new java.util.Comparator<BaiKiemTra>() {
                     @Override
                     public int compare(BaiKiemTra t1, BaiKiemTra t2) {
@@ -161,14 +162,16 @@ public class TestListActivity extends BaseActivity {
 
         int time = 60;
         int questions = 100;
-        int startId = 1;
-        boolean reverseOffset = false;
         String nameSuffix = "";
 
         if (CAT_FULLTEST.equals(category)) {
             time = 120;
             questions = 200;
             nameSuffix = " ETS 2023";
+        } else if (CAT_FULLTEST_2.equals(category)) {
+            time = 120;
+            questions = 200;
+            nameSuffix = " ETS 2024";
         } else if (CAT_SPEAKING.equals(category)) {
             time = 70;
             questions = 16;
@@ -177,8 +180,8 @@ public class TestListActivity extends BaseActivity {
         int limit = 10;
 
         for (int i = 1; i <= limit; i++) {
-            int currentId = i; // Sort normally 1 to 10
-            boolean isLocked = i > 5; // Default locking pattern
+            int currentId = i;
+            boolean isLocked = i > 5; 
 
             View itemView = inflater.inflate(R.layout.item_test_list, llTestListContainer, false);
 
@@ -225,4 +228,3 @@ public class TestListActivity extends BaseActivity {
         startActivity(intent);
     }
 }
-

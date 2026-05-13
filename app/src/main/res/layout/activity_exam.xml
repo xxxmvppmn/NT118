@@ -44,17 +44,16 @@
             android:paddingTop="10dp"
             android:paddingBottom="40dp">
 
+            <!-- Section 1: ETS 2023 -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="24dp"
                 android:layout_marginBottom="12dp">
-
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -64,16 +63,14 @@
                         android:textStyle="bold"
                         android:textSize="12sp"
                         android:textAllCaps="true"/>
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/auto_fulltest_50"
+                        android:text="ETS 2023 | Fulltest"
                         android:textColor="#9370DB"
                         android:textStyle="bold"
                         android:textSize="22sp" />
                 </LinearLayout>
-
                 <TextView
                     android:id="@+id/tvSeeMore1"
                     android:layout_width="wrap_content"
@@ -102,18 +99,16 @@
                     android:orientation="horizontal" />
             </HorizontalScrollView>
 
-
+            <!-- Section 2: ETS 2024 (Đổi từ Minitest sang Fulltest 2) -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="24dp"
                 android:layout_marginBottom="12dp">
-
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -123,17 +118,15 @@
                         android:textStyle="bold"
                         android:textSize="12sp"
                         android:textAllCaps="true"/>
-
                     <TextView
-                        android:id="@+id/tvMinitestTitle"
+                        android:id="@+id/tvFulltest2Title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/auto_minitest_55"
+                        android:text="ETS 2024 | Fulltest"
                         android:textColor="#9370DB"
                         android:textStyle="bold"
                         android:textSize="22sp" />
                 </LinearLayout>
-
                 <TextView
                     android:id="@+id/tvSeeMore2"
                     android:layout_width="wrap_content"
@@ -156,24 +149,22 @@
                 android:clipToPadding="false"
                 android:layout_marginBottom="32dp">
                 <LinearLayout
-                    android:id="@+id/llMinitest"
+                    android:id="@+id/llFulltest2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" />
             </HorizontalScrollView>
 
-
+            <!-- Section 3: Speaking & Writing -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="24dp"
                 android:layout_marginBottom="12dp">
-
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -183,7 +174,6 @@
                         android:textStyle="bold"
                         android:textSize="12sp"
                         android:textAllCaps="true"/>
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -192,7 +182,6 @@
                         android:textStyle="bold"
                         android:textSize="22sp" />
                 </LinearLayout>
-
                 <TextView
                     android:id="@+id/tvSeeMore3"
                     android:layout_width="wrap_content"
