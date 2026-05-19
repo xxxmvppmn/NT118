@@ -166,6 +166,14 @@
             android:name=".activities.OnlineExamActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.OnlineExamRoomActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.OnlineExamResultActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activities.EventInfoActivity"
             android:exported="false" />
         <activity

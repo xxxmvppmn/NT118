@@ -66,10 +66,23 @@
             android:paddingTop="10dp"
             android:paddingBottom="40dp">
 
+            <!-- Section: Kỳ thi đang diễn ra -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📋 Các kỳ thi"
+                android:textColor="#9370DB"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="4dp"/>
+
+            <!-- Empty state (ẩn khi có dữ liệu) -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardEmptyExam"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
+                android:layout_marginBottom="16dp"
                 app:cardBackgroundColor="#CCFFFFFF"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
@@ -83,12 +96,12 @@
 
                     <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="180dp"
+                        android:layout_height="140dp"
                         android:background="#1A9370DB">
 
                         <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
                             android:src="@drawable/ic_hourglass_gray"
                             android:layout_gravity="center"
                             android:alpha="0.5"
@@ -118,6 +131,15 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- RecyclerView danh sách kỳ thi từ Firestore -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvExams"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Section: Lịch sử thi -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -126,6 +148,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"/>
 
             <com.google.android.material.card.MaterialCardView

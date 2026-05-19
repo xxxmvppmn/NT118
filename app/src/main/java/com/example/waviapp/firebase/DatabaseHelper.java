@@ -2,9 +2,13 @@ package com.example.waviapp.firebase;
 
 import com.example.waviapp.models.BaiKiemTra;
 import com.example.waviapp.models.NguPhap;
+import com.example.waviapp.models.OnlineExam;
+import com.example.waviapp.models.OnlineExamQuestion;
+import com.example.waviapp.models.OnlineExamResult;
 import com.example.waviapp.models.TaiKhoan;
 import com.example.waviapp.models.TuVung;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
@@ -42,6 +46,21 @@ public class DatabaseHelper {
 
     public interface SimpleCallback {
         void onSuccess();
+        void onFailure(String error);
+    }
+
+    public interface OnlineExamListCallback {
+        void onSuccess(List<OnlineExam> exams);
+        void onFailure(String error);
+    }
+
+    public interface OnlineExamQuestionCallback {
+        void onSuccess(List<OnlineExamQuestion> questions);
+        void onFailure(String error);
+    }
+
+    public interface OnlineExamResultCallback {
+        void onSuccess(List<OnlineExamResult> results);
         void onFailure(String error);
     }
 
@@ -279,6 +298,99 @@ public class DatabaseHelper {
                         if (Boolean.TRUE.equals(submitted)) count++;
                     }
                     callback.onSuccess(count);
+                })
+                .addOnFailureListener(e -> callback.onFailure(e.getMessage()));
+    }
+
+    // =================== THI ONLINE ===================
+
+    /** Lấy danh sách tất cả kỳ thi online đang active */
+    public void getOnlineExams(OnlineExamListCallback callback) {
+        db.collection("onlineExams")
+                .orderBy("startTime", Query.Direction.DESCENDING)
+                .get()
+                .addOnSuccessListener(snapshots -> {
+                    List<OnlineExam> exams = new ArrayList<>();
+                    for (QueryDocumentSnapshot doc : snapshots) {
+                        OnlineExam exam = doc.toObject(OnlineExam.class);
+                        exam.setExamId(doc.getId());
+                        exams.add(exam);
+                    }
+                    callback.onSuccess(exams);
+                })
+                .addOnFailureListener(e -> callback.onFailure(e.getMessage()));
+    }
+
+    /** Lấy câu hỏi của một kỳ thi, sắp xếp theo thứ tự */
+    public void getOnlineExamQuestions(String examId, OnlineExamQuestionCallback callback) {
+        db.collection("onlineExams").document(examId)
+                .collection("questions")
+                .orderBy("order", Query.Direction.ASCENDING)
+                .get()
+                .addOnSuccessListener(snapshots -> {
+                    List<OnlineExamQuestion> questions = new ArrayList<>();
+                    for (QueryDocumentSnapshot doc : snapshots) {
+                        OnlineExamQuestion q = doc.toObject(OnlineExamQuestion.class);
+                        q.setQuestionId(doc.getId());
+                        questions.add(q);
+                    }
+                    callback.onSuccess(questions);
+                })
+                .addOnFailureListener(e -> callback.onFailure(e.getMessage()));
+    }
+
+    /** Nộp kết quả thi của user */
+    public void submitOnlineExamResult(String examId, OnlineExamResult result, SimpleCallback callback) {
+        Map<String, Object> data = new HashMap<>();
+        data.put("userId",          result.getUserId());
+        data.put("displayName",     result.getDisplayName());
+        data.put("examId",          examId);
+        data.put("score",           result.getScore());
+        data.put("totalQuestions",  result.getTotalQuestions());
+        data.put("durationSeconds", result.getDurationSeconds());
+        data.put("submittedAt",     result.getSubmittedAt());
+
+        db.collection("onlineExams").document(examId)
+                .collection("results").document(result.getUserId())
+                .set(data)
+                .addOnSuccessListener(aVoid -> { if (callback != null) callback.onSuccess(); })
+                .addOnFailureListener(e -> { if (callback != null) callback.onFailure(e.getMessage()); });
+    }
+
+    /** Lấy bảng xếp hạng top 50 của một kỳ thi (sắp xếp: điểm cao → thời gian thấp) */
+    public void getOnlineExamLeaderboard(String examId, OnlineExamResultCallback callback) {
+        db.collection("onlineExams").document(examId)
+                .collection("results")
+                .orderBy("score", Query.Direction.DESCENDING)
+                .limit(50)
+                .get()
+                .addOnSuccessListener(snapshots -> {
+                    List<OnlineExamResult> results = new ArrayList<>();
+                    int rank = 1;
+                    for (QueryDocumentSnapshot doc : snapshots) {
+                        OnlineExamResult r = doc.toObject(OnlineExamResult.class);
+                        r.setRank(rank++);
+                        results.add(r);
+                    }
+                    callback.onSuccess(results);
+                })
+                .addOnFailureListener(e -> callback.onFailure(e.getMessage()));
+    }
+
+    /** Lấy lịch sử thi online của user hiện tại */
+    public void getUserOnlineExamHistory(String userId, OnlineExamResultCallback callback) {
+        db.collectionGroup("results")
+                .whereEqualTo("userId", userId)
+                .orderBy("submittedAt", Query.Direction.DESCENDING)
+                .limit(20)
+                .get()
+                .addOnSuccessListener(snapshots -> {
+                    List<OnlineExamResult> results = new ArrayList<>();
+                    for (QueryDocumentSnapshot doc : snapshots) {
+                        OnlineExamResult r = doc.toObject(OnlineExamResult.class);
+                        results.add(r);
+                    }
+                    callback.onSuccess(results);
                 })
                 .addOnFailureListener(e -> callback.onFailure(e.getMessage()));
     }

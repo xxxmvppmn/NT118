@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardExam"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="4dp"
+    app:strokeWidth="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Color bar bên trái -->
+        <View
+            android:id="@+id/vColorBar"
+            android:layout_width="6dp"
+            android:layout_height="match_parent"
+            android:background="#9C27B0" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Row: Status + Deadline -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="6dp">
+
+                <TextView
+                    android:id="@+id/tvExamStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="🟢 Đang diễn ra"
+                    android:textSize="12sp"
+                    android:textColor="#2E7D32"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvExamDeadline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kết thúc: 20/05 23:59"
+                    android:textSize="11sp"
+                    android:textColor="#666666"/>
+
+            </LinearLayout>
+
+            <!-- Tên kỳ thi -->
+            <TextView
+                android:id="@+id/tvExamTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dragon Quiz Season 1"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="#9C27B0"
+                android:layout_marginBottom="4dp"/>
+
+            <!-- Mô tả -->
+            <TextView
+                android:id="@+id/tvExamDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kiểm tra từ vựng và ngữ pháp TOEIC cơ bản."
+                android:textSize="13sp"
+                android:textColor="#555555"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#11000000"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- Row: Meta + Participants -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvExamMeta"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="20 câu  •  20 phút"
+                    android:textSize="13sp"
+                    android:textColor="#333333"
+                    android:drawablePadding="4dp"/>
+
+                <TextView
+                    android:id="@+id/tvParticipants"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="👥 50 người thi"
+                    android:textSize="12sp"
+                    android:textColor="#777777"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
