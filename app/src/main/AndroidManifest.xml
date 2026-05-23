@@ -179,6 +179,10 @@
         <activity
             android:name=".activities.QuizActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.LearningPathActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
         <!-- Speaking & Writing Skill Practice Activities -->
         <activity

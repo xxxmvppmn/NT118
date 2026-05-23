@@ -16,16 +16,16 @@ public class TaiKhoan {
     private int capDo;
     private int tongXP;
     private int chuoiNgayHoc;
-    private int mucTieuHangNgay;
+    private int mucTieuHangNgay; // Số phút học mục tiêu
+    private int mucTieuDiem;     // Mục tiêu điểm TOEIC
     private Timestamp lastLogin;
     private boolean premium;
     private String avatarUrl;
     private String phone;
-    // 1. Constructor rỗng
+
     public TaiKhoan() {
     }
 
-    // 2. Constructor 3 tham số dùng khi Đăng ký mới
     public TaiKhoan(String id, String hoTen, String email) {
         this.id = id;
         this.hoTen = hoTen;
@@ -41,68 +41,48 @@ public class TaiKhoan {
         this.capDo = 1;
         this.tongXP = 0;
         this.chuoiNgayHoc = 1;
-        this.mucTieuHangNgay = 0;
+        this.mucTieuHangNgay = 10; // Mặc định 10 phút
+        this.mucTieuDiem = 600;    // Mặc định 600 điểm
         this.premium = false;
     }
 
     // --- GETTER VÀ SETTER ---
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
-
     public String getHoTen() { return hoTen; }
     public void setHoTen(String hoTen) { this.hoTen = hoTen; }
-
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
-
     public String getSdt() { return sdt; }
     public void setSdt(String sdt) { this.sdt = sdt; }
-
     public Timestamp getNgayTao() { return ngayTao; }
     public void setNgayTao(Timestamp ngayTao) { this.ngayTao = ngayTao; }
-
     public Timestamp getNgaySinh() { return ngaySinh; }
     public void setNgaySinh(Timestamp ngaySinh) { this.ngaySinh = ngaySinh; }
-
     public String getDob() { return dob; }
     public void setDob(String dob) { this.dob = dob; }
-
     public String getGender() { return gender; }
     public void setGender(String gender) { this.gender = gender; }
-
     public boolean isPremium() { return premium; }
     public void setPremium(boolean premium) { this.premium = premium; }
-
     public int getTongXP() { return tongXP; }
     public void setTongXP(int tongXP) { this.tongXP = tongXP; }
-
     public int getChuoiNgayHoc() { return chuoiNgayHoc; }
     public void setChuoiNgayHoc(int chuoiNgayHoc) { this.chuoiNgayHoc = chuoiNgayHoc; }
-
     public int getCapDo() { return capDo; }
     public void setCapDo(int capDo) { this.capDo = capDo; }
-
     public String getAvatar() { return avatar; }
     public void setAvatar(String avatar) { this.avatar = avatar; }
-
     public String getVaiTro() { return vaiTro; }
     public void setVaiTro(String vaiTro) { this.vaiTro = vaiTro; }
-
     public int getMucTieuHangNgay() { return mucTieuHangNgay; }
     public void setMucTieuHangNgay(int mucTieuHangNgay) { this.mucTieuHangNgay = mucTieuHangNgay; }
+    public int getMucTieuDiem() { return mucTieuDiem; }
+    public void setMucTieuDiem(int mucTieuDiem) { this.mucTieuDiem = mucTieuDiem; }
     public Timestamp getLastLogin() { return lastLogin; }
     public void setLastLogin(Timestamp lastLogin) { this.lastLogin = lastLogin; }
-    public String getAvatarUrl() {
-        return avatarUrl;
-    }
-    public void setAvatarUrl(String avatarUrl) {
-        this.avatarUrl = avatarUrl;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+    public String getAvatarUrl() { return avatarUrl; }
+    public void setAvatarUrl(String avatarUrl) { this.avatarUrl = avatarUrl; }
+    public String getPhone() { return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
 }
