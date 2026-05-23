@@ -1,5 +1,6 @@
 package com.example.waviapp.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
@@ -8,7 +9,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,19 +22,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class FavoriteWordsActivity extends AppCompatActivity {
+public class FavoriteWordsActivity extends BaseActivity {
 
-    // Khai báo các View từ XML
     private RecyclerView rvFavoriteWords;
     private LinearLayout layoutStudyModes, layoutEmpty;
     private ImageView ivBack;
     private TextView tvTitle;
 
-    // Khai báo Adapter và List
     private VocabularyAdapter adapter;
     private List<TuVung> favoriteList = new ArrayList<>();
-
-    // Khai báo TextToSpeech (TTS)
     private TextToSpeech tts;
 
     @Override
@@ -42,19 +38,10 @@ public class FavoriteWordsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite_words);
 
-        // 1. Ánh xạ các View
         initViews();
-
-        // 2. Cấu hình TextToSpeech (Cái loa)
         initTTS();
-
-        // 3. Cấu hình RecyclerView và Adapter
         setupRecyclerView();
-
-        // 4. Lấy dữ liệu từ Firestore (Thời gian thực)
         loadFavoriteWords();
-
-        // 5. Xử lý các sự kiện nút bấm
         setupClickListeners();
     }
 
@@ -78,7 +65,6 @@ public class FavoriteWordsActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView() {
-        // Khởi tạo Adapter với Interface đã viết trong Prompt trước
         adapter = new VocabularyAdapter(favoriteList, new VocabularyAdapter.OnVocabularyClickListener() {
             @Override
             public void onSpeakClick(String text) {
@@ -93,7 +79,6 @@ public class FavoriteWordsActivity extends AppCompatActivity {
     }
 
     private void loadFavoriteWords() {
-        // Lắng nghe bảng TuVung, chỉ lấy những từ có favorite = true
         FirebaseFirestore.getInstance().collection("TuVung")
                 .whereEqualTo("favorite", true)
                 .addSnapshotListener((value, error) -> {
@@ -107,7 +92,7 @@ public class FavoriteWordsActivity extends AppCompatActivity {
                         for (DocumentSnapshot doc : value) {
                             TuVung word = doc.toObject(TuVung.class);
                             if (word != null) {
-                                word.setMaTV(doc.getId()); // Đảm bảo lấy đúng ID để update tim
+                                word.setMaTV(doc.getId());
                                 favoriteList.add(word);
                             }
                         }
@@ -131,16 +116,28 @@ public class FavoriteWordsActivity extends AppCompatActivity {
     }
 
     private void setupClickListeners() {
-        // Nút quay lại
         ivBack.setOnClickListener(v -> finish());
 
-        // Thêm sự kiện cho 2 CardView (Flashcard và Test)
+        // Chức năng Flashcard cho sổ tay
         findViewById(R.id.cardFlashcard).setOnClickListener(v -> {
-            Toast.makeText(this, "Chức năng Flashcard sắp ra mắt!", Toast.LENGTH_SHORT).show();
+            if (favoriteList.isEmpty()) {
+                Toast.makeText(this, "Sổ tay của bạn đang trống!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            Intent intent = new Intent(this, FlashcardActivity.class);
+            intent.putExtra("MODE", "FAVORITE");
+            startActivity(intent);
         });
 
+        // Chức năng Kiểm tra cho sổ tay
         findViewById(R.id.cardTest).setOnClickListener(v -> {
-            Toast.makeText(this, "Chức năng Kiểm tra sắp ra mắt!", Toast.LENGTH_SHORT).show();
+            if (favoriteList.size() < 4) {
+                Toast.makeText(this, "Cần tối thiểu 4 từ trong sổ tay để bắt đầu kiểm tra!", Toast.LENGTH_LONG).show();
+                return;
+            }
+            Intent intent = new Intent(this, QuizActivity.class);
+            intent.putExtra("MODE", "FAVORITE");
+            startActivity(intent);
         });
     }
 

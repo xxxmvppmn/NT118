@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class QuizActivity extends AppCompatActivity {
+public class QuizActivity extends BaseActivity {
 
     private TextView tvQuestion, tvProgress;
     private ProgressBar progressBar;
@@ -51,34 +51,39 @@ public class QuizActivity extends AppCompatActivity {
         btnOption3 = findViewById(R.id.btnOption3);
         btnOption4 = findViewById(R.id.btnOption4);
 
-        // Nhận dữ liệu từ Intent - Sử dụng key in hoa theo yêu cầu audit
-        String maCD = getIntent().getStringExtra("MA_CD");
-        String level = getIntent().getStringExtra("LEVEL");
+        // Kiểm tra chế độ chạy
+        String mode = getIntent().getStringExtra("MODE");
+        if ("FAVORITE".equals(mode)) {
+            loadFavoriteData();
+        } else {
+            String maCD = getIntent().getStringExtra("MA_CD");
+            String level = getIntent().getStringExtra("LEVEL");
 
-        if (maCD == null || level == null) {
-            Toast.makeText(this, "Dữ liệu không hợp lệ!", Toast.LENGTH_SHORT).show();
-            finish();
-            return;
+            if (maCD == null || level == null) {
+                Toast.makeText(this, "Dữ liệu không hợp lệ!", Toast.LENGTH_SHORT).show();
+                finish();
+                return;
+            }
+            loadDataFromCache(maCD, level);
         }
-
-        loadDataFromCache(maCD, level);
 
         // Sự kiện click cho các nút đáp án
         btnOption1.setOnClickListener(v -> checkAnswer(btnOption1.getText().toString(), btnOption1));
         btnOption2.setOnClickListener(v -> checkAnswer(btnOption2.getText().toString(), btnOption2));
         btnOption3.setOnClickListener(v -> checkAnswer(btnOption3.getText().toString(), btnOption3));
         btnOption4.setOnClickListener(v -> checkAnswer(btnOption4.getText().toString(), btnOption4));
+        
+        findViewById(R.id.ivBack).setOnClickListener(v -> finish());
     }
 
     private void loadDataFromCache(String maCD, String level) {
         progressBar.setVisibility(View.VISIBLE);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        // Ép buộc sử dụng Source.CACHE để tránh tốn Quota Firestore
         db.collection("TuVung")
                 .whereEqualTo("maCD", maCD)
                 .whereEqualTo("level", level)
-                .get(Source.CACHE)
+                .get()
                 .addOnSuccessListener(query -> {
                     wordList.clear();
                     for (QueryDocumentSnapshot doc : query) {
@@ -88,7 +93,7 @@ public class QuizActivity extends AppCompatActivity {
                     progressBar.setVisibility(View.GONE);
 
                     if (wordList.size() < 4) {
-                        Toast.makeText(this, "Không đủ dữ liệu trong Cache (cần tối thiểu 4 từ). Vui lòng vào mục học tập trước!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "Không đủ dữ liệu (cần tối thiểu 4 từ)!", Toast.LENGTH_LONG).show();
                         finish();
                         return;
                     }
@@ -98,9 +103,42 @@ public class QuizActivity extends AppCompatActivity {
                     loadNextQuestion();
                 })
                 .addOnFailureListener(e -> {
-                    Log.e("QUIZ_ERROR", "Cache load failed: " + e.getMessage());
+                    Log.e("QUIZ_ERROR", "Load failed: " + e.getMessage());
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(this, "Không tìm thấy dữ liệu trong Cache!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Lỗi tải dữ liệu!", Toast.LENGTH_SHORT).show();
+                    finish();
+                });
+    }
+
+    private void loadFavoriteData() {
+        progressBar.setVisibility(View.VISIBLE);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("TuVung")
+                .whereEqualTo("favorite", true)
+                .get()
+                .addOnSuccessListener(query -> {
+                    wordList.clear();
+                    for (QueryDocumentSnapshot doc : query) {
+                        TuVung w = doc.toObject(TuVung.class);
+                        wordList.add(w);
+                    }
+                    progressBar.setVisibility(View.GONE);
+
+                    if (wordList.size() < 4) {
+                        Toast.makeText(this, "Sổ tay cần ít nhất 4 từ để bắt đầu kiểm tra!", Toast.LENGTH_LONG).show();
+                        finish();
+                        return;
+                    }
+
+                    Collections.shuffle(wordList);
+                    progressBar.setMax(wordList.size());
+                    loadNextQuestion();
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("QUIZ_ERROR", "Load failed: " + e.getMessage());
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(this, "Lỗi tải dữ liệu yêu thích!", Toast.LENGTH_SHORT).show();
                     finish();
                 });
     }
@@ -155,7 +193,7 @@ public class QuizActivity extends AppCompatActivity {
             highlightCorrectAnswer();
         }
 
-        // Đợi 1.5 giây rồi qua câu tiếp theo theo yêu cầu
+        // Đợi 1.5 giây rồi qua câu tiếp theo
         handler.postDelayed(() -> {
             currentQuestionIndex++;
             isAnswered = false;

@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 import com.example.waviapp.R;
@@ -20,7 +22,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-public class FlashcardActivity extends AppCompatActivity {
+public class FlashcardActivity extends BaseActivity {
 
     private ViewPager2 viewPager;
     private TextView tvProgress;
@@ -35,16 +37,7 @@ public class FlashcardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flashcard);
 
-        // Get data from Intent
-        String maCD = getIntent().getStringExtra("MA_CD");
-        String level = getIntent().getStringExtra("LEVEL");
-
-        if (maCD == null || level == null) {
-            finish(); // No data, close
-            return;
-        }
-
-        // Initialize TTS
+        // Khởi tạo TTS
         tts = new TextToSpeech(this, status -> {
             if (status != TextToSpeech.ERROR) {
                 tts.setLanguage(Locale.ENGLISH);
@@ -60,7 +53,20 @@ public class FlashcardActivity extends AppCompatActivity {
         adapter = new FlashcardAdapter(wordList, tts);
         viewPager.setAdapter(adapter);
 
-        loadDataFromCache(maCD, level);
+        // Kiểm tra chế độ chạy: Theo chủ đề hay Theo từ yêu thích
+        String mode = getIntent().getStringExtra("MODE");
+        if ("FAVORITE".equals(mode)) {
+            loadFavoriteData();
+        } else {
+            String maCD = getIntent().getStringExtra("MA_CD");
+            String level = getIntent().getStringExtra("LEVEL");
+            if (maCD != null && level != null) {
+                loadDataFromCache(maCD, level);
+            } else {
+                Toast.makeText(this, "Không có dữ liệu bài học!", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
 
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -71,6 +77,8 @@ public class FlashcardActivity extends AppCompatActivity {
         });
 
         btnShuffle.setOnClickListener(v -> shuffleCards());
+        
+        findViewById(R.id.ivBack).setOnClickListener(v -> finish());
     }
 
     private void loadDataFromCache(String maCD, String level) {
@@ -79,8 +87,8 @@ public class FlashcardActivity extends AppCompatActivity {
         db.collection("TuVung")
                 .whereEqualTo("maCD", maCD)
                 .whereEqualTo("level", level)
-                .limit(30)
-                .get(Source.CACHE)
+                .limit(50)
+                .get(Source.DEFAULT) // Đổi sang DEFAULT để đảm bảo có dữ liệu mới nhất
                 .addOnSuccessListener(query -> {
                     wordList.clear();
                     for (QueryDocumentSnapshot doc : query) {
@@ -88,28 +96,63 @@ public class FlashcardActivity extends AppCompatActivity {
                         w.setMaTV(doc.getId());
                         wordList.add(w);
                     }
+                    if (wordList.isEmpty()) {
+                        Toast.makeText(this, "Chưa có từ vựng nào!", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
                     adapter.notifyDataSetChanged();
                     updateProgress();
                     progressBar.setVisibility(View.GONE);
                 })
                 .addOnFailureListener(e -> {
-                    Log.e("FLASHCARD_ERROR", "Cache load failed: " + e.getMessage());
+                    Log.e("FLASHCARD_ERROR", "Load failed: " + e.getMessage());
                     progressBar.setVisibility(View.GONE);
-                    // Optionally, load from server or show error message
+                    Toast.makeText(this, "Lỗi tải dữ liệu!", Toast.LENGTH_SHORT).show();
+                });
+    }
+
+    private void loadFavoriteData() {
+        progressBar.setVisibility(View.VISIBLE);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("TuVung")
+                .whereEqualTo("favorite", true)
+                .get()
+                .addOnSuccessListener(query -> {
+                    wordList.clear();
+                    for (QueryDocumentSnapshot doc : query) {
+                        TuVung w = doc.toObject(TuVung.class);
+                        w.setMaTV(doc.getId());
+                        wordList.add(w);
+                    }
+                    if (wordList.isEmpty()) {
+                        Toast.makeText(this, "Danh sách yêu thích trống!", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                    adapter.notifyDataSetChanged();
+                    updateProgress();
+                    progressBar.setVisibility(View.GONE);
+                })
+                .addOnFailureListener(e -> {
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(this, "Lỗi tải dữ liệu yêu thích!", Toast.LENGTH_SHORT).show();
                 });
     }
 
     private void updateProgress() {
+        if (wordList.isEmpty()) return;
         int current = viewPager.getCurrentItem() + 1;
         int total = wordList.size();
         tvProgress.setText(current + " / " + total);
     }
 
     private void shuffleCards() {
-        Collections.shuffle(wordList);
-        adapter.notifyDataSetChanged();
-        viewPager.setCurrentItem(0, false);
-        updateProgress();
+        if (wordList.size() > 1) {
+            Collections.shuffle(wordList);
+            adapter.notifyDataSetChanged();
+            viewPager.setCurrentItem(0, false);
+            updateProgress();
+            Toast.makeText(this, "Đã trộn thẻ!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
