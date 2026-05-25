@@ -33,6 +33,11 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".activities.LoginActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
         <!-- TOEIC Listening Part 1 Activities -->
         <activity
             android:name=".activities.Part1Activity"

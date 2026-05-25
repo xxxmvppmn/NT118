@@ -22,18 +22,19 @@ public class SplashActivity extends AppCompatActivity {
         FirebaseAuthHelper authHelper = new FirebaseAuthHelper();
         FirebaseUser currentUser = authHelper.getCurrentUser();
 
-        if (currentUser != null) {
-            // User already logged in, fetch data before going to Home
-            UserSessionManager.getInstance().fetchUserData(currentUser.getUid(), success -> {
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            if (currentUser != null) {
+                UserSessionManager.getInstance().fetchUserData(currentUser.getUid(), success -> {
+                    goToHome();
+                });
+            } else {
+                // Mock a user session for offline/demo/testing purposes
+                com.example.waviapp.models.TaiKhoan mockUser = new com.example.waviapp.models.TaiKhoan("mock_user_id", "Người dùng Thử nghiệm", "demo@wavi.vn");
+                mockUser.setChuoiNgayHoc(5);
+                UserSessionManager.getInstance().updateUserDataLocally(mockUser);
                 goToHome();
-            });
-        } else {
-            // No user, go to Login after a delay
-            new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
-                finish();
-            }, 1500);
-        }
+            }
+        }, 1500);
     }
 
     private void goToHome() {
