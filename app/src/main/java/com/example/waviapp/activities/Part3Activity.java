@@ -11,16 +11,18 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.waviapp.R;
 import com.example.waviapp.adapters.Part3Adapter;
 import com.example.waviapp.models.Part3Passage;
+import com.example.waviapp.utils.AppConfig;
+import com.example.waviapp.utils.OfflineAssetManager;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
@@ -28,7 +30,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Part3Activity extends AppCompatActivity {
+public class Part3Activity extends BaseActivity {
 
     private TextView tvProgress, tvXP, tvCurrentTime, tvTotalTime, tvTranscript;
     private ImageButton btnPlayPause;
@@ -38,12 +40,14 @@ public class Part3Activity extends AppCompatActivity {
     private View scrollTranscript; // Changed from NestedScrollView to View to match CardView in XML
 
     private MediaPlayer mediaPlayer;
-    private Handler handler = new Handler();
+    private Handler handler = new Handler(android.os.Looper.getMainLooper());
     private List<Part3Passage> passageList = new ArrayList<>();
     private int currentPassageIndex = 0;
     private int currentXP = 0;
+    private boolean isPrepared = false;
     private Part3Adapter adapter;
     private int setIndex = 0;
+    private OfflineAssetManager offlineManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,7 @@ public class Part3Activity extends AppCompatActivity {
         setContentView(R.layout.activity_part3);
 
         setIndex = getIntent().getIntExtra("SET_INDEX", 0);
+        offlineManager = new OfflineAssetManager(this);
 
         initViews();
         loadPart3JSON();
@@ -95,7 +100,7 @@ public class Part3Activity extends AppCompatActivity {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser && mediaPlayer != null) {
+                if (fromUser && mediaPlayer != null && isPrepared) {
                     mediaPlayer.seekTo(progress);
                     tvCurrentTime.setText(formatTime(progress));
                 }
@@ -120,14 +125,8 @@ public class Part3Activity extends AppCompatActivity {
             Type listType = new TypeToken<List<Part3Passage>>() {}.getType();
             List<Part3Passage> allPassages = gson.fromJson(json, listType);
 
-            int start = 0;
-            int count = 4;
-            
-            if (setIndex == 0) { start = 0; count = 4; }
-            else if (setIndex == 1) { start = 4; count = 4; }
-            else if (setIndex == 2) { start = 8; count = 4; }
-            else if (setIndex == 3) { start = 12; count = 4; }
-            else if (setIndex == 4) { start = 16; count = 6; }
+            int start = (setIndex < 4) ? (setIndex * 4) : (16 + (setIndex - 4) * 6);
+            int count = (setIndex < 4) ? 4 : 6;
 
             passageList = new ArrayList<>();
             for (int i = start; i < start + count && i < allPassages.size(); i++) {
@@ -171,26 +170,60 @@ public class Part3Activity extends AppCompatActivity {
 
     private void resetMediaPlayer(String audioName) {
         if (mediaPlayer != null) {
+            handler.removeCallbacks(updater);
+            try { mediaPlayer.stop(); } catch (Exception e) {}
             mediaPlayer.release();
+            mediaPlayer = null;
         }
+        isPrepared = false;
 
         mediaPlayer = new MediaPlayer();
+        
+        // Show loading state
+        btnPlayPause.setEnabled(false);
+        tvTotalTime.setText("--:--");
+        tvCurrentTime.setText("00:00");
+        seekBar.setProgress(0);
+        
         try {
-            AssetFileDescriptor afd = getAssets().openFd("audio_p3/" + audioName);
-            mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-            afd.close();
-            mediaPlayer.prepare();
+            String relativePath = AppConfig.AUDIO_P3_FOLDER + "/" + audioName;
+            File localFile = AppConfig.getLocalAssetFile(this, relativePath);
             
-            tvTotalTime.setText(formatTime(mediaPlayer.getDuration()));
-            tvCurrentTime.setText("00:00");
-            seekBar.setMax(mediaPlayer.getDuration());
-            seekBar.setProgress(0);
-            btnPlayPause.setImageResource(R.drawable.ic_play);
+            if (localFile.exists()) {
+                mediaPlayer.setDataSource(localFile.getAbsolutePath());
+            } else {
+                try {
+                    AssetFileDescriptor afd = getAssets().openFd("audio_p3/" + audioName);
+                    mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+                    afd.close();
+                } catch (IOException assetError) {
+                    String url = AppConfig.getFirebaseUrl(relativePath);
+                    mediaPlayer.setDataSource(url);
+                }
+            }
+
+            mediaPlayer.setOnPreparedListener(mp -> {
+                isPrepared = true;
+                btnPlayPause.setEnabled(true);
+                tvTotalTime.setText(formatTime(mp.getDuration()));
+                tvCurrentTime.setText("00:00");
+                seekBar.setMax(mp.getDuration());
+                seekBar.setProgress(0);
+                btnPlayPause.setImageResource(R.drawable.ic_play);
+            });
 
             mediaPlayer.setOnCompletionListener(mp -> {
                 btnPlayPause.setImageResource(R.drawable.ic_play);
                 handler.removeCallbacks(updater);
             });
+
+            mediaPlayer.setOnErrorListener((mp, what, extra) -> {
+                Toast.makeText(this, "Không thể phát audio. Vui lòng kiểm tra kết nối mạng.", Toast.LENGTH_SHORT).show();
+                btnPlayPause.setEnabled(false);
+                return true;
+            });
+
+            mediaPlayer.prepareAsync();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -199,7 +232,7 @@ public class Part3Activity extends AppCompatActivity {
     }
 
     private void togglePlayback() {
-        if (mediaPlayer == null) return;
+        if (mediaPlayer == null || !isPrepared) return;
 
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.pause();
@@ -215,7 +248,7 @@ public class Part3Activity extends AppCompatActivity {
     private Runnable updater = new Runnable() {
         @Override
         public void run() {
-            if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            if (mediaPlayer != null && isPrepared && mediaPlayer.isPlaying()) {
                 seekBar.setProgress(mediaPlayer.getCurrentPosition());
                 tvCurrentTime.setText(formatTime(mediaPlayer.getCurrentPosition()));
                 handler.postDelayed(this, 100);

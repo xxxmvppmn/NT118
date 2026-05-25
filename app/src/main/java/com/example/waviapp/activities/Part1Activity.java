@@ -4,26 +4,33 @@ import android.app.AlertDialog;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+import androidx.core.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.waviapp.R;
 import com.example.waviapp.models.Part1Model;
+import com.example.waviapp.utils.AppConfig;
+import com.example.waviapp.utils.OfflineAssetManager;
 import com.example.waviapp.utils.ProgressManager;
 import com.github.jinatonic.confetti.CommonConfetti;
 import com.google.android.material.button.MaterialButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
@@ -41,14 +48,16 @@ public class Part1Activity extends BaseActivity {
     private View cardInfo;
 
     private MediaPlayer mediaPlayer;
-    private Handler handler = new Handler();
+    private Handler handler = new Handler(Looper.getMainLooper());
     private List<Part1Model> questionList = new ArrayList<>();
     private int currentIndex = 0;
     private int earnedXP = 0;
     private int correctCount = 0;
     private int setIndex;
     private ProgressManager progressManager;
+    private OfflineAssetManager offlineManager;
     private String selectedAnswer = "";
+    private boolean isPrepared = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +65,7 @@ public class Part1Activity extends BaseActivity {
         setContentView(R.layout.activity_part1);
 
         progressManager = new ProgressManager(this);
+        offlineManager = new OfflineAssetManager(this);
         setIndex = getIntent().getIntExtra("SET_INDEX", 0);
         
         initViews();
@@ -99,7 +109,7 @@ public class Part1Activity extends BaseActivity {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser && mediaPlayer != null) {
+                if (fromUser && mediaPlayer != null && isPrepared) {
                     mediaPlayer.seekTo(progress);
                     tvCurrentTime.setText(formatTime(progress));
                 }
@@ -165,14 +175,8 @@ public class Part1Activity extends BaseActivity {
         Part1Model question = questionList.get(currentIndex);
         tvProgress.setText("Question " + (currentIndex + 1) + "/" + questionList.size());
         
-        try {
-            InputStream ims = getAssets().open("img_p1/" + question.getImageName());
-            Drawable d = Drawable.createFromStream(ims, null);
-            ivQuestion.setImageDrawable(d);
-            ims.close();
-        } catch (IOException e) {
-            ivQuestion.setImageResource(android.R.color.darker_gray);
-        }
+        // Load image using Glide with smart path resolution (offline-first)
+        loadQuestionImage(question.getImageName());
 
         resetUI();
         prepareAudio(question.getAudioName());
@@ -184,23 +188,98 @@ public class Part1Activity extends BaseActivity {
         }
     }
 
-    private void prepareAudio(String audioName) {
-        if (mediaPlayer != null) {
-            mediaPlayer.release();
+    /**
+     * Load question image using Glide.
+     * Priority: Local offline file → Assets → Firebase URL
+     */
+    private void loadQuestionImage(String imageName) {
+        String relativePath = AppConfig.IMG_P1_FOLDER + "/" + imageName;
+        File localFile = AppConfig.getLocalAssetFile(this, relativePath);
+        
+        if (localFile.exists()) {
+            // Load from offline downloaded file
+            Glide.with(this)
+                    .load(localFile)
+                    .placeholder(R.drawable.ic_image_placeholder)
+                    .into(ivQuestion);
+        } else {
+            // Try loading from assets first (backwards compatible)
+            try {
+                InputStream ims = getAssets().open("img_p1/" + imageName);
+                ims.close(); // File exists in assets
+                Glide.with(this)
+                        .load(Uri.parse("file:///android_asset/img_p1/" + imageName))
+                        .placeholder(R.drawable.ic_image_placeholder)
+                        .into(ivQuestion);
+            } catch (IOException e) {
+                // Fallback to Firebase URL
+                String url = AppConfig.getFirebaseUrl(relativePath);
+                Glide.with(this)
+                        .load(url)
+                        .placeholder(R.drawable.ic_image_placeholder)
+                        .into(ivQuestion);
+            }
         }
+    }
+
+    /**
+     * Prepare audio using async method to avoid UI blocking.
+     * Priority: Local offline file → Assets → Firebase URL
+     */
+    private void prepareAudio(String audioName) {
+        releaseMediaPlayer();
+        isPrepared = false;
+        
         mediaPlayer = new MediaPlayer();
+        
+        // Show loading state
+        btnPlayPause.setEnabled(false);
+        tvCurrentTime.setText("00:00");
+        tvTotalTime.setText("--:--");
+        seekBar.setProgress(0);
+
         try {
-            AssetFileDescriptor afd = getAssets().openFd("audio_p1/" + audioName);
-            mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-            afd.close();
-            mediaPlayer.prepare();
+            String relativePath = AppConfig.AUDIO_P1_FOLDER + "/" + audioName;
+            File localFile = AppConfig.getLocalAssetFile(this, relativePath);
             
-            tvTotalTime.setText(formatTime(mediaPlayer.getDuration()));
-            seekBar.setMax(mediaPlayer.getDuration());
-            seekBar.setProgress(0);
-            tvCurrentTime.setText("00:00");
+            if (localFile.exists()) {
+                // Play from offline downloaded file
+                mediaPlayer.setDataSource(localFile.getAbsolutePath());
+            } else {
+                // Try assets first (backwards compatible)
+                try {
+                    AssetFileDescriptor afd = getAssets().openFd("audio_p1/" + audioName);
+                    mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+                    afd.close();
+                } catch (IOException assetError) {
+                    // Fallback to Firebase URL
+                    String url = AppConfig.getFirebaseUrl(relativePath);
+                    mediaPlayer.setDataSource(url);
+                }
+            }
+
+            // Use prepareAsync to avoid blocking the UI thread
+            mediaPlayer.setOnPreparedListener(mp -> {
+                isPrepared = true;
+                btnPlayPause.setEnabled(true);
+                tvTotalTime.setText(formatTime(mp.getDuration()));
+                seekBar.setMax(mp.getDuration());
+                seekBar.setProgress(0);
+                tvCurrentTime.setText("00:00");
+                btnPlayPause.setImageResource(R.drawable.ic_play);
+            });
+
+            mediaPlayer.setOnErrorListener((mp, what, extra) -> {
+                Toast.makeText(this, "Không thể phát audio. Vui lòng kiểm tra kết nối mạng.", Toast.LENGTH_SHORT).show();
+                btnPlayPause.setEnabled(false);
+                return true;
+            });
+
+            mediaPlayer.prepareAsync();
+            
         } catch (IOException e) {
             e.printStackTrace();
+            Toast.makeText(this, "Lỗi tải file âm thanh", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -213,12 +292,12 @@ public class Part1Activity extends BaseActivity {
 
         if (isCorrect) {
             correctCount++;
-            btn.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#4CAF50")));
+            btn.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.color_success));
             btn.setTextColor(Color.WHITE);
             earnedXP += 10;
             tvXP.setText(earnedXP + " XP");
         } else {
-            btn.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F44336")));
+            btn.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.color_error));
             btn.setTextColor(Color.WHITE);
             highlightCorrectAnswer(current.getCorrectAnswer());
         }
@@ -238,7 +317,7 @@ public class Part1Activity extends BaseActivity {
         else if (correct.equalsIgnoreCase("D")) target = btnD;
 
         if (target != null) {
-            target.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#4CAF50")));
+            target.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.color_success));
             target.setTextColor(Color.WHITE);
         }
     }
@@ -265,9 +344,12 @@ public class Part1Activity extends BaseActivity {
         progressManager.addXP(earnedXP);
         progressManager.markSetCompleted(1000 + setIndex);
         
-        CommonConfetti.rainingConfetti(findViewById(android.R.id.content), new int[] {
-                Color.parseColor("#9370DB"), Color.YELLOW, Color.GREEN, Color.WHITE
-        }).oneShot();
+        CommonConfetti.rainingConfetti(
+                (ViewGroup) findViewById(android.R.id.content),
+                new int[]{
+                        ContextCompat.getColor(this, R.color.premium_purple), Color.YELLOW, Color.GREEN, Color.WHITE
+                }
+        ).oneShot();
 
         View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_summary_celebration, null);
         AlertDialog dialog = new AlertDialog.Builder(this)
@@ -294,13 +376,17 @@ public class Part1Activity extends BaseActivity {
         cardInfo.setVisibility(View.GONE);
         btnNext.setVisibility(View.GONE);
         btnPlayPause.setImageResource(R.drawable.ic_play);
-        
-        MaterialButton[] buttons = {btnA, btnB, btnC, btnD};
-        for (MaterialButton btn : buttons) {
+        resetButtons();
+    }
+
+    private void resetButtons() {
+        MaterialButton[] btns = {btnA, btnB, btnC, btnD};
+        for (MaterialButton btn : btns) {
             btn.setEnabled(true);
             btn.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
-            btn.setTextColor(Color.parseColor("#333333"));
-            btn.setStrokeColor(ColorStateList.valueOf(Color.parseColor("#E0E0E0")));
+            btn.setTextColor(ContextCompat.getColor(this, R.color.text_dark_gray));
+            btn.setStrokeColor(ContextCompat.getColorStateList(this, R.color.divider));
+            btn.setStrokeWidth(2);
         }
     }
 
@@ -312,7 +398,7 @@ public class Part1Activity extends BaseActivity {
     }
 
     private void togglePlayback() {
-        if (mediaPlayer == null) return;
+        if (mediaPlayer == null || !isPrepared) return;
 
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.pause();
@@ -328,7 +414,7 @@ public class Part1Activity extends BaseActivity {
     private Runnable updater = new Runnable() {
         @Override
         public void run() {
-            if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            if (mediaPlayer != null && isPrepared && mediaPlayer.isPlaying()) {
                 seekBar.setProgress(mediaPlayer.getCurrentPosition());
                 tvCurrentTime.setText(formatTime(mediaPlayer.getCurrentPosition()));
                 handler.postDelayed(this, 100);
@@ -342,13 +428,34 @@ public class Part1Activity extends BaseActivity {
         return String.format("%02d:%02d", m, s);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    private void releaseMediaPlayer() {
         if (mediaPlayer != null) {
+            handler.removeCallbacks(updater);
+            try {
+                if (mediaPlayer.isPlaying()) {
+                    mediaPlayer.stop();
+                }
+            } catch (IllegalStateException e) {
+                // Ignore if already released
+            }
             mediaPlayer.release();
             mediaPlayer = null;
         }
-        handler.removeCallbacks(updater);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mediaPlayer != null && isPrepared && mediaPlayer.isPlaying()) {
+            mediaPlayer.pause();
+            btnPlayPause.setImageResource(R.drawable.ic_play);
+            handler.removeCallbacks(updater);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        releaseMediaPlayer();
     }
 }

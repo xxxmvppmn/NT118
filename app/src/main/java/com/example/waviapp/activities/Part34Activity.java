@@ -4,6 +4,9 @@ import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AlertDialog;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
@@ -16,11 +19,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.waviapp.R;
 import com.example.waviapp.adapters.Part34Adapter;
 import com.example.waviapp.models.Part3Passage;
+import com.example.waviapp.utils.AppConfig;
+import com.example.waviapp.utils.OfflineAssetManager;
 import com.example.waviapp.utils.ProgressManager;
 import com.google.android.material.button.MaterialButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -36,9 +42,11 @@ public class Part34Activity extends BaseActivity {
     private int totalXP = 0;
 
     private MediaPlayer mediaPlayer;
-    private Handler handler = new Handler();
+    private Handler handler = new Handler(Looper.getMainLooper());
     private Part34Adapter adapter;
     private ProgressManager progressManager;
+    private OfflineAssetManager offlineManager;
+    private boolean isPrepared = false;
 
     private TextView tvToolbarTitle, tvXP, tvCurrentTime, tvTotalTime, tvTranscript, tvProgress;
     private ImageButton btnPlayPause;
@@ -53,12 +61,35 @@ public class Part34Activity extends BaseActivity {
         setContentView(R.layout.activity_part34);
 
         progressManager = new ProgressManager(this);
+        offlineManager = new OfflineAssetManager(this);
         partType = getIntent().getIntExtra("PART_TYPE", 3);
         setIndex = getIntent().getIntExtra("SET_INDEX", 0);
 
         initViews();
         loadData();
-        displayPassage();
+        checkContinueProgress();
+    }
+
+    private void checkContinueProgress() {
+        int savedIndex = progressManager.getSetProgress(partType * 1000 + setIndex);
+        if (savedIndex > 0 && savedIndex < passageList.size()) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Tiếp tục?")
+                    .setMessage("Bạn có muốn tiếp tục từ đoạn hội thoại " + (savedIndex + 1) + "?")
+                    .setPositiveButton("Tiếp tục", (dialog, which) -> {
+                        currentPassageIndex = savedIndex;
+                        displayPassage();
+                    })
+                    .setNegativeButton("Làm lại", (dialog, which) -> {
+                        currentPassageIndex = 0;
+                        progressManager.saveSetProgress(partType * 1000 + setIndex, 0);
+                        displayPassage();
+                    })
+                    .setCancelable(false)
+                    .show();
+        } else {
+            displayPassage();
+        }
     }
 
     private void initViews() {
@@ -87,7 +118,7 @@ public class Part34Activity extends BaseActivity {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser && mediaPlayer != null) {
+                if (fromUser && mediaPlayer != null && isPrepared) {
                     mediaPlayer.seekTo(progress);
                     tvCurrentTime.setText(formatTime(progress));
                 }
@@ -137,30 +168,63 @@ public class Part34Activity extends BaseActivity {
 
         adapter = new Part34Adapter(this, passage.getQuestions(), () -> {
             btnCheck.setEnabled(true);
-            btnCheck.setBackgroundTintList(android.content.res.ColorStateList.valueOf(android.graphics.Color.parseColor("#9370DB")));
+            btnCheck.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.premium_purple));
         });
         rvQuestions.setAdapter(adapter);
     }
 
     private void prepareAudio(String audioName) {
         if (mediaPlayer != null) {
-            try {
-                mediaPlayer.stop();
-                mediaPlayer.release();
-            } catch (Exception e) {}
+            handler.removeCallbacks(updater);
+            try { mediaPlayer.stop(); } catch (Exception e) {}
+            try { mediaPlayer.release(); } catch (Exception e) {}
+            mediaPlayer = null;
         }
+        isPrepared = false;
         mediaPlayer = new MediaPlayer();
 
+        // Show loading state
+        btnPlayPause.setEnabled(false);
+        tvTotalTime.setText("--:--");
+        tvCurrentTime.setText("00:00");
+        seekBar.setProgress(0);
+
         try {
-            String folder = (partType == 3) ? "audio_p3/" : "audio_p4/";
-            AssetFileDescriptor afd = getAssets().openFd(folder + audioName);
-            mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-            afd.close();
-            mediaPlayer.prepare();
+            String folder = (partType == 3) ? AppConfig.AUDIO_P3_FOLDER : AppConfig.AUDIO_P4_FOLDER;
+            String relativePath = folder + "/" + audioName;
+            File localFile = AppConfig.getLocalAssetFile(this, relativePath);
             
-            tvTotalTime.setText(formatTime(mediaPlayer.getDuration()));
-            seekBar.setMax(mediaPlayer.getDuration());
-            seekBar.setProgress(0);
+            if (localFile.exists()) {
+                mediaPlayer.setDataSource(localFile.getAbsolutePath());
+            } else {
+                try {
+                    String assetFolder = (partType == 3) ? "audio_p3/" : "audio_p4/";
+                    AssetFileDescriptor afd = getAssets().openFd(assetFolder + audioName);
+                    mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+                    afd.close();
+                } catch (IOException assetError) {
+                    String url = AppConfig.getFirebaseUrl(relativePath);
+                    mediaPlayer.setDataSource(url);
+                }
+            }
+
+            mediaPlayer.setOnPreparedListener(mp -> {
+                isPrepared = true;
+                btnPlayPause.setEnabled(true);
+                tvTotalTime.setText(formatTime(mp.getDuration()));
+                seekBar.setMax(mp.getDuration());
+                seekBar.setProgress(0);
+                btnPlayPause.setImageResource(R.drawable.ic_play);
+            });
+
+            mediaPlayer.setOnErrorListener((mp, what, extra) -> {
+                Toast.makeText(this, "Không thể phát audio. Vui lòng kiểm tra kết nối mạng.", Toast.LENGTH_SHORT).show();
+                btnPlayPause.setEnabled(false);
+                return true;
+            });
+
+            mediaPlayer.prepareAsync();
+
         } catch (IOException e) {
             e.printStackTrace();
             Toast.makeText(this, "Audio file not found: " + audioName, Toast.LENGTH_SHORT).show();
@@ -180,6 +244,9 @@ public class Part34Activity extends BaseActivity {
             
             btnCheck.setVisibility(View.GONE);
             btnNext.setVisibility(View.VISIBLE);
+            
+            // Lưu tiến trình
+            progressManager.saveSetProgress(partType * 1000 + setIndex, currentPassageIndex);
         }
     }
 
@@ -190,6 +257,8 @@ public class Part34Activity extends BaseActivity {
         } else {
             if (progressManager != null) {
                 progressManager.addXP(totalXP);
+                progressManager.markSetCompleted(partType * 1000 + setIndex);
+                progressManager.saveSetProgress(partType * 1000 + setIndex, 0);
             }
             Toast.makeText(this, "Set completed! +" + totalXP + " XP", Toast.LENGTH_LONG).show();
             finish();
@@ -197,7 +266,7 @@ public class Part34Activity extends BaseActivity {
     }
 
     private void togglePlayback() {
-        if (mediaPlayer == null) return;
+        if (mediaPlayer == null || !isPrepared) return;
         try {
             if (mediaPlayer.isPlaying()) {
                 mediaPlayer.pause();
@@ -216,7 +285,7 @@ public class Part34Activity extends BaseActivity {
     private Runnable updater = new Runnable() {
         @Override
         public void run() {
-            if (mediaPlayer != null) {
+            if (mediaPlayer != null && isPrepared) {
                 try {
                     if (mediaPlayer.isPlaying()) {
                         seekBar.setProgress(mediaPlayer.getCurrentPosition());
@@ -231,7 +300,7 @@ public class Part34Activity extends BaseActivity {
     private void resetUI() {
         btnCheck.setVisibility(View.VISIBLE);
         btnCheck.setEnabled(false);
-        btnCheck.setBackgroundTintList(android.content.res.ColorStateList.valueOf(android.graphics.Color.parseColor("#BDBDBD")));
+        btnCheck.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.color_disabled));
         btnNext.setVisibility(View.GONE);
         cardScript.setVisibility(View.GONE);
         btnPlayPause.setImageResource(R.drawable.ic_play);

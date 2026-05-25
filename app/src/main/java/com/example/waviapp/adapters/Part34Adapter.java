@@ -3,6 +3,7 @@ package com.example.waviapp.adapters;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import androidx.core.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,13 +95,13 @@ public class Part34Adapter extends RecyclerView.Adapter<Part34Adapter.ViewHolder
     }
 
     private void resetButton(MaterialButton btn, int pos, String code) {
-        btn.setStrokeColor(ColorStateList.valueOf(Color.parseColor("#E0E0E0")));
-        btn.setTextColor(Color.parseColor("#333333"));
+        btn.setStrokeColor(ContextCompat.getColorStateList(context, R.color.divider));
+        btn.setTextColor(ContextCompat.getColor(context, R.color.text_dark_gray));
         btn.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
         
         if (selectedAnswers.containsKey(pos) && selectedAnswers.get(pos).equals(code)) {
-            btn.setStrokeColor(ColorStateList.valueOf(Color.parseColor("#9370DB")));
-            btn.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F3E5F5")));
+            btn.setStrokeColor(ContextCompat.getColorStateList(context, R.color.premium_purple));
+            btn.setBackgroundTintList(ContextCompat.getColorStateList(context, R.color.premium_purple_bg));
         }
     }
 
@@ -109,11 +110,11 @@ public class Part34Adapter extends RecyclerView.Adapter<Part34Adapter.ViewHolder
         String selected = selectedAnswers.get(pos);
         
         if (code.equals(correct)) {
-            btn.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#4CAF50")));
+            btn.setBackgroundTintList(ContextCompat.getColorStateList(context, R.color.color_success));
             btn.setTextColor(Color.WHITE);
             btn.setStrokeColor(null);
         } else if (code.equals(selected)) {
-            btn.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F44336")));
+            btn.setBackgroundTintList(ContextCompat.getColorStateList(context, R.color.color_error));
             btn.setTextColor(Color.WHITE);
             btn.setStrokeColor(null);
         }

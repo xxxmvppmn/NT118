@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+import androidx.core.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
@@ -19,10 +21,13 @@ import androidx.core.widget.NestedScrollView;
 
 import com.example.waviapp.R;
 import com.example.waviapp.models.Part2Model;
+import com.example.waviapp.utils.AppConfig;
 import com.example.waviapp.utils.JsonHelper;
+import com.example.waviapp.utils.OfflineAssetManager;
 import com.example.waviapp.utils.ProgressManager;
 import com.google.android.material.button.MaterialButton;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,13 +36,15 @@ public class Part2PracticeActivity extends BaseActivity {
 
     private MediaPlayer mediaPlayer;
     private SeekBar seekBar;
-    private Handler handler = new Handler();
+    private Handler handler = new Handler(Looper.getMainLooper());
     private List<Part2Model> setList;
     private int currentIndex = 0;
     private int correctCount = 0;
     private int setIndex;
     private boolean isAnswered = false;
+    private boolean isPrepared = false;
     private ProgressManager progressManager;
+    private OfflineAssetManager offlineManager;
 
     private TextView tvProgress, tvCurrentTime, tvTotalTime, tvScript;
     private ImageButton btnPlayPause;
@@ -52,11 +59,34 @@ public class Part2PracticeActivity extends BaseActivity {
         setContentView(R.layout.activity_part2_practice);
 
         progressManager = new ProgressManager(this);
+        offlineManager = new OfflineAssetManager(this);
         setIndex = getIntent().getIntExtra("SET_INDEX", 0);
 
         initViews();
         loadData();
-        setupQuestion();
+        checkContinueProgress();
+    }
+
+    private void checkContinueProgress() {
+        int savedIndex = progressManager.getSetProgress(2000 + setIndex);
+        if (savedIndex > 0 && savedIndex < setList.size()) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Tiếp tục?")
+                    .setMessage("Bạn có muốn tiếp tục từ câu " + (savedIndex + 1) + "?")
+                    .setPositiveButton("Tiếp tục", (dialog, which) -> {
+                        currentIndex = savedIndex;
+                        setupQuestion();
+                    })
+                    .setNegativeButton("Làm lại", (dialog, which) -> {
+                        currentIndex = 0;
+                        progressManager.saveSetProgress(2000 + setIndex, 0);
+                        setupQuestion();
+                    })
+                    .setCancelable(false)
+                    .show();
+        } else {
+            setupQuestion();
+        }
     }
 
     private void initViews() {
@@ -98,7 +128,7 @@ public class Part2PracticeActivity extends BaseActivity {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar sb, int progress, boolean fromUser) {
-                if (fromUser && mediaPlayer != null) {
+                if (fromUser && mediaPlayer != null && isPrepared) {
                     mediaPlayer.seekTo(progress);
                     tvCurrentTime.setText(formatTime(progress));
                 }
@@ -142,18 +172,41 @@ public class Part2PracticeActivity extends BaseActivity {
     }
 
     private void initMediaPlayer(String fileName) {
+        isPrepared = false;
         mediaPlayer = new MediaPlayer();
+        
+        // Show loading state
+        btnPlayPause.setEnabled(false);
+        tvTotalTime.setText("--:--");
+        tvCurrentTime.setText("00:00");
+        seekBar.setProgress(0);
+        
         try {
-            AssetFileDescriptor afd = getAssets().openFd("audio_p2/" + fileName);
-            mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-            afd.close();
-            mediaPlayer.prepare();
+            String relativePath = AppConfig.AUDIO_P2_FOLDER + "/" + fileName;
+            File localFile = AppConfig.getLocalAssetFile(this, relativePath);
             
-            seekBar.setMax(mediaPlayer.getDuration());
-            seekBar.setProgress(0);
-            tvTotalTime.setText(formatTime(mediaPlayer.getDuration()));
-            tvCurrentTime.setText("00:00");
-            btnPlayPause.setImageResource(R.drawable.ic_play);
+            if (localFile.exists()) {
+                mediaPlayer.setDataSource(localFile.getAbsolutePath());
+            } else {
+                try {
+                    AssetFileDescriptor afd = getAssets().openFd("audio_p2/" + fileName);
+                    mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+                    afd.close();
+                } catch (IOException assetError) {
+                    String url = AppConfig.getFirebaseUrl(relativePath);
+                    mediaPlayer.setDataSource(url);
+                }
+            }
+
+            mediaPlayer.setOnPreparedListener(mp -> {
+                isPrepared = true;
+                btnPlayPause.setEnabled(true);
+                seekBar.setMax(mp.getDuration());
+                seekBar.setProgress(0);
+                tvTotalTime.setText(formatTime(mp.getDuration()));
+                tvCurrentTime.setText("00:00");
+                btnPlayPause.setImageResource(R.drawable.ic_play);
+            });
 
             mediaPlayer.setOnCompletionListener(mp -> {
                 btnPlayPause.setImageResource(R.drawable.ic_play);
@@ -162,6 +215,14 @@ public class Part2PracticeActivity extends BaseActivity {
                 tvCurrentTime.setText("00:00");
             });
 
+            mediaPlayer.setOnErrorListener((mp, what, extra) -> {
+                Toast.makeText(this, "Không thể phát audio. Vui lòng kiểm tra kết nối mạng.", Toast.LENGTH_SHORT).show();
+                btnPlayPause.setEnabled(false);
+                return true;
+            });
+
+            mediaPlayer.prepareAsync();
+
         } catch (IOException e) {
             e.printStackTrace();
             Toast.makeText(this, "Lỗi tải file âm thanh", Toast.LENGTH_SHORT).show();
@@ -169,7 +230,7 @@ public class Part2PracticeActivity extends BaseActivity {
     }
 
     private void togglePlay() {
-        if (mediaPlayer == null) return;
+        if (mediaPlayer == null || !isPrepared) return;
         
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.pause();
@@ -187,7 +248,7 @@ public class Part2PracticeActivity extends BaseActivity {
     private Runnable updater = new Runnable() {
         @Override
         public void run() {
-            if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            if (mediaPlayer != null && isPrepared && mediaPlayer.isPlaying()) {
                 int current = mediaPlayer.getCurrentPosition();
                 seekBar.setProgress(current);
                 tvCurrentTime.setText(formatTime(current));
@@ -202,20 +263,23 @@ public class Part2PracticeActivity extends BaseActivity {
         
         String correct = setList.get(currentIndex).getCorrectAnswer();
         if (selected.equals(correct)) {
-            // Đúng: Đổi màu nền sang xanh solid
-            btn.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#4CAF50")));
+            // Đúng: Đổi màu nền sang xanh từ R.color.color_success
+            btn.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.color_success));
             btn.setTextColor(Color.WHITE);
             btn.setStrokeWidth(0);
             correctCount++;
             progressManager.addXP(10);
         } else {
-            // Sai: Nút chọn thành đỏ
-            btn.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F44336")));
+            // Sai: Nút chọn thành đỏ từ R.color.color_error
+            btn.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.color_error));
             btn.setTextColor(Color.WHITE);
             btn.setStrokeWidth(0);
             // Hiện đáp án đúng bằng màu nền xanh solid
             highlightCorrect(correct);
         }
+        
+        // Lưu tiến trình
+        progressManager.saveSetProgress(2000 + setIndex, currentIndex);
         
         btnNext.setVisibility(View.VISIBLE);
         btnShowScript.setVisibility(View.VISIBLE);
@@ -228,8 +292,8 @@ public class Part2PracticeActivity extends BaseActivity {
         else if (correct.equals("C")) correctBtn = btnC;
 
         if (correctBtn != null) {
-            // Ép màu nền xanh solid cho đáp án đúng
-            correctBtn.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#4CAF50")));
+            // Ép màu nền xanh cho đáp án đúng từ R.color.color_success
+            correctBtn.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.color_success));
             correctBtn.setTextColor(Color.WHITE);
             correctBtn.setStrokeWidth(0);
         }
@@ -245,6 +309,10 @@ public class Part2PracticeActivity extends BaseActivity {
     }
 
     private void showSummary() {
+        // Lưu tiến trình hoàn thành
+        progressManager.markSetCompleted(2000 + setIndex);
+        progressManager.saveSetProgress(2000 + setIndex, 0);
+
         View view = LayoutInflater.from(this).inflate(R.layout.dialog_summary_celebration, null);
         AlertDialog dialog = new AlertDialog.Builder(this)
                 .setView(view)
@@ -277,7 +345,7 @@ public class Part2PracticeActivity extends BaseActivity {
         for (MaterialButton b : btns) {
             b.setBackgroundTintList(ColorStateList.valueOf(Color.TRANSPARENT));
             b.setTextColor(Color.BLACK);
-            b.setStrokeColor(ColorStateList.valueOf(Color.parseColor("#E0E0E0")));
+            b.setStrokeColor(ContextCompat.getColorStateList(this, R.color.divider));
             b.setStrokeWidth(2);
         }
     }

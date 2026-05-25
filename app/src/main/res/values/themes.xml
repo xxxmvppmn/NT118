@@ -8,12 +8,58 @@
 
     <style name="Theme.WaviApp" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowAnimationStyle">@style/SmoothAnimation</item>
+        <item name="colorPrimary">@color/purple_main</item>
+        <item name="colorPrimaryVariant">@color/purple_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/premium_purple</item>
 
-        <!-- Cách 2: Ép màu highlight Autofill của hệ thống về trong suốt (API 26+) -->
+        <!-- Ép màu highlight Autofill của hệ thống về trong suốt (API 26+) -->
         <item name="android:autofilledHighlight" tools:targetApi="o">@android:color/transparent</item>
     </style>
 
-    <!-- Styles for Settings UI -->
+    <!-- ========== Consistent Button Styles ========== -->
+
+    <!-- Primary filled button (purple) -->
+    <style name="WaviButton.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/purple_main</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="rippleColor">@color/purple_light</item>
+    </style>
+
+    <!-- Outlined button (for answer options) -->
+    <style name="WaviButton.Answer" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/divider</item>
+        <item name="strokeWidth">1.5dp</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:textColor">@color/text_dark_gray</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">15sp</item>
+        <item name="backgroundTint">@color/white</item>
+        <item name="rippleColor">@color/purple_100</item>
+    </style>
+
+    <!-- ========== Consistent Card Styles ========== -->
+
+    <style name="WaviCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">12dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="cardBackgroundColor">@color/bg_card</item>
+    </style>
+
+    <style name="WaviCard.Flat">
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/border_light</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <!-- ========== Settings UI Styles ========== -->
+
     <style name="SettingItemStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -43,8 +89,10 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
         <item name="android:layout_marginStart">56dp</item>
-        <item name="android:background">#E0E0E0</item>
+        <item name="android:background">@color/divider</item>
     </style>
+
+    <!-- ========== Animations ========== -->
 
     <style name="SmoothAnimation">
         <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>

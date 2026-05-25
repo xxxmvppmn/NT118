@@ -19,6 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.waviapp.R;
 import com.example.waviapp.adapters.AnswerSheetAdapter;
 import com.example.waviapp.adapters.PdfAdapter;
+import com.example.waviapp.utils.AppConfig;
+import com.example.waviapp.utils.OfflineAssetManager;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
 
@@ -58,6 +60,8 @@ public class EtsTestActivity extends BaseActivity {
     private String etsId = "ets01"; 
     private String folderPrefix = "";
     private int totalQuestions = 200;
+    private boolean isPrepared = false;
+    private OfflineAssetManager offlineManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +75,7 @@ public class EtsTestActivity extends BaseActivity {
             folderPrefix = getIntent().getStringExtra(EXTRA_FOLDER_PREFIX);
         }
         totalQuestions = getIntent().getIntExtra("extra_questions", 200);
+        offlineManager = new OfflineAssetManager(this);
 
         initViews();
         setupAudio();
@@ -153,11 +158,12 @@ public class EtsTestActivity extends BaseActivity {
 
     private void setupAudio() {
         mediaPlayer = new MediaPlayer();
+        isPrepared = false;
         String estId = etsId.replace("ets", "est");
         
         String[] possibleFiles = {
             "2024_" + etsId + "_full_audio.mp3",
-            "2024_" + estId + "_full_audio.mp3", // Sửa lỗi est trong tên file audio
+            "2024_" + estId + "_full_audio.mp3",
             etsId + "_full_audio.mp3",
             estId + "_full_audio.mp3",
             etsId + "_audio.mp3"
@@ -168,7 +174,6 @@ public class EtsTestActivity extends BaseActivity {
             try {
                 AssetFileDescriptor afd = getAssets().openFd(getAssetPath(fileName));
                 mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-                mediaPlayer.prepare();
                 afd.close();
                 loaded = true;
                 break;
@@ -180,6 +185,7 @@ public class EtsTestActivity extends BaseActivity {
         }
 
         btnPlay.setOnClickListener(v -> {
+            if (!isPrepared) return;
             if (mediaPlayer.isPlaying()) {
                 mediaPlayer.pause();
                 btnPlay.setImageResource(android.R.drawable.ic_media_play);
@@ -191,17 +197,28 @@ public class EtsTestActivity extends BaseActivity {
         });
 
         if (loaded) {
-            seekBar.setMax(mediaPlayer.getDuration());
+            mediaPlayer.setOnPreparedListener(mp -> {
+                isPrepared = true;
+                seekBar.setMax(mp.getDuration());
+            });
+
+            mediaPlayer.setOnErrorListener((mp, what, extra) -> {
+                Toast.makeText(this, "Lỗi phát audio", Toast.LENGTH_SHORT).show();
+                return true;
+            });
+
             seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                @Override public void onProgressChanged(SeekBar sb, int p, boolean b) { if (b) mediaPlayer.seekTo(p); }
+                @Override public void onProgressChanged(SeekBar sb, int p, boolean b) { if (b && isPrepared) mediaPlayer.seekTo(p); }
                 @Override public void onStartTrackingTouch(SeekBar sb) {}
                 @Override public void onStopTrackingTouch(SeekBar sb) {}
             });
+
+            mediaPlayer.prepareAsync();
         }
     }
 
     private void updateSeekBar() {
-        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+        if (mediaPlayer != null && isPrepared && mediaPlayer.isPlaying()) {
             seekBar.setProgress(mediaPlayer.getCurrentPosition());
             int sec = (mediaPlayer.getCurrentPosition() / 1000) % 60;
             int min = (mediaPlayer.getCurrentPosition() / 60000);
