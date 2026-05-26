@@ -51,6 +51,21 @@ public class VocabLoader {
         return new ArrayList<>();
     }
 
+    public List<TuVung> getVocabList() {
+        return vocabList;
+    }
+
+    public TuVung findWord(String query) {
+        if (vocabList == null || query == null) return null;
+        String cleanQuery = query.toLowerCase().trim();
+        for (TuVung tv : vocabList) {
+            if (tv.getTuTiengAnh().toLowerCase().equals(cleanQuery)) {
+                return tv;
+            }
+        }
+        return null;
+    }
+
     public TuVung getRandomWord() {
         if (vocabList == null || vocabList.isEmpty()) {
             // Safety fallback

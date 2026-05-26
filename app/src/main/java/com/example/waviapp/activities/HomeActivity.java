@@ -45,7 +45,6 @@ public class HomeActivity extends BaseActivity {
 
     private void setupBanners() {
         List<Banner> banners = new ArrayList<>();
-        // Cập nhật nạp đúng các hình ảnh bạn đã thêm vào drawable
         banners.add(new Banner("Gia nhập Cộng đồng WAVI", "Cùng nhau học tập và chia sẻ kinh nghiệm chinh phục TOEIC", R.drawable.banner_facebook_group, "FACEBOOK"));
         banners.add(new Banner("Nâng cấp Premium", "Mở khóa kho đề thi ETS 2024 mới nhất và giải chi tiết", R.drawable.banner_premium_upgrade, "PREMIUM"));
         banners.add(new Banner("Thi thử Online", "Trải nghiệm áp lực phòng thi thật với đồng hồ bấm giờ", R.drawable.banner_online_exam, "ONLINE_EXAM"));
@@ -53,7 +52,7 @@ public class HomeActivity extends BaseActivity {
         BannerAdapter adapter = new BannerAdapter(banners, banner -> {
             switch (banner.getActionType()) {
                 case "FACEBOOK":
-                    String fbUrl = "https://www.facebook.com/groups/waviapp"; // Thay bằng link group thật của bạn
+                    String fbUrl = "https://www.facebook.com/groups/waviapp";
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(fbUrl)));
                     break;
                 case "PREMIUM":
@@ -66,8 +65,6 @@ public class HomeActivity extends BaseActivity {
         });
 
         binding.vpBanners.setAdapter(adapter);
-        
-        // Cấu hình các dấu chấm chỉ số (Indicators)
         setupIndicators(banners.size());
         binding.vpBanners.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -77,7 +74,6 @@ public class HomeActivity extends BaseActivity {
             }
         });
 
-        // Tự động chuyển banner mỗi 4 giây
         bannerRunnable = () -> {
             if (binding.vpBanners != null && banners.size() > 0) {
                 int current = binding.vpBanners.getCurrentItem();
@@ -132,6 +128,11 @@ public class HomeActivity extends BaseActivity {
         binding.imgAvatarHome.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, UserInfoActivity.class);
             startActivity(intent);
+        });
+
+        // Mở màn hình Chat AI khi bấm vào bong bóng nổi
+        binding.fabChatAI.setOnClickListener(v -> {
+            startActivity(new Intent(HomeActivity.this, ChatAIActivity.class));
         });
     }
 

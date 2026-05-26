@@ -46,7 +46,7 @@
                     android:id="@+id/tvHomeUserGreeting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Chào Ngân"
+                    android:text="Chào bạn"
                     android:textColor="#E1D5FF"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -76,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:text="12"
+                android:text="0"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF"
                 android:textSize="15sp" />
@@ -130,7 +130,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="50dp">
+            android:paddingBottom="80dp"> <!-- Thêm padding để không bị FAB che -->
 
             <!-- Progress Card -->
             <com.google.android.material.card.MaterialCardView
@@ -605,6 +605,22 @@
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <!-- BONG BÓNG CHAT AI NỔI BẬT -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabChatAI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_bot_avatar"
+        app:backgroundTint="#9370DB"
+        app:fabSize="normal"
+        app:elevation="8dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="#FFFFFF"
+        android:contentDescription="Hỏi AI" />
 
     <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
