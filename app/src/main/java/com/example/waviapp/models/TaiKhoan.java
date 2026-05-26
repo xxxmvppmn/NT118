@@ -16,7 +16,8 @@ public class TaiKhoan {
     private int capDo;
     private int tongXP;
     private int chuoiNgayHoc;
-    private int mucTieuHangNgay;
+    private int mucTieuHangNgay; // Số phút học mục tiêu
+    private int mucTieuDiem;     // Mục tiêu điểm TOEIC
     private Timestamp lastLogin;
     private boolean premium;
     private String avatarUrl;
@@ -41,7 +42,8 @@ public class TaiKhoan {
         this.capDo = 1;
         this.tongXP = 0;
         this.chuoiNgayHoc = 1;
-        this.mucTieuHangNgay = 0;
+        this.mucTieuHangNgay = 10; // Mặc định 10 phút
+        this.mucTieuDiem = 600;    // Mặc định 600 điểm
         this.premium = false;
     }
 
@@ -90,6 +92,8 @@ public class TaiKhoan {
 
     public int getMucTieuHangNgay() { return mucTieuHangNgay; }
     public void setMucTieuHangNgay(int mucTieuHangNgay) { this.mucTieuHangNgay = mucTieuHangNgay; }
+    public int getMucTieuDiem() { return mucTieuDiem; }
+    public void setMucTieuDiem(int mucTieuDiem) { this.mucTieuDiem = mucTieuDiem; }
     public Timestamp getLastLogin() { return lastLogin; }
     public void setLastLogin(Timestamp lastLogin) { this.lastLogin = lastLogin; }
     public String getAvatarUrl() {

@@ -213,4 +213,22 @@
     <string name="grammar_rule_4">Complement (C)</string>
     <string name="grammar_rule_5">Modifier (M)</string>
     <string name="grammar_rule_6">Countable and uncountable nouns</string>
+
+    <!-- Chatbot AI strings -->
+    <string name="chat_bot_title">Wavi AI Assistant</string>
+    <string name="bot_typing">Wavi AI is searching...</string>
+    <string name="bot_hello">Hello! I am Wavi AI. Do you need to look up a word or translate a sentence?</string>
+    <string name="bot_offline_warning">Device is offline. Please connect to the Internet to look up the online dictionary!</string>
+    <string name="chat_login_warning">Please log in!</string>
+    <string name="dictionary_result_header">Dictionary result for **%s**</string>
+    <string name="dictionary_local_prefix">I found this word in the TOEIC vocabulary database:\n\n</string>
+    <string name="dictionary_not_found">Sorry, I could not find information for the word \"%1$s\". %2$s</string>
+    <string name="dictionary_local_format">**%1$s**\n• Meaning: %2$s\n• Word Class: %3$s\n• Pronunciation: %4$s\n• Example: %5$s</string>
+    <string name="chat_input_hint">Type a message...</string>
+
+    <!-- Learning Path strings -->
+    <string name="goal_save_success">Goal learning path saved successfully!</string>
+    <string name="suggestion_600">Suggestion: Focus on basic grammar foundation and practice listening Part 1 &amp; 2.</string>
+    <string name="suggestion_700">Suggestion: Enhance intermediate vocabulary and practice reading Part 5 &amp; 6.</string>
+    <string name="suggestion_800">Suggestion: Focus on optimizing time in Part 7, practice advanced ETS tests.</string>
 </resources>

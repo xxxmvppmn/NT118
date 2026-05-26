@@ -212,6 +212,21 @@
     <string name="grammar_rule_2">Subject (chủ ngữ)</string>
     <string name="grammar_rule_3">Verb (động từ)</string>
     <string name="grammar_rule_4">Complement (vị ngữ)</string>
-    <string name="grammar_rule_5">Modifier (trạng từ)</string>
-    <string name="grammar_rule_6">Danh từ đếm được và không đếm được</string>
+    <!-- Chatbot AI strings -->
+    <string name="chat_bot_title">Trợ lý Wavi AI</string>
+    <string name="bot_typing">Wavi AI đang tra cứu...</string>
+    <string name="bot_hello">Chào bạn! Tôi là Wavi AI. Bạn cần tra từ hay dịch câu gì không?</string>
+    <string name="bot_offline_warning">Thiết bị đang ngoại tuyến. Vui lòng kết nối Internet để tra cứu từ điển trực tuyến!</string>
+    <string name="chat_login_warning">Vui lòng đăng nhập!</string>
+    <string name="dictionary_result_header">Kết quả từ điển cho **%s**</string>
+    <string name="dictionary_local_prefix">Tôi tìm thấy từ này trong kho từ vựng TOEIC:\n\n</string>
+    <string name="dictionary_not_found">Rất tiếc, tôi không tìm thấy thông tin cho từ \"%1$s\". %2$s</string>
+    <string name="dictionary_local_format">**%1$s**\n• Nghĩa: %2$s\n• Loại từ: %3$s\n• Phiên âm: %4$s\n• Ví dụ: %5$s</string>
+    <string name="chat_input_hint">Nhập tin nhắn...</string>
+
+    <!-- Learning Path strings -->
+    <string name="goal_save_success">Đã lưu mục tiêu lộ trình thành công!</string>
+    <string name="suggestion_600">Gợi ý: Tập trung củng cố nền tảng ngữ pháp cơ bản và luyện nghe Part 1 &amp; 2.</string>
+    <string name="suggestion_700">Gợi ý: Tăng cường từ vựng trung cấp và luyện đọc hiểu Part 5 &amp; 6.</string>
+    <string name="suggestion_800">Gợi ý: Tập trung tối ưu thời gian làm bài Part 7, luyện các đề thi chuyên sâu ETS.</string>
 </resources>

@@ -101,6 +101,20 @@ public class VocabLoader {
     }
 
     /**
+     * Finds a word in the loaded vocabulary list.
+     */
+    public TuVung findWord(String query) {
+        if (vocabList == null || query == null) return null;
+        String cleanQuery = query.toLowerCase().trim();
+        for (TuVung tv : vocabList) {
+            if (tv.getTuTiengAnh() != null && tv.getTuTiengAnh().toLowerCase().equals(cleanQuery)) {
+                return tv;
+            }
+        }
+        return null;
+    }
+
+    /**
      * Returns whether the vocabulary has finished loading.
      */
     public boolean isLoaded() {

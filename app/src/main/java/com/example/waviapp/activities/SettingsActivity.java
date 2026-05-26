@@ -2,9 +2,11 @@ package com.example.waviapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+import com.bumptech.glide.Glide;
 import com.example.waviapp.R;
 import com.example.waviapp.databinding.ActivitySettingsBinding;
 import com.example.waviapp.firebase.DatabaseHelper;
@@ -57,13 +59,18 @@ public class SettingsActivity extends BaseActivity {
             catch (Exception e) { startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(MESSENGER_URL))); }
         });
 
+        binding.llLearningPath.setOnClickListener(v -> {
+            // Chuyển sang màn hình Lộ trình học tập
+            startActivity(new Intent(this, LearningPathActivity.class));
+        });
+
         setupBottomNavigation();
     }
 
     private void setupBottomNavigation() {
+        binding.bottomNav.setSelectedItemId(R.id.nav_setting);
         binding.bottomNav.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
-            // B. Listener Logic: Check Current
             if (id == R.id.nav_setting) return false;
             
             Intent intent = null;
@@ -88,8 +95,35 @@ public class SettingsActivity extends BaseActivity {
             binding.tvUserName.setText(user.getHoTen());
             binding.tvAvatarText.setText(user.getHoTen().substring(0, 1).toUpperCase());
         }
-        if (user.isPremium()) { binding.tvPremiumStatus.setText(getString(R.string.premium_member)); binding.tvPremiumStatus.setTextColor(android.graphics.Color.parseColor("#FFD700")); }
-        else { binding.tvPremiumStatus.setText(getString(R.string.free_member)); binding.tvPremiumStatus.setTextColor(android.graphics.Color.parseColor("#888888")); }
+        
+        // Cập nhật Avatar từ Base64
+        if (user.getAvatarUrl() != null && !user.getAvatarUrl().isEmpty()) {
+            try {
+                byte[] decodedBytes = Base64.decode(user.getAvatarUrl(), Base64.DEFAULT);
+                binding.tvAvatarText.setVisibility(View.GONE);
+                Glide.with(this)
+                        .asBitmap()
+                        .load(decodedBytes)
+                        .placeholder(R.drawable.ic_user_placeholder)
+                        .error(R.drawable.ic_user_placeholder)
+                        .circleCrop()
+                        .into(binding.ivAvatarSettings);
+            } catch (Exception e) {
+                binding.tvAvatarText.setVisibility(View.VISIBLE);
+                binding.ivAvatarSettings.setImageResource(R.drawable.ic_user_placeholder);
+            }
+        } else {
+            binding.tvAvatarText.setVisibility(View.VISIBLE);
+            binding.ivAvatarSettings.setImageResource(R.drawable.ic_user_placeholder);
+        }
+
+        if (user.isPremium()) { 
+            binding.tvPremiumStatus.setText(getString(R.string.premium_member)); 
+            binding.tvPremiumStatus.setTextColor(android.graphics.Color.parseColor("#9370DB")); 
+        } else { 
+            binding.tvPremiumStatus.setText(getString(R.string.free_member)); 
+            binding.tvPremiumStatus.setTextColor(android.graphics.Color.parseColor("#888888")); 
+        }
     }
 
     private void shareApp() {

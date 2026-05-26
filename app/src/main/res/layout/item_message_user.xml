@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="12dp"
+    android:paddingVertical="6dp">
+
+    <TextView
+        android:id="@+id/txtMessageUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="60dp"
+        android:background="@drawable/bg_bubble_user"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="10dp"
+        android:text="Tin nhắn người dùng..."
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/txtTimeUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtMessageUser"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="2dp"
+        android:textColor="#888888"
+        android:textSize="11sp"
+        android:text="21:15" />
+</RelativeLayout>
