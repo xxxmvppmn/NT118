@@ -51,4 +51,23 @@
 
     <!-- ========== Overlay ========== -->
     <color name="overlay_dark">#80000000</color>
+
+    <!-- ========== Admin Theme Colors ========== -->
+    <color name="admin_primary">#1565C0</color>
+    <color name="admin_primary_dark">#0D47A1</color>
+    <color name="admin_primary_light">#42A5F5</color>
+    <color name="admin_accent">#FF6F00</color>
+    <color name="admin_bg">#F5F7FA</color>
+    <color name="admin_card_bg">#FFFFFF</color>
+    <color name="admin_card_border">#E3E8EF</color>
+    <color name="admin_header_start">#1565C0</color>
+    <color name="admin_header_end">#0D47A1</color>
+    <color name="admin_stat_users">#1E88E5</color>
+    <color name="admin_stat_lessons">#43A047</color>
+    <color name="admin_stat_vocab">#FB8C00</color>
+    <color name="admin_stat_grammar">#8E24AA</color>
+    <color name="admin_locked_bg">#FFEBEE</color>
+    <color name="admin_locked_text">#C62828</color>
+    <color name="admin_active_bg">#E8F5E9</color>
+    <color name="admin_active_text">#2E7D32</color>
 </resources>

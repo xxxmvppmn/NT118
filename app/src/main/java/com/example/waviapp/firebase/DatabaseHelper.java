@@ -70,9 +70,27 @@ public class DatabaseHelper {
         void onFailure(String error);
     }
 
+    // =================== ADMIN CALLBACKS ===================
+
+    public interface UsersListCallback {
+        void onSuccess(List<TaiKhoan> users);
+        void onFailure(String error);
+    }
+
+    public interface LessonsListCallback {
+        void onSuccess(List<com.example.waviapp.models.ChuDe> lessons);
+        void onFailure(String error);
+    }
+
+    public interface StatsCallback {
+        void onSuccess(Map<String, Integer> stats);
+        void onFailure(String error);
+    }
+
     public DatabaseHelper() {
         db = FirebaseFirestore.getInstance();
     }
+
 
     // =================== TÀI KHOẢN (FIRESTORE) ===================
 
@@ -391,6 +409,242 @@ public class DatabaseHelper {
                         results.add(r);
                     }
                     callback.onSuccess(results);
+                })
+                .addOnFailureListener(e -> callback.onFailure(e.getMessage()));
+    }
+
+    // =================== ADMIN: QUẢN LÝ TÀI KHOẢN ===================
+
+    /** Lấy tất cả users (trừ Admin) */
+    public void getAllUsers(UsersListCallback callback) {
+        db.collection("taiKhoan")
+                .get()
+                .addOnSuccessListener(snapshots -> {
+                    List<TaiKhoan> users = new ArrayList<>();
+                    for (QueryDocumentSnapshot doc : snapshots) {
+                        TaiKhoan user = doc.toObject(TaiKhoan.class);
+                        user.setId(doc.getId());
+                        if (!"Admin".equals(user.getVaiTro())) {
+                            users.add(user);
+                        }
+                    }
+                    callback.onSuccess(users);
+                })
+                .addOnFailureListener(e -> callback.onFailure(e.getMessage()));
+    }
+
+    /** Khóa/Mở khóa tài khoản */
+    public void lockUser(String userId, boolean lock, SimpleCallback callback) {
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("isLocked", lock);
+        db.collection("taiKhoan").document(userId)
+                .update(updates)
+                .addOnSuccessListener(aVoid -> { if (callback != null) callback.onSuccess(); })
+                .addOnFailureListener(e -> { if (callback != null) callback.onFailure(e.getMessage()); });
+    }
+
+    // =================== ADMIN: QUẢN LÝ BÀI HỌC (CHỦ ĐỀ) ===================
+
+    /** Lấy tất cả chủ đề */
+    public void getAllLessons(LessonsListCallback callback) {
+        db.collection("chuDe")
+                .get()
+                .addOnSuccessListener(snapshots -> {
+                    List<com.example.waviapp.models.ChuDe> lessons = new ArrayList<>();
+                    for (QueryDocumentSnapshot doc : snapshots) {
+                        com.example.waviapp.models.ChuDe lesson = doc.toObject(com.example.waviapp.models.ChuDe.class);
+                        if (lesson.getMaCD() == null || lesson.getMaCD().isEmpty()) {
+                            lesson.setMaCD(doc.getId());
+                        }
+                        lessons.add(lesson);
+                    }
+                    callback.onSuccess(lessons);
+                })
+                .addOnFailureListener(e -> callback.onFailure(e.getMessage()));
+    }
+
+    /** Thêm chủ đề mới */
+    public void addLesson(com.example.waviapp.models.ChuDe lesson, SimpleCallback callback) {
+        db.collection("chuDe").document(lesson.getMaCD())
+                .set(lesson)
+                .addOnSuccessListener(aVoid -> { if (callback != null) callback.onSuccess(); })
+                .addOnFailureListener(e -> { if (callback != null) callback.onFailure(e.getMessage()); });
+    }
+
+    /** Cập nhật chủ đề */
+    public void updateLesson(String maCD, Map<String, Object> updates, SimpleCallback callback) {
+        db.collection("chuDe").document(maCD)
+                .update(updates)
+                .addOnSuccessListener(aVoid -> { if (callback != null) callback.onSuccess(); })
+                .addOnFailureListener(e -> { if (callback != null) callback.onFailure(e.getMessage()); });
+    }
+
+    /** Xóa chủ đề */
+    public void deleteLesson(String maCD, SimpleCallback callback) {
+        db.collection("chuDe").document(maCD)
+                .delete()
+                .addOnSuccessListener(aVoid -> { if (callback != null) callback.onSuccess(); })
+                .addOnFailureListener(e -> { if (callback != null) callback.onFailure(e.getMessage()); });
+    }
+
+    // =================== ADMIN: QUẢN LÝ NỘI DUNG ===================
+
+    /** Lấy tất cả từ vựng */
+    public void getAllVocabulary(VocabularyCallback callback) {
+        db.collection("tuVung")
+                .get()
+                .addOnSuccessListener(snapshots -> {
+                    List<TuVung> words = new ArrayList<>();
+                    for (QueryDocumentSnapshot doc : snapshots) {
+                        TuVung w = doc.toObject(TuVung.class);
+                        if (w.getMaTV() == null || w.getMaTV().isEmpty()) {
+                            w.setMaTV(doc.getId());
+                        }
+                        words.add(w);
+                    }
+                    callback.onSuccess(words);
+                })
+                .addOnFailureListener(e -> callback.onFailure(e.getMessage()));
+    }
+
+    /** Thêm từ vựng */
+    public void addVocabulary(TuVung word, SimpleCallback callback) {
+        String docId = word.getMaTV() != null && !word.getMaTV().isEmpty()
+                ? word.getMaTV()
+                : db.collection("tuVung").document().getId();
+        word.setMaTV(docId);
+        db.collection("tuVung").document(docId)
+                .set(word)
+                .addOnSuccessListener(aVoid -> { if (callback != null) callback.onSuccess(); })
+                .addOnFailureListener(e -> { if (callback != null) callback.onFailure(e.getMessage()); });
+    }
+
+    /** Cập nhật từ vựng */
+    public void updateVocabulary(String maTV, Map<String, Object> updates, SimpleCallback callback) {
+        db.collection("tuVung").document(maTV)
+                .update(updates)
+                .addOnSuccessListener(aVoid -> { if (callback != null) callback.onSuccess(); })
+                .addOnFailureListener(e -> { if (callback != null) callback.onFailure(e.getMessage()); });
+    }
+
+    /** Xóa từ vựng */
+    public void deleteVocabulary(String maTV, SimpleCallback callback) {
+        db.collection("tuVung").document(maTV)
+                .delete()
+                .addOnSuccessListener(aVoid -> { if (callback != null) callback.onSuccess(); })
+                .addOnFailureListener(e -> { if (callback != null) callback.onFailure(e.getMessage()); });
+    }
+
+    /** Lấy tất cả ngữ pháp */
+    public void getAllGrammar(GrammarCallback callback) {
+        db.collection("nguPhap")
+                .get()
+                .addOnSuccessListener(snapshots -> {
+                    List<com.example.waviapp.models.NguPhap> list = new ArrayList<>();
+                    for (QueryDocumentSnapshot doc : snapshots) {
+                        com.example.waviapp.models.NguPhap np = doc.toObject(com.example.waviapp.models.NguPhap.class);
+                        if (np.getMaNP() == null || np.getMaNP().isEmpty()) {
+                            np.setMaNP(doc.getId());
+                        }
+                        list.add(np);
+                    }
+                    callback.onSuccess(list);
+                })
+                .addOnFailureListener(e -> callback.onFailure(e.getMessage()));
+    }
+
+    /** Thêm ngữ pháp */
+    public void addGrammar(com.example.waviapp.models.NguPhap grammar, SimpleCallback callback) {
+        String docId = grammar.getMaNP() != null && !grammar.getMaNP().isEmpty()
+                ? grammar.getMaNP()
+                : db.collection("nguPhap").document().getId();
+        grammar.setMaNP(docId);
+        db.collection("nguPhap").document(docId)
+                .set(grammar)
+                .addOnSuccessListener(aVoid -> { if (callback != null) callback.onSuccess(); })
+                .addOnFailureListener(e -> { if (callback != null) callback.onFailure(e.getMessage()); });
+    }
+
+    /** Cập nhật ngữ pháp */
+    public void updateGrammar(String maNP, Map<String, Object> updates, SimpleCallback callback) {
+        db.collection("nguPhap").document(maNP)
+                .update(updates)
+                .addOnSuccessListener(aVoid -> { if (callback != null) callback.onSuccess(); })
+                .addOnFailureListener(e -> { if (callback != null) callback.onFailure(e.getMessage()); });
+    }
+
+    /** Xóa ngữ pháp */
+    public void deleteGrammar(String maNP, SimpleCallback callback) {
+        db.collection("nguPhap").document(maNP)
+                .delete()
+                .addOnSuccessListener(aVoid -> { if (callback != null) callback.onSuccess(); })
+                .addOnFailureListener(e -> { if (callback != null) callback.onFailure(e.getMessage()); });
+    }
+
+    // =================== ADMIN: THỐNG KÊ ===================
+
+    /** Đếm tổng users */
+    public void getUserCount(CountCallback callback) {
+        db.collection("taiKhoan").get()
+                .addOnSuccessListener(snapshots -> callback.onSuccess(snapshots.size()))
+                .addOnFailureListener(e -> callback.onFailure(e.getMessage()));
+    }
+
+    /** Đếm tổng bài học */
+    public void getLessonCount(CountCallback callback) {
+        db.collection("chuDe").get()
+                .addOnSuccessListener(snapshots -> callback.onSuccess(snapshots.size()))
+                .addOnFailureListener(e -> callback.onFailure(e.getMessage()));
+    }
+
+    /** Đếm tổng từ vựng */
+    public void getVocabularyCount(CountCallback callback) {
+        db.collection("tuVung").get()
+                .addOnSuccessListener(snapshots -> callback.onSuccess(snapshots.size()))
+                .addOnFailureListener(e -> callback.onFailure(e.getMessage()));
+    }
+
+    /** Đếm tổng ngữ pháp */
+    public void getGrammarCount(CountCallback callback) {
+        db.collection("nguPhap").get()
+                .addOnSuccessListener(snapshots -> callback.onSuccess(snapshots.size()))
+                .addOnFailureListener(e -> callback.onFailure(e.getMessage()));
+    }
+
+    /** Lấy thống kê user đăng ký theo tháng (6 tháng gần nhất) */
+    public void getUserRegistrationStats(StatsCallback callback) {
+        db.collection("taiKhoan").get()
+                .addOnSuccessListener(snapshots -> {
+                    Map<String, Integer> monthCounts = new java.util.LinkedHashMap<>();
+
+                    // Khởi tạo 6 tháng gần nhất
+                    java.util.Calendar cal = java.util.Calendar.getInstance();
+                    String[] monthNames = {"T1", "T2", "T3", "T4", "T5", "T6",
+                            "T7", "T8", "T9", "T10", "T11", "T12"};
+
+                    for (int i = 5; i >= 0; i--) {
+                        java.util.Calendar c = java.util.Calendar.getInstance();
+                        c.add(java.util.Calendar.MONTH, -i);
+                        String key = monthNames[c.get(java.util.Calendar.MONTH)] + "/" +
+                                String.valueOf(c.get(java.util.Calendar.YEAR)).substring(2);
+                        monthCounts.put(key, 0);
+                    }
+
+                    // Đếm user theo ngày tạo
+                    for (QueryDocumentSnapshot doc : snapshots) {
+                        com.google.firebase.Timestamp ngayTao = doc.getTimestamp("ngayTao");
+                        if (ngayTao != null) {
+                            java.util.Calendar userCal = java.util.Calendar.getInstance();
+                            userCal.setTime(ngayTao.toDate());
+                            String key = monthNames[userCal.get(java.util.Calendar.MONTH)] + "/" +
+                                    String.valueOf(userCal.get(java.util.Calendar.YEAR)).substring(2);
+                            if (monthCounts.containsKey(key)) {
+                                monthCounts.put(key, monthCounts.get(key) + 1);
+                            }
+                        }
+                    }
+
+                    callback.onSuccess(monthCounts);
                 })
                 .addOnFailureListener(e -> callback.onFailure(e.getMessage()));
     }

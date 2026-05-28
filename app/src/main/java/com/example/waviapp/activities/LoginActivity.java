@@ -84,7 +84,7 @@ public class LoginActivity extends BaseActivity {
             if (!isHandlingGoogleSignIn && firebaseAuth.getCurrentUser() != null) {
                 Log.d(TAG, "AuthStateListener: user đã đăng nhập, chuyển Home");
                 // Fetch data before going to Home
-                UserSessionManager.getInstance().fetchUserData(firebaseAuth.getCurrentUser().getUid(), success -> goToHome());
+                UserSessionManager.getInstance().fetchUserData(firebaseAuth.getCurrentUser().getUid(), success -> routeUser());
             }
         };
     }
@@ -176,20 +176,20 @@ public class LoginActivity extends BaseActivity {
                         user.setLastLogin(now);
                         user.setChuoiNgayHoc(streakToSave);
                         UserSessionManager.getInstance().updateUserDataLocally(user);
-                        goToHome();
+                        routeUser();
                     }
 
                     @Override
                     public void onFailure(String error) {
                         UserSessionManager.getInstance().updateUserDataLocally(user);
-                        goToHome();
+                        routeUser();
                     }
                 });
             }
 
             @Override
             public void onFailure(String error) {
-                goToHome();
+                routeUser();
             }
         });
     }
@@ -221,10 +221,10 @@ public class LoginActivity extends BaseActivity {
                     @Override
                     public void onSuccess() {
                         UserSessionManager.getInstance().updateUserDataLocally(newUser);
-                        goToHome();
+                        routeUser();
                     }
                     @Override
-                    public void onFailure(String error) { goToHome(); }
+                    public void onFailure(String error) { routeUser(); }
                 });
             }
         });
@@ -274,11 +274,34 @@ public class LoginActivity extends BaseActivity {
         binding.txtRegisterLink.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
-    private void goToHome() {
-        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
+    private void routeUser() {
+        TaiKhoan user = UserSessionManager.getInstance().getUserData();
+        if (user != null) {
+            if (user.isLocked()) {
+                Toast.makeText(this, "Tài khoản của bạn đã bị khóa bởi Admin!", Toast.LENGTH_LONG).show();
+                authHelper.logout();
+                UserSessionManager.getInstance().clearSession();
+                binding.btnLogin.setEnabled(true);
+                binding.btnLogin.setText("Đăng nhập");
+                return;
+            }
+            if ("Admin".equals(user.getVaiTro())) {
+                Intent intent = new Intent(LoginActivity.this, AdminDashboardActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            } else {
+                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
+        } else {
+            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        }
     }
     private void setupForgotPassword() {
         binding.txtForgotPassword.setOnClickListener(v -> {

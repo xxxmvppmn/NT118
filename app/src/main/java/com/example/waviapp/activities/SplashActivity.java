@@ -25,7 +25,7 @@ public class SplashActivity extends BaseActivity {
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             if (currentUser != null) {
                 UserSessionManager.getInstance().fetchUserData(currentUser.getUid(), success -> {
-                    goToHome();
+                    routeUser();
                 });
             } else {
                 boolean isDebug = (0 != (getApplicationContext().getApplicationInfo().flags & android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE));
@@ -34,7 +34,7 @@ public class SplashActivity extends BaseActivity {
                     com.example.waviapp.models.TaiKhoan mockUser = new com.example.waviapp.models.TaiKhoan("mock_user_id", "Người dùng Thử nghiệm", "demo@wavi.vn");
                     mockUser.setChuoiNgayHoc(5);
                     UserSessionManager.getInstance().updateUserDataLocally(mockUser);
-                    goToHome();
+                    routeUser();
                 } else {
                     // Navigate to LoginActivity in production
                     startActivity(new Intent(SplashActivity.this, LoginActivity.class));
@@ -44,8 +44,24 @@ public class SplashActivity extends BaseActivity {
         }, 1500);
     }
 
-    private void goToHome() {
-        startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+    private void routeUser() {
+        com.example.waviapp.models.TaiKhoan user = UserSessionManager.getInstance().getUserData();
+        if (user != null) {
+            if (user.isLocked()) {
+                new FirebaseAuthHelper().logout();
+                UserSessionManager.getInstance().clearSession();
+                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                finish();
+                return;
+            }
+            if ("Admin".equals(user.getVaiTro())) {
+                startActivity(new Intent(SplashActivity.this, AdminDashboardActivity.class));
+            } else {
+                startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+            }
+        } else {
+            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+        }
         finish();
     }
 }

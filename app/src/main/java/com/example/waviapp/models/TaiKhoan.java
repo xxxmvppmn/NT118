@@ -20,6 +20,7 @@ public class TaiKhoan {
     private int mucTieuDiem;     // Mục tiêu điểm TOEIC
     private Timestamp lastLogin;
     private boolean premium;
+    private boolean isLocked; // Admin: khóa tài khoản
     private String avatarUrl;
     private String phone;
     // 1. Constructor rỗng
@@ -45,6 +46,7 @@ public class TaiKhoan {
         this.mucTieuHangNgay = 10; // Mặc định 10 phút
         this.mucTieuDiem = 600;    // Mặc định 600 điểm
         this.premium = false;
+        this.isLocked = false;
     }
 
     // --- GETTER VÀ SETTER ---
@@ -109,4 +111,7 @@ public class TaiKhoan {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    public boolean isLocked() { return isLocked; }
+    public void setLocked(boolean locked) { isLocked = locked; }
 }
